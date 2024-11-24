@@ -1,0 +1,152 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:907:7649:b0:a3f:10b9:5b11 with SMTP id kj9csp1299999ejc;
+        Sat, 24 Feb 2024 00:34:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXG5SN4uzL7TSiGASOxdQq4ZxhrPjpkFEj9AvMdD2tRKJppneDgyrG5XxYl4Aa0AHCuaOBmayyshxRAYkxcYwCCgZhuGwT0v+RlZteJ
+X-Google-Smtp-Source: AGHT+IH+xa34Il1Q9XB/0Gd8m1ozqpnUEhifbqvpAsfcWDC9TDgGjJOIljoMci16QNBT6MoQpKJo
+X-Received: by 2002:a17:907:9902:b0:a3e:5726:c12 with SMTP id ka2-20020a170907990200b00a3e57260c12mr1331126ejc.37.1708763655236;
+        Sat, 24 Feb 2024 00:34:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708763655; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tE47N5U+OqrNTwjBThNKvIwhh6PlIOnqtFclrCor5AwMawf8JKWn+/ym3ceJGB3ZV+
+         cn68SrVhAWuUQpQmXA2eroiAfceeIjF3EzkQE2bHUdsXNhoY0HILb+x4A6S0bM15HE7C
+         eeHEke9Edgs4IOjdKNIRnzbtgiq7F2VzOqkt3n/VdAMeS64bYg7Ey97jUiPyf5WalWQB
+         MnaB8H3kxCm/Ap0Am58+6q14dAh/Twe0HvH86688xj+ml6TjjVd/Zj592sdVhPCzQ894
+         2UkcywCyhpNG8X+T5Pvh+xkoKcF8GKQeZvGL0j/YwdRvVO+nWXh+7dwp/u00+OaWpPuN
+         SM4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=thread-topic:thread-index:mime-version:subject:message-id:to:from
+         :date:dkim-signature:dkim-filter;
+        bh=Sulv7vj/aKLob9N3eLxjlAe+8rPuVjB8KS0Tcvn7dnQ=;
+        fh=JavAEkuF7KMsSrkZ8p2uZhZYpzXxCIwW9dKvLNXL6k4=;
+        b=feuc/xt/aGfDNp3MD21imEQrfJt6G+viC1Loex6M6gpxBfA3S5/3xCWsQfgX2raXIK
+         GV5Dgy6MeoVZpGRsF8Y6hjqRZdbJl5ysEdS+kYQbseI3rUgUAR1iepHlERAnSrUbCUOB
+         7wuqlYKTPnvg+izLxnMOxBUrFeJE8mRFY+iWoIL5zmKGNLPf9QNLn0V8ttzXO2BnuHnV
+         f2DUIeTkFtQ5gRmgk3yml/R1sIQFdfFNvHYeOaS2Eihs1qXjD1nHw6pr0vOFjNViMns8
+         gfYux2jDJz6m0xEApVOeyygtGqj951/ffKLVgZZ3O2n9XV5BpMO2T4SaB4jrM3yfCzHv
+         aCFg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@vaciegyhazmegye.hu header.s=dkim header.b=fYmIeIZq;
+       spf=pass (google.com: domain of meszaros.csaba@vaciegyhazmegye.hu designates 37.220.137.81 as permitted sender) smtp.mailfrom=meszaros.csaba@vaciegyhazmegye.hu
+Return-Path: <meszaros.csaba@vaciegyhazmegye.hu>
+Received: from webmail.vaciegyhazmegye.hu (webmail.vaciegyhazmegye.hu. [37.220.137.81])
+        by mx.google.com with ESMTPS id n16-20020a1709061d1000b00a3e80c191afsi314771ejh.1026.2024.02.24.00.34.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 24 Feb 2024 00:34:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of meszaros.csaba@vaciegyhazmegye.hu designates 37.220.137.81 as permitted sender) client-ip=37.220.137.81;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@vaciegyhazmegye.hu header.s=dkim header.b=fYmIeIZq;
+       spf=pass (google.com: domain of meszaros.csaba@vaciegyhazmegye.hu designates 37.220.137.81 as permitted sender) smtp.mailfrom=meszaros.csaba@vaciegyhazmegye.hu
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by webmail.vaciegyhazmegye.hu (Postfix) with ESMTP id F37178F0542E;
+	Sat, 24 Feb 2024 09:34:13 +0100 (CET)
+Received: from webmail.vaciegyhazmegye.hu ([127.0.0.1])
+	by localhost (webmail.vaciegyhazmegye.hu [127.0.0.1]) (amavisd-new, port 10032)
+	with ESMTP id ozoxWq8nUVIi; Sat, 24 Feb 2024 09:34:10 +0100 (CET)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by webmail.vaciegyhazmegye.hu (Postfix) with ESMTP id 0DE198F05782;
+	Sat, 24 Feb 2024 09:34:10 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 webmail.vaciegyhazmegye.hu 0DE198F05782
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vaciegyhazmegye.hu;
+	s=dkim; t=1708763650;
+	bh=Sulv7vj/aKLob9N3eLxjlAe+8rPuVjB8KS0Tcvn7dnQ=;
+	h=Date:From:To:Message-ID:MIME-Version;
+	b=fYmIeIZqnC+KUFEscCu2IfxMSwUPNEsvMmDGSbmtUWkVqGpzcoMF6l6GtP7Umvgz/
+	 HuuXcVmFIBUUIDMt5hnpMdNOY7jGfF8OCJiN9iuQRdiAsgExi5BkErtkdHIdvFOedK
+	 eEYoSugf0czLv82Xzd4+j4W71108SJUT42YrvBhKjTzp4vRhPkEHAIDztftRnhG/yn
+	 rpE6uC1egi/YZ5slTn9M1qW0Fasu9MvD3Qawlb9Buwt2qpbvQ7Tl4CEUyepaEm6gy1
+	 nwTPBLlK3wXri8L3OD41LOZJuPFI42W2wOzbOElGyQYkJUiwcuoRjGWgO+PXcCVqsU
+	 NFf4lj/jJMszg==
+X-Virus-Scanned: amavisd-new at webmail.vaciegyhazmegye.hu
+Received: from webmail.vaciegyhazmegye.hu ([127.0.0.1])
+	by localhost (webmail.vaciegyhazmegye.hu [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id 52JHci4WT-jR; Sat, 24 Feb 2024 09:34:09 +0100 (CET)
+Received: from webmail.vaciegyhazmegye.hu (webmail.vaciegyhazmegye.hu [37.220.137.81])
+	by webmail.vaciegyhazmegye.hu (Postfix) with ESMTP id 266768F0542E;
+	Sat, 24 Feb 2024 09:33:59 +0100 (CET)
+Date: Sat, 24 Feb 2024 09:33:58 +0100 (CET)
+From: =?utf-8?B?TcOpc3rDoXJvcw==?= Csaba <meszaros.csaba@vaciegyhazmegye.hu>
+To: =?utf-8?Q?Szab=C3=B3?= Vince <vince.zalan.szabo13@gmail.com>, 
+	Antal Emese <mesi200508@gmail.com>, 
+	Havasi <havasi.alex.marton@gmail.com>, 
+	=?utf-8?Q?Szl=C3=A1dik?= Fanni <szladikfanni@gmail.com>, 
+	Rajszky =?utf-8?Q?Bogl=C3=A1rka?= <rajszkyboglarka2007@gmail.com>, 
+	Baranyi =?utf-8?B?UsOpa2E=?= <baranyireka2020@gmail.com>, 
+	=?utf-8?Q?Faldina-Sponga=2C_Kincs=C5=91?= <faldinasponga.k@gmail.com>, 
+	Szimonetta Maja =?utf-8?Q?testv=C3=A9re=2C?= Malata Annabella <malata.annabella@gmail.com>, 
+	=?utf-8?B?R8OhYm9ybsOpLCBCcmFzc8OzaQ==?= <brassoi.szilvia@vaciegyhazmegye.hu>, 
+	=?utf-8?Q?Szeibert=2C_Bal=C3=A1zs?= <szeibert.balazs@gmail.com>, 
+	"Tibor, Szeibert" <t.szeibert@gmail.com>, 
+	=?utf-8?B?S8O2dmks?= Reni <korenus08@gmail.com>, 
+	=?utf-8?Q?Kert=C3=A9sz-Tak=C3=A1cs=2C?= Levente <ktlevente2009@gmail.com>, 
+	=?utf-8?B?SXN0dsOhbiw=?= Omelka <omipityu@gmail.com>
+Message-ID: <1506493727.564108.1708763638824.JavaMail.zimbra@vaciegyhazmegye.hu>
+Subject: =?utf-8?Q?B=C3=A9rm=C3=A1l=C3=A1si_el=C5=91k=C3=A9sz=C3=ADt=C5=91?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="=_65b364ac-20ca-4379-9675-9d509432e706"
+X-Mailer: Zimbra 8.8.15_GA_4545 (ZimbraWebClient - GC121 (Win)/8.8.15_GA_4545)
+Thread-Index: gtTx0JSyRuTHU8n5jFKNobj6mSHRXg==
+Thread-Topic: =?utf-8?B?QsOpcm3DoWzDoXNpIGVsxZFrw6lzesOtdMWR?=
+
+--=_65b364ac-20ca-4379-9675-9d509432e706
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kedves B=C3=A9rm=C3=A1lkoz=C3=A1sra k=C3=A9sz=C3=BCl=C5=91k!=20
+
+R=C3=A9szben =C3=B6ssze=C3=A1llt a b=C3=A9rm=C3=A1l=C3=A1sra k=C3=A9sz=C3=
+=BCl=C5=91 csoport. E-mailen tudunk rendszeresen kommunik=C3=A1lni.=20
+Vannak m=C3=A9g hi=C3=A1nyz=C3=B3 adatok, de azt a k=C3=A9sz=C3=BClet sor=
+=C3=A1n p=C3=B3tolni fogjuk.=20
+Az els=C5=91 b=C3=A9rm=C3=A1lkoz=C3=A1si el=C5=91k=C3=A9sz=C3=ADt=C5=91 alk=
+alom 2024. m=C3=A1rcius 2-=C3=A1n 11 =C3=B3rakor lesz az =C3=B6rk=C3=A9nyi =
+Pl=C3=A9b=C3=A1nia K=C3=B6z=C3=B6ss=C3=A9gi H=C3=A1z=C3=A1ban.=20
+Az alkalom el=C5=91rel=C3=A1that=C3=B3lag 12.30-ig tart. K=C3=A9rek mindenk=
+it, hogy jelenjen meg ezen az els=C5=91 tal=C3=A1lkoz=C3=B3n!=20
+
+A k=C3=B6zeli tal=C3=A1lkoz=C3=A1st v=C3=A1rva k=C3=B6sz=C3=B6ntelek titeke=
+t!=20
+=C3=9Cdv=C3=B6zlettel: M.Cs.=20
+
+
+M=C3=A9sz=C3=A1ros Csaba=20
+esperes, pl=C3=A9b=C3=A1nos=20
+2377 =C3=96RK=C3=89NY, Tat=C3=A1rszentgy=C3=B6rgyi =C3=BAt 1.=20
+tel: 30/376-61-81=20
+E-mail: [ mailto:orkeny@vaciegyhazmegye.hu | orkeny@vaciegyhazmegye.hu ]=20
+
+
+
+--=_65b364ac-20ca-4379-9675-9d509432e706
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><body><div style=3D"font-family: arial, helvetica, sans-serif; font-s=
+ize: 12pt; color: #000000"><div>Kedves B=C3=A9rm=C3=A1lkoz=C3=A1sra k=C3=A9=
+sz=C3=BCl=C5=91k!</div><div><br data-mce-bogus=3D"1"></div><div>R=C3=A9szbe=
+n =C3=B6ssze=C3=A1llt a b=C3=A9rm=C3=A1l=C3=A1sra k=C3=A9sz=C3=BCl=C5=91 cs=
+oport. E-mailen tudunk rendszeresen kommunik=C3=A1lni.</div><div>Vannak m=
+=C3=A9g hi=C3=A1nyz=C3=B3 adatok, de azt a k=C3=A9sz=C3=BClet sor=C3=A1n p=
+=C3=B3tolni fogjuk.</div><div>Az els=C5=91 b=C3=A9rm=C3=A1lkoz=C3=A1si el=
+=C5=91k=C3=A9sz=C3=ADt=C5=91 alkalom <strong>2024. m=C3=A1rcius 2-=C3=A1n 1=
+1 =C3=B3rakor lesz</strong> az =C3=B6rk=C3=A9nyi Pl=C3=A9b=C3=A1nia K=C3=B6=
+z=C3=B6ss=C3=A9gi H=C3=A1z=C3=A1ban.</div><div>Az alkalom el=C5=91rel=C3=A1=
+that=C3=B3lag 12.30-ig tart. K=C3=A9rek mindenkit, hogy jelenjen meg ezen a=
+z els=C5=91 tal=C3=A1lkoz=C3=B3n!</div><div><br data-mce-bogus=3D"1"></div>=
+<div>A k=C3=B6zeli tal=C3=A1lkoz=C3=A1st v=C3=A1rva k=C3=B6sz=C3=B6ntelek t=
+iteket!</div><div>=C3=9Cdv=C3=B6zlettel: M.Cs.</div><div><br data-mce-bogus=
+=3D"1"></div><div><br></div><div data-marker=3D"__SIG_PRE__"><div><div><spa=
+n style=3D"font-size:10pt;color:rgb( 0 , 128 , 0 )"><em><strong>M=C3=A9sz=
+=C3=A1ros Csaba</strong></em></span></div><div><span style=3D"color:rgb( 0 =
+, 128 , 0 );font-size:10pt">esperes, pl=C3=A9b=C3=A1nos</span><br><span sty=
+le=3D"font-size:10pt;color:rgb( 0 , 128 , 0 )">2377 =C3=96RK=C3=89NY, Tat=
+=C3=A1rszentgy=C3=B6rgyi =C3=BAt 1.</span><br><span style=3D"font-size:10pt=
+;color:rgb( 0 , 128 , 0 )">tel:&nbsp;<strong>30/376-61-81</strong></span></=
+div><div><span style=3D"font-size:10pt;color:rgb( 0 , 128 , 0 )">E-mail:&nb=
+sp;<a href=3D"mailto:orkeny@vaciegyhazmegye.hu" rel=3D"nofollow noopener no=
+referrer nofollow noopener noreferrer nofollow noopener noreferrer nofollow=
+ noopener noreferrer" style=3D"color:rgb( 0 , 128 , 0 )" target=3D"_blank">=
+orkeny@vaciegyhazmegye.hu</a></span></div><br><div><br data-mce-bogus=3D"1"=
+></div></div></div></div></body></html>
+--=_65b364ac-20ca-4379-9675-9d509432e706--

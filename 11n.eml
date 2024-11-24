@@ -1,0 +1,111 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:78a:b0:a8a:9188:61a with SMTP id l10csp1066616ejc;
+        Sun, 15 Sep 2024 23:57:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGLYdFR/DHX+vq9uuqUI/28GyXhjEzjJtmofZ1870Ue3fqvqs4zb1Aee558FwxvIq6410Iv
+X-Received: by 2002:a17:907:940e:b0:a8d:2ab2:c9b1 with SMTP id a640c23a62f3a-a90296716efmr1476165166b.56.1726469845370;
+        Sun, 15 Sep 2024 23:57:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726469845; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Pgyh6IgjGd5jkCyTxeHZEIiVtNEPNVmiRRZ29cPT9PLNZJ8H7YUwN2RAz7T4YBH1HE
+         cKHqY88nidHSKtORrXWwEw7aqz72jwrjTegTMHDRI6enITZYlg4kYNvP5Vgmr4HQAWnL
+         3YKbd/L/aBHzxgHU407lbKayst7gAjxLULSZhvjO9vR5QK1g5IvP9Av455XJW+BOWqCH
+         8e9B/rLR5A565IDLWpMhkYatMXjqa9FONe/HNZ42J+qlBq5Vwk/7zO/2OjHwLRAbtC1M
+         5lfdNkBnZ20h208FwUK94Lb+Dft/cRKtqnMjMdAqwwlKAYlpysEZbgIlrfxVLvx4za5Q
+         qplg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=amqd7eWmudygPPf9fNfmILdSowZ4HZ8e6n2/MEII7Oo=;
+        fh=hSeLRylOXoTgf5JHjxMsXRlVTNwTNKKgZEn/745a1s8=;
+        b=Gm3DVCyMd7Bd6tNRcBO7Qgx/XNbDEpo/KZ9kxWr6n69mBLJwRMXcP1lw6pzkXZugVO
+         TaJ72XQjVaoESgfRnkePrwPmahcvUinoWh1mPOqs4DW1XOfo7nJylCzPTZK6yAwXdZ7l
+         3QVUiskUmm6xquKKbVHU5yWO+7HYc6tlkdcS5iIuSD80F34LYyEUn3LN1LQJBjF5m5b/
+         vKbTFyN9fzmKQwaHQ+qletaXk74QR1IoSLD03m3kcG3jX5cLAarDT24ggv8+lRv1YGVO
+         XV1qFqTHJMZieure4krtjMWAQPNCTBY+h3ThZgy0Xrx0Le9TgBRSsCeZxwItk3MZFnHK
+         6aNA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@utazasdabas.hu header.s=inclust header.b=G2rfzU2e;
+       spf=pass (google.com: domain of info@utazasdabas.hu designates 87.229.101.7 as permitted sender) smtp.mailfrom=info@utazasdabas.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=utazasdabas.hu
+Return-Path: <info@utazasdabas.hu>
+Received: from smtp-internal.inclust.com (exim.inclust.com. [87.229.101.7])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a906109a6dfsi306085866b.12.2024.09.15.23.57.24
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 15 Sep 2024 23:57:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of info@utazasdabas.hu designates 87.229.101.7 as permitted sender) client-ip=87.229.101.7;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@utazasdabas.hu header.s=inclust header.b=G2rfzU2e;
+       spf=pass (google.com: domain of info@utazasdabas.hu designates 87.229.101.7 as permitted sender) smtp.mailfrom=info@utazasdabas.hu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=utazasdabas.hu
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=utazasdabas.hu; s=inclust; h=Subject:Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:To:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=amqd7eWmudygPPf9fNfmILdSowZ4HZ8e6n2/MEII7Oo=; b=G2rfzU2erPwitRt+2gusG8XrWv
+	Yadg+A1IAhddhm9G/CBSZqUqaCOe/8ZsECeEjvoFzW2wgUzdx9WWqk8MujzraBC8ro5jfMGTE59fR
+	qfiMbulWYitPVVX0O3nbNFINUaddzoetb0gG5/pBW6QTYAO8I8dME3cND6+iEWW5oQ4g=;
+Received: from [10.1.1.15] (helo=mail.h1v3.net)
+	by smtp-internal.inclust.com with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.93)
+	(envelope-from <info@utazasdabas.hu>)
+	id 1sq5fo-00CfFa-Kd
+	for havasi.alex.marton@gmail.com; Mon, 16 Sep 2024 08:57:24 +0200
+Received: from [80.98.110.23] (helo=[192.168.0.10])
+	by smtp-ng.inclust.com with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.93)
+	(envelope-from <info@utazasdabas.hu>)
+	id 1sq5fm-00C3oB-3s
+	for havasi.alex.marton@gmail.com; Mon, 16 Sep 2024 08:57:24 +0200
+Message-ID: <bec545d2-aef3-4876-ac67-583333c8e72f@utazasdabas.hu>
+Date: Mon, 16 Sep 2024 08:57:22 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Alex Havasi <havasi.alex.marton@gmail.com>
+References: <CAGHtVe7eJynH8hMwBMN-98dHWMgvrygWTRnF3=AzZFX-8swR=A@mail.gmail.com>
+Content-Language: hu
+From: "info@utazasdabas.hu" <info@utazasdabas.hu>
+In-Reply-To: <CAGHtVe7eJynH8hMwBMN-98dHWMgvrygWTRnF3=AzZFX-8swR=A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 80.98.110.23
+X-SA-Exim-Mail-From: info@utazasdabas.hu
+Subject: =?UTF-8?B?UmU6IHN6w6FtbHN6w6Ft?=
+X-SA-Exim-Version: 4.2.1 (built Sat, 08 Feb 2020 21:53:50 +0000)
+X-SA-Exim-Scanned: No (on smtp-ng.inclust.com); Unknown failure
+
+Kedves Alex,
+
+Köszönöm szépen, továbbítottam a biztosítónak.
+
+A héten akkor várlak titeket, hogy megkössük az új biztosítást nektek.
+
+További szép napot!
+
+Anna
+
+-- 
+Üdvözlettel:
+
+Manger Anna
+
+Kancsár és Társai Utazási- és Jegyiroda Dabas
+2370 Dabas Szent István tér  1/D
+
+info@utazasdabas.hu
+
+06-29-360-555
+
+2024.09.14. 8:41 keltezéssel, Alex Havasi írta:
+> Kedves Kata!
+>
+> Itt a számlaszám, a visszautaláshoz:
+>
+> 11773425 - 06294519
+>
+> Üdvözlettel: Havasi Alex Márton
+

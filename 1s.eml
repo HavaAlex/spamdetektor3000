@@ -1,0 +1,459 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:4a45:b0:a8a:9188:61a with SMTP id a5csp362414ejv;
+        Fri, 11 Oct 2024 06:29:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEdlqOI4/O1UpC5oJ/Xj4TIaK/tHOMB4BEUrH4L9JlfFcDz5rdfnuXdr8/MfOB4pZmYz30n
+X-Received: by 2002:a05:600c:3b18:b0:42c:a802:540a with SMTP id 5b1f17b1804b1-4311dea3cfamr22085125e9.7.1728653395574;
+        Fri, 11 Oct 2024 06:29:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728653395; cv=none;
+        d=google.com; s=arc-20240605;
+        b=M3aHb2+V+RgW+n+kWxjbKvLdOAjpHN76zlMR3fGSuab5Uq55FX8heYUkxOufacKT93
+         dcg+W9gNHqMVsp+mD6Pr+z0Sj8uS/n3KpMGf8tXJZqQOAV3daVxtkE6HxdbkBPNeSCMT
+         ToMSK49Vd6dLfZG0fubx6AvAktAQ6tuPxV0T4jfgXFxv8dTfgEGelW0y4+7d3lRJn/D8
+         mG05ucWFTineWpBbw1Pszb7/Na1kfFMZKJVuwHRf1OhgKj8mKodOGT+vzXGFzgwpN6kR
+         G7fo1obW9YTRV2dR0nJpghKOHbzZfKktnEBW+krtXLVre6s8oXyrgIlnctxxAYS776fb
+         VT1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=precedence:feedback-id:list-unsubscribe:list-unsubscribe-post
+         :list-id:date:subject:to:from:mime-version:message-id:dkim-signature
+         :dkim-signature;
+        bh=ixQBCXIDbbjg4kCInJEf3MT7yw6ZFc7TJwgk5CDwX2w=;
+        fh=00K0+r2ygcAxUGs4owOG4tJenfjMHBBKXo35BF9rb9c=;
+        b=kl8KlvtJDjctsNsVkgA4zCWTS5QXeMW1je35tAa13HE8mhljYaHozEzrPl+aR1C93W
+         l7OsW3iRKhVKa1h8R9Z6w7HjWJiBVPeJmIBpi6LtnJOB0nHxTTs0/mD5ralUtrSnVU26
+         dO+juZ5K09txGBZi2CUiG4am5p88WOcIn09JRPrqh3R90d8s/Vv2X0CLHdCytMAZ/MOV
+         mkYT0oaHTpzRqF/bJvbm4PLuDAim8k8VDtwH9EVMTjrIlUQugnvrKFgbhLb5OnS6MX9U
+         GXIWJa9iugQg6Rx0dBE4GNT9wahsEroff4/wIl5s59JsFYwDAjqUD/n3kPkj9UMhzSXq
+         mvZg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@vifi.mente.hu header.s=mailjet header.b="HtUi/Tmy";
+       dkim=pass header.i=@bnc3.mailjet.com header.s=mailjet1 header.b=Fv+pbUTA;
+       spf=pass (google.com: domain of 66feb270.awwaafq1azkaac4w0xaaacsinpsaaycrj6can-gqaao8qgbncsht@a670786.bnc3.mailjet.com designates 87.253.233.167 as permitted sender) smtp.mailfrom=66feb270.AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShT@a670786.bnc3.mailjet.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=vifi.mente.hu
+Return-Path: <66feb270.AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShT@a670786.bnc3.mailjet.com>
+Received: from o167.p8.mailjet.com (o167.p8.mailjet.com. [87.253.233.167])
+        by mx.google.com with UTF8SMTPS id 5b1f17b1804b1-430d70b4206si30651555e9.103.2024.10.11.06.29.55
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Oct 2024 06:29:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 66feb270.awwaafq1azkaac4w0xaaacsinpsaaycrj6can-gqaao8qgbncsht@a670786.bnc3.mailjet.com designates 87.253.233.167 as permitted sender) client-ip=87.253.233.167;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@vifi.mente.hu header.s=mailjet header.b="HtUi/Tmy";
+       dkim=pass header.i=@bnc3.mailjet.com header.s=mailjet1 header.b=Fv+pbUTA;
+       spf=pass (google.com: domain of 66feb270.awwaafq1azkaac4w0xaaacsinpsaaycrj6can-gqaao8qgbncsht@a670786.bnc3.mailjet.com designates 87.253.233.167 as permitted sender) smtp.mailfrom=66feb270.AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShT@a670786.bnc3.mailjet.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=vifi.mente.hu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+  d=vifi.mente.hu; i=mentemisszio@vifi.mente.hu; s=mailjet; x=1728660595;
+  h=message-id:mime-version:from:from:to:to:subject:subject:date:date:list-id:list-unsubscribe-post:
+  list-unsubscribe:feedback-id:precedence:x-campaignid:x-csa-complaints:
+  x-mj-mid:x-mj-smtpguid:x-report-abuse-to:content-type;
+  bh=oFWLCmiI9WtcsKLdY32XayBht5wje5TsoDByKV65az8=;
+  b=HtUi/TmyVzVQiyv+BD7eyF5303Ke1f1YHT4A9PQUBtBPj8zO07ZNDolM/
+ UNzrSZEQJRNzsjsBAbfmvnqEZ83XxqZjLtbN1+WGFWwe7VZ/c50jDAg4i1Ll
+ nMao0UXMl7NlyjdTpHx0kDoWdkhzsBrJmhhcJvm0AQVsH+5rwUYKjY=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+  d=bnc3.mailjet.com; s=mailjet1; x=1728660595;
+  h=message-id:mime-version:from:from:to:to:subject:subject:date:date:list-id:list-unsubscribe-post:
+  list-unsubscribe:feedback-id:precedence:x-campaignid:x-csa-complaints:
+  x-mj-mid:x-mj-smtpguid:x-report-abuse-to:content-type;
+  bh=oFWLCmiI9WtcsKLdY32XayBht5wje5TsoDByKV65az8=;
+  b=Fv+pbUTAa+m1yBm9Vx7uxJGiNEEthBvUlqNTbDUtw2W6NDNbaFVAMSi/+
+ jKlJh+Wdb4LlPH1AZc+yQ6qCKbp5ZQrNyurLprKe3Pw4UsFzNKydaFs6+ZD2
+ f6axvzyYHC/h3i1J6z28JS6NbaH6Zi1Aleml1w42gbdsp/LLi34N+4=
+Return-Path:
+	<66feb270.AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShT@a670786.bnc3.mailjet.com>
+Message-Id: <66feb270.AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShT@mailjet.com>
+MIME-Version: 1.0
+From: =?UTF-8?q?MenteMisszi=C3=B3?= <mentemisszio@vifi.mente.hu>
+To: havasi.alex.marton@gmail.com
+Subject: =?UTF-8?Q?=C3=96sszr=C3=A9gi=C3=B3s_lelkigyakorlat?=
+Date: Fri, 11 Oct 2024 13:29:54 +0000 (UTC)
+List-Id: <mentemisszio.vifi.mente.hu.qr3v-5y1x0.mj>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe:
+	<mailto:unsub-66feb270.qr3v.lnt4zzk63gzr@bnc3.mailjet.com>,
+	<https://qr3v.mjt.lu/unsub2?m=AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ2Fg&b=66feb270&e=57d2d3fa&x=erp6Spot4c_UaBKW87IWPDVjLO6V1aMtSu2JSrlz_ew>
+Feedback-Id: 42.670786.645208:MJ
+Precedence: bulk
+X-CampaignID: 7752569200
+X-CSA-Complaints: csa-complaints@eco.de
+X-MJ-Mid:
+	AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ2Fg
+X-MJ-SMTPGUID: 80983c8b-21f9-4bff-8596-d3d07a2ebe64
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+	abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative; boundary="=-sMf/A7nMZ7ZOp9GHELyA"
+
+--=-sMf/A7nMZ7ZOp9GHELyA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+[https://qr3v.mjt.lu/img2/qr3v/63d0bdf4-2602-48eb-8c41-b3f0b9a4cdd6/content=
+]
+=C3=96sszr=C3=A9gi=C3=B3s lelkigyakorlat
+Kedves Fiatalok! =F0=9F=98=8A
+
+=C2=A0
+
+Szeretettel h=C3=ADvunk Benneteket az idei =C3=96sszr=C3=A9gi=C3=B3s lelkig=
+yakorlatunkra!
+
+Nagy lehet=C5=91s=C3=A9g arra, hogy a tan=C3=A9v eleji izgalmak k=C3=B6zepe=
+tte =C3=A9s az =C5=91szi sz=C3=BCnet kezdet=C3=A9n megpihenhess=C3=BCnk Ist=
+ennel egy h=C3=A9tv=C3=A9g=C3=A9re. Nem csak a Vele val=C3=B3 kapcsolatodat=
+ seg=C3=ADtheti, hanem a k=C3=B6z=C3=B6ss=C3=A9geink sz=C3=A1m=C3=A1ra is m=
+eger=C5=91s=C3=ADt=C5=91 lehet ez a k=C3=B6z=C3=B6sen, im=C3=A1ds=C3=A1gban=
+ elt=C3=B6lt=C3=B6tt h=C3=A9tv=C3=A9ge.
+
+Ez=C3=A9rt b=C3=ADztatunk Benneteket, hogy gyertek el, ha tehetitek :) !
+
+=C2=A0
+
+Az im=C3=A1ds=C3=A1g mellett kiscsoportos megoszt=C3=A1sra is lesz lehet=C5=
+=91s=C3=A9g, illetve =C3=A9rt=C3=A9kes el=C5=91ad=C3=A1sokat hallhatunk.
+
+A MENTE 4 alappill=C3=A9re k=C3=B6z=C3=BCl most az 'ISTEN ORSZ=C3=81GA' t=
+=C3=A9m=C3=A1ban szeretn=C3=A9nk jobban elm=C3=A9ly=C3=BClni.
+
+=C2=A0
+
+Id=C5=91pont: 2024.10.25-27.
+
+Helysz=C3=ADn G=C3=B6d=C3=B6ll=C5=91, Mater Salvatoris Lelkigyakorlatos H=
+=C3=A1z =C3=A9s Konferencia K=C3=B6zpont
+
+T=C3=A9ma: Isten orsz=C3=A1ga
+
+
+
+<<Regisztr=C3=A1lni szeretn=C3=A9k!>> [https://vera.mente.hu/register/66ee9=
+0b0ad3e1]
+
+=C2=A0
+
+Facebook esem=C3=A9ny: https://fb.me/e/99kP31P4k [https://fb.me/e/99kP31P4k=
+]
+
+Ha pedig kedvet kapt=C3=A1l, vidd h=C3=ADr=C3=A9t te is az esem=C3=A9nynek!
+
+=C2=A0
+
+Szeretettel v=C3=A1runk Benneteket!
+
+=C2=A0
+
+Kov=C3=A1cs Zsolt
+
+
+
+V=C3=A1ci Egyh=C3=A1zmegyei
+
+Ifj=C3=BAs=C3=A1gi Lelk=C3=A9sz
+
+=C2=A0
+
+Lobmayer Benedek=C2=A0
+
+
+
+A V=C3=A1ci Egyh=C3=A1zmegyei
+
+Ifj=C3=BAs=C3=A1gi Lelk=C3=A9szs=C3=A9g Koordin=C3=A1tora
+
+=C3=A9s Ifj=C3=BAs=C3=A1gi Iroda Vezet=C5=91je
+
++36 30 473 9597
+
+=C2=A0
+[https://vera.mente.hu/register/66ee90b0ad3e1]
+
+
+
+This e-mail has been sent to havasi.alex.marton@gmail.com, click here to un=
+subscribe http://qr3v.mjt.lu/unsub2?hl=3Den&m=3DAWwAAFQ1AZkAAc4W0XAAAcSinPs=
+AAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ2Fg&b=3D66feb270&e=3D57d2d=
+3fa&x=3Derp6Spot4c_UaBKW87IWPDVjLO6V1aMtSu2JSrlz_ew.
+Derecske utca 2. 2600 V=C3=A1c HU=
+
+--=-sMf/A7nMZ7ZOp9GHELyA
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title>=C3=96sszr=C3=A9gi=C3=B3s lelkigyakorlat</title><!--[if !m=
+so]><!--><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><!--<![=
+endif]--><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3D=
+UTF-8"><meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scal=
+e=3D1"><style type=3D"text/css">#outlook a { padding:0; }
+      body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size=
+-adjust:100%; }
+      table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-r=
+space:0pt; }
+      img { border:0;height:auto;line-height:100%; outline:none;text-decora=
+tion:none;-ms-interpolation-mode:bicubic; }
+      p { display:block;margin:13px 0; }</style><!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]--><!--[if lte mso 11]>
+    <style type=3D"text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]--><!--[if !mso]><!--><link href=3D"https://fonts.googleapis.c=
+om/css?family=3DPoppins" rel=3D"stylesheet" type=3D"text/css"><style type=
+=3D"text/css">@import url(https://fonts.googleapis.com/css?family=3DPoppins=
+);</style><!--<![endif]--><style type=3D"text/css">@media only screen and (=
+min-width:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+      }</style><style media=3D"screen and (min-width:480px)">.moz-text-html=
+ .mj-column-per-100 { width:100% !important; max-width: 100%; }</style><sty=
+le type=3D"text/css">[owa] .mj-column-per-100 { width:100% !important; max-=
+width: 100%; }</style><style type=3D"text/css">@media only screen and (max-=
+width:479px) {
+      table.mj-full-width-mobile { width: 100% !important; }
+      td.mj-full-width-mobile { width: auto !important; }
+    }</style><style type=3D"text/css"></style></head><body style=3D"word-sp=
+acing:normal;background-color:#F4F4F4;"><div style=3D"display:none;font-siz=
+e:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;=
+overflow:hidden;">2024.10.25-27.</div><div style=3D"background-color:#F4F4F=
+4;"><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:600px;"=
+ width=3D"600" bgcolor=3D"#fbeee3" ><tr><td style=3D"line-height:0px;font-s=
+ize:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"background=
+:#fbeee3;background-color:#fbeee3;margin:0px auto;max-width:600px;"><table =
+align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"background:#fbeee3;background-color:#fbeee3;width:100=
+%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:20px 0px 20=
+px 0px;padding-left:0px;padding-right:0px;text-align:center;"><!--[if mso |=
+ IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:600px;" ><![en=
+dif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-=
+size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:=
+top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"><tbody><tr=
+><td align=3D"center" style=3D"font-size:0px;padding:10px 25px;word-break:b=
+reak-word;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"border-collapse:collapse;border-spacing:0px;"><tbod=
+y><tr><td style=3D"width:550px;"><img src=3D"https://qr3v.mjt.lu/img2/qr3v/=
+63d0bdf4-2602-48eb-8c41-b3f0b9a4cdd6/content" style=3D"border:none;display:=
+block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13=
+px;" width=3D"550" height=3D"auto"></td></tr></tbody></table></td></tr><tr>=
+<td align=3D"left" style=3D"font-size:0px;padding:0px 25px 0px 25px;padding=
+-top:0px;padding-bottom:0px;word-break:break-word;"><div style=3D"font-fami=
+ly:Verdana, Helvetica, Arial, sans-serif;font-size:22px;letter-spacing:norm=
+al;line-height:1;text-align:left;color:#000000;"><h1 class=3D"text-build-co=
+ntent" style=3D"line-height:21px;; margin-top: 10px; margin-bottom: 10px; f=
+ont-weight: normal;"><span style=3D"color:#231f20;font-family:Poppins, Aria=
+l, Helvetica, sans-serif;font-size:22px;"><b>=C3=96sszr=C3=A9gi=C3=B3s lelk=
+igyakorlat</b></span></h1></div></td></tr><tr><td align=3D"left" style=3D"f=
+ont-size:0px;padding:0px 25px 0px 25px;padding-top:0px;padding-bottom:0px;w=
+ord-break:break-word;"><div style=3D"font-family:Verdana, Helvetica, Arial,=
+ sans-serif;font-size:14px;letter-spacing:normal;line-height:1;text-align:l=
+eft;color:#000000;"><p class=3D"text-build-content" style=3D"line-height: 2=
+1px; text-align: justify; margin: 10px 0; margin-top: 10px;"><span style=3D=
+"color:#231f20;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:=
+14px;">Kedves Fiatalok! =F0=9F=98=8A</span></p><p class=3D"text-build-conte=
+nt" style=3D"line-height: 21px; text-align: justify; margin: 10px 0;">&nbsp=
+;</p><p class=3D"text-build-content" style=3D"line-height: 21px; text-align=
+: justify; margin: 10px 0;"><span style=3D"font-family:Poppins, Arial, Helv=
+etica, sans-serif;">Szeretettel h=C3=ADvunk Benneteket az idei =C3=96sszr=
+=C3=A9gi=C3=B3s lelkigyakorlatunkra!</span></p><p class=3D"text-build-conte=
+nt" style=3D"line-height: 21px; text-align: justify; margin: 10px 0;"><span=
+ style=3D"font-family:Poppins, Arial, Helvetica, sans-serif;"><b>Nagy lehet=
+=C5=91s=C3=A9g arra, hogy a tan=C3=A9v eleji izgalmak k=C3=B6zepette =C3=A9=
+s az =C5=91szi sz=C3=BCnet kezdet=C3=A9n megpihenhess=C3=BCnk Istennel egy =
+h=C3=A9tv=C3=A9g=C3=A9re.</b> Nem csak a Vele val=C3=B3 kapcsolatodat seg=
+=C3=ADtheti, hanem a k=C3=B6z=C3=B6ss=C3=A9geink sz=C3=A1m=C3=A1ra is meger=
+=C5=91s=C3=ADt=C5=91 lehet ez a k=C3=B6z=C3=B6sen, im=C3=A1ds=C3=A1gban elt=
+=C3=B6lt=C3=B6tt h=C3=A9tv=C3=A9ge.</span></p><p class=3D"text-build-conten=
+t" style=3D"line-height: 21px; text-align: justify; margin: 10px 0;"><span =
+style=3D"font-family:Poppins, Arial, Helvetica, sans-serif;">Ez=C3=A9rt b=
+=C3=ADztatunk Benneteket, hogy gyertek el, ha tehetitek :) !</span></p><p c=
+lass=3D"text-build-content" style=3D"line-height: 21px; text-align: justify=
+; margin: 10px 0;">&nbsp;</p><p class=3D"text-build-content" style=3D"line-=
+height: 21px; text-align: justify; margin: 10px 0;"><span style=3D"font-fam=
+ily:Poppins, Arial, Helvetica, sans-serif;">Az im=C3=A1ds=C3=A1g mellett ki=
+scsoportos megoszt=C3=A1sra is lesz lehet=C5=91s=C3=A9g, illetve =C3=A9rt=
+=C3=A9kes el=C5=91ad=C3=A1sokat hallhatunk.</span></p><p class=3D"text-buil=
+d-content" style=3D"line-height: 21px; text-align: justify; margin: 10px 0;=
+"><span style=3D"font-family:Poppins, Arial, Helvetica, sans-serif;">A MENT=
+E 4 alappill=C3=A9re k=C3=B6z=C3=BCl most az <b>'ISTEN ORSZ=C3=81GA'</b> t=
+=C3=A9m=C3=A1ban szeretn=C3=A9nk jobban elm=C3=A9ly=C3=BClni.</span></p><p =
+class=3D"text-build-content" style=3D"line-height: 21px; text-align: justif=
+y; margin: 10px 0;">&nbsp;</p><p class=3D"text-build-content" style=3D"line=
+-height: 21px; text-align: justify; margin: 10px 0;"><span style=3D"font-fa=
+mily:Poppins, Arial, Helvetica, sans-serif;"><b>Id=C5=91pont: </b>2024.10.2=
+5-27.</span></p><p class=3D"text-build-content" style=3D"line-height: 21px;=
+ text-align: justify; margin: 10px 0;"><span style=3D"font-family:Poppins, =
+Arial, Helvetica, sans-serif;"><b>Helysz=C3=ADn</b> G=C3=B6d=C3=B6ll=C5=91,=
+ Mater Salvatoris Lelkigyakorlatos H=C3=A1z =C3=A9s Konferencia K=C3=B6zpon=
+t</span></p><p class=3D"text-build-content" style=3D"line-height: 21px; tex=
+t-align: justify; margin: 10px 0; margin-bottom: 10px;"><span style=3D"font=
+-family:Poppins, Arial, Helvetica, sans-serif;"><b>T=C3=A9ma: </b>Isten ors=
+z=C3=A1ga</span></p></div></td></tr></tbody></table></div><!--[if mso | IE]=
+></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso =
+| IE]></td></tr></table><table align=3D"center" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:600px=
+;" width=3D"600" bgcolor=3D"#fbeee3" ><tr><td style=3D"line-height:0px;font=
+-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"backgrou=
+nd:#fbeee3;background-color:#fbeee3;margin:0px auto;max-width:600px;"><tabl=
+e align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"background:#fbeee3;background-color:#fbeee3;width:1=
+00%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:20px 0px =
+20px 0px;padding-left:0px;padding-right:0px;text-align:center;"><!--[if mso=
+ | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:600px;" ><![=
+endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"fon=
+t-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-alig=
+n:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"><tbody><=
+tr><td align=3D"center" vertical-align=3D"middle" style=3D"font-size:0px;pa=
+dding:10px 25px 10px 25px;padding-right:25px;padding-left:25px;word-break:b=
+reak-word;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"border-collapse:separate;line-height:100%;"><tbody>=
+<tr><td align=3D"center" bgcolor=3D"#f1484b" role=3D"presentation" style=3D=
+"border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px 10px 2=
+5px;background:#f1484b;" valign=3D"middle"><a href=3D"http://qr3v.mjt.lu/ln=
+k/AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-Z=
+AAJ2Fg/1/t1pVW3OJ0Wrk24pe3TnA3Q/aHR0cHM6Ly92ZXJhLm1lbnRlLmh1L3JlZ2lzdGVyLzY=
+2ZWU5MGIwYWQzZTE" style=3D"display:inline-block;background:#f1484b;color:#f=
+fffff;font-family:Verdana, Helvetica, Arial, sans-serif;font-size:20px;font=
+-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transfor=
+m:none;padding:10px 25px 10px 25px;mso-padding-alt:0px;border-radius:3px;" =
+target=3D"_blank"><span style=3D"color:#fffaf5;font-family:Poppins, Arial, =
+Helvetica, sans-serif;font-size:20px;">Regisztr=C3=A1lni szeretn=C3=A9k!</s=
+pan></a></td></tr></tbody></table></td></tr><tr><td align=3D"left" style=3D=
+"font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-br=
+eak:break-word;"><div style=3D"font-family:Verdana, Helvetica, Arial, sans-=
+serif;font-size:14px;letter-spacing:normal;line-height:1;text-align:left;co=
+lor:#000000;"><p class=3D"text-build-content" style=3D"line-height: 21px; t=
+ext-align: justify; margin: 10px 0; margin-top: 10px;">&nbsp;</p><p class=
+=3D"text-build-content" style=3D"line-height: 21px; text-align: justify; ma=
+rgin: 10px 0;"><span style=3D"color:#231f20;font-family:Poppins, Arial, Hel=
+vetica, sans-serif;font-size:14px;"><b>Facebook esem=C3=A9ny: </b></span><a=
+ class=3D"link-build-content" style=3D"color:inherit;text-decoration:none;;=
+ text-decoration: none;" target=3D"_blank" href=3D"http://qr3v.mjt.lu/lnk/A=
+WwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ=
+2Fg/2/ZpfffLn-4N35TJRFOwH0-A/aHR0cHM6Ly9mYi5tZS9lLzk5a1AzMVA0aw"><span styl=
+e=3D"color:#231f20;font-family:Poppins, Arial, Helvetica, sans-serif;font-s=
+ize:14px;"><u>https://fb.me/e/99kP31P4k</u></span></a></p><p class=3D"text-=
+build-content" style=3D"line-height: 21px; text-align: justify; margin: 10p=
+x 0;"><span style=3D"font-family:Poppins, Arial, Helvetica, sans-serif;">Ha=
+ pedig kedvet kapt=C3=A1l, vidd h=C3=ADr=C3=A9t te is az esem=C3=A9nynek!</=
+span></p><p class=3D"text-build-content" style=3D"line-height: 21px; text-a=
+lign: justify; margin: 10px 0;">&nbsp;</p><p class=3D"text-build-content" s=
+tyle=3D"line-height: 21px; text-align: justify; margin: 10px 0;"><span styl=
+e=3D"font-family:Poppins, Arial, Helvetica, sans-serif;">Szeretettel v=C3=
+=A1runk Benneteket!</span></p><p class=3D"text-build-content" style=3D"line=
+-height: 21px; text-align: justify; margin: 10px 0;">&nbsp;</p><p class=3D"=
+text-build-content" style=3D"line-height: 21px; text-align: justify; margin=
+: 10px 0;"><span style=3D"color:#231f20;font-family:Poppins, Arial, Helveti=
+ca, sans-serif;font-size:14px;"><i><b>Kov=C3=A1cs Zsolt</b></i></span></p><=
+p class=3D"text-build-content" style=3D"line-height: 21px; text-align: just=
+ify; margin: 10px 0;"><span style=3D"color:#231f20;font-family:Poppins, Ari=
+al, Helvetica, sans-serif;font-size:14px;"></span></p><p class=3D"text-buil=
+d-content" style=3D"line-height: 21px; text-align: justify; margin: 10px 0;=
+"><span style=3D"color:#231f20;font-family:Poppins, Arial, Helvetica, sans-=
+serif;font-size:12px;">V=C3=A1ci Egyh=C3=A1zmegyei</span></p><p class=3D"te=
+xt-build-content" style=3D"line-height: 21px; text-align: justify; margin: =
+10px 0;"><span style=3D"color:#231f20;font-family:Poppins, Arial, Helvetica=
+, sans-serif;font-size:12px;">Ifj=C3=BAs=C3=A1gi Lelk=C3=A9sz</span></p><p =
+class=3D"text-build-content" style=3D"line-height: 21px; text-align: justif=
+y; margin: 10px 0;">&nbsp;</p><p class=3D"text-build-content" style=3D"line=
+-height: 21px; text-align: justify; margin: 10px 0;"><span style=3D"color:#=
+231f20;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:14px;"><=
+i><b>Lobmayer Benedek&nbsp;</b></i></span></p><p class=3D"text-build-conten=
+t" style=3D"line-height: 21px; text-align: justify; margin: 10px 0;"><span =
+style=3D"color:#231f20;font-family:Poppins, Arial, Helvetica, sans-serif;fo=
+nt-size:14px;"></span></p><p class=3D"text-build-content" style=3D"line-hei=
+ght: 21px; text-align: justify; margin: 10px 0;"><span style=3D"color:#231f=
+20;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:12px;">A V=
+=C3=A1ci Egyh=C3=A1zmegyei</span></p><p class=3D"text-build-content" style=
+=3D"line-height: 21px; text-align: justify; margin: 10px 0;"><span style=3D=
+"color:#231f20;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:=
+12px;">Ifj=C3=BAs=C3=A1gi Lelk=C3=A9szs=C3=A9g Koordin=C3=A1tora</span></p>=
+<p class=3D"text-build-content" style=3D"line-height: 21px; text-align: jus=
+tify; margin: 10px 0;"><span style=3D"color:#231f20;font-family:Poppins, Ar=
+ial, Helvetica, sans-serif;font-size:12px;">=C3=A9s Ifj=C3=BAs=C3=A1gi Irod=
+a Vezet=C5=91je</span></p><p class=3D"text-build-content" style=3D"line-hei=
+ght: 21px; text-align: justify; margin: 10px 0;"><span style=3D"color:#231f=
+20;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:12px;">+36 3=
+0 473 9597</span></p><p class=3D"text-build-content" style=3D"line-height: =
+21px; text-align: justify; margin: 10px 0; margin-bottom: 10px;">&nbsp;</p>=
+</div></td></tr><tr><td align=3D"center" style=3D"font-size:0px;padding:10p=
+x 25px;word-break:break-word;"><table border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;border-=
+spacing:0px;"><tbody><tr><td style=3D"width:550px;"><a href=3D"http://qr3v.=
+mjt.lu/lnk/AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-F=
+ltPQei6-ZAAJ2Fg/3/KqsyUzNBfTVkKBV9nkWogg/aHR0cHM6Ly92ZXJhLm1lbnRlLmh1L3JlZ2=
+lzdGVyLzY2ZWU5MGIwYWQzZTE" target=3D"_blank"><img alt=3D"" src=3D"https://q=
+r3v.mjt.lu/img2/qr3v/34eb19a3-8c3a-41e6-8ec0-969310d282d7/content" style=3D=
+"border:none;display:block;outline:none;text-decoration:none;height:auto;wi=
+dth:100%;font-size:13px;" width=3D"550" height=3D"auto"></a></td></tr></tbo=
+dy></table></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></ta=
+ble><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr=
+></table><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"" role=3D"presentation" style=3D"width:600px;" width=3D"600=
+" bgcolor=3D"#fbeee3" ><tr><td style=3D"line-height:0px;font-size:0px;mso-l=
+ine-height-rule:exactly;"><![endif]--><div style=3D"background:#fbeee3;back=
+ground-color:#fbeee3;margin:0px auto;max-width:600px;"><table align=3D"cent=
+er" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" =
+style=3D"background:#fbeee3;background-color:#fbeee3;width:100%;"><tbody><t=
+r><td style=3D"direction:ltr;font-size:0px;padding:20px 0px 20px 0px;paddin=
+g-left:0px;padding-right:0px;text-align:center;"><!--[if mso | IE]><table r=
+ole=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><=
+td class=3D"" style=3D"vertical-align:top;width:600px;" ><![endif]--><div c=
+lass=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text=
+-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100=
+%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
+ation" style=3D"vertical-align:top;" width=3D"100%"><tbody><tr><td align=3D=
+"left" style=3D"font-size:0px;padding:0px 20px 0px 20px;padding-top:0px;pad=
+ding-bottom:0px;word-break:break-word;"><div style=3D"font-family:Arial, sa=
+ns-serif;font-size:13px;letter-spacing:normal;line-height:1;text-align:left=
+;color:#000000;"><p class=3D"text-build-content" style=3D"text-align: cente=
+r; margin: 10px 0; margin-top: 10px; margin-bottom: 10px;" data-testid=3D"l=
+InEAjln7Ij"><span style=3D"color:#231f20;font-family:Georgia, Helvetica, Ar=
+ial, sans-serif;font-size:13px;line-height:22px;">This e-mail has been sent=
+ to havasi.alex.marton@gmail.com, </span><a class=3D"link-build-content" st=
+yle=3D"color:inherit;text-decoration:none;; text-decoration: none;" target=
+=3D"_blank" href=3D"http://qr3v.mjt.lu/unsub2?hl=3Den&amp;m=3DAWwAAFQ1AZkAA=
+c4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ2Fg&amp;b=3D=
+66feb270&amp;e=3D57d2d3fa&amp;x=3Derp6Spot4c_UaBKW87IWPDVjLO6V1aMtSu2JSrlz_=
+ew"><span style=3D"color:#231f20;font-family:Georgia, Helvetica, Arial, san=
+s-serif;font-size:13px;line-height:22px;">click here to unsubscribe</span><=
+/a><span style=3D"color:#231f20;font-family:Georgia, Helvetica, Arial, sans=
+-serif;font-size:13px;line-height:22px;">.</span></p></div></td></tr><tr><t=
+d align=3D"left" style=3D"font-size:0px;padding:0px 20px 0px 20px;padding-t=
+op:0px;padding-bottom:0px;word-break:break-word;"><div style=3D"font-family=
+:Arial, sans-serif;font-size:13px;letter-spacing:normal;line-height:1;text-=
+align:left;color:#000000;"><p class=3D"text-build-content" style=3D"text-al=
+ign: center; margin: 10px 0; margin-top: 10px; margin-bottom: 10px;" data-t=
+estid=3D"T8Ly3mgdxek"><span style=3D"color:#231f20;font-family:Georgia, Hel=
+vetica, Arial, sans-serif;font-size:13px;line-height:22px;">Derecske utca 2=
+. 2600 V=C3=A1c HU</span></p></div></td></tr></tbody></table></div><!--[if =
+mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!-=
+-[if mso | IE]></td></tr></table><![endif]--></div><br/><a style=3D"font-fa=
+mily: Arial, sans-serif;" href=3D"http://qr3v.mjt.lu/lnk/AWwAAFQ1AZkAAc4W0X=
+AAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ2Fg/0/JDGV1BX2DBO=
+8zGEO9hQo1g/aHR0cHM6Ly92ZXJhLm1lbnRlLmh1L3JlZ2lzdGVyLzY2ZWU5MGIwYWQzZTE?b=
+=3D1">&#8203;</a><div style=3D"display: none; height: 0px; width: 0px; over=
+flow: hidden; visibility: hidden; mso-hide: all"><a href=3D"http://qr3v.mjt=
+.lu/lnk/AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltP=
+Qei6-ZAAJ2Fg/0/JDGV1BX2DBO8zGEO9hQo1g/aHR0cHM6Ly92ZXJhLm1lbnRlLmh1L3JlZ2lzd=
+GVyLzY2ZWU5MGIwYWQzZTE?b=3D2" target=3D"_blank" rel=3D"noreferrer">Click on=
+ me</a></div><a href=3D"http://qr3v.mjt.lu/lnk/AWwAAFQ1AZkAAc4W0XAAAcSinPsA=
+AYCrJ6cAn-gQAAo8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ2Fg/0/JDGV1BX2DBO8zGEO9hQo1=
+g/aHR0cHM6Ly92ZXJhLm1lbnRlLmh1L3JlZ2lzdGVyLzY2ZWU5MGIwYWQzZTE?b=3D3">
+<img src=3D"http://qr3v.mjt.lu/oo/AWwAAFQ1AZkAAc4W0XAAAcSinPsAAYCrJ6cAn-gQA=
+Ao8QgBnCShTgJg8iyH5S_-FltPQei6-ZAAJ2Fg/1df1fdd6/e.gif" height=3D"1" width=
+=3D"1" alt=3D"" border=3D"0" style=3D"height:1px;width:1px;border:0;"/>
+</a></body></html>=
+
+--=-sMf/A7nMZ7ZOp9GHELyA--
+

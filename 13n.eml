@@ -1,0 +1,146 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:a55:b0:a8a:9188:61a with SMTP id x21csp401320ejf;
+        Thu, 19 Sep 2024 10:51:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWoZ+RyUC0LxkiEQzNK6lsrMsdR0tq5pzlpbNzwk+mdWcyvg0eJmo3h5oBdvRSTuWlT+Q8b3bD5mkae+c07CAAaDGM=@gmail.com
+X-Google-Smtp-Source: AGHT+IF0Dn+4LT99q5dMuNBJNGqBVQfZjjHsXlMBLaWx79Lg6g/jASOOPLoSmtBA/m/PpfjxLt2t
+X-Received: by 2002:a05:600c:4754:b0:426:62c5:4742 with SMTP id 5b1f17b1804b1-42e7ac39c3cmr1731975e9.7.1726768297587;
+        Thu, 19 Sep 2024 10:51:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1726768297; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ekbBByvLxw+rOZ5s3zLNCnruQ/tlLUyapnokIMIvgFnLU0CsBHibgO0Ef4LZ8AR17w
+         ckXNgSZbxzemoKfDiiXPk5GKw24WhOkeRbQCG+4t7rjK0MNlaWV1/LK6oYzPomiNwV9n
+         Zgu73grvA8zDOhggNAjm0zltt4YVIu7XI9UoAVUxqWeK4EnL8V10Sri4rd1cpUIixX4X
+         scZa7Qa877oTTpaQxq1le4+PsB1pxT4v03Zqdv+TDSd4RasiTpy9Z2F1B4CzcP/dQUON
+         zX3aXsEr/IB0qD6Fj3uG3q9XqhXrQFQMNHEBLuDpZdsJQSxCxfy8aM+qAZHeqfT0Oi7X
+         /+eA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=thread-topic:thread-index:mime-version:subject:message-id:to:from
+         :date:dkim-signature:dkim-filter;
+        bh=qrTbzepb0jrqZv5f5c3Kj6eneUxj8TvqjMnFoiFyC1M=;
+        fh=vVoNe13Mq7tYYmmuUH2yNmTgSSrQ6DTzPNH9HYcDJcI=;
+        b=HRvI2QwMbgVRe0Rc6EIzflpEzz9A2GvL/BZa3WEQveBNsTD9yuEDCFeDn95SoebiyO
+         uadDeA+gJAo8GW2x0QBby1LOiKZKMN7R1867OWLPjGOCgVGQQMkrf7/a8eWdT0Mc4FTU
+         aJbf7+jWLJ5s8VcuC4HrRZlEocF0B1UbuZQvOSKebGc9m/u5jvDA9Gr/hnL42nwjaZ1N
+         0mmHnZKOrOmgEqTKIV/mrvQNIu/ip+09Ou0b/l/iWCPTtzJTeUeu1eTSjrvAiqd4+2ES
+         qAelyedGwrxmjFGVY5SH45pb3Rz7NVeb1F7ORCB4Ffcem0uMgdRhHY7xcJC+QJHZbrZk
+         Bmlw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@vaciegyhazmegye.hu header.s=dkim header.b=Io9GV0Q8;
+       spf=pass (google.com: domain of brassoi.szilvia@vaciegyhazmegye.hu designates 37.220.137.81 as permitted sender) smtp.mailfrom=brassoi.szilvia@vaciegyhazmegye.hu
+Return-Path: <brassoi.szilvia@vaciegyhazmegye.hu>
+Received: from webmail.vaciegyhazmegye.hu (webmail.vaciegyhazmegye.hu. [37.220.137.81])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-378e78193c4si505929f8f.788.2024.09.19.10.51.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Sep 2024 10:51:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brassoi.szilvia@vaciegyhazmegye.hu designates 37.220.137.81 as permitted sender) client-ip=37.220.137.81;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@vaciegyhazmegye.hu header.s=dkim header.b=Io9GV0Q8;
+       spf=pass (google.com: domain of brassoi.szilvia@vaciegyhazmegye.hu designates 37.220.137.81 as permitted sender) smtp.mailfrom=brassoi.szilvia@vaciegyhazmegye.hu
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by webmail.vaciegyhazmegye.hu (Postfix) with ESMTP id B1B768F054C7;
+	Thu, 19 Sep 2024 19:51:36 +0200 (CEST)
+Received: from webmail.vaciegyhazmegye.hu ([127.0.0.1])
+	by localhost (webmail.vaciegyhazmegye.hu [127.0.0.1]) (amavisd-new, port 10032)
+	with ESMTP id OBqSiK1tbsIA; Thu, 19 Sep 2024 19:51:36 +0200 (CEST)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by webmail.vaciegyhazmegye.hu (Postfix) with ESMTP id D2B088F10F51;
+	Thu, 19 Sep 2024 19:51:35 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 webmail.vaciegyhazmegye.hu D2B088F10F51
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vaciegyhazmegye.hu;
+	s=dkim; t=1726768295;
+	bh=qrTbzepb0jrqZv5f5c3Kj6eneUxj8TvqjMnFoiFyC1M=;
+	h=Date:From:To:Message-ID:MIME-Version;
+	b=Io9GV0Q8ykZdI8qha8gMDmzL+rsT7zRabS/mmYo9ikvRtncNK5NNU6O1hk5DdzlL0
+	 HbTYTtBEGf0dV0PHkY6PZy108rH+DtuvW3Be8RlJ0x9RumXLT+X4QN8OIeypUbzQaV
+	 casIIZmbC0OwddAdNTHKgnC7zrODfIWuCwQYsdkJsUSu1tkQqyuyz+SoGSZRqNGsT3
+	 oGa5vAgSe2feyNR4OHxZd3oJCixsR14Dti2jBwWnS+kVXI/OW/zctpnjx7HgkDq3ul
+	 EECbRu8NqZjVaYFdgVtAg08Tbz/yAbP8Jmf6CMKx5wVNh8VygsIVGFHfFjCRtuFFSY
+	 +k901ecHQPhaw==
+X-Virus-Scanned: amavisd-new at webmail.vaciegyhazmegye.hu
+Received: from webmail.vaciegyhazmegye.hu ([127.0.0.1])
+	by localhost (webmail.vaciegyhazmegye.hu [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id 9zQq4ecs9mcr; Thu, 19 Sep 2024 19:51:35 +0200 (CEST)
+Received: from webmail.vaciegyhazmegye.hu (webmail.vaciegyhazmegye.hu [37.220.137.81])
+	by webmail.vaciegyhazmegye.hu (Postfix) with ESMTP id C53718F054C7;
+	Thu, 19 Sep 2024 19:51:20 +0200 (CEST)
+Date: Thu, 19 Sep 2024 19:51:20 +0200 (CEST)
+From: =?utf-8?Q?Brass=C3=B3i_G=C3=A1born=C3=A9?= <brassoi.szilvia@vaciegyhazmegye.hu>
+To: =?utf-8?Q?Szab=C3=B3?= Vince <vince.zalan.szabo13@gmail.com>, 
+	Antal Emese <mesi200508@gmail.com>, 
+	Havasi <havasi.alex.marton@gmail.com>, 
+	=?utf-8?Q?Szl=C3=A1dik?= Fanni <szladikfanni@gmail.com>, 
+	Rajszky =?utf-8?Q?Bogl=C3=A1rka?= <rajszkyboglarka2007@gmail.com>, 
+	Baranyi =?utf-8?B?UsOpa2E=?= <baranyireka2020@gmail.com>, 
+	=?utf-8?Q?Faldina-Sponga=2C_Kincs=C5=91?= <faldinasponga.k@gmail.com>, 
+	Malata Annabella <malata.annabella@gmail.com>, 
+	=?utf-8?Q?Szeibert=2C_Bal=C3=A1zs?= <szeibert.balazs@gmail.com>, 
+	"Tibor, Szeibert" <t.szeibert@gmail.com>, 
+	=?utf-8?B?S8O2dmks?= Reni <korenus08@gmail.com>, 
+	=?utf-8?Q?Kert=C3=A9sz-Tak=C3=A1cs=2C?= Levente <ktlevente2009@gmail.com>, 
+	=?utf-8?B?SXN0dsOhbiw=?= Omelka <omipityu@gmail.com>, 
+	=?utf-8?B?VGltw6FyLA==?= Violetta <violetta.timar@gmail.com>
+Message-ID: <1741783119.23238418.1726768280308.JavaMail.zimbra@vaciegyhazmegye.hu>
+Subject: =?utf-8?Q?B=C3=A9rm=C3=A1l=C3=A1si_felk=C3=A9sz=C3=ADt=C5=91?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="=_40529850-18c2-4696-b50c-0f67d6760258"
+X-Mailer: Zimbra 8.8.15_GA_4545 (ZimbraWebClient - GC128 (Win)/8.8.15_GA_4545)
+Thread-Index: AwR33AqG5UW2PLptgTMrqSlvJwgsRA==
+Thread-Topic: =?utf-8?B?QsOpcm3DoWzDoXNpIGZlbGvDqXN6w610xZE=?=
+
+--=_40529850-18c2-4696-b50c-0f67d6760258
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Kedves b=C3=A9rm=C3=A1lkoz=C3=A1sra k=C3=A9sz=C3=BCl=C5=91k!=20
+
+M=C3=A9sz=C3=A1ros Csaba esperes aty=C3=A1val =C3=A9s Luter=C3=A1nus P=C3=
+=A9ter aty=C3=A1val =C3=BAgy besz=C3=A9lt=C3=BCk meg, hogy =C3=A9n veszem =
+=C3=A1t a b=C3=A9rm=C3=A1lkoz=C3=A1sra k=C3=A9sz=C3=BCl=C5=91k csoportj=C3=
+=A1t.=20
+N=C3=A9vsort =C3=A9s el=C3=A9rhet=C5=91s=C3=A9geket eddig nem kaptam, egyel=
+=C5=91re kor=C3=A1bbi e-mailb=C5=91l mentettem =C3=A1t a c=C3=ADmeket. Rem=
+=C3=A9lem, nem maradt ki senki, ha m=C3=A9gis,=20
+k=C3=A9rlek benneteket, hogy jelezz=C3=A9tek fel=C3=A9m.=20
+=C3=9Agy gondolom, hogy tov=C3=A1bbra is tervezhetj=C3=BCk a h=C3=B3nap els=
+=C5=91 szombatj=C3=A1ra (=C3=B6rk=C3=A9nyi k=C3=B6z=C3=B6ss=C3=A9gi h=C3=A1=
+z), 8.30-t=C3=B3l els=C5=91=C3=A1ldoz=C3=B3k csoportja, 10.00-t=C3=B3l b=C3=
+=A9rm=C3=A1lkoz=C3=B3k.=20
+Okt=C3=B3ber 5-=C3=A9n szeretn=C3=A9m az els=C5=91 =C3=BAj fel=C3=A1ll=C3=
+=A1s szerinti tal=C3=A1lkoz=C3=B3t megtartani, ott mindent =C3=A1t tudunk b=
+esz=C3=A9lni.=20
+El=C3=A9rhet=C5=91 vagyok itt e-mailben, telefonon a 06/30 7540862 telefons=
+z=C3=A1mon (WhatsApp, Viber is), Messengeren Brass=C3=B3i G=C3=A1born=C3=A9=
+ n=C3=A9ven.=20
+
+Mindenkit szeretettel v=C3=A1rok!=20
+=C3=9Cdv=C3=B6zlettel:=20
+Brass=C3=B3in=C3=A9 Szilvi=20
+
+--=_40529850-18c2-4696-b50c-0f67d6760258
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><body><div style=3D"font-family: arial, helvetica, sans-serif; font-s=
+ize: 12pt; color: #000000"><div>Kedves b=C3=A9rm=C3=A1lkoz=C3=A1sra k=C3=A9=
+sz=C3=BCl=C5=91k!</div><div><br data-mce-bogus=3D"1"></div><div>M=C3=A9sz=
+=C3=A1ros Csaba esperes aty=C3=A1val =C3=A9s Luter=C3=A1nus P=C3=A9ter aty=
+=C3=A1val =C3=BAgy besz=C3=A9lt=C3=BCk meg, hogy =C3=A9n veszem =C3=A1t a b=
+=C3=A9rm=C3=A1lkoz=C3=A1sra k=C3=A9sz=C3=BCl=C5=91k csoportj=C3=A1t.</div><=
+div>N=C3=A9vsort =C3=A9s el=C3=A9rhet=C5=91s=C3=A9geket eddig nem kaptam, e=
+gyel=C5=91re kor=C3=A1bbi e-mailb=C5=91l mentettem =C3=A1t a c=C3=ADmeket. =
+Rem=C3=A9lem, nem maradt ki senki, ha m=C3=A9gis,</div><div>k=C3=A9rlek ben=
+neteket, hogy jelezz=C3=A9tek fel=C3=A9m.</div><div>=C3=9Agy gondolom, hogy=
+ tov=C3=A1bbra is tervezhetj=C3=BCk a h=C3=B3nap els=C5=91 szombatj=C3=A1ra=
+ (=C3=B6rk=C3=A9nyi k=C3=B6z=C3=B6ss=C3=A9gi h=C3=A1z), 8.30-t=C3=B3l els=
+=C5=91=C3=A1ldoz=C3=B3k csoportja, 10.00-t=C3=B3l b=C3=A9rm=C3=A1lkoz=C3=B3=
+k.</div><div>Okt=C3=B3ber 5-=C3=A9n szeretn=C3=A9m az els=C5=91 =C3=BAj fel=
+=C3=A1ll=C3=A1s szerinti tal=C3=A1lkoz=C3=B3t megtartani, ott mindent =C3=
+=A1t tudunk besz=C3=A9lni.</div><div>El=C3=A9rhet=C5=91 vagyok itt e-mailbe=
+n, telefonon a 06/30 7540862 telefonsz=C3=A1mon (WhatsApp, Viber is), Messe=
+ngeren Brass=C3=B3i G=C3=A1born=C3=A9 n=C3=A9ven.&nbsp;</div><div><br data-=
+mce-bogus=3D"1"></div><div>Mindenkit szeretettel v=C3=A1rok!</div><div>=C3=
+=9Cdv=C3=B6zlettel:</div><div>Brass=C3=B3in=C3=A9 Szilvi</div></div></body>=
+</html>
+--=_40529850-18c2-4696-b50c-0f67d6760258--

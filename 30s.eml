@@ -1,0 +1,766 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:907:7854:b0:7ae:bcd7:d622 with SMTP id lb20csp3220768ejc;
+        Tue, 22 Nov 2022 12:43:08 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf6pkFkxe3ll/ApLIzaAkT6300FWIS8/PRdWTtbM29eBtBOstyiC+TSev7pVrIggRKTBRRgZ
+X-Received: by 2002:a17:902:efcf:b0:186:9cce:c59 with SMTP id ja15-20020a170902efcf00b001869cce0c59mr6288956plb.120.1669149788246;
+        Tue, 22 Nov 2022 12:43:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1669149788; cv=none;
+        d=google.com; s=arc-20160816;
+        b=V8tMFmRRWpM2EuoewAI8f2iqMKyXH9/MHiNYpDTAV8z8Kj7eTTMQWgUvfL+63IqGVl
+         VxSt5fegmNEAsbrhXoxHlSZQFVRjq05VfSwuiP8q+Wj2Bzk9bdZ2ajznPj2wRXQHeCV/
+         lk6iS/d5irBsK3R65xHt177/7ZH/fWdbXxDF32XJUGkS1dPQ1HhPWOQRdkqmKYBrxTa6
+         KGbf+dgmVv8+yqmC8E5zFpjVhBr66fp1K6nYV3502YwgNw21sqfzomR9Pr10ZSc/wSWn
+         NIWJBQPQaFXFUjZ2QZbc6ABtMz12uHd2fKSlAWZIw1O+tlZhprRq27iKKDc4oi8n9ZOd
+         ubTg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=from:subject:mime-version:date:message-id:to:dkim-signature;
+        bh=JMYkkDMuYK1oRWxFMLw2ol8c4sd4YKbMsSPUg7vHxzs=;
+        b=YV8uCNPkt5kz2ufSPfvtdU/PrusU+5mKdptCSSysyyX/84D0KoEMUBDSOeXWsNwNq3
+         kgfDic9BhrNsgfuGJXWZM57efneGaD768g/itJqs0BVYfpPd1QkZ5uvbIPNgL3Klfwfo
+         DLyUjwFVJhpiO67TpxqopwZKy35/y/9LkU1qFf915h981szy8YlHwwNcA18URBkod2L/
+         RetuUk5+rLz1RUknFAHOiQ8IEPUEdcJSRLy8nDueVIJhmT5ZsmlS5bnE2rldQHfEONVO
+         TrWz+0H2aF0VSUuC8ieZaUVyKW0TQSvtRsnLvQ+L4N07oon1CjJoVTe8+7X8ElY88+9s
+         JZ7g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@e.battle.net header.s=scph1021 header.b="kk/9sQCw";
+       spf=pass (google.com: domain of msprvs1=19325t8fndx_b=bounces-266693-353@e.battle.net designates 223.165.123.166 as permitted sender) smtp.mailfrom="msprvs1=19325T8fNdX_B=bounces-266693-353@e.battle.net";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=battle.net
+Return-Path: <msprvs1=19325T8fNdX_B=bounces-266693-353@e.battle.net>
+Received: from 223.165.123.166.jfk.braze.com (223.165.123.166.jfk.braze.com. [223.165.123.166])
+        by mx.google.com with ESMTPS id b9-20020a63d809000000b0046fbaeb1247si14631888pgh.48.2022.11.22.12.43.07
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Nov 2022 12:43:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of msprvs1=19325t8fndx_b=bounces-266693-353@e.battle.net designates 223.165.123.166 as permitted sender) client-ip=223.165.123.166;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@e.battle.net header.s=scph1021 header.b="kk/9sQCw";
+       spf=pass (google.com: domain of msprvs1=19325t8fndx_b=bounces-266693-353@e.battle.net designates 223.165.123.166 as permitted sender) smtp.mailfrom="msprvs1=19325T8fNdX_B=bounces-266693-353@e.battle.net";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=battle.net
+X-MSFBL: VmnIEuCUhGZyb0YGzBUu3sdayOOvoxfoRBx5c89rOi0=|eyJjdXN0b21lcl9pZCI
+	6IjI2NjY5MyIsIm1lc3NhZ2VfaWQiOiI2MzczYmYzMzdkNjNlNDc4MGQ5MCIsInR
+	lbmFudF9pZCI6InNwYyIsInIiOiJoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29
+	tIiwic3ViYWNjb3VudF9pZCI6IjM1MyJ9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=e.battle.net;
+	s=scph1021; t=1669149631; i=@e.battle.net;
+	bh=JMYkkDMuYK1oRWxFMLw2ol8c4sd4YKbMsSPUg7vHxzs=;
+	h=To:Message-ID:Date:Content-Type:Subject:From:From:To:Cc:Subject;
+	b=kk/9sQCwsd4PBqlNjgEldCM0W4uzheH4PFVB7VMAFvub6igwuxN/0Zyqm/hDuDHuC
+	 dJixTspSVyjGiyE/ElNml6dntNV4w638jd1X2bnbcARicrPq/GloQ+1+LWPPzw8tUN
+	 SJ9/NdtgpOFJ2lYPjF/RBXN/UZpxmkLp4LWWQ2L0=
+To: havasi.alex.marton@gmail.com
+Message-ID: <D0.09.38239.FB33D736@go.mta1vrest.cc.prd.sparkpost>
+Date: Tue, 22 Nov 2022 20:40:31 +0000
+Content-Type: multipart/alternative; boundary="_----qLms8nZUU2dcrS+3OLv0Tw===_55/F8-38239-FB33D736"
+MIME-Version: 1.0
+Subject: Save big now with the Battle.net Black Friday Sale!
+From: "Battle.net" <noreply@e.battle.net>
+
+--_----qLms8nZUU2dcrS+3OLv0Tw===_55/F8-38239-FB33D736
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+Through=0A28 November, score deals on some of the biggest Battle.net games=
+=0Awith the Black Friday=0ASale=0AStart=0AYour Next Adventure With the Blac=
+k Friday=0ASale!=0A(=0Ahttps://links.battle.net/f/a/KaV5YJiOBwEK4_-3u-HVDg~=
+~/AAQRxQA~/RgRlX7i_P0TqaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2Ivc2FsZS9i=
+bGFjay1mcmlkYXktc2FsZS0yMDIyP3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXktc2FsZS1=
+raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW=
+5nLWdiLTMmdXRtX2NvbnRlbnQ9aW1hZ2UtbGluay1zdGFydC15b3VyLW5leHQtYWR2ZW50dXJlL=
+XdpdGgtdGhlLWJsYWNrLWZyaWRheS1zYWxlVwNzcGNCCmNzvzN9Y-R4DZBSHGhhdmFzaS5hbGV4=
+Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~=0A)                 Start=0AYour Next Adve=
+nture With the Black Friday=0ASale!=0AThe=0Anext epic experience awaits jus=
+t beyond the horizon,=0Ahavaalex5000!=0A=0AIt's that time of year when we r=
+oll out a wide range of deep=0Adiscounts, devilish deals, and spectacular s=
+ales for Black=0AFriday. Treat yourself and save 25-67% off a selection of =
+popular=0Agames on Battle.net=C2=AE, or start shopping early for the perfec=
+t=0Adigital gifts for your gaming friends. But don't take too long;=0Athis =
+sale ends 28 November! =0A=0AFight for the future in Overwatch=C2=AE 2, emb=
+ark on an epic journey=0Ain World of Warcraft=C2=AE, and rally your friends=
+ in Call of Duty=C2=AE.=0AYour next adventure begins right here on Battle.n=
+et.=0A=0AShop=0ANow=0A(=0Ahttps://links.battle.net/f/a/GqNqiPAECcC7msNy2Xsk=
+oQ~~/AAQRxQA~/RgRlX7i_P0S_aHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2Ivc2FsZ=
+S9ibGFjay1mcmlkYXktc2FsZS0yMDIyP3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXktc2Fs=
+ZS1raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V=
+0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9YnV0dG9uLWxpbmstc2hvcC1ub3dXA3NwY0IKY3O_M31j5H=
+gNkFIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~=0A)   Shop=0ANow=0A(=
+=0Ahttps://links.battle.net/f/a/GqNqiPAECcC7msNy2XskoQ~~/AAQRxQA~/RgRlX7i_P=
+0S_aHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2Ivc2FsZS9ibGFjay1mcmlkYXktc2Fs=
+ZS0yMDIyP3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXktc2FsZS1raWNrb2ZmLTMtMjAyMjE=
+xMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2Nvbn=
+RlbnQ9YnV0dG9uLWxpbmstc2hvcC1ub3dXA3NwY0IKY3O_M31j5HgNkFIcaGF2YXNpLmFsZXgub=
+WFydG9uQGdtYWlsLmNvbVgEAAABYQ~~=0A)         =0A=0A=0A=0AStay=0AConnected=0A=
+=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A  Twitter =0A( https://l=
+inks.battle.net/f/a/ZFryf2LfeViWciKiaqym7A~~/AAQRxQA~/RgRlX7i_P0SfaHR0cHM6L=
+y90d2l0dGVyLmNvbS9iYXR0bGVuZXQ_dXRtX3NvdXJjZT1ibmV0LWJsYWNrLWZyaWRheS1zYWxl=
+LWtpY2tvZmYtMy0yMDIyMTEyMiZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXR=
+pbmctZ2ItMyZ1dG1fY29udGVudD1zb2NpYWwtbGluay10d2l0dGVyVwNzcGNCCmNzvzN9Y-R4DZ=
+BSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~ )=0A  Facebook =0A( http=
+s://links.battle.net/f/a/N3KhWlfaYo2QxyuukELIqA~~/AAQRxQA~/RgRlX7i_P0ShaHR0=
+cHM6Ly9mYWNlYm9vay5jb20vYmF0dGxlbmV0P3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXk=
+tc2FsZS1raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bW=
+Fya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9c29jaWFsLWxpbmstZmFjZWJvb2tXA3NwY0IKY3O_M=
+31j5HgNkFIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~ )=0A  Instagram=
+ =0A( https://links.battle.net/f/a/z3zkpA_gKiJvxtRcJtDPqA~~/AAQRxQA~/RgRlX7=
+i_P0SjaHR0cHM6Ly9pbnN0YWdyYW0uY29tL2JhdHRsZW5ldD91dG1fc291cmNlPWJuZXQtYmxhY=
+2stZnJpZGF5LXNhbGUta2lja29mZi0zLTIwMjIxMTIyJnV0bV9tZWRpdW09ZW1haWwmdXRtX2Nh=
+bXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXNvY2lhbC1saW5rLWluc3RhZ3JhbVc=
+Dc3BjQgpjc78zfWPkeA2QUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh )=0A =
+ =0ABATTLE.NET (=0Ahttps://links.battle.net/f/a/Whkkxq8mbe796KeKnELKLQ~~/AA=
+QRxQA~/RgRlX7i_P0SoaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJj=
+ZT1ibmV0LWJsYWNrLWZyaWRheS1zYWxlLWtpY2tvZmYtMy0yMDIyMTEyMiZ1dG1fbWVkaXVtPWV=
+tYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1pbWFnZS1saW5rLW=
+JhdHRsZW5ldC1sb2dvVwNzcGNCCmNzvzN9Y-R4DZBSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpb=
+C5jb21YBAAAAWE~=0A)                =0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=
+=0A=0A=0A=0A  Careers =0A( https://links.battle.net/f/a/v5mQtTx7DvwK8qWhrNs=
+RLA~~/AAQRxQA~/RgRlX7i_P0SpaHR0cHM6Ly9jYXJlZXJzLmJsaXp6YXJkLmNvbS9nYi9lbj91=
+dG1fc291cmNlPWJuZXQtYmxhY2stZnJpZGF5LXNhbGUta2lja29mZi0zLTIwMjIxMTIyJnV0bV9=
+tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleH=
+QtbGluay1mb290ZXItY2FyZWVyc1cDc3BjQgpjc78zfWPkeA2QUhxoYXZhc2kuYWxleC5tYXJ0b=
+25AZ21haWwuY29tWAQAAAFh )=0A |  About =0A( https://links.battle.net/f/a/N4B=
+T3uo6UfMqHAErnPM7HA~~/AAQRxQA~/RgRlX7i_P0SxaHR0cHM6Ly93d3cuYmxpenphcmQuY29t=
+L2VuLWdiL2NvbXBhbnkvYWJvdXQ_dXRtX3NvdXJjZT1ibmV0LWJsYWNrLWZyaWRheS1zYWxlLWt=
+pY2tvZmYtMy0yMDIyMTEyMiZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbm=
+ctZ2ItMyZ1dG1fY29udGVudD10ZXh0LWxpbmstZm9vdGVyLWFib3V0VwNzcGNCCmNzvzN9Y-R4D=
+ZBSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~ )=0A |  Privacy =0A( ht=
+tps://links.battle.net/f/a/pv_CNVnLMh0-h1qTztCW5A~~/AAQRxQA~/RgRlX7i_P0TQaH=
+R0cHM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2xlZ2FsLzhjNDFlN2U2LTBiNjEtNDJjNC1hN=
+jc0LWM5MWQ4ZThkNjhkMz91dG1fc291cmNlPWJuZXQtYmxhY2stZnJpZGF5LXNhbGUta2lja29m=
+Zi0zLTIwMjIxMTIyJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0=
+zJnV0bV9jb250ZW50PXRleHQtbGluay1mb290ZXItcHJpdmFjeVcDc3BjQgpjc78zfWPkeA2QUh=
+xoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh )=0A |  Terms =0A( https://l=
+inks.battle.net/f/a/Fc5F4Kq95gMeVt7-u3ay0g~~/AAQRxQA~/RgRlX7i_P0SpaHR0cHM6L=
+y93d3cuYmxpenphcmQuY29tL2VuLWdiL2xlZ2FsP3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlk=
+YXktc2FsZS1raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ24=
+9bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLWZvb3Rlci10ZXJtc1cDc3BjQg=
+pjc78zfWPkeA2QUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh )=0A |  Supp=
+ort =0A( https://links.battle.net/f/a/lJgQvlisU6L3g0QNhQ2yOQ~~/AAQRxQA~/RgR=
+lX7i_P0SnaHR0cHM6Ly9ldS5iYXR0bGUubmV0L3N1cHBvcnQvZW4_dXRtX3NvdXJjZT1ibmV0LW=
+JsYWNrLWZyaWRheS1zYWxlLWtpY2tvZmYtMy0yMDIyMTEyMiZ1dG1fbWVkaXVtPWVtYWlsJnV0b=
+V9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD10ZXh0LWxpbmstZm9vdGVyLXN1=
+cHBvcnRXA3NwY0IKY3O_M31j5HgNkFIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAA=
+BYQ~~ )=0A  =0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A  If you =
+no longer wish to=0Areceive Blizzard newsletters, or information relating t=
+o Blizzard=0Aproducts, click here ( https://links.battle.net/f/a/Zfx9ghWnhp=
+nNEaIr1zd1mA~~/AAQRxQA~/RgRlX7i_P4TGAWh0dHBzOi8vMDMuZW1haWxpbmJvdW5kcHJvY2V=
+zc2luZy5jb20vZW5jX3VzZXIvdW5zdWJzY3JpYmU_ZD0lMjQxJTI0eGpCRFpEbUl5aXRrT1BldE=
+xUeFJ4USUzRCUzRCUyNGV6SEVROHdmUlo0VEFiZGNVUjNKRlJXR2N4SllxUlR0JTJGNkJkVjNhb=
+XdNUWNtM1hONEdCenE2NG4yN0F0JTBBOWYxaHlFaUQ1aXlGMGpRSlZhN2RFM0tocXNwZllIajVI=
+RGkxd0FlJTJCUndDRmpSVnlZanZGN0RvaVkyWjIlMEFlbVJOYTF3UCUyQkR0VSUyRjZ2OUcxa2I=
+1eTlNMW5LNmxpeW9UVTclMkZZb0hTTXV3bm9qdWpLTXhGYXFiOHBzMUclMEFWZVlFMEZveHc2WX=
+JUVUFKN1FTU3ZmRzJuMm52N2EwUWttT0hjSGJWY3RlRWhlelE4TVptcFRrU29MclglMEFESjA5U=
+01KcEtBeGZKY3NjJTJCSk1kTXVaZnUlMkJJMXgwTkgxWmU1UGVzb3k4Vk44cUxWUzMzaEN0VGRI=
+SlBoJTBBMmVhSmNJSHBHbm91NkklMkJMUjlpNiYxPTFXA3NwY0IKY3O_M31j5HgNkFIcaGF2YXN=
+pLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~ ) to=0Amanage your preferences. =
+=0A=C2=A9=0A2022=0ABlizzard=0AEntertainment, Inc. All trademarks referenced=
+ herein are the=0Aproperties of their respective=0Aowners.=0AActivision=0AB=
+lizzard UK Ltd, The Ampersand Building=0A178 Wardour Street, London W1F 8FY=
+=0AUnited=0AKingdom=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=
+=0A         PEGI 18 =0A( https://links.battle.net/f/a/p4RWZFLL2ixlJWsrnrYGy=
+A~~/AAQRxQA~/RgRlX7i_P0SkaHR0cDovL3d3dy5wZWdpLmluZm8vP3V0bV9zb3VyY2U9Ym5ldC=
+1ibGFjay1mcmlkYXktc2FsZS1raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1d=
+G1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9Zm9vdGVyLWltYWdlLWxpbmst=
+cGVnaS1yYXRpbmctMThXA3NwY0IKY3O_M31j5HgNkFIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWl=
+sLmNvbVgEAAABYQ~~ )
+--_----qLms8nZUU2dcrS+3OLv0Tw===_55/F8-38239-FB33D736
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!-- HTML | BEGINNING OF EMAIL -->=0A<!DOCTYPE html>=0A=0A<html>=0A=09<head=
+>=0A=09=09<meta http-equiv=3D"content-type" content=3D"text/html; charset=
+=3DUTF-8">=0A=09=09<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedg=
+e">=0A=09=09<meta name=3D"viewport" content=3D"width=3Ddevice-width, initia=
+l-scale=3D1, maximum-scale=3D1">=0A=09=09<meta name=3D"format-detection" co=
+ntent=3D"telephone=3Dno">=0A=09=09<meta name=3D"format-detection" content=
+=3D"date=3Dno">=0A=09=09<meta name=3D"format-detection" content=3D"address=
+=3Dno">=0A=09=09<meta name=3D"format-detection" content=3D"email=3Dno">=0A=
+=09=09<meta name=3D"color-scheme" content=3D"light dark">=0A=09=09<meta nam=
+e=3D"supported-color-schemes" content=3D"light dark">=0A=0A=09=09<!-- GMAIL=
+ PROMO TAB -->=0A=09=09<script type=3D"application/ld+json">=0A=09=09=09[{"=
+@context":"https://schema.org/","@type":"Organization","logo":"https://blzm=
+edia-a.akamaihd.net/emails/global/battlenet/logo-battlenet-gmail-48x48-full=
+.png"},{"@context":"http://schema.org/","@type":"EmailMessage","subjectLin=
+e":""},{"@context": "https://schema.org/","@type":"DiscountOffer","descript=
+ion":"","discountCode":"","availabilityStarts":"","availabilityEnds":""},{"=
+@context":"https://schema.org/","@type":"PromotionCard","image":"https://bl=
+zmedia-a.akamaihd.net/emails/battlenet/battlenet/2022/11/22-black-friday-sa=
+le-kickoff-3/en-GB/image-battlenet-promo-black-friday-sale-kickoff.png"}]=
+=0A=09=09</script>=0A=0A=09=09<!--[if mso]><!-->=0A=09=09<style type=3D"tex=
+t/css">=0A=09=09=09body, table, td {=0A=09=09=09=09font-family: Arial, Helv=
+etica, sans-serif;=0A=09=09=09}=0A=09=09</style>=0A=09=09<!--<![endif]-->=
+=0A=0A=09=09<!--[if !mso]><!-->=0A=09=09<style type=3D"text/css">=0A=09=09=
+=09@font-face{font-family:Roboto;font-weight:400;font-style:normal;src:loca=
+l('=E2=98=BA=EF=B8=8E'),url('http://fonts.gstatic.com/s/roboto/v15/CrYjSnGj=
+rRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff') format('woff')}@font-face{font-f=
+amily:Roboto;font-weight:700;font-style:normal;src:local('=E2=98=BA=EF=B8=
+=8E'),url('http://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOLO3Ld=
+cAZYWl9Si6vvxL-qU.woff') format('woff')}@font-face{font-family:Roboto;font-=
+weight:900;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('http://fo=
+nts.gstatic.com/s/roboto/v15/mnpfi9pxYH-Go5UiibESIrO3LdcAZYWl9Si6vvxL-qU.wo=
+ff') format('woff')}@font-face{font-family:Roboto;font-weight:400;font-styl=
+e:italic;src:local('=E2=98=BA=EF=B8=8E'),url('http://fonts.gstatic.com/s/ro=
+boto/v15/1pO9eUAp8pSF8VnRTP3xnnYhjbSpvc47ee6xR_80Hnw.woff') format('woff')}=
+@font-face{font-family:Roboto;font-weight:700;font-style:italic;src:local('=
+=E2=98=BA=EF=B8=8E'),url('http://fonts.gstatic.com/s/roboto/v15/t6Nd4cfPRhZ=
+P44Q5QAjcC7rIa-7acMAeDBVuclsi6Gc.woff') format('woff')}@font-face{font-fami=
+ly:Roboto;font-weight:900;font-style:italic;src:local('=E2=98=BA=EF=B8=8E')=
+,url('http://fonts.gstatic.com/s/roboto/v15/bmC0pGMXrhphrZJmniIZpbrIa-7acMA=
+eDBVuclsi6Gc.woff') format('woff')}@font-face{font-family:'Share Tech Mono'=
+;font-weight:300;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('htt=
+p://fonts.gstatic.com/s/sharetechmono/v6/RQxK-3RA0Lnf3gnnnNrAsaH0X__W3S3MJL=
+29bc5CWfs.woff') format('woff')}@font-face{font-family:Blizzard;font-weight=
+:400;font-style:italic;src:local('=E2=98=BA=EF=B8=8E'),url('https://blzmedi=
+a-a.akamaihd.net/emails/fonts/blizzard/blizzard-400-italic.woff') format('w=
+off')}@font-face{font-family:Blizzard;font-weight:400;font-style:normal;src=
+:local('=E2=98=BA=EF=B8=8E'),url('https://blzmedia-a.akamaihd.net/emails/fo=
+nts/blizzard/blizzard-400-normal.woff') format('woff')}@font-face{font-fami=
+ly:Blizzard;font-weight:700;font-style:normal;src:local('=E2=98=BA=EF=B8=8E=
+'),url('https://blzmedia-a.akamaihd.net/emails/fonts/blizzard/blizzard-700-=
+normal.woff') format('woff')}@font-face{font-family:'Object Sans';font-weig=
+ht:700;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('https://blzme=
+dia-a.akamaihd.net/emails/fonts/object-sans/object-sans-700-normal.woff') f=
+ormat('woff')}=0A=09=09</style>=0A=09=09<!--<![endif]-->=0A=0A=09=09<style =
+type=3D"text/css">=0A=09=09=09#outlook a{padding:0;}.ReadMsgBody{width:100%=
+;}.ExternalClass {width:100%;}.ExternalClass,.ExternalClass p,.ExternalClas=
+s span,.ExternalClass font,.ExternalClass td,.ExternalClass div{line-height=
+:100%;}body, table, td, a{-webkit-text-size-adjust:100%;-ms-text-size-adjus=
+t:100%;}table, td{mso-table-lspace:0;mso-table-rspace:0;}th{font-weight:400=
+;}img{line-height:100%;display:block;height:auto;text-decoration:none;-ms-i=
+nterpolation-mode:bicubic;border:0;outline:none;}table{border-collapse:coll=
+apse !important;}body{width:100% !important;height:100% !important;margin:0=
+;padding:0;background-color:#000000 !important;}u + .body .glist{margin-lef=
+t:5px !important;}u + .body .ghide{display:none;display:none !important;}u =
++ .body .gshow{line-height:auto !important;display:block !important;visibil=
+ity:inherit !important;float:none !important;overflow:visible !important;wi=
+dth:auto !important;max-width:100% !important;max-height:inherit !important=
+;margin-top:0 !important;}a[href^=3D"mailto"]{text-decoration:underline !im=
+portant;color:#d5d7dd !important;}hr{width:100% !important;height:1px !impo=
+rtant;background-color:#848689 !important;color:#848689 !important;border:0=
+ !important;}sup{font-size:50%;line-height:0;vertical-align:super;mso-text-=
+raise:0%;}=0A=09=09=09.preheader{"display: none;display: none !important;"}=
+#legal-disclaimer{font-size:12px !important;line-height:20px !important;}a:=
+link,a:hover,a:visited,a:focus{text-decoration:none;}li{"text-indent:-1em;t=
+ext-indent:-1em !important;"}a[x-apple-data-detectors], u + #body a, #Messa=
+geViewBody a{font-family:inherit !important;font-size:inherit !important;fo=
+nt-weight:inherit !important;line-height:inherit !important;text-decoration=
+:none !important;color:inherit !important;}.blue-links{font-family:inherit =
+!important;font-size:inherit !important;font-weight:inherit !important;line=
+-height:inherit !important;text-decoration:none !important;color: inherit !=
+important;}=0A=09=09</style>=0A=0A=09=09<style type=3D"text/css">=0A=09=09=
+=09@media screen and (max-width: 414px) {.dspl_none{display:none !important=
+;}.dspl_block{display:block !important;}.ovf_auto{overflow: auto !important=
+;}.w_100pc{width:100% !important;}.minw_000pt{min-width:0 !important;}.maxw=
+_100pc{max-width:100% !important;}.h_auto{height:auto !important;}.mgn_000p=
+t_auto{margin:0 auto !important;}.mgnl_000pt{margin-left:0 !important;}.pa_=
+000pt{padding:0 !important;}.pa_025px{padding:25px !important;}.pt_000pt{pa=
+dding-top:0 !important;}.pt_005px{padding-top:5px !important;}.pt_010px{pad=
+ding-top:10px !important;}.pt_015px{padding-top:15px !important;}.pt_020px{=
+padding-top:20px !important;}.pt_025px{padding-top:25px !important;}.pt_030=
+px{padding-top:30px !important;}.pt_040px{padding-top:40px !important;}.pr_=
+000pt{padding-right:0 !important;}.pr_001pc{padding-right:1% !important;}.p=
+r_005pc{padding-right:5% !important;}.pr_008pc{padding-right:8% !important;=
+}.pr_010pc{padding-right:10% !important;}.pr_015pc{padding-right:15% !impor=
+tant;}.pr_020pc{padding-right:20% !important;}.pr_030pc{padding-right:30% !=
+important;}.pr_036pc{padding-right:36% !important;}.pr_015px{padding-right:=
+15px !important;}.pb_000pt{padding-bottom:0 !important;}.pb_005px{padding-b=
+ottom:5px !important;}.pb_010px{padding-bottom:10px !important;}.pb_016px{p=
+adding-bottom:16px !important;}.pb_020px{padding-bottom:20px !important;}.p=
+b_024px{padding-bottom:24px !important;}.pb_025px{padding-bottom:25px !impo=
+rtant;}.pb_030px{padding-bottom:30px !important;}.pb_040px{padding-bottom:4=
+0px !important;}.pl_000pt{padding-left:0 !important;}.pl_001pc{padding-left=
+:1% !important;}.pl_002pc{padding-left:2% !important;}.pl_005pc{padding-lef=
+t:5% !important;}.pl_008pc{padding-left:8% !important;}.pl_010pc{padding-le=
+ft:10% !important;}.pl_015pc{padding-left:15% !important;}.pl_020pc{padding=
+-left:20% !important;}.pl_030pc{padding-left:30% !important;}.pl_036pc{padd=
+ing-left:36% !important;}.pl_015px{padding-left:15px !important;}.ta_l{text=
+-align:left !important;}.ta_c{text-align:center !important;}.ta_r{text-alig=
+n:right !important;}th>a.fsz_010px{font-size:10px !important;}.fsz_012px{fo=
+nt-size:12px !important;}td>a.fsz_012px{font-size:12px !important;}.fsz_014=
+px{font-size:14px !important;}.fsz_016px{font-size:16px !important;}.fsz_02=
+0px{font-size:20px !important;}.fsz_024px{font-size:24px !important;}.fsz_0=
+30px{font-size:30px !important;}.fsz_032px{font-size:32px !important;}.fsz_=
+hdr{font-size:32px !important;}.fsz_sbhdr{font-size:24px !important;}.lh_00=
+0pt{line-height:0 !important;}.lh_005px{line-height:5px !important;}th>a.lh=
+_014px{line-height:14px !important;}.lh_016px{line-height:16px !important;}=
+td>a.lh_016px{line-height:16px !important;}.lh_018px{line-height:18px !impo=
+rtant;}.lh_020px{line-height:20px !important;}.lh_026px{line-height:26px !i=
+mportant;}.lh_028px{line-height:28px !important;}.lh_030px{line-height:30px=
+ !important;}.lh_040px{line-height:40px !important;}.lh_056px{line-height:5=
+6px !important;}.lh_hdr{line-height:36px !important;}.lh_sbhdr{line-height:=
+28px !important;}.bgc_soc{background-color:#000000 !important;}.bgc_ftr{bac=
+kground-color:#1a1c23 !important;}.bgc_wv{background-color:#15171e !importa=
+nt;}.bb_solid_001px{border-bottom:1px solid #5a5d70 !important;}}=0A=09=09<=
+/style>=0A=0A=09=09<!--[if gte mso 9]>=0A=09=09<style>=0A=09=09=09sup { fon=
+t-size: 100% !important; }=0A=09=09</style>=0A=09=09<![endif]-->=0A=0A=09=
+=09<!--[if gte mso 9]>=0A=09=09<xml>=0A=09=09=09<o:OfficeDocumentSettings>=
+=0A=09=09=09<o:AllowPNG/>=0A=09=09=09<o:PixelsPerInch>96</o:PixelsPerInch>=
+=0A=09=09=09</o:OfficeDocumentSettings>=0A=09=09</xml>=0A=09=09<![endif]-->=
+=0A=09</head>=0A=0A=09<body bgcolor=3D"#000000" style=3D"margin: 0; padding=
+: 0; table-layout: fixed; -webkit-text-size-adjust: 100%; -ms-text-size-adj=
+ust: 100%; background-color: #000000;">=0A=09=09<center bgcolor=3D"#000000"=
+ style=3D"margin: 0; padding: 0; background-color: #000000;">=0A=09=09=09<!=
+-- PREHEADER -->=0A=09=09=09<div class=3D"preheader" style=3D"display: none=
+ !important; mso-hide: all; width: 0px; height: 0px; max-width: 0px; max-he=
+ight: 0px; font-size: 0px; line-height: 0px;">Through 28 November, score de=
+als on some of the biggest Battle.net games with the Black Friday Sale</div=
+>=0A=09=09=09<div style=3D"display: none; visibility: hidden; overflow: hid=
+den;">=0A=09=09=09=09<custom name=3D"opencounter" type=3D"tracking">=0A=09=
+=09=09</div>=0A=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"600" h=
+eight=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"ce=
+nter" valign=3D"top" bgcolor=3D"#000000" style=3D"width: 600px; min-width: =
+600px; margin: 0 auto; border-spacing: 0; border-collapse: collapse; backgr=
+ound-color: #000000;">=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- FULL-WIDTH IMA=
+GE -->=0A=09=09=09=09<td align=3D"center" style=3D"padding: 0; text-align: =
+center;">=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"600=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#000000" styl=
+e=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=
+=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=
+=09=09=09=09=09<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%; borde=
+r-spacing: 0; border-collapse: collapse; background-color: #000000;">=0A=09=
+=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- IMAGE -->=0A=09=09=09=
+=09=09=09=09=09<td class=3D"dspl_block pt_000pt pr_000pt pb_030px pl_000pt =
+ta_c" style=3D"padding: 0 0 40px;"><a href=3D"https://links.battle.net/f/a/=
+KaV5YJiOBwEK4_-3u-HVDg~~/AAQRxQA~/RgRlX7i_P0TqaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZ=
+S5uZXQvZW4tZ2Ivc2FsZS9ibGFjay1mcmlkYXktc2FsZS0yMDIyP3V0bV9zb3VyY2U9Ym5ldC1i=
+bGFjay1mcmlkYXktc2FsZS1raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1=
+fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9aW1hZ2UtbGluay1zdGFydC15b3=
+VyLW5leHQtYWR2ZW50dXJlLXdpdGgtdGhlLWJsYWNrLWZyaWRheS1zYWxlVwNzcGNCCmNzvzN9Y=
+-R4DZBSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~" target=3D"_blank">=
+<img src=3D"https://blzmedia-a.akamaihd.net/emails/battlenet/battlenet/2022=
+/11/22-black-friday-sale-kickoff-3/en-GB/image-battlenet-thumb-start-your-n=
+ext-adventure-with-the-black-friday-sale.png" class=3D"w_100pc maxw_100pc h=
+_auto" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Aria=
+l, 'Droid Sans', sans-serif; font-size: 16px; display: block; padding: 0; t=
+ext-decoration: none; color: #bbbbbb;" width=3D"100%" height=3D"100%" borde=
+r=3D"0" alt=3D"Start Your Next Adventure With the Black Friday Sale!"></a><=
+/td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=
+=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=
+=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- HEADER T=
+EXT -->=0A=09=09=09=09<td align=3D"center" style=3D"padding: 0; text-align:=
+ center;">=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"60=
+0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#000000" sty=
+le=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=
+=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=
+=09=09=09=09=09<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%; borde=
+r-spacing: 0; border-collapse: collapse; background-color: #000000;">=0A=09=
+=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=
+=09=09=09=09=09<td class=3D"fsz_hdr lh_hdr pt_000pt pr_010pc pb_030px pl_01=
+0pc ta_c" style=3D"font-family: 'Object Sans', 'Helvetica Neue', Helvetica,=
+ Arial, 'Droid Sans', sans-serif; font-size: 48px; font-weight: 700; mso-li=
+ne-height-rule:exactly; line-height: 56px; padding: 0 40px 40px; text-align=
+: center; text-decoration: none; overflow-wrap: break-word; word-wrap: brea=
+k-word; word-break: break-word; -ms-word-break: break-word; color: #ffffff;=
+ border: 0; ">Start Your Next Adventure With the Black Friday Sale!</td>=0A=
+=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=
+=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09=
+</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- BODY TEXT -->=
+=0A=09=09=09=09<td align=3D"center" style=3D"padding: 0; text-align: center=
+;">=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"600" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#000000" style=3D"b=
+ackground-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td b=
+gcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09=
+=09=09<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%; border-spacing=
+: 0; border-collapse: collapse; background-color: #000000;">=0A=09=09=09=09=
+=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=
+=09=09<td class=3D"fsz_014px lh_028px pt_000pt pr_008pc pb_030px pl_008pc t=
+a_l" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial,=
+ 'Droid Sans', sans-serif; font-size: 16px; font-weight: 400; font-style: n=
+ormal; mso-line-height-rule:exactly; line-height: 28px; padding: 0 40px 40p=
+x; text-align: left; overflow-wrap: break-word; word-wrap: break-word; word=
+-break: break-word; -ms-word-break: break-word; color: #bbbbbb;">The next e=
+pic experience awaits just beyond the horizon, <span class=3D"fsz_014px lh_=
+028px" style=3D"font-size:inherit; font-weight:700; text-decoration:none; c=
+olor:#ffffff;">havaalex5000</span>! <br><br> It's that time of year when we=
+ roll out a wide range of <span class=3D"fsz_014px lh_028px" style=3D"font-=
+size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">deep d=
+iscounts</span>, <span class=3D"fsz_014px lh_028px" style=3D"font-size:inhe=
+rit; font-weight:700; text-decoration:none; color:#ffffff;">devilish deals<=
+/span>, and <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; =
+font-weight:700; text-decoration:none; color:#ffffff;">spectacular sales</s=
+pan> for Black Friday. Treat yourself and save <span class=3D"fsz_014px lh_=
+028px" style=3D"font-size:inherit; font-weight:700; text-decoration:none; c=
+olor:#ffffff;">25-67% off</span> a selection of popular games on Battle.net=
+<sup style=3D"font-size:50%!important; line-height:0!important; vertical-al=
+ign:super!important; mso-text-raise:0%!important;">&reg;</sup>, or start sh=
+opping early for the perfect digital gifts for your gaming friends. But don=
+'t take too long; this sale ends <span class=3D"fsz_014px lh_028px" style=
+=3D"font-size:inherit; font-weight:700; text-decoration:none; color:#ffffff=
+;">28 November</span>!  <br><br> Fight for the future in <span class=3D"fsz=
+_014px lh_028px" style=3D"font-size:inherit; font-weight:700; text-decorati=
+on:none; color:#ffffff;">Overwatch</span><sup style=3D"font-size:50%!import=
+ant; line-height:0!important; vertical-align:super!important; mso-text-rais=
+e:0%!important;">&reg;</sup> <span class=3D"fsz_014px lh_028px" style=3D"fo=
+nt-size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">2</=
+span>, embark on an epic journey in <span class=3D"fsz_014px lh_028px" styl=
+e=3D"font-size:inherit; font-weight:700; text-decoration:none; color:#fffff=
+f;">World of Warcraft</span><sup style=3D"font-size:50%!important; line-hei=
+ght:0!important; vertical-align:super!important; mso-text-raise:0%!importan=
+t;">&reg;</sup>, and rally your friends in <span class=3D"fsz_014px lh_028p=
+x" style=3D"font-size: inherit; font-weight: 700; text-decoration: none; co=
+lor: #ffffff;">Call of Duty</span><sup style=3D"font-size:50%!important; li=
+ne-height:0!important; vertical-align:super!important; mso-text-raise:0%!im=
+portant;">&reg;</sup>. Your next adventure begins right here on <i>Battle.n=
+et.</i> </td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=
+=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=
+=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!--=
+ CTA BUTTON -->=0A=09=09=09=09<td align=3D"center" style=3D"padding: 0; tex=
+t-align: center;">=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" wid=
+th=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#000=
+000" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=
+=09=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=
+=0A=09=09=09=09=09=09=09<table width=3D"100%" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 10=
+0%; border-spacing: 0; border-collapse: collapse; background-color: #000000=
+;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- BUTTON -->=
+=0A=09=09=09=09=09=09=09=09<td class=3D"pt_000pt pr_008pc pb_040px pl_008pc=
+" align=3D"center" style=3D"padding: 0 0 60px; color: #000000;">=0A=09=09=
+=09=09=09=09=09=09=09<!--[if tonline]><div style=3D"display: none;"><![endi=
+f]-->=0A=09=09=09=09=09=09=09=09=09<!--[if mso]>=0A=09=09=09=09=09=09=09=09=
+=09<a href=3D"https://links.battle.net/f/a/GqNqiPAECcC7msNy2XskoQ~~/AAQRxQA=
+~/RgRlX7i_P0S_aHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2Ivc2FsZS9ibGFjay1mc=
+mlkYXktc2FsZS0yMDIyP3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXktc2FsZS1raWNrb2Zm=
+LTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTM=
+mdXRtX2NvbnRlbnQ9YnV0dG9uLWxpbmstc2hvcC1ub3dXA3NwY0IKY3O_M31j5HgNkFIcaGF2YX=
+NpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank" style=3D"font=
+-family: 'Object Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', s=
+ans-serif; font-size: 20px; font-weight: 700; line-height: 22px; display: i=
+nline-block; max-width: 100%; padding: 16px 34px; vertical-align: middle; t=
+ext-decoration: none; text-transform: normal; color: #000000; background-co=
+lor: #ffffff; "><i style=3D"letter-spacing: 25px;mso-font-width:-100%;mso-t=
+ext-raise:30pt">&nbsp;</i><span style=3D"mso-text-raise:15pt;">Shop Now</sp=
+an><i style=3D"letter-spacing: 25px;mso-font-width:-100%">&nbsp;</i></a>=0A=
+=09=09=09=09=09=09=09=09=09<![endif]-->=0A=09=09=09=09=09=09=09=09=09<!--[i=
+f tonline]></div><![endif]-->=0A=09=09=09=09=09=09=09=09=09<a href=3D"https=
+://links.battle.net/f/a/GqNqiPAECcC7msNy2XskoQ~~/AAQRxQA~/RgRlX7i_P0S_aHR0c=
+HM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2Ivc2FsZS9ibGFjay1mcmlkYXktc2FsZS0yMDIy=
+P3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXktc2FsZS1raWNrb2ZmLTMtMjAyMjExMjImdXR=
+tX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9Yn=
+V0dG9uLWxpbmstc2hvcC1ub3dXA3NwY0IKY3O_M31j5HgNkFIcaGF2YXNpLmFsZXgubWFydG9uQ=
+GdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank" style=3D"mso-hide:all; font-fami=
+ly: 'Object Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-s=
+erif; font-size: 20px; font-weight: 700; line-height: 22px; display: inline=
+-block; max-width: 100%; padding: 16px 34px; vertical-align: middle; text-d=
+ecoration: none; text-transform: normal; color: #000000; background-color: =
+#ffffff; ">Shop Now</a>=0A=09=09=09=09=09=09=09=09</td>=0A=09=09=09=09=09=
+=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=
+=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09=
+</tr>=0A=0A=0A=0A=0A=0A=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- SOCIAL DIVIDE=
+R -->=0A=09=09=09=09<td class=3D"pt_000pt pr_000pt pb_030px pl_000pt" align=
+=3D"center" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<ta=
+ble class=3D"minw_000pt w_100pc" width=3D"600" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" bgcolor=3D"#000000" style=3D"background-color: #000000=
+;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td class=3D"dspl_block pa_00=
+0pt ta_c" bgcolor=3D"#000000" style=3D"padding: 0 0 30px; background-color:=
+ #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; mi=
+n-width: 100%; border-spacing: 0; border-collapse: collapse; background-col=
+or: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- I=
+MAGE (DIVIDER) -->=0A=09=09=09=09=09=09=09=09<td><img src=3D"https://blzmed=
+ia-a.akamaihd.net/emails/global/battlenet/divider.jpg" class=3D"w_100pc max=
+w_100pc h_auto" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvet=
+ica, Arial, 'Droid Sans', sans-serif; font-size: 14px; display: block; padd=
+ing: 0; text-decoration: none; color: #848689;" width=3D"100%" height=3D"10=
+0%" border=3D"0" alt=3D""></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=
+=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=
+=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=
+=0A=09=09=09=09<!-- SOCIAL HEADER -->=0A=09=09=09=09<td class=3D"pt_000pt p=
+r_015px pb_000pt pl_015px" align=3D"center" style=3D"padding: 0; text-align=
+: center;">=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"6=
+00" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#000000" st=
+yle=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=
+=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=
+=09=09=09=09=09<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%; borde=
+r-spacing: 0; border-collapse: collapse; background-color: #000000;">=0A=09=
+=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=
+=09=09=09=09=09<td class=3D"fsz_024px lh_032px pt_000pt pr_005pc pb_000pt p=
+l_005pc ta_c" style=3D"font-family: 'Object Sans', 'Helvetica Neue', Helvet=
+ica, Arial, 'Droid Sans', sans-serif; font-size: 32px; line-height: 42px; t=
+ext-align: center; text-transform: normal; padding: 0 40px 0; color: #fffff=
+f;">Stay Connected</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=
+=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=
+=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=
+=09=09=09<!-- SOCIAL LINKS -->=0A=09=09=09=09<td class=3D"pt_000pt pr_015px=
+ pb_010px pl_015px" align=3D"center" style=3D"padding: 0; text-align: cente=
+r;">=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"600" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#000000" style=3D"=
+background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td =
+class=3D"mgn_000pt_auto" align=3D"center" bgcolor=3D"#000000" style=3D"padd=
+ing: 0 0 40px; background-color: #000000;">=0A=09=09=09=09=09=09=09<table b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#000000" style=
+=3D"border-spacing: 0; border-collapse: collapse; background-color: #000000=
+;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=
+=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=
+=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=
+=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=
+=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=
+=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=
+=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=
+=09=09=09=09=09=09=09<!-- TWITTER -->=0A=09=09=09=09=09=09=09=09<td style=
+=3D"padding: 20px 15px 0 0;" align=3D"left"><a href=3D"https://links.battle=
+.net/f/a/ZFryf2LfeViWciKiaqym7A~~/AAQRxQA~/RgRlX7i_P0SfaHR0cHM6Ly90d2l0dGV=
+yLmNvbS9iYXR0bGVuZXQ_dXRtX3NvdXJjZT1ibmV0LWJsYWNrLWZyaWRheS1zYWxlLWtpY2tvZm=
+YtMy0yMDIyMTEyMiZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItM=
+yZ1dG1fY29udGVudD1zb2NpYWwtbGluay10d2l0dGVyVwNzcGNCCmNzvzN9Y-R4DZBSHGhhdmFz=
+aS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~" target=3D"_blank"><img src=3D"htt=
+ps://blzmedia-a.akamaihd.net/emails/global/social/icon-twitter.png" style=
+=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sa=
+ns', sans-serif; font-size: 14px; display: block; text-decoration: none; co=
+lor: #848689;" width=3D"24" height=3D"24" border=3D"0" alt=3D"Twitter"></a>=
+</td>=0A=09=09=09=09=09=09=09=09<!-- FACEBOOK -->=0A=09=09=09=09=09=09=09=
+=09<td style=3D"padding: 20px 15px 0 0;" align=3D"left"><a href=3D"https://=
+links.battle.net/f/a/N3KhWlfaYo2QxyuukELIqA~~/AAQRxQA~/RgRlX7i_P0ShaHR0cHM6=
+Ly9mYWNlYm9vay5jb20vYmF0dGxlbmV0P3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXktc2F=
+sZS1raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2=
+V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9c29jaWFsLWxpbmstZmFjZWJvb2tXA3NwY0IKY3O_M31j5=
+HgNkFIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank">=
+<img src=3D"https://blzmedia-a.akamaihd.net/emails/global/social/icon-faceb=
+ook.png" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Ar=
+ial, 'Droid Sans', sans-serif; font-size: 14px; display: block; text-decora=
+tion: none; color: #848689;" width=3D"24" height=3D"24" border=3D"0" alt=3D=
+"Facebook"></a></td>=0A=09=09=09=09=09=09=09=09<!-- INSTAGRAM -->=0A=09=09=
+=09=09=09=09=09=09<td style=3D"padding: 20px 0 0;" align=3D"left"><a href=
+=3D"https://links.battle.net/f/a/z3zkpA_gKiJvxtRcJtDPqA~~/AAQRxQA~/RgRlX7i_=
+P0SjaHR0cHM6Ly9pbnN0YWdyYW0uY29tL2JhdHRsZW5ldD91dG1fc291cmNlPWJuZXQtYmxhY2s=
+tZnJpZGF5LXNhbGUta2lja29mZi0zLTIwMjIxMTIyJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbX=
+BhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXNvY2lhbC1saW5rLWluc3RhZ3JhbVcDc=
+3BjQgpjc78zfWPkeA2QUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh" target=
+=3D"_blank"><img src=3D"https://blzmedia-a.akamaihd.net/emails/global/socia=
+l/icon-instagram.png" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', =
+Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 14px; display: block=
+; text-decoration: none; color: #848689;" width=3D"24" height=3D"24" border=
+=3D"0" alt=3D"Instagram"></a></td>=0A=09=09=09=09=09=09=09=09<!-- SOCIAL LI=
+NKS END -->=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09</tr>=0A=09=
+=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=
+=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=
+=09<tr>=0A=09=09=09=09<!-- FOOTER DIVIDER -->=0A=09=09=09=09<td class=3D"pa=
+_000pt bgc_ftr" align=3D"center" style=3D"padding: 0; text-align: center;">=
+=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"600" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#1a1c23" style=3D"bac=
+kground-color: #1a1c23;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td cla=
+ss=3D"dspl_block pa_000pt ta_c" bgcolor=3D"#1a1c23" style=3D"background-col=
+or: #1a1c23;">=0A=09=09=09=09=09=09=09<table width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#1a1c23" style=3D"width: 100%;=
+ min-width: 100%; border-spacing: 0; border-collapse: collapse; background-=
+color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-=
+- IMAGE (DIVIDER) -->=0A=09=09=09=09=09=09=09=09<td><img src=3D"https://blz=
+media-a.akamaihd.net/emails/global/battlenet/footer-divider.png" class=3D"w=
+_100pc maxw_100pc h_auto" style=3D"font-family: 'Noto Sans', 'Helvetica Neu=
+e', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 14px; display: b=
+lock; padding: 0; text-decoration: none; color: #bbbbbb;" width=3D"100%" he=
+ight=3D"100%" border=3D"0" alt=3D""></td>=0A=09=09=09=09=09=09=09</tr>=0A=
+=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</=
+tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=
+=09=09<tr>=0A=09=09=09=09<!-- FOOTER LOGO -->=0A=09=09=09=09<td class=3D"pt=
+_000pt pr_015px pb_025px pl_015px bgc_ftr" bgcolor=3D"#1a1c23" align=3D"cen=
+ter" style=3D"padding: 0; text-align: center; background-color: #1a1c23;">=
+=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"600" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#1a1c23" style=3D"bac=
+kground-color: #1a1c23;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td cla=
+ss=3D"mgn_000pt_auto" align=3D"center" bgcolor=3D"#1a1c23" style=3D"margin:=
+ 0 auto; background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" bgcolor=3D"#1a1=
+c23" style=3D"border-spacing: 0; border-collapse: collapse; background-colo=
+r: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- BA=
+TTLE.NET/BLIZZARD LOGO -->=0A=09=09=09=09=09=09=09=09<td align=3D"center" s=
+tyle=3D"text-align: center;"><a href=3D"https://links.battle.net/f/a/Whkkxq=
+8mbe796KeKnELKLQ~~/AAQRxQA~/RgRlX7i_P0SoaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQ=
+vZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWJsYWNrLWZyaWRheS1zYWxlLWtpY2tvZmYtMy0yMDIyMT=
+EyMiZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29ud=
+GVudD1pbWFnZS1saW5rLWJhdHRsZW5ldC1sb2dvVwNzcGNCCmNzvzN9Y-R4DZBSHGhhdmFzaS5h=
+bGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~" target=3D"_blank"><img src=3D"https:/=
+/blzmedia-a.akamaihd.net/emails/global/battlenet/logo-battlenet.png" style=
+=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sa=
+ns', sans-serif; font-size: 14px; display: block; margin: 0 auto; padding: =
+0; text-decoration: none; color: #848689;" width=3D"168" height=3D"100" bor=
+der=3D"0" alt=3D"BATTLE.NET"></a></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=
+=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=
+=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=
+=09<tr>=0A=09=09=09=09<!-- FOOTER LINKS -->=0A=09=09=09=09<td class=3D"pa_0=
+00pt bgc_ftr" bgcolor=3D"#1a1c23" align=3D"center" style=3D"padding: 0; tex=
+t-align: center; background-color: #1a1c23;">=0A=09=09=09=09=09<table class=
+=3D"minw_000pt w_100pc" width=3D"600" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" bgcolor=3D"#1a1c23" style=3D"background-color: #1a1c23;">=0A=09=
+=09=09=09=09<tr>=0A=09=09=09=09=09=09<td align=3D"center" bgcolor=3D"#1a1c2=
+3" style=3D"background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" bgcolor=3D"#1=
+a1c23" style=3D"text-align: center; border-spacing: 0; border-collapse: col=
+lapse; background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=
+=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=
+=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=
+=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=
+=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=
+=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=
+=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=
+=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09<!-- CAREERS -->=0A=09=
+=09=09=09=09=09=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_0=
+05px pl_000pt ta_c bb_solid_001px fsz_010px lh_014px" style=3D"font-size: 1=
+0px; line-height: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a href=3D"ht=
+tps://links.battle.net/f/a/v5mQtTx7DvwK8qWhrNsRLA~~/AAQRxQA~/RgRlX7i_P0SpaH=
+R0cHM6Ly9jYXJlZXJzLmJsaXp6YXJkLmNvbS9nYi9lbj91dG1fc291cmNlPWJuZXQtYmxhY2stZ=
+nJpZGF5LXNhbGUta2lja29mZi0zLTIwMjIxMTIyJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBh=
+aWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1mb290ZXItY2FyZWVyc1c=
+Dc3BjQgpjc78zfWPkeA2QUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh" targ=
+et=3D"_blank" class=3D"fsz_010px lh_014px" style=3D"display: inline-block; =
+font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans',=
+ sans-serif; font-size: 10px; line-height: 14px; text-decoration: none; tex=
+t-transform: uppercase; color: #d5d7dd; border: none;">Careers</a></th>=0A=
+=09=09=09=09=09=09=09=09<td class=3D"dspl_none" style=3D"padding: 42px 3px =
+0"><span class=3D"fsz_010px lh_014px" style=3D"display: inline-block; color=
+: #5a5d70;">|</span></td>=0A=09=09=09=09=09=09=09=09<!-- ABOUT -->=0A=09=09=
+=09=09=09=09=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_005p=
+x pl_000pt ta_c bb_solid_001px fsz_010px lh_014px" style=3D"font-size: 10px=
+; line-height: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a href=3D"https=
+://links.battle.net/f/a/N4BT3uo6UfMqHAErnPM7HA~~/AAQRxQA~/RgRlX7i_P0SxaHR0c=
+HM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2NvbXBhbnkvYWJvdXQ_dXRtX3NvdXJjZT1ibmV0=
+LWJsYWNrLWZyaWRheS1zYWxlLWtpY2tvZmYtMy0yMDIyMTEyMiZ1dG1fbWVkaXVtPWVtYWlsJnV=
+0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD10ZXh0LWxpbmstZm9vdGVyLW=
+Fib3V0VwNzcGNCCmNzvzN9Y-R4DZBSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAA=
+WE~" target=3D"_blank" class=3D"fsz_010px lh_014px" style=3D"display: inlin=
+e-block; font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Dro=
+id Sans', sans-serif; font-size: 10px; line-height: 14px; text-decoration: =
+none; text-transform: uppercase; color: #d5d7dd; border: none;">About</a></=
+th>=0A=09=09=09=09=09=09=09=09<td class=3D"dspl_none" style=3D"padding: 42p=
+x 3px 0"><span class=3D"fsz_010px lh_014px" style=3D"display: inline-block;=
+ color: #5a5d70;">|</span></td>=0A=09=09=09=09=09=09=09=09<!-- PRIVACY -->=
+=0A=09=09=09=09=09=09=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000p=
+t pb_005px pl_000pt ta_c bb_solid_001px fsz_010px lh_014px" style=3D"font-s=
+ize: 10px; line-height: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a href=
+=3D"https://links.battle.net/f/a/pv_CNVnLMh0-h1qTztCW5A~~/AAQRxQA~/RgRlX7i_=
+P0TQaHR0cHM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2xlZ2FsLzhjNDFlN2U2LTBiNjEtNDJ=
+jNC1hNjc0LWM5MWQ4ZThkNjhkMz91dG1fc291cmNlPWJuZXQtYmxhY2stZnJpZGF5LXNhbGUta2=
+lja29mZi0zLTIwMjIxMTIyJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZ=
+y1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1mb290ZXItcHJpdmFjeVcDc3BjQgpjc78zfWPk=
+eA2QUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh" target=3D"_blank" cla=
+ss=3D"fsz_010px lh_014px" style=3D"display: inline-block; font-family: 'Not=
+o Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font=
+-size: 10px; line-height: 14px; text-decoration: none; text-transform: uppe=
+rcase; color: #d5d7dd; border: none;">Privacy</a></th>=0A=09=09=09=09=09=09=
+=09=09<td class=3D"dspl_none" style=3D"padding: 42px 3px 0"><span class=3D"=
+fsz_010px lh_014px" style=3D"display: inline-block; color: #5a5d70;">|</spa=
+n></td>=0A=09=09=09=09=09=09=09=09<!-- TERMS -->=0A=09=09=09=09=09=09=09=09=
+<th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_005px pl_000pt ta_c bb=
+_solid_001px fsz_010px lh_014px" style=3D"font-size: 10px; line-height: 14p=
+x; padding: 40px 7px 0; color: #d5d7dd;"><a href=3D"https://links.battle.ne=
+t/f/a/Fc5F4Kq95gMeVt7-u3ay0g~~/AAQRxQA~/RgRlX7i_P0SpaHR0cHM6Ly93d3cuYmxpenp=
+hcmQuY29tL2VuLWdiL2xlZ2FsP3V0bV9zb3VyY2U9Ym5ldC1ibGFjay1mcmlkYXktc2FsZS1raW=
+Nrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nL=
+WdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLWZvb3Rlci10ZXJtc1cDc3BjQgpjc78zfWPkeA2Q=
+UhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh" target=3D"_blank" class=
+=3D"fsz_010px lh_014px" style=3D"display: inline-block; font-family: 'Noto =
+Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-s=
+ize: 10px; line-height: 14px; text-decoration: none; text-transform: upperc=
+ase; color: #d5d7dd; border: none;">Terms</a></th>=0A=09=09=09=09=09=09=09=
+=09<td class=3D"dspl_none" style=3D"padding: 42px 3px 0"><span class=3D"fsz=
+_010px lh_014px" style=3D"display: inline-block; color: #5a5d70;">|</span><=
+/td>=0A=09=09=09=09=09=09=09=09<!-- SUPPORT -->=0A=09=09=09=09=09=09=09=09<=
+th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_005px pl_000pt ta_c bb_=
+solid_001px fsz_010px lh_014px" style=3D"font-size: 10px; line-height: 14px=
+; padding: 40px 7px 0; color: #d5d7dd;"><a href=3D"https://links.battle.net=
+/f/a/lJgQvlisU6L3g0QNhQ2yOQ~~/AAQRxQA~/RgRlX7i_P0SnaHR0cHM6Ly9ldS5iYXR0bGUu=
+bmV0L3N1cHBvcnQvZW4_dXRtX3NvdXJjZT1ibmV0LWJsYWNrLWZyaWRheS1zYWxlLWtpY2tvZmY=
+tMy0yMDIyMTEyMiZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMy=
+Z1dG1fY29udGVudD10ZXh0LWxpbmstZm9vdGVyLXN1cHBvcnRXA3NwY0IKY3O_M31j5HgNkFIca=
+GF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank" class=3D=
+"fsz_010px lh_014px" style=3D"display: inline-block; font-family: 'Noto San=
+s', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size=
+: 10px; line-height: 14px; text-decoration: none; text-transform: uppercase=
+; color: #d5d7dd; border: none;">Support</a></th>=0A=09=09=09=09=09=09=09=
+=09<!-- FOOTER LINKS END -->=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=
+=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=
+=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09=
+</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- FOOTER LEGAL LINES -->=0A=09=09=
+=09=09<td class=3D"pa_000pt bgc_ftr" bgcolor=3D"#1a1c23" align=3D"center" s=
+tyle=3D"padding: 0; text-align: center; background-color: #1a1c23;">=0A=09=
+=09=09=09=09<table class=3D"minw_000pt w_100pc" width=3D"600" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#1a1c23" style=3D"background=
+-color: #1a1c23;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td class=3D"p=
+t_020px pr_015px pb_010px pl_015px bgc_ftr" bgcolor=3D"#1a1c23" style=3D"pa=
+dding: 0 0 40px; background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table=
+ width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D=
+"#1a1c23" style=3D"width: 100%; min-width: 100%; border-spacing: 0; border-=
+collapse: collapse; background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr=
+>=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=
+=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=
+=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=
+=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=
+=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=
+=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=
+=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09<!-- UNSU=
+BSCRIBE -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_012px lh_016px pt_01=
+0px pr_005pc pb_010px pl_005pc ta_l" style=3D"font-family: 'Noto Sans', 'He=
+lvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 10px;=
+ line-height: 14px; text-align: left; padding: 40px 40px 0; overflow-wrap: =
+break-word; word-wrap: break-word; word-break: break-word; -ms-word-break: =
+break-word; color: #848689;">If you no longer wish to receive Blizzard news=
+letters, or information relating to Blizzard products, <a href=3D"https://l=
+inks.battle.net/f/a/Zfx9ghWnhpnNEaIr1zd1mA~~/AAQRxQA~/RgRlX7i_P4TGAWh0dHBzO=
+i8vMDMuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5jb20vZW5jX3VzZXIvdW5zdWJzY3JpYmU_ZD0l=
+MjQxJTI0eGpCRFpEbUl5aXRrT1BldExUeFJ4USUzRCUzRCUyNGV6SEVROHdmUlo0VEFiZGNVUjN=
+KRlJXR2N4SllxUlR0JTJGNkJkVjNhbXdNUWNtM1hONEdCenE2NG4yN0F0JTBBOWYxaHlFaUQ1aX=
+lGMGpRSlZhN2RFM0tocXNwZllIajVIRGkxd0FlJTJCUndDRmpSVnlZanZGN0RvaVkyWjIlMEFlb=
+VJOYTF3UCUyQkR0VSUyRjZ2OUcxa2I1eTlNMW5LNmxpeW9UVTclMkZZb0hTTXV3bm9qdWpLTXhG=
+YXFiOHBzMUclMEFWZVlFMEZveHc2WXJUVUFKN1FTU3ZmRzJuMm52N2EwUWttT0hjSGJWY3RlRWh=
+lelE4TVptcFRrU29MclglMEFESjA5U01KcEtBeGZKY3NjJTJCSk1kTXVaZnUlMkJJMXgwTkgxWm=
+U1UGVzb3k4Vk44cUxWUzMzaEN0VGRISlBoJTBBMmVhSmNJSHBHbm91NkklMkJMUjlpNiYxPTFXA=
+3NwY0IKY3O_M31j5HgNkFIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" ta=
+rget=3D"_blank" class=3D"fsz_012px lh_016px" style=3D"font-family: 'Noto Sa=
+ns', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-siz=
+e: 10px; line-height: 14px; padding: 10px 0 0; text-decoration: none; color=
+: #d5d7dd;">click here</a>&nbsp;to manage your preferences.</td>=0A=09=09=
+=09=09=09=09=09=09=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09<tr>=
+=0A=09=09=09=09=09=09=09=09<!-- LEGAL LINES -->=0A=09=09=09=09=09=09=09=09<=
+td class=3D"fsz_012px lh_016px pt_010px pr_005pc pb_010px pl_005pc ta_l" st=
+yle=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid=
+ Sans', sans-serif; font-size: 10px; line-height: 14px; text-align: left; p=
+adding: 20px 40px 0; overflow-wrap: break-word; word-wrap: break-word; word=
+-break: break-word; -ms-word-break: break-word; color: #848689;">&copy; 202=
+2 Blizzard Entertainment, Inc. All trademarks referenced herein are the pro=
+perties of their respective owners.</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=
+=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- MAILING ADDRESS -->=
+=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_012px lh_016px pt_010px pr_005p=
+c pb_010px pl_005pc ta_l" style=3D"font-family: 'Noto Sans', 'Helvetica Neu=
+e', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 10px; line-heigh=
+t: 14px; text-align: left; padding: 20px 40px 0; overflow-wrap: break-word;=
+ word-wrap: break-word; word-break: break-word; -ms-word-break: break-word;=
+ color: #848689;">Activision Blizzard UK Ltd, The Ampersand Building<br> 17=
+8 Wardour Street, London W1F 8FY<br> United Kingdom</td>=0A=09=09=09=09=09=
+=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=
+=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09=
+</tr>=0A=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=
+=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=
+=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=
+=0A=09=09=09=0A=09=09=09<tr>=0A=09=09=09=09<!-- RATINGS (PEGI) -->=0A=09=09=
+=09=09<td class=3D"pt_010px pr_015px pb_010px pl_015px bgc_ftr" bgcolor=3D"=
+#1a1c23" align=3D"center" style=3D"padding: 0; text-align: center; backgrou=
+nd-color: #1a1c23;">=0A=09=09=09=09=09<table class=3D"minw_000pt w_100pc" w=
+idth=3D"600" bgcolor=3D"#1a1c23" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"background-color: #1a1c23;">=0A=09=09=09=09=09<tr>=0A=09=09=
+=09=09=09=09<td class=3D"pt_010px pr_005pc pb_010px pl_005pc ta_c" align=3D=
+"center" bgcolor=3D"#1a1c23" style=3D"margin: 0 auto; padding: 0 0 40px; ba=
+ckground-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" align=3D"center" bgcolor=3D"#1a1c23" style=
+=3D"border-spacing: 0; border-collapse: collapse; background-color: #1a1c23=
+;">=0A=09=09=09=09=09=09=09=09<!-- PEGI RATING -->=0A=09=09=09=09=09=09=09=
+=09<td><a href=3D"https://links.battle.net/f/a/p4RWZFLL2ixlJWsrnrYGyA~~/AAQ=
+RxQA~/RgRlX7i_P0SkaHR0cDovL3d3dy5wZWdpLmluZm8vP3V0bV9zb3VyY2U9Ym5ldC1ibGFja=
+y1mcmlkYXktc2FsZS1raWNrb2ZmLTMtMjAyMjExMjImdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2Ft=
+cGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9Zm9vdGVyLWltYWdlLWxpbmstcGVnaS1=
+yYXRpbmctMThXA3NwY0IKY3O_M31j5HgNkFIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbV=
+gEAAABYQ~~" target=3D"_blank" style=3D"font-family: 'Noto Sans', 'Helvetica=
+ Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 10px; line-h=
+eight: 14px; text-decoration: none; text-transform: uppercase; color: #ffff=
+ff; border: none;"><img src=3D"https://blzmedia-a.akamaihd.net/emails/globa=
+l/ratings/pegi/ratings/logo-pegi-18.gif" style=3D"display: block; text-deco=
+ration: none; padding-right: 2px;" width=3D"55" height=3D"auto" border=3D"0=
+" alt=3D"PEGI 18"></a></td>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=
+=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09=
+</td>=0A=09=09=09</tr>=0A=09=09=09=0A=09=09=09</table>=0A=09=09</center>=0A=
+=09=0D=0A<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https:/=
+/links.battle.net/q/6UXKH1N_tz9aTlQlZEIiRg~~/AAQRxQA~/RgRlX7i_PlcDc3BjQgpjc=
+78zfWPkeA2QUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh">=0D=0A</body>=
+=0A</html>=0A<!-- HTML | END OF EMAIL -->
+--_----qLms8nZUU2dcrS+3OLv0Tw===_55/F8-38239-FB33D736--
+

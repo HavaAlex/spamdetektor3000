@@ -1,0 +1,785 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:2b41:b0:a9e:b08f:56e7 with SMTP id b1csp1374794ejg;
+        Wed, 6 Nov 2024 06:08:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHltMhIIq10LKjoMSjwsH6cs5YWwuBWLB6nSBw/PSistWWieFygVd2qVBx22IvhHKKx1RIL
+X-Received: by 2002:a05:622a:144b:b0:460:9ec3:1b80 with SMTP id d75a77b69052e-462b869ebecmr327770291cf.27.1730902095987;
+        Wed, 06 Nov 2024 06:08:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730902095; cv=none;
+        d=google.com; s=arc-20240605;
+        b=TiCWYk2OgpD4ABmLAo25hvLahRppop7SjMn16A76E2QxUrpkOTUVx9OpojL2V6Hm2r
+         137e5MOiIhbd/TTR5tUnbgulGq4JVJU5D3sAoCwt17xh3Lv0zt2ejvjNedUJgTgJVtpm
+         z25elZSAC9QNHIdj7iS/gXfIGdofxoiXTq8lc9WXQ9Wj4N8hr3GxwrG/oyJrnZXlpdzO
+         s6PJ9ru0V5qGAeytp402P04mjK12B2qqj4BU6lgINXaHZ94AvZ1Hfyj/Vt6t+TyEpW6f
+         E/pDY/eKlHejzJNCGrJv+G8Bf4LtSms634OPjHIucjBJY8KysVp+pdqmxLZxWC6h0seT
+         Na6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:message-id:reply-to:mime-version:list-unsubscribe-post
+         :list-unsubscribe:date:subject:to:from:dkim-signature:dkim-signature;
+        bh=5IhzSXR+mvcn+6trJGndjwNcRqxX+QGfgIfX5QqbuIE=;
+        fh=O+4GRZ5PByShowznXegVzkfwGofP3WcFi4cisp1vwGc=;
+        b=UEDOmQWa0Q8hDxORhwxgLS1pfv9IjFtJfz+raYV8j2T+6BXVQr83OjjOxBPa1iy7X0
+         a+Gb4gU40o/BHM/yvCMNnPEInWXQid5eLKYusUP+YWyYRjVLIt89RvlnU3EH9tXUUVOA
+         z8D4eEJ0JOMWi0DP2JhXfzgzeeKAdkbskeGXnJPab6PViV8ubbLdXJL85HSO+kLbojxY
+         qc3vfZOHhUnWCQ0xLwky73RXlr+6IyXEPpV/xtNlhQODEITjhN2RYTSBXQ/ambsuTYeg
+         0pJ9byiWok5HH1mFBC8gf4MKc0vBp8crAw9KoDG1POMAHzpOf4oKLijb2jUO0u1CtlyJ
+         287Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.molmove.com header.s=50dkim1 header.b=cnE936uH;
+       dkim=pass header.i=@s50.y.mc.salesforce.com header.s=fbldkim50 header.b=PK85LAiP;
+       spf=pass (google.com: domain of bounce-21_html-103558894-685317-510004698-3317@bounce.mail.molmove.com designates 161.71.64.70 as permitted sender) smtp.mailfrom=bounce-21_HTML-103558894-685317-510004698-3317@bounce.mail.molmove.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.molmove.com
+Return-Path: <bounce-21_HTML-103558894-685317-510004698-3317@bounce.mail.molmove.com>
+Received: from mta.mail.loyaltyteam.com (mta.mail.loyaltyteam.com. [161.71.64.70])
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad24daa5si156027911cf.650.2024.11.06.06.08.15
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 06 Nov 2024 06:08:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-21_html-103558894-685317-510004698-3317@bounce.mail.molmove.com designates 161.71.64.70 as permitted sender) client-ip=161.71.64.70;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.molmove.com header.s=50dkim1 header.b=cnE936uH;
+       dkim=pass header.i=@s50.y.mc.salesforce.com header.s=fbldkim50 header.b=PK85LAiP;
+       spf=pass (google.com: domain of bounce-21_html-103558894-685317-510004698-3317@bounce.mail.molmove.com designates 161.71.64.70 as permitted sender) smtp.mailfrom=bounce-21_HTML-103558894-685317-510004698-3317@bounce.mail.molmove.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.molmove.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=50dkim1; d=mail.molmove.com;
+ h=From:To:Subject:Date:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:
+ Reply-To:Message-ID:Content-Type; i=info@mail.molmove.com;
+ bh=5IhzSXR+mvcn+6trJGndjwNcRqxX+QGfgIfX5QqbuIE=;
+ b=cnE936uHEjUMGR+oMXoKu5qZvjhxkVfC7D22Grn7LkX4OHuWU8rMvD+ZP4ENvhXaCmZMvyIgs0XZ
+   7GOtcLkTHwyKP7Vrrk46BP+iaX6sM1tJXNBRrK41AvXaBcrq+kgpzpqcVG7TbILsSF8r8KivhKTC
+   ooA1vtS6PzbkDqMzWjKEzb9ab/wM9IwuoHoOGaRVrH1EXClF5xZouRyJGIBnoct1LcciGkiFA5sJ
+   PlVQteOjNAjnRSx6544BJ3g++vynY0fO4BpIiY+zATZL4ng3TGVw36+o3zKJHx++1gd3cqO7jLT0
+   zx1uR2xi+wbJ7YTXnJH4vt129u0NkvWSSwaLnQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=fbldkim50; d=s50.y.mc.salesforce.com;
+ h=From:To:Subject:Date:List-Unsubscribe:MIME-Version:Reply-To:Message-ID:
+ Content-Type;
+ bh=5IhzSXR+mvcn+6trJGndjwNcRqxX+QGfgIfX5QqbuIE=;
+ b=PK85LAiPR8EWdeBSuqqZr6a3uPQGRX9ySjQu9oY2SZEs/Yhg5o5bI/rrvqsrkgVV2iYy83APtk0q
+   HCLUMYRFB9H9NRDGHU9duadfg5meYtHTL5HK3q8ZNXnBBtDlJJESLeJ+BE+j6kXbkrMWHlB8WMtp
+   ofcxvnvR3fYhKwWGUmtd2XHyZcwXxydTLZ33LTdGcF24X3+lUeNzMP9utj+GqwV603MICvv4A85c
+   t5taXrJiE78MPFDbANtW5D6Saw+QosoNLFIOes5VMG+7v4B8zsR66Ykn/Hd5bnq3mOkO8WmSCCc1
+   50Rqq8LfAdYnXLLy3JBmgCI8uVzgW1ezsLUMGA==
+Received: by mta.mail.loyaltyteam.com id h5ds4u2fmd4d for <havasi.alex.marton@gmail.com>; Wed, 6 Nov 2024 14:06:05 +0000 (envelope-from <bounce-21_HTML-103558894-685317-510004698-3317@bounce.mail.molmove.com>)
+From: "MOL Move" <info@mail.molmove.com>
+To: <havasi.alex.marton@gmail.com>
+Subject: =?UTF-8?B?8J+SpSBOb3ZlbWJlcmkgTU9MIE1vdmUgYWrDoW5sYXRva2thbCB2?=
+ =?UTF-8?B?w6FydW5rIQ==?=
+Date: Wed, 06 Nov 2024 08:06:05 -0600
+List-Unsubscribe: <https://click.mail.molmove.com/subscription_center.aspx?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtaWQiOiI1MTAwMDQ2OTgiLCJzIjoiMTAzNTU4ODk0IiwibGlkIjoiMjEiLCJqIjoiNjg1MzE3IiwiamIiOiIzMzE3IiwiZCI6IjUwMDAxNiJ9.Nfk00AlSpoYcEiFKNtFPJYJvav4m2TQ9Hx4eCduw_Lc>, <mailto:leave-fd8816711a3c402029-fe241570766101757d1d74-fec112787067057a-fe2e117175640479731d78-ff3117737463@leave.mail.molmove.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+MIME-Version: 1.0
+Reply-To: =?UTF-8?Q?MOL_Move_=C3=9Cgyf=C3=A9lszolg=C3=A1lat?=
+ <reply-fec112787067057a-21_HTML-103558894-510004698-3317@molmove.com>
+X-SFMC-Stack: 50
+x-job: 510004698_685317
+Message-ID: <66b1a4d1-20b0-4fa3-8a30-e85420a16b08@fra3s50mta220.xt.local>
+Feedback-ID: 510004698:685317:161.71.64.70:sfmktgcld
+Content-Type: multipart/alternative;
+	boundary="hM8moEbmFXnJ=_?:"
+
+This is a multi-part message in MIME format.
+
+--hM8moEbmFXnJ=_?:
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+ 
+ MOL Move EDM
+
+<link rel='preconnect' href='https://fonts.gstatic.com'> 
+<link href='https://fonts.googleapis.com/css2?family=Poppins&display=swap' rel='stylesheet'>
+<link rel='preconnect' href='https://fonts.gstatic.com'> 
+<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap' rel='stylesheet'>
+
+
+Ha nem jelenik meg megfelelően az e-mail, akkor 
+https://view.mail.molmove.com/?qs=fa838868c15fa62e6368a691222b60395b2d945d44bbb9a4e1c5e3391ddd0d314142c5956bbdd06c115c66722467ba35613a3826e0b99c4f8c39833c2808e5cd7bc939fc2ad8d9157f98460aabe883db 
+kattints ide! 
+
+   
+ 
+ Kedves Alex!
+
+Az ősz folytatódik, és mi új ajánlatokkal, valamint izgalmas kedvezménykuponokkal készültünk Neked! 
+
+ 
+
+Nézz rá a MOL Move applikációdra, fedezd fel kiemelt ajánlatainkat, és hozd ki a legtöbbet az őszből velünk! 
+
+   
+ 
+Aktuális havi ajánlataink
+ 
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+ 
+https://click.mail.molmove.com/?qs=80fe4121713abc2485a2c255e5e3b360615635e64017c70b8dc9883161105ac14ebaabf7a389350702f4cc0f6726c0f76bbe8ba770ccd952a78999b86e36a03a 
+ 
+   
+
+
+
+ 
+
+ Azért kaptad ezt a levelet, mert részt veszel a MOL Move programban ezzel az e-mail címmel:
+ 
+havasi.alex.marton@gmail.com 
+havasi.alex.marton@gmail.com. 
+ Ha nem szeretnél többé általános vagy személyre szabott reklámüzenetet kapni a MOL Move programmal kapcsolatban, kattints a linkre:
+ 
+https://click.mail.molmove.com/?qs=80fe4121713abc24ad6a8fba7e4a52bb899ba5c1249350d69b68ea899f6e9d4715a2dbaaf00a1970df8cba7ea44d2b4deb1d127f217e77a33d14b2bd5def6129 
+Leiratkozom az általános vagy személyre szabott reklámüzenetekről 
+
+ Ha írnál nekünk: 
+ 
+mailto:hello@molmove.hu 
+ hello@molmove.hu 
+
+ MOL Nyrt. Dombóvári út 28. 1117 Budapest Magyarország
+ 
+
+https://click.mail.molmove.com/?qs=80fe4121713abc2476a675c631f118f02a93fc5211bbc59bbb65021d67cde938f6b0e51934ea9e2257493dc58413039514e4fa613da30720b14c521f49712cbf 
+
+ Adatkezelési tájékoztató  Copyright © 2024 MOL Nyrt.
+
+
+
+ 
+
+
+ 
+
+
+
+--hM8moEbmFXnJ=_?:
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="hu">
+  <img src="https://click.mail.molmove.com/open.aspx?ffcb10-fec112787067057a-fe5b11707c6205797210-fe2e117175640479731d78-ff9c1671-fe241570766101757d1d74-ff3117737463&d=500016&bmt=0" width="1" height="1" alt="">
+  
+  <!--  -->
+  <!-- -->
+<head>
+  <style>
+    
+    .footer-text {
+      text-align:left;padding-left:3em;line-height:16px; font-size: 11px; padding-left: 64px; padding-right: 64px; padding-bottom: 24px; font-family: ;  }
+  </style>
+  <style>
+    .footer-text-container a {
+      text-decoration: none; font-weight: 700;line-height:16px; font-size: 11px;color:;
+    }
+  </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"> 
+<title>MOL Move EDM</title>
+<!---->
+<link rel='preconnect' href='https://fonts.gstatic.com'> 
+<link href='https://fonts.googleapis.com/css2?family=Poppins&display=swap' rel='stylesheet'>
+<link rel='preconnect' href='https://fonts.gstatic.com'> 
+<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap' rel='stylesheet'>
+<style>
+  <!-- THIS SCRIPT NEEDS CSS CONSTANTS TO BE LOADED BEFORE IT -->
+  * {
+    font-family: 'Poppins', Verdana, sans-serif;
+  }
+  body, p, h1, h2, h3, h4, label, a, button, ul, li, table, td {
+    font-family: 'Poppins', Verdana, sans-serif;
+  }
+  p, label, a, button, ul, li, table, td {
+    font-size: 0.8125rem; line-height: 1rem; font-family: 'Poppins', Verdana, sans-serif; color: #757575;
+  }
+  p, label, ul, li, table, td {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  h1 {
+    font-size: 1.5rem; line-height: 1.875rem; font-family: 'Poppins', Verdana, sans-serif; color: #000000;
+  }
+  h2 {
+    font-size: 1.0rem; line-height: 1.125rem; font-family: 'Poppins', Verdana, sans-serif; color: #000000;
+  }
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    color: #000000;
+  }
+  a:link{
+    text-decoration:none;
+    color:#008663;
+    font-weight: 700;
+  }
+  a:visited{
+    text-decoration:none;
+    color:#066D52;
+    font-weight: 700;
+  }
+  a:hover{
+    text-decoration:underline;
+    color:#008663;
+    font-weight: 700;
+  }
+</style>
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><style>
+  
+  h1, h2, h3, h4, p {
+    padding: 0px;
+    Margin:0px;
+    margin-bottom: 8px;
+  }
+  td.stylingblock-content-wrapper ul {
+    margin-left: 32px;
+  }
+  
+  
+</style>
+<style>
+  .default-margin {
+    margin: 0 54px;
+  }
+  .large-margin {
+    margin: 0 138px;
+  }
+  .header-text {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  
+  .footer-text-container {
+      text-align: center;
+      font-size: 0.8125rem;
+    }
+
+  
+</style>
+<style type="text/css">
+  ReadMsgBody{
+    width: 100%;
+  }
+  .ExternalClass {
+    width: 100%;
+  }
+  .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+    line-height: 100%;
+  }
+  body {
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;
+    margin:0 !important;
+  }
+  table td {
+    border-collapse: collapse;
+  }
+  img {
+    outline:0;
+  }
+  a img {
+    border:none;
+  }
+  @-ms-viewport{
+    width: device-width;
+  }
+  @media only screen and (max-width: 480px) {
+    .coupon-table {
+       padding-left: 8px !important;
+       padding-right: 8px !important;
+    }
+    .container {
+      width: 100% !important;
+    }
+    .footer {
+      width:auto !important;
+      margin-left:0;
+    }
+    .mobile-hidden {
+      display:none !important;
+    }
+    .logo {
+      display:block !important;
+      padding:0 !important;
+    }
+    img {
+      max-width:100% !important;
+      height:auto !important;
+      max-height:auto !important;
+    }
+    .header img{
+      max-width:100% !important;
+      height:auto !important;
+      max-height:auto !important;
+    }
+    .photo img {
+      width:100% !important;
+      max-width:100% !important;
+      height:auto !important;
+    }
+    .drop {
+      display:block !important;
+      width: 100% !important;
+      float:left;
+      clear:both;
+    }
+    .footerlogo {
+      display:block !important;
+      width: 100% !important;
+      padding-top:15px;
+      float:left;
+      clear:both;
+    }
+    .nav4, .nav5, .nav6 {
+      display: none !important;
+    }
+    .tableBlock {
+      width:100% !important;
+    }
+    .responsive-td {
+      width:100% !important;
+      display:block !important;
+      padding:0 !important;
+    }
+    .fluid, .fluid-centered {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .fluid-centered {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    /* MOBILE GLOBAL STYLES - DO NOT CHANGE */
+    body, .tb_properties{
+      font-family: 'Poppins', Verdana, sans-serif;
+      font-size: 16px !important;
+      line-height: 1.5 !important;
+      padding: 0px !important;
+    }
+    .buttonstyles{
+      font-family: 'Poppins', Verdana, sans-serif;
+      font-size: 16px !important;
+      padding: 10px !important;
+    }
+    h1{
+      font-family: 'Poppins', Verdana, sans-serif;
+    }
+    h2{
+      font-family: 'Poppins', Verdana, sans-serif;
+    }
+    h3{
+      font-family: 'Poppins', Verdana, sans-serif;
+    }
+    a:not(.buttonstyles){
+      line-height: 1 !important;
+    }
+    .mobile-hidden{
+      display: none !important;
+    }
+    .responsive-td {
+      width: 100% !important;
+      display: block !important;
+      padding: 0 !important;
+    }
+    /* END OF MOBILE GLOBAL STYLES - DO NOT CHANGE */
+  }
+</style>
+<style>
+  @media screen and (min-width:481px){
+    .employeeBenefit-infomation-email-padding {
+      margin-bottom: 20px !important;
+    }
+    .image_full, .desktop {
+      display:block!important
+    }
+    .image_mobile, .mobile {
+      mso-hide: all;
+      display:none!important
+    }
+  }
+  @media screen and (max-width:480px){
+    #desktop, .desktop {
+      display:none!important;
+    }
+    #mobile, .mobile {
+      display:revert!important;
+      max-height:none!important;
+    }
+    .default-margin {
+      margin: 0 8px !important;
+    }
+    .large-margin {
+      margin: 0 8px !important;
+    }
+    .mobile-hidden {
+      display:none !important;
+    }
+    .coupon-table {
+       padding-left: 8px !important;
+       padding-right: 8px !important;
+    }
+    .employeeBenefit-infomation-email-padding {
+      margin-bottom: 0px !important;
+    }
+  }
+</style>    
+<!--[if mso]> <style type="text/css"> /* Begin Outlook Font Fix */ body, table, td { font-family: 'Poppins', Verdana, sans-serif; font-size:16px; color:#808080; line-height:1; } /* End Outlook Font Fix */ </style> <![endif]-->
+
+<!-- CUSTOM STYLES -->
+
+<style>
+   @-ms-viewport{
+    width: device-width;
+  }
+  @media only screen and (max-width: 480px) {
+     td.stylingblock-content-wrapper p,
+  td.stylingblock-content-wrapper h1,
+  td.stylingblock-content-wrapper h2, 
+  td.stylingblock-content-wrapper h3, 
+  td.stylingblock-content-wrapper h4 {
+      padding-left: 8px !important; padding-right: 8px !important;
+    }
+    td.stylingblock-content-wrapper {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+    td.stylingblock-content-wrapper img[data-assetid="58349"],
+    td.stylingblock-content-wrapper img[data-assetid="56188"],
+    td.stylingblock-content-wrapper img[data-assetid="52355"],
+    td.stylingblock-content-wrapper img[data-assetid="52352"],
+    td.stylingblock-content-wrapper img[data-assetid="52357"],
+    td.stylingblock-content-wrapper img[data-assetid="52359"],
+    td.stylingblock-content-wrapper img[data-assetid="56242"],
+    td.stylingblock-content-wrapper img[data-assetid="56245"],
+    td.stylingblock-content-wrapper img[data-assetid="56811"],
+    td.stylingblock-content-wrapper img[data-assetid="52761"],
+    td.stylingblock-content-wrapper img[data-assetid="52765"],
+    td.stylingblock-content-wrapper img[data-assetid="59327"],
+    td.stylingblock-content-wrapper img[data-assetid="59666"]{
+      display:block !important;
+      max-width: 40% !important;
+      padding-top: 16px!important;
+      text-align: center!important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+
+  @media screen and (max-width:480px){
+    td.stylingblock-content-wrapper p,
+  td.stylingblock-content-wrapper h1,
+  td.stylingblock-content-wrapper h2, 
+  td.stylingblock-content-wrapper h3, 
+  td.stylingblock-content-wrapper h4 {
+      padding-left: 8px !important; padding-right: 8px !important;
+    }
+    td.stylingblock-content-wrapper {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+    td.stylingblock-content-wrapper img[data-assetid="58349"],
+    td.stylingblock-content-wrapper img[data-assetid="56188"],
+    td.stylingblock-content-wrapper img[data-assetid="52355"],
+    td.stylingblock-content-wrapper img[data-assetid="52352"],
+    td.stylingblock-content-wrapper img[data-assetid="52357"],
+    td.stylingblock-content-wrapper img[data-assetid="52359"],
+    td.stylingblock-content-wrapper img[data-assetid="56242"],
+    td.stylingblock-content-wrapper img[data-assetid="56245"],
+    td.stylingblock-content-wrapper img[data-assetid="56811"],
+    td.stylingblock-content-wrapper img[data-assetid="52761"],
+    td.stylingblock-content-wrapper img[data-assetid="52765"],
+    td.stylingblock-content-wrapper img[data-assetid="57255"],
+    td.stylingblock-content-wrapper img[data-assetid="59327"],
+    td.stylingblock-content-wrapper img[data-assetid="59666"]{
+      display:block !important;
+      max-width: 50%!important;
+      padding-top: 16px!important;
+      text-align: center!important;
+      margin-left: auto !important;
+      margin-right: auto !important;{
+      max-width: 40% !important;
+      padding-top: 16px!important;
+    }
+  }
+  @media screen and (min-width:481px){
+  }
+</style>
+
+</td></tr></table>
+<style type="text/css">
+ :root {
+   color-scheme: light dark;
+   supported-color-schemes: light dark;
+ }
+ 
+ @media (prefers-color-scheme: dark ) {
+ }
+ 
+</style>
+</head>
+   
+
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Olvass tovább! 🔍</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+   <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" style="width: 100%;">
+      <tr>
+        <td align="center" width="600" style="text-align: center; width: 100%;">
+          <span style="color:#000000;font-size: 11px;">Ha nem jelenik meg megfelelően az e-mail, akkor <a href="https://view.mail.molmove.com/?qs=fa838868c15fa62e6368a691222b60395b2d945d44bbb9a4e1c5e3391ddd0d314142c5956bbdd06c115c66722467ba35613a3826e0b99c4f8c39833c2808e5cd7bc939fc2ad8d9157f98460aabe883db" style="color:#000000; text-decoration: none; font-weight: 700;">kattints ide!</a></span>
+        </td>
+      </tr>
+    </table>
+  <tbody>
+    <tr>
+      <td>
+        <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/a2c5670e-561a-4a78-a706-777286516cfd.png" width="600" height="98" alt="Mol Move" style="display: block;"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#008663">
+                  <tbody>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="40">&nbsp;</td>
+                      <td><p style="padding:0; margin:0; font-family: Calibri, Helvetica, Arial, 'sans-serif'; font-size: 38px; color: #ffffff !important; font-weight: bold; text-align: left; line-height: 40px;"> Kedves Alex!</p>
+                        <br>
+                        
+                        <p style="padding:0; margin:0; font-family: Calibri, Helvetica, Arial, 'sans-serif'; font-size: 24px; color: #ffffff !important; font-weight: bold; text-align: left; line-height: 26px;">Az ősz folytatódik, és mi új ajánlatokkal, valamint izgalmas kedvezménykuponokkal készültünk Neked! </p>
+        <p style="padding:0; margin:0; font-family: Calibri, Helvetica, Arial, 'sans-serif'; font-size: 25px; color: #ffffff !important; font-weight: normal; text-align: left; line-height: 15px;">&nbsp;</p>
+                        <p style="padding:0; margin:0; font-family: Calibri, Helvetica, Arial, 'sans-serif'; font-size: 24px; color: #ffffff !important; font-weight: normal; text-align: left; line-height: 26px;">Nézz rá a MOL Move applikációdra, fedezd fel kiemelt ajánlatainkat, és hozd ki a legtöbbet az őszből velünk! </p>
+      
+       
+      </td>
+                    
+                    
+                   
+
+                  </tbody>
+                </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/ef37aeb9-313f-46b8-93ac-92b687c3e0c4.png" width="600" height="55" alt="" style="display: block;"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td width="50">&nbsp;</td>
+                      <td height="50">&nbsp;</td>
+                      <td width="50">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="50">&nbsp;</td>
+                      <td><p style="padding:0; margin:0; font-family: Calibri, Helvetica, Arial, 'sans-serif'; font-size: 48px; color: #e8c265; font-weight: bold; text-align: left;">Aktuális havi ajánlataink</p></td>
+                      <td width="50">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="50">&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td width="50">&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td align="center"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/ab813b8f-dd9b-482d-80a1-7ed1a3bc1440.png" width="600" height="297" alt="Coca-Cola akció" style="display: block;"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/4cdc9900-ab77-40a5-98ae-1e184b309671.png" width="280" height="400" alt="Cornexi Zabrudi ajánlat"/></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/bfd30349-0214-4cd9-a033-692b1e401c30.png" width="281" height="400" alt="Zwack Uncium akció"/></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/d8377620-c56b-4ad0-888a-c5c13cbcb8a3.png" width="280" height="400" alt="Pasqua akció"/></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/c5a6cf1f-7931-419d-a383-451486527557.png" width="281" height="400" alt="Schogetten akció"/></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/cca31c98-bb46-4f85-9181-5f02d19ca7fe.png" width="280" height="400" alt="EVOX ajánlat"></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/b6adc9cd-2a26-48f7-aa06-de039d5d3075.png" width="281" height="400" alt="Mexi Corn ajánlat"></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+      <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/22d78d7d-0ae9-497f-ba96-bf9913a0e923.png" width="280" height="400" alt="California Scents ajánlat"/></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/7c28f56c-910c-44da-b17a-d52323d7d998.png" width="281" height="400" alt="Chio chips ajánlat"/></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                    
+     <tr>
+                      <td width="10">&nbsp;</td>
+                      <td width="280" align="left"></td>
+                      <td>&nbsp;</td>
+                      <td width="281" align="right"></td>
+                      <td width="10">&nbsp;</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+               
+    
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    
+
+     <tr>
+                      <td align="center"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/a5a57858-3842-4537-bbd5-dd66447afcc9.png" width="600" height="227" alt="Repont" style="display: block;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                
+                
+             
+               
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td width="40">&nbsp;</td>
+                      <td height="50">&nbsp;</td>
+                      <td width="40">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="40">&nbsp;</td>
+                      <td align="center"><a href="https://click.mail.molmove.com/?qs=80fe4121713abc2485a2c255e5e3b360615635e64017c70b8dc9883161105ac14ebaabf7a389350702f4cc0f6726c0f76bbe8ba770ccd952a78999b86e36a03a" target="_blank"><img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/b61b109f-b73c-401f-9fd9-e2466fe93f9b.png" width="420" height="84" alt="Irány az ajánlatok!" style="display: block;"/></a></td>
+                      <td width="40">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="40">&nbsp;</td>
+                      <td height="50">&nbsp;</td>
+                      <td width="40">&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <!--  -->
+  <tr>
+    <td class="footer-top-image-container">
+      <img src="https://image.mail.molmove.com/lib/fe2e117175640479731d78/m/1/9350c8fa-3a5b-4fe9-b9ec-700cdda193cd.png" style="display:block;width: 100%;" class="footer-top-image">
+    </td>
+  </tr>
+  <tr>
+    <td class="footer-text-container" style="background-color: #008663;">
+
+      <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 0px; " class="stylingblock-content-wrapper camarker-inner"><!-- -->
+
+<style>
+  
+  .footer-text { text-align:left;padding-left:3em;line-height:16px; font-size: 11px; padding-left: 64px; padding-right: 64px; padding-bottom: 24px; font-family: 'Poppins', Verdana, sans-serif;  }
+</style>
+<style>
+  .footer-text-container a {
+    text-decoration: none; font-weight: 700;line-height:16px; font-size: 11px;color:#FFFFFF;
+  }
+</style>
+<p class="footer-text" style="text-align:left;padding-left:3em;line-height:16px; font-size: 11px; padding-left: 64px; padding-right: 64px; padding-bottom: 24px; font-family: 'Poppins', Verdana, sans-serif; color:#FFFFFF;">
+  Azért kaptad ezt a levelet, mert részt veszel a MOL Move programban ezzel az e-mail címmel:
+  <a style="text-decoration: none; font-weight: 700;line-height:16px; font-size: 11px;color:#FFFFFF;" href="https://click.mail.molmove.com/?qs=80fe4121713abc24a10b033f816618d81c2a0412ba36832cae5f3a7f9e2433a2bce38da79e052d77c2c1922568a0a789cc21fc2bdce94e5134caaab3cdb790f3">havasi.alex.marton@gmail.com.</a>
+  Ha nem szeretnél többé általános vagy személyre szabott reklámüzenetet kapni a MOL Move programmal kapcsolatban, kattints a linkre:
+  <a style="text-decoration: none; font-weight: 700;line-height:16px; font-size: 11px;color:#FFFFFF;" href="https://click.mail.molmove.com/?qs=80fe4121713abc24ad6a8fba7e4a52bb899ba5c1249350d69b68ea899f6e9d4715a2dbaaf00a1970df8cba7ea44d2b4deb1d127f217e77a33d14b2bd5def6129">Leiratkozom az általános vagy személyre szabott reklámüzenetekről</a>
+  <br>
+  Ha írnál nekünk: 
+  <a style="text-decoration: none; font-weight: 700;line-height:16px; font-size: 11px;color:#FFFFFF;" href="mailto:hello@molmove.hu"> hello@molmove.hu</a>
+  <br>
+  MOL Nyrt. Dombóvári út 28. 1117 Budapest Magyarország
+  <br>
+  <a style="text-decoration: none; font-weight: 700;line-height:16px; font-size: 11px;color:#FFFFFF;" href="https://click.mail.molmove.com/?qs=80fe4121713abc2476a675c631f118f02a93fc5211bbc59bbb65021d67cde938f6b0e51934ea9e2257493dc58413039514e4fa613da30720b14c521f49712cbf">
+    Adatkezelési tájékoztató</a> Copyright © 2024 MOL Nyrt.
+</p>
+</td></tr></table>
+    </td>
+  </tr>
+
+</table>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+    
+
+</body>
+</html>
+
+--hM8moEbmFXnJ=_?:--
+

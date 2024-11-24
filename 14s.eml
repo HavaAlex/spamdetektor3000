@@ -1,0 +1,1659 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:e951:b0:a9a:1ca4:b876 with SMTP id jw17csp636226ejb;
+        Thu, 24 Oct 2024 16:00:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHB/jayAchc+K2ffwWtT54QtcrS8E0t1ztE+SXGLyfhhhkECS1MVMgyZj3iEeCPj/T4V7X3
+X-Received: by 2002:a17:90a:c209:b0:2db:89f0:99a3 with SMTP id 98e67ed59e1d1-2e77f70c9c0mr3674525a91.26.1729810818048;
+        Thu, 24 Oct 2024 16:00:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729810818; cv=none;
+        d=google.com; s=arc-20240605;
+        b=BWE9NANxh7El3s0GiwA7cpIJtBEZl6vkqb+r3jwsanAZj/ED0ftWOpbxnz306CaXXu
+         6WtNyGetWU3o4br2VjGxcA8QGzZ+5ewiMm7hsuUVQDvgHguyan7LNWav9dg1czY8zUc0
+         vB4Bg0+254wqkqUS8wb3chYcKbpZG1v/uU/9+5HJoEuDPDOhWlil6PNJaspctvKr78yE
+         WVuohsrLZJX5ttxaY94cxxDXT6RDEZyhYRP04S9IJ+gNF//jKxLWhvMg0omcrgtAWvOb
+         uI4cXpORANqKiXjcA7UI3S3qEv67Q3XJNGuVKdoUzfvHgMqICzSsF+idafJPkLFJXHT2
+         JuFw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe:subject:list-unsubscribe-post:from:mime-version
+         :date:message-id:to:dkim-signature;
+        bh=1UhOFxzKKsDKwX5SYIBsZ4Db5yNCS26WW+NkoQ3azBc=;
+        fh=00K0+r2ygcAxUGs4owOG4tJenfjMHBBKXo35BF9rb9c=;
+        b=SFEok3K21kDdi3LTEjHvpglyfQEZJyWJvAROsf/YKlqhEfWXomb9SpLraCCgzE4JwG
+         s5VIxfYRo6UGYdW99tOT2rIHeI8NDg91nF5TChw/vMof6zIkgJZXriS7vXxAPs/qjrX2
+         Vg2QE+IJ2eTQ9aUWqr+96HepnWCVJdWHWOeXrTL3IQZfD4+z8BBaNUe+JTEgRORoboK2
+         jUJ0sFncPBMXc6zDspWEAiD02LhBpxOtBzpES8IZVaBxJb4yNivYK2Da3ikZIw86MPw+
+         g3oYmMqlnDBLSBokUTQEjb3HDo8yUkUnRvJXsDpBqnN2ZSyadzwDemUZxzUwVeDK7gE4
+         SCtQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@e.battle.net header.s=scph1021 header.b=kPQrY5nx;
+       spf=pass (google.com: domain of msprvs1=20027wpcyz_d3=bounces-266693-353@e.battle.net designates 223.165.123.166 as permitted sender) smtp.mailfrom="msprvs1=20027wpcyz_D3=bounces-266693-353@e.battle.net";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=battle.net
+Return-Path: <msprvs1=20027wpcyz_D3=bounces-266693-353@e.battle.net>
+Received: from z2vlqwvm.e.battle.net (z2vlqwvm.e.battle.net. [223.165.123.166])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2e8e37ba07fsi37220a91.139.2024.10.24.16.00.17
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 24 Oct 2024 16:00:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=20027wpcyz_d3=bounces-266693-353@e.battle.net designates 223.165.123.166 as permitted sender) client-ip=223.165.123.166;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@e.battle.net header.s=scph1021 header.b=kPQrY5nx;
+       spf=pass (google.com: domain of msprvs1=20027wpcyz_d3=bounces-266693-353@e.battle.net designates 223.165.123.166 as permitted sender) smtp.mailfrom="msprvs1=20027wpcyz_D3=bounces-266693-353@e.battle.net";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=battle.net
+X-MSFBL: H/ND4YdJZHXvPxjONOhtWoLQRDiNcUpph6at7NzI1p8=|eyJjdXN0b21lcl9pZCI
+	6IjI2NjY5MyIsIm1lc3NhZ2VfaWQiOiI2NzEyODFkMTFhNjdlMGNhNDA4OSIsInI
+	iOiJoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tIiwidGVuYW50X2lkIjoic3B
+	jIiwic3ViYWNjb3VudF9pZCI6IjM1MyJ9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=e.battle.net;
+	s=scph1021; t=1729810817; i=@e.battle.net;
+	bh=1UhOFxzKKsDKwX5SYIBsZ4Db5yNCS26WW+NkoQ3azBc=;
+	h=To:Message-ID:Date:Content-Type:From:List-Unsubscribe-Post:
+	 Subject:List-Unsubscribe:From:To:Cc:Subject;
+	b=kPQrY5nxl8mDCsmahFK7dUy5idicBXJqpSZx/v3sG5syvZDaAjQMQaLpKxkdVC5G6
+	 zz3+2UN+2DuUWpUOK9pPGSJ7uX5t4ZWNbNQYVsaLhzAQngkKctzyWCcLL4XdroW3wd
+	 QwYVsVvoBCXuFuO282ydQBYviYG2JMVsaX1X8BVo=
+To: havasi.alex.marton@gmail.com
+Message-ID: <98.04.08903.181DA176@ij.mta1vrest.cc.prd.sparkpost>
+Date: Thu, 24 Oct 2024 23:00:17 +0000
+Content-Type: multipart/alternative; boundary="_----uSraoXkbvcVNeAp1rVpMag===_57/04-08903-181DA176"
+MIME-Version: 1.0
+From: "Battle.net" <noreply@e.battle.net>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Subject: Boo! Celebrate Halloween with Battle.net, havaalex5000!
+List-Unsubscribe: <https://03.emailinboundprocessing.com/enc_user/list_unsubscribe?d=%241%240DwUulsxa2XaOXmFo8rsaQ%3D%3D%2454f6tgmS0wfBh0gXh%2BC5%2F2B2w4QksNaO8EBQBX90v8FgNi9OZlVtIPycr0k%2F%0AExEngnix74ir837s7hMqWRamSl8f2VvRW6mzOGeybgxyGR0ubx0rQjzV2D69%0A8ZAC80c5xnu1lWzQc%2BNINHsbgaHHgO5a%2BoINQCgrMggwfdBtSxFr%2FuDIGYrL%0AsJljwySaF6CSC7oEo1t2CFy9%2BFvFQDO110KptXLKQ5sydMCKeHq8bAZiE7iN%0ABHqggbcy6oS8dPhitjpipHjI8Sd5VkAzQsx%2BF%2BV8D8ljxiKV8rqQAJpI6CB5%0AUtORWjGGybjgcKY3aSEBtMO7u1TOzRixH6ltUG8GPQ%3D%3D&1=1>,<mailto:4_oyjwzm6904bf5bbb1lm6stg6lafgp470m4290f35ckgb4y9h5mv22m@unsubscribe-03.emailinboundprocessing.com?subject=Unsubscribe%20pnrcgsq1bgtl4dzb3vkso6apiucgqj9se1mxdyskk4obdgfmqnhnwovcfd&body=DO_NOT_DELETE-17nbi6esyyht435gazfaxueoyib8wghk0w2wea2n0vvrxgxx3pm8rqj5flak9z90l7g58mpj0sdoxfalzyx36cgpi910fashv1-DO_NOT_DELETE>
+
+--_----uSraoXkbvcVNeAp1rVpMag===_57/04-08903-181DA176
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+Halloween=0ATerror haunts Overwatch 2, Hallow=E2=80=99s End curses World of=
+ Warcraft,=0Aand Hallow=E2=80=99s Wake possesses Diablo=0AImmortal.=0AHALLO=
+WEEN=0AFUN ON=0ABATTLE.NET=0A(=0Ahttps://links.battle.net/f/a/Pwlvr190xUhjC=
+-3NivcgqQ~~/AAQRxQA~/RgRo_VaBP0SkaHR0cHM6Ly91cy5zaG9wLmJhdHRsZS5uZXQvZW4tZ2=
+I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmd=
+XRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWltYWdlLWxpbmstaGFsbG93=
+ZWVuLWZ1bi1vbi1iYXR0bGVuZXRXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9=
+uQGdtYWlsLmNvbVgEAAABYQ~~=0A)                 HALLOWEEN=0AFUN ON=0ABATTLE.N=
+ET=0AEye=0Aof Junkrat, toe of Hog,=0A=0ATongue of Ghoul and splash of Grog,=
+=0A=0AMoira=E2=80=99s orb and Vile-Swarm's sting,=0A=0ALich King=E2=80=99s =
+leg and Lilith=E2=80=99s wing,=0A=0AFor a brew of trick and treat,=0A=0ALoa=
+d up Battle.net=C2=AE, take your=0Aseat!=0AHALLOWEEN=0ATERROR IS BACK IN OV=
+ERWATCH=0A2=0A(=0Ahttps://links.battle.net/f/a/CDbQtxu4M6nHSvkvRtQeAA~~/AAQ=
+RxQA~/RgRo_VaBP0S8aHR0cHM6Ly9vdmVyd2F0Y2guYmxpenphcmQuY29tL2VuLWdiL3NlYXNvb=
+j91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1=
+dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9aW1hZ2UtbGluay1oYWxsb3d=
+lZW4tdGVycm9yLWlzLWJhY2staW4tb3ZlcndhdGNoLTJXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YX=
+NpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~=0A)                 HALLOWEEN=0A=
+TERROR IS BACK IN OVERWATCH=0A2=0ARide=0Ayour witch=E2=80=99s broom into en=
+chanted queues, magic-tinged PoTGs, and=0Aotherworldly rewards in Overwatch=
+=C2=AE 2!=0A=0AHaunt your foes with the power of Mythic Spellbinder Widowma=
+ker,=0Athen charge your way into the all-new Junkenstein=E2=80=99s Laborato=
+ry=0Agame mode before making your fated return to Adlersbrunn in=0AJunkenst=
+ein=E2=80=99s Revenge and Wrath of the Bride.=0A=0APlus, power up for the l=
+imited-time My Hero Academia=0Acollaboration through 30 October! Heroes, vi=
+llains, and their=0Aideas of justice collide as you unlock exclusive cosmet=
+ics=0Ainspired by the anime=E2=80=99s most iconic=0Acharacters.=0AFace=0AYo=
+ur=0AFears=0A(=0Ahttps://links.battle.net/f/a/Vo-vOU-K-Rw5X8YeDfjo0A~~/AAQR=
+xQA~/RgRo_VaBP0SlaHR0cHM6Ly9vdmVyd2F0Y2guYmxpenphcmQuY29tL2VuLWdiL3NlYXNvbj=
+91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1d=
+G1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9YnV0dG9uLWxpbmstZmFjZS15=
+b3VyLWZlYXJzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21=
+YBAAAAWE~=0A)   Face=0AYour=0AFears=0A(=0Ahttps://links.battle.net/f/a/Vo-v=
+OU-K-Rw5X8YeDfjo0A~~/AAQRxQA~/RgRo_VaBP0SlaHR0cHM6Ly9vdmVyd2F0Y2guYmxpenphc=
+mQuY29tL2VuLWdiL3NlYXNvbj91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQm=
+dXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ=
+9YnV0dG9uLWxpbmstZmFjZS15b3VyLWZlYXJzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbG=
+V4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~=0A)                  IT=E2=80=99S=0AA CO=
+STUME PARTY IN=0AAZEROTH=0A(=0Ahttps://links.battle.net/f/a/jSI-QJAnVixpZ6f=
+pPURWQQ~~/AAQRxQA~/RgRo_VaBP0TBaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2Iv=
+ZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ0P3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI=
+0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY2=
+9udGVudD1pbWFnZS1saW5rLWl0cy1hLWNvc3R1bWUtcGFydHktaW4tYXplcm90aFcDc3BjQgpnE=
+oHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh=0A)            =
+     IT=E2=80=99S=0AA COSTUME PARTY IN=0AAZEROTH=0AGhosts=0Aand ghouls gath=
+er =E2=80=98round as Hallow=E2=80=99s End slithers back into World=0Aof War=
+craft=C2=AE! Through 31 October, don your best costumes with 50%=0Aoff all =
+transmogs =0A( https://links.battle.net/f/a/Q_IGaMowdO2DxuMZxEBSRw~~/AAQRxQ=
+A~/RgRo_VaBP0TKaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L3dvcmxk=
+LW9mLXdhcmNyYWZ0P3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWV=
+kaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD10ZXh0LW=
+xpbmstYWxsLXRyYW5zbW9ncyZsaWQ9Y2FyMnFrYzJxaW16I3RyYW5zbW9nc1cDc3BjQgpnEoHRG=
+mfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh )=0A=C2=B9 and conj=
+ure a legion of playful hijinks with 50% off all toys=0A=0A( https://links.=
+battle.net/f/a/dTIe_Rxkhb6vznU4buwohQ~~/AAQRxQA~/RgRo_VaBP0TAaHR0cHM6Ly9ldS=
+5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ0P3V0bV9zb3VyY=
+2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWln=
+bj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD10ZXh0LWxpbmstYWxsLXRveXMmbGlkPWtpaHd=
+tdzl5YjYwaiN0b3lzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC=
+5jb21YBAAAAWE~ )=0A=C2=B9.=0A=0AThrough 4 November, visit the in-game shop =
+to embark on a=0Afrightfully fun adventure atop Eve=E2=80=99s Ghastly Rider=
+ =0A( https://links.battle.net/f/a/nf8LzhfPUvMoHaorfPuB1w~~/AAQRxQA~/RgRo_V=
+aBP0TEaHR0cHM6Ly93b3JsZG9md2FyY3JhZnQuYmxpenphcmQuY29tL2VuLWdiL25ld3MvMjQxN=
+DI1Njk_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1h=
+aWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1ldmV=
+zLWdoYXN0bHktcmlkZXImbGlkPXZob2MxcHJkcDc5d1cDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2=
+kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh )=0A=C2=B2=E2=80=94the perfect spell=
+binding Skyriding mount to haunt the skies of=0AAzeroth!=0AShop=0ANow=0A(=
+=0Ahttps://links.battle.net/f/a/ihP8GNvPqYqoFLbUob22Yg~~/AAQRxQA~/RgRo_VaBP=
+0SxaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNy=
+YWZ0P3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWl=
+sJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1idXR0b24tbGluay1zaG=
+9wLW5vdyN0b3lzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb=
+21YBAAAAWE~=0A)   Shop=0ANow=0A(=0Ahttps://links.battle.net/f/a/ihP8GNvPqYq=
+oFLbUob22Yg~~/AAQRxQA~/RgRo_VaBP0SxaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4t=
+Z2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ0P3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0=
+yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG=
+1fY29udGVudD1idXR0b24tbGluay1zaG9wLW5vdyN0b3lzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhd=
+mFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~=0A)                  HALLOW=E2=
+=80=99S=0AWAKE HAUNTS DIABLO=0AIMMORTAL=0A(=0Ahttps://links.battle.net/f/a/=
+ygutrBVRJpSZXXkI05etkw~~/AAQRxQA~/RgRo_VaBP0TFaHR0cHM6Ly9uZXdzLmJsaXp6YXJkL=
+mNvbS9lbi1nYi9kaWFibG8taW1tb3J0YWwvMjQxNDU1OTQ_dXRtX3NvdXJjZT1ibmV0LWhhbGxv=
+d2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1=
+nYi0zJnV0bV9jb250ZW50PWltYWdlLWxpbmstaGFsbG93cy13YWtlLWhhdW50cy1kaWFibG8taW=
+1tb3J0YWxXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEA=
+AABYQ~~=0A)                 HALLOW=E2=80=99S=0AWAKE HAUNTS DIABLO=0AIMMORTA=
+L=0AVenture=0Ainto Diablo=C2=AE Immortal=E2=84=A2 and vanquish what goes bu=
+mp in the night.=0A=0ATransform yourself with fearsome new cosmetics, like =
+the lupine=0ANightmoon Curse cosmetic set, and partake in limited-time=0AHa=
+llow=E2=80=99s Wake festivities until 6 November: Howler=E2=80=99s Hunt mak=
+es=0Aits sinister return, sowing doubt and suspicion amongst all, and=0AVer=
+dant Pageant phantom market darkens Sanctuary=E2=80=99s door with its=0Aspi=
+ne-chilling wares.=0A=0AAs you bloody your hands in celebration, you=E2=80=
+=99ll uncover a hoard=0Aof rewards. Log in, massacre Hallow=E2=80=99s Wake =
+goblins, and complete=0Atasks to earn Event Tokens that you can spend on va=
+rious ghoulish=0Agoods, including a terrifying Transformation=0AToy.=0ASpoo=
+k=0AAnd=0AScare=0A(=0Ahttps://links.battle.net/f/a/05qebHMLYU4bM8bhh378RA~~=
+/AAQRxQA~/RgRo_VaBP0SyaHR0cHM6Ly9uZXdzLmJsaXp6YXJkLmNvbS9lbi1nYi9kaWFibG8ta=
+W1tb3J0YWwvMjQxNDU1OTQ_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0=
+bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWJ=
+1dHRvbi1saW5rLXNwb29rLWFuZC1zY2FyZVcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC=
+5tYXJ0b25AZ21haWwuY29tWAQAAAFh=0A)   Spook=0AAnd=0AScare=0A(=0Ahttps://link=
+s.battle.net/f/a/05qebHMLYU4bM8bhh378RA~~/AAQRxQA~/RgRo_VaBP0SyaHR0cHM6Ly9u=
+ZXdzLmJsaXp6YXJkLmNvbS9lbi1nYi9kaWFibG8taW1tb3J0YWwvMjQxNDU1OTQ_dXRtX3NvdXJ=
+jZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaW=
+duPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWJ1dHRvbi1saW5rLXNwb29rLWFuZC1zY2FyZ=
+VcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh=0A)=
+                  THE=0ADARKMOON FAIRE COMES TO=0AHEARTHSTONE=0A(=0Ahttps:/=
+/links.battle.net/f/a/_7682eUYmqoTQR746p4v7g~~/AAQRxQA~/RgRo_VaBP0TFaHR0cHM=
+6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L2hlYXJ0aHN0b25lP3V0bV9zb3VyY2=
+U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnb=
+j1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1pbWFnZS1saW5rLXRoZS1kYXJrbW9vbmUtZmFp=
+cmUtY29tZXMtdG8taGVhcnRoc3RvbmVXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWF=
+ydG9uQGdtYWlsLmNvbVgEAAABYQ~~=0A)                 THE=0ADARKMOON FAIRE COME=
+S TO=0AHEARTHSTONE=0AWelcome=0Ato Darkmoon Faire's Frightful Fantasy, a lim=
+ited-time Hallow=E2=80=99s=0AEnd event=E2=80=94and a haunting precursor to =
+the upcoming Great Dark=0ABeyond=E2=84=A2 expansion in Hearthstone=C2=AE.=
+=0A=0ALog in through 5 November and earn a truckload of prizes,=0Aincluding=
+ Perils in Paradise Packs, Perils in Paradise Epics,=0ATavern Tickets, Gold=
+en Avatar of Hearthstone, and the Daredevil=0APatches Hero=0ASkin.=0AHaunt=
+=0AThe=0AHalls=0A(=0Ahttps://links.battle.net/f/a/ilJT7PHMC9G3oFYeyYDrRQ~~/=
+AAQRxQA~/RgRo_VaBP0StaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L2=
+hlYXJ0aHN0b25lP3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVka=
+XVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1idXR0b24t=
+bGluay1oYXVudC10aGUtaGFsbHNXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9=
+uQGdtYWlsLmNvbVgEAAABYQ~~=0A)   Haunt=0AThe=0AHalls=0A(=0Ahttps://links.bat=
+tle.net/f/a/ilJT7PHMC9G3oFYeyYDrRQ~~/AAQRxQA~/RgRo_VaBP0StaHR0cHM6Ly9ldS5za=
+G9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L2hlYXJ0aHN0b25lP3V0bV9zb3VyY2U9Ym5ldC1o=
+YWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXR=
+pbmctZ2ItMyZ1dG1fY29udGVudD1idXR0b24tbGluay1oYXVudC10aGUtaGFsbHNXA3NwY0IKZx=
+KB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~=0A)         =
+         JUMPSCARE!=0AA BARRAGE OF NEW GAMES IS=0AHERE!=0A(=0Ahttps://links=
+.battle.net/f/a/_pdvgkgkqVDa6QX4s_rpdA~~/AAQRxQA~/RgRo_VaBP0SyaHR0cHM6Ly9l=
+dS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQ=
+xMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb2=
+50ZW50PWltYWdlLWxpbmstanVtcHNjYXJlLWEtYmFycmFnZS1vZi1uZXctZ2FtZXMtaXMtaGVyZ=
+VcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh=0A)=
+                 JUMPSCARE!=0AA BARRAGE OF NEW GAMES IS=0AHERE!=0ACreep=0Aa=
+nd crawl your way over to Battle.net, where new games are at=0Ayour gnarled=
+ fingertips. Defend Azeroth from the shadows below in=0AWorld of Warcraft: =
+=0A( https://links.battle.net/f/a/VUz6Gp_DqmlgkFyiOHiu-w~~/AAQRxQA~/RgRo_Va=
+BP0TUaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvcHJvZHVjdC93b3JsZC1vZi13YX=
+JjcmFmdC10aGUtd2FyLXdpdGhpbj91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwM=
+jQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRl=
+bnQ9dGV4dC1saW5rLXdvcmxkLW9mLXdhcmNyYWZ0JmxpZD0ycmlhNGViYm56aTdXA3NwY0IKZxK=
+B0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~ )=0AThe War W=
+ithin=E2=84=A2 =0A( https://links.battle.net/f/a/a5K0eExmHGMeWWq1Tl5x9w~~/A=
+AQRxQA~/RgRo_VaBP0TRaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvcHJvZHVjdC9=
+3b3JsZC1vZi13YXJjcmFmdC10aGUtd2FyLXdpdGhpbj91dG1fc291cmNlPWJuZXQtaGFsbG93ZW=
+VuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiL=
+TMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLXRoZS13YXItd2l0aGluJmxpZD10dHd0cGtobXQ3N2RX=
+A3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~ )=
+=0A, walk the path of the Spiritborn in Diablo IV: Vessel of=0AHatred=E2=84=
+=A2 =0A( https://links.battle.net/f/a/oYGhu1RGFQC2C36FR1GnAQ~~/AAQRxQA~/RgR=
+o_VaBP0TGaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvcHJvZHVjdC9kaWFibG8taX=
+Y_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmd=
+XRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1kaWFibG8t=
+aXYtdmVzc2VsLW9mLWhhdHJlZCZsaWQ9Z3MybjgzNG9tMG82VwNzcGNCCmcSgdEaZ-DKQIlSHGh=
+hdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~ )=0A, and go rogue in Call of=
+ Duty=C2=AE: Black Ops 6 =0A( https://links.battle.net/f/a/S0f56D_CciPuWLXV=
+nLq_cQ~~/AAQRxQA~/RgRo_VaBP0ToaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2Ivc=
+HJvZHVjdC9jYWxsLW9mLWR1dHktYmxhY2stb3BzLTY_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vl=
+bi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0=
+zJnV0bV9jb250ZW50PXRleHQtbGluay1jYWxsLSVFMiU4MCU5Q29mLWR1dHktYmxhY2stb3BzLT=
+YlMjB0YXJnZXQlM0QmbGlkPWM1cWNmNXltZHU3eVcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuY=
+WxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh )=0A.=0AShop=0ANow=0A(=0Ahttps://links.=
+battle.net/f/a/vfZ-hWkkK-qe5_uzoV-zdA~~/AAQRxQA~/RgRo_VaBP0STaHR0cHM6Ly9ldS=
+5zaG9wLmJhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxM=
+DI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250=
+ZW50PWJ1dHRvbi1saW5rLXNob3Atbm93VwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1=
+hcnRvbkBnbWFpbC5jb21YBAAAAWE~=0A)   Shop=0ANow=0A(=0Ahttps://links.battle.n=
+et/f/a/vfZ-hWkkK-qe5_uzoV-zdA~~/AAQRxQA~/RgRo_VaBP0STaHR0cHM6Ly9ldS5zaG9wLm=
+JhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0b=
+V9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWJ1=
+dHRvbi1saW5rLXNob3Atbm93VwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkB=
+nbWFpbC5jb21YBAAAAWE~=0A)                  =C2=B9Sale=0Adoes not include Wo=
+rld of Warcraft Classic game items and ends on=0A1 November 2024 at 10am PD=
+T.=0A=0A=C2=B2 Mount not part of sale and only available in World of Warcra=
+ft=0AClassic=0Agames.=0AStay=0AConnected=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=
+=0A=0A=0A=0A=0A=0A=0A  X =0A( https://links.battle.net/f/a/B2WSFAUM5cUr5wbs=
+9No2fg~~/AAQRxQA~/RgRo_VaBP0SaaHR0cHM6Ly90d2l0dGVyLmNvbS9iYXR0bGVuZXQ_dXRtX=
+3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2Nh=
+bXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXNvY2lhbC1saW5rLXgmbGlkPTA2bXF=
+yZ3lxYmY5Z1cDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWA=
+QAAAFh )=0A  Facebook =0A( https://links.battle.net/f/a/Wo33wb86IZ8HNOGFDP1=
+dEQ~~/AAQRxQA~/RgRo_VaBP0SiaHR0cHM6Ly9mYWNlYm9vay5jb20vYmF0dGxlbmV0P3V0bV9z=
+b3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1=
+wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1zb2NpYWwtbGluay1mYWNlYm9vayZsaW=
+Q9NTR2Ynk2N2Y0NXFxVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpb=
+C5jb21YBAAAAWE~ )=0A  Instagram =0A( https://links.battle.net/f/a/NTu4zu3JT=
+s2MTxam1hWufA~~/AAQRxQA~/RgRo_VaBP0SkaHR0cHM6Ly9pbnN0YWdyYW0uY29tL2JhdHRsZW=
+5ldD91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpb=
+CZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9c29jaWFsLWxpbmstaW5z=
+dGFncmFtJmxpZD15eWptM2RqdGpsdDZXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWF=
+ydG9uQGdtYWlsLmNvbVgEAAABYQ~~ )=0A  =0ABATTLE.NET (=0Ahttps://links.battle.=
+net/f/a/uo8XCnWqsNnoCBP4Ob1tew~~/AAQRxQA~/RgRo_VaBP0SYaHR0cHM6Ly9ldS5zaG9wL=
+mJhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0=
+bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWl=
+tYWdlLWxpbmstYmF0dGxlbmV0LWxvZ29XA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubW=
+FydG9uQGdtYWlsLmNvbVgEAAABYQ~~=0A)                =0A=0A=0A=0A=0A=0A=0A=0A=
+=0A=0A=0A=0A=0A=0A  Careers =0A( https://links.battle.net/f/a/Zx2nInMJEd2DC=
+OH56YokMA~~/AAQRxQA~/RgRo_VaBP0SqaHR0cHM6Ly9jYXJlZXJzLmJsaXp6YXJkLmNvbS9nYi=
+9lbj91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpb=
+CZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLWZvb3Rl=
+ci1jYXJlZXJzJmxpZD11bWV6bnh0bXp6NjBXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXg=
+ubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~ )=0A |  About =0A( https://links.battle.n=
+et/f/a/GVL7cJEVZy1d_NFxLwg_Hg~~/AAQRxQA~/RgRo_VaBP0SyaHR0cHM6Ly93d3cuYmxpen=
+phcmQuY29tL2VuLWdiL2NvbXBhbnkvYWJvdXQ_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zL=
+TIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0=
+bV9jb250ZW50PXRleHQtbGluay1mb290ZXItYWJvdXQmbGlkPTRxeWFhaXI3YXh6blcDc3BjQgp=
+nEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh )=0A |  Priva=
+cy =0A( https://links.battle.net/f/a/lrGB3Xl2Y1lhntpu563DPg~~/AAQRxQA~/RgRo=
+_VaBP0TRaHR0cHM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2xlZ2FsLzhjNDFlN2U2LTBiNjE=
+tNDJjNC1hNjc0LWM5MWQ4ZThkNjhkMz91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyND=
+EwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2Nvb=
+nRlbnQ9dGV4dC1saW5rLWZvb3Rlci1wcml2YWN5JmxpZD1qdmxnamljYmo2bnFXA3NwY0IKZxKB=
+0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~ )=0A |  Terms =
+=0A( https://links.battle.net/f/a/8Gcn3zpXVlBtEmaCZ-OKhA~~/AAQRxQA~/RgRo_Va=
+BP0SqaHR0cHM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2xlZ2FsP3V0bV9zb3VyY2U9Ym5ldC=
+1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZ=
+XRpbmctZ2ItMyZ1dG1fY29udGVudD10ZXh0LWxpbmstZm9vdGVyLXRlcm1zJmxpZD12c2ZxNnAy=
+eHZxZzRXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAA=
+BYQ~~ )=0A |  Support =0A( https://links.battle.net/f/a/GzAyLo58KgKDxYGuZU0=
+g-w~~/AAQRxQA~/RgRo_VaBP0SoaHR0cHM6Ly9ldS5iYXR0bGUubmV0L3N1cHBvcnQvZW4_dXRt=
+X3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2N=
+hbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1mb290ZXItc3VwcG=
+9ydCZsaWQ9aHBjenV3aG00NWhrVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvb=
+kBnbWFpbC5jb21YBAAAAWE~ )=0A  =0AIf=0Ayou are no longer interested in recei=
+ving emails regarding=0ABattle.net news, offers, betas etc., you can choose=
+ to=0Aopt-out=0A( https://links.battle.net/f/a/Afl8emdJfflQnr9ITq_nPQ~~/AAQ=
+RxQA~/RgRo_VaBP4TCAWh0dHBzOi8vMDMuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5jb20vZW5jX=
+3VzZXIvdW5zdWJzY3JpYmU_ZD0lMjQxJTI0R3QwVERkcExmSGNkdFlrTlhsSnJiUSUzRCUzRCUy=
+NHBZd1BxcyUyRm9hd1Z4MHByWERLOEJUbFJPbkkySVVTaW5SYU1ZSGJYNUJ1ekJleHF4ZXFwMEx=
+sOVp1UUREJTBBNVQ0R2hxYVI5V2d6NGFMSXhZbmV5Qkdsa21PUWxmSkJYQUZDaGVSMko1U3ZEOX=
+hYcDVHNXElMkJGS3Y3QjElMEFkNHhTeTJ4TGVGcXV4cWJDVzBzTmxocjBvVmJpVzY2cE9oZGp1R=
+Wxzb0NjaG1JdlRrTUZLNEVYNDFUSTclMEFoUVByMHEzQnMyU00yMjhPR2N2RSUyQlFWJTJCR2Qw=
+WThsZVNNMjJiZjhJOTZZV1JJanRMUFIwaWtSZEJHVkJjJTBBR2V0N1ZQM1FhMzRCdk9kUTNHbVJ=
+jTEtZUkUlMkJkd09qSWhuSkdGd1JYSjNjdlF2d1BpUG1VYU5ScndBQnAlMEFoemlrRmVhJTJGOF=
+Bab1BTTVlmNXdqJjE9MVcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21ha=
+WwuY29tWAQAAAFh=0A).=0AIf you wish to unsubscribe from all emails, click un=
+subscribe (=0Ahttps://links.battle.net/f/a/gE_E540us-QKxVXfU-lvuw~~/AAQRxQA=
+~/RgRo_VaBP4Q2Amh0dHBzOi8vMDMuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5jb20vZW5jX3VzZ=
+XIvdW5zdWJzY3JpYmU_ZD0lMjQxJTI0R3QwVERkcExmSGNkdFlrTlhsSnJiUSUzRCUzRCUyNHBZ=
+d1BxcyUyRm9hd1Z4MHByWERLOEJUbFJPbkkySVVTaW5SYU1ZSGJYNUJ1ekJleHF4ZXFwMExsOVp=
+1UUREJTBBNVQ0R2hxYVI5V2d6NGFMSXhZbmV5Qkdsa21PUWxmSkJYQUZDaGVSMko1U3ZEOXhYcD=
+VHNXElMkJGS3Y3QjElMEFkNHhTeTJ4TGVGcXV4cWJDVzBzTmxocjBvVmJpVzY2cE9oZGp1RWxzb=
+0NjaG1JdlRrTUZLNEVYNDFUSTclMEFoUVByMHEzQnMyU00yMjhPR2N2RSUyQlFWJTJCR2QwWThs=
+ZVNNMjJiZjhJOTZZV1JJanRMUFIwaWtSZEJHVkJjJTBBR2V0N1ZQM1FhMzRCdk9kUTNHbVJjTEt=
+ZUkUlMkJkd09qSWhuSkdGd1JYSjNjdlF2d1BpUG1VYU5ScndBQnAlMEFoemlrRmVhJTJGOFBab1=
+BTTVlmNXdqJjE9MT91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZ=
+Gl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1s=
+aW5rLXVuc3Vic2NyaWJlVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWF=
+pbC5jb21YBAAAAWE~=0A). If you would like to adjust your overall preferences=
+, click=0Ahere =0A( https://links.battle.net/f/a/tbFwrKtWHAFfDSm5bV9oUw~~/A=
+AQRxQA~/RgRo_VaBP0TPaHR0cHM6Ly9hY2NvdW50LmJhdHRsZS5uZXQvcHJpdmFjeT91dG1fc29=
+1cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcG=
+FpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLWNvbW11bmljYXRpb24tc=
+HJlZmVyZW5jZXMmbGlkPXVqa2RqcGN4N2VoeCNjb21tdW5pY2F0aW9uLXByZWZlcmVuY2VzVwNz=
+cGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~ )=0A.=
+=0A=C2=A9=0A2024=0ABlizzard=0AEntertainment, Inc. and NetEase. Inc, World o=
+f Warcraft, Diablo,=0ADiablo Immortal, Overwatch, Hearthstone, Battle.net a=
+nd Blizzard=0AEntertainment are registered trademarks of Blizzard=0AEnterta=
+inment, Inc. in the U.S., and/or other countries. All=0Aother trademarks re=
+ferenced herein are the properties of their=0Arespective owners.=0A=0A=C2=
+=A9 2024 Activision Publishing, Inc. ACTIVISION, CALL OF DUTY and=0ACALL OF=
+ DUTY BLACK OPS are trademarks of Activision Publishing,=0AInc. All other t=
+rademarks and trade names are the property of=0Atheir respective owners.=0A=
+=0A=C2=A9 K. Horikoshi / Shueisha, My Hero Academia=0AProject=0A=0AApple an=
+d the Apple logo are trademarks of Apple Inc.,=0Aregistered in the U.S. and=
+ other countries. App Store is a=0Aservice mark of Apple Inc.=0A=0AGoogle P=
+lay and the Google Play logo are trademarks of Google=0AInc.=0AActivision=
+=0ABlizzard UK Ltd, The Ampersand Building=0A178 Wardour Street, London W1F=
+ 8FY=0AUnited=0AKingdom=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=0A=
+=0A=0A             PEGI 18 =0A( https://links.battle.net/f/a/-_w2-PY_rh60eb=
+NUb9_HGg~~/AAQRxQA~/RgRo_VaBP0SlaHR0cDovL3d3dy5wZWdpLmluZm8vP3V0bV9zb3VyY2U=
+9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj=
+1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1mb290ZXItaW1hZ2UtbGluay1wZWdpLXJhdGluZ=
+y0xOCZsaWQ9bWFzZTVzN2VvanNlVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRv=
+bkBnbWFpbC5jb21YBAAAAWE~ )
+--_----uSraoXkbvcVNeAp1rVpMag===_57/04-08903-181DA176
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!-- HTML | BEGINNING OF EMAIL -->=0A<!doctype html>=0A=0A<html>=0A=09<head=
+>=0A=09=09<meta charset=3D"utf-8">=0A=09=09<meta http-equiv=3D"x-ua-compati=
+ble" content=3D"ie=3Dedge">=0A=09=09<meta name=3D"viewport" content=3D"widt=
+h=3Ddevice-width, initial-scale=3D1, maximum-scale=3D1">=0A=09=09<meta name=
+=3D"format-detection" content=3D"telephone=3Dno">=0A=09=09<meta name=3D"for=
+mat-detection" content=3D"date=3Dno">=0A=09=09<meta name=3D"format-detectio=
+n" content=3D"address=3Dno">=0A=09=09<meta name=3D"format-detection" conten=
+t=3D"email=3Dno">=0A=09=09<meta name=3D"color-scheme" content=3D"light dark=
+">=0A=09=09<meta name=3D"supported-color-schemes" content=3D"light dark">=
+=0A=0A=09=09<!-- GMAIL PROMO TAB -->=0A=09=09<script type=3D"application/ld=
++json">=0A=09=09=09[{"@context":"https://schema.org/","@type":"Organization=
+","logo":"https://cdn.blizz.ly/emails/global/battlenet/logo-battlenet-gmail=
+-48x48-full.png"},{"@context":"http://schema.org/","@type":"EmailMessage","=
+subjectLine":""},{"@context": "https://schema.org/","@type":"DiscountOffer"=
+,"description":"","discountCode":"","availabilityStarts":"","availabilityEn=
+ds":""},{"@context":"https://schema.org/","@type":"PromotionCard","image":"=
+https://cdn.blizz.ly/emails/battlenet/battlenet/2024/10/24-bnet-halloween-3=
+/en-GB/image-battlenet-promo-halloween.png"}]=0A=09=09</script>=0A=0A=09=09=
+<!--[if mso]><!-->=0A=09=09<style type=3D"text/css">=0A=09=09=09body, table=
+, td {=0A=09=09=09=09font-family: Arial, Helvetica, sans-serif;=0A=09=09=09=
+}=0A=09=09</style>=0A=09=09<!--<![endif]-->=0A=0A=09=09<!--[if !mso]><!-->=
+=0A=09=09<style type=3D"text/css">=0A=09=09=09@font-face{font-family:Roboto=
+;font-weight:400;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('htt=
+p://fonts.gstatic.com/s/roboto/v15/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5=
+c0A.woff') format('woff')}@font-face{font-family:Roboto;font-weight:700;fon=
+t-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('http://fonts.gstatic.co=
+m/s/roboto/v15/d-6IYplOFocCacKzxwXSOLO3LdcAZYWl9Si6vvxL-qU.woff') format('w=
+off')}@font-face{font-family:Roboto;font-weight:900;font-style:normal;src:l=
+ocal('=E2=98=BA=EF=B8=8E'),url('http://fonts.gstatic.com/s/roboto/v15/mnpfi=
+9pxYH-Go5UiibESIrO3LdcAZYWl9Si6vvxL-qU.woff') format('woff')}@font-face{fon=
+t-family:Roboto;font-weight:400;font-style:italic;src:local('=E2=98=BA=EF=
+=B8=8E'),url('http://fonts.gstatic.com/s/roboto/v15/1pO9eUAp8pSF8VnRTP3xnnY=
+hjbSpvc47ee6xR_80Hnw.woff') format('woff')}@font-face{font-family:Roboto;fo=
+nt-weight:700;font-style:italic;src:local('=E2=98=BA=EF=B8=8E'),url('http:/=
+/fonts.gstatic.com/s/roboto/v15/t6Nd4cfPRhZP44Q5QAjcC7rIa-7acMAeDBVuclsi6Gc=
+.woff') format('woff')}@font-face{font-family:Roboto;font-weight:900;font-=
+style:italic;src:local('=E2=98=BA=EF=B8=8E'),url('http://fonts.gstatic.com/=
+s/roboto/v15/bmC0pGMXrhphrZJmniIZpbrIa-7acMAeDBVuclsi6Gc.woff') format('wof=
+f')}@font-face{font-family:'Object Sans';font-weight:700;font-style:normal;=
+src:local('=E2=98=BA=EF=B8=8E'),url('https://cdn.blizz.ly/emails/fonts/obje=
+ct-sans/object-sans-700-normal.woff') format('woff')}@font-face{font-family=
+:'Noto Sans';font-weight:400;font-style:normal;src:local('=E2=98=BA=EF=B8=
+=8E'),url('https://cdn.blizz.ly/emails/fonts/noto-sans/noto-sans-400-normal=
+.woff') format('woff')}@font-face{font-family:'Noto Sans JP';font-weight:4=
+00;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('https://cdn.blizz=
+.ly/emails/fonts/noto-sans/noto-sans-400-normal-jp.woff') format('woff')}@=
+font-face{font-family:'Noto Sans KR';font-weight:400;font-style:normal;src:=
+local('=E2=98=BA=EF=B8=8E'),url('https://cdn.blizz.ly/emails/fonts/noto-san=
+s/noto-sans-400-normal-kr.woff') format('woff')}@font-face{font-family:'Not=
+o Sans SC';font-weight:400;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'=
+),url('https://cdn.blizz.ly/emails/fonts/noto-sans/noto-sans-400-normal-sc.=
+woff') format('woff')}@font-face{font-family:'Noto Sans TC';font-weight:400=
+;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('https://cdn.blizz.l=
+y/emails/fonts/noto-sans/noto-sans-400-normal-tc.woff') format('woff')}@fon=
+t-face{font-family:'Noto Sans';font-weight:400;font-style:italic;src:local(=
+'=E2=98=BA=EF=B8=8E'),url('https://cdn.blizz.ly/emails/fonts/noto-sans/noto=
+-sans-400-italic.woff') format('woff')}@font-face{font-family:'Noto Sans';f=
+ont-weight:700;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),url('https=
+://cdn.blizz.ly/emails/fonts/noto-sans/noto-sans-700-normal.woff') format('=
+woff')}@font-face{font-family:'Noto Sans';font-weight:700;font-style:italic=
+;src:local('=E2=98=BA=EF=B8=8E'),url('https://cdn.blizz.ly/emails/fonts/not=
+o-sans/noto-sans-400-italic.woff') format('woff')}@font-face{font-family:'S=
+hare Tech Mono';font-weight:300;font-style:normal;src:local('=E2=98=BA=EF=
+=B8=8E'),url('http://fonts.gstatic.com/s/sharetechmono/v6/RQxK-3RA0Lnf3gnnn=
+NrAsaH0X__W3S3MJL29bc5CWfs.woff') format('woff')}@font-face{font-family:Bli=
+zzard;font-weight:400;font-style:italic;src:local('=E2=98=BA=EF=B8=8E'),url=
+('https://cdn.blizz.ly/emails/fonts/blizzard/blizzard-400-italic.woff') for=
+mat('woff')}@font-face{font-family:Blizzard;font-weight:400;font-style:norm=
+al;src:local('=E2=98=BA=EF=B8=8E'),url('https://cdn.blizz.ly/emails/fonts/b=
+lizzard/blizzard-400-normal.woff') format('woff')}@font-face{font-family:Bl=
+izzard;font-weight:700;font-style:normal;src:local('=E2=98=BA=EF=B8=8E'),ur=
+l('https://cdn.blizz.ly/emails/fonts/blizzard/blizzard-700-normal.woff') fo=
+rmat('woff')}=0A=09=09</style>=0A=09=09<!--<![endif]-->=0A=0A=09=09<style t=
+ype=3D"text/css">=0A=09=09=09#outlook a{padding:0;}.ReadMsgBody{width:100%;=
+}.ExternalClass {width:100%;}.ExternalClass,.ExternalClass p,.ExternalClass=
+ span,.ExternalClass font,.ExternalClass td,.ExternalClass div{line-height:=
+100%;}body, table, td, a{-webkit-text-size-adjust:100%;-ms-text-size-adjust=
+:100%;}table, td{mso-table-lspace:0;mso-table-rspace:0;}th{font-weight:400;=
+}img{line-height:100%;display:block;height:auto;text-decoration:none;-ms-in=
+terpolation-mode:bicubic;border:0;outline:none;}table{border-collapse:colla=
+pse !important;}body{width:100% !important;height:100% !important;margin:0;=
+padding:0;background-color:#15171e !important;}u + .body .glist{margin-left=
+:5px !important;}u + .body .ghide{display:none;display:none !important;}u +=
+ .body .gshow{line-height:auto !important;display:block !important;visibili=
+ty:inherit !important;float:none !important;overflow:visible !important;wid=
+th:auto !important;max-width:100% !important;max-height:inherit !important;=
+margin-top:0 !important;}a[href^=3D"mailto"]{text-decoration:underline !imp=
+ortant;color:#d5d7dd !important;}hr{width:100% !important;height:1px !impor=
+tant;background-color:#848689 !important;color:#848689 !important;border:0 =
+!important;}sup{font-size:50%;line-height:0;vertical-align:super;mso-text-r=
+aise:0%;}=0A=09=09=09.preheader{"display: none;display: none !important;"}#=
+legal-disclaimer{font-size:12px !important;line-height:20px !important;}a:l=
+ink,a:hover,a:visited,a:focus{text-decoration:none;}li{"text-indent:-1em;te=
+xt-indent:-1em !important;"}a[x-apple-data-detectors], u + #body a, #Messag=
+eViewBody a{font-family:inherit !important;font-size:inherit !important;fon=
+t-weight:inherit !important;line-height:inherit !important;text-decoration:=
+none !important;color:inherit !important;}.blue-links{font-family:inherit !=
+important;font-size:inherit !important;font-weight:inherit !important;line-=
+height:inherit !important;text-decoration:none !important;color: inherit !i=
+mportant;}td[class~=3D"x_outlookhide"] {display:none !important;mso-hide:al=
+l; visibility:hidden !important;}=0A=09=09</style>=0A=0A=09=09<style type=
+=3D"text/css">=0A=09=09=09@media screen and (max-width: 414px) {.dspl_none{=
+display:none !important;}.dspl_block{display:block !important;}.dspl_iblock=
+{display:inline-block !important;}.ovf_auto{overflow: auto !important;}.w_1=
+00pc{width:100% !important;}.minw_000pt{min-width:0 !important;}.maxw_100pc=
+{max-width:100% !important;}.h_auto{height:auto !important;}.mgn_000pt_auto=
+{margin:0 auto !important;}.mgnl_000pt{margin-left:0 !important;}.pa_000pt{=
+padding:0 !important;}.pa_025px{padding:25px !important;}.pt_000pt{padding-=
+top:0 !important;}.pt_005px{padding-top:5px !important;}.pt_010px{padding-t=
+op:10px !important;}.pt_015px{padding-top:15px !important;}.pt_020px{paddin=
+g-top:20px !important;}.pt_025px{padding-top:25px !important;}.pt_030px{pad=
+ding-top:30px !important;}.pt_040px{padding-top:40px !important;}.pr_000pt{=
+padding-right:0 !important;}.pr_001pc{padding-right:1% !important;}.pr_005p=
+c{padding-right:5% !important;}.pr_008pc{padding-right:8% !important;}.pr_0=
+10pc{padding-right:10% !important;}.pr_015pc{padding-right:15% !important;}=
+.pr_020pc{padding-right:20% !important;}.pr_030pc{padding-right:30% !impor=
+tant;}.pr_036pc{padding-right:36% !important;}.pr_015px{padding-right:15px =
+!important;}.pb_000pt{padding-bottom:0 !important;}.pb_005px{padding-bottom=
+:5px !important;}.pb_010px{padding-bottom:10px !important;}.pb_016px{paddin=
+g-bottom:16px !important;}.pb_020px{padding-bottom:20px !important;}.pb_024=
+px{padding-bottom:24px !important;}.pb_025px{padding-bottom:25px !important=
+;}.pb_030px{padding-bottom:30px !important;}.pb_040px{padding-bottom:40px !=
+important;}.pl_000pt{padding-left:0 !important;}.pl_001pc{padding-left:1% !=
+important;}.pl_002pc{padding-left:2% !important;}.pl_005pc{padding-left:5% =
+!important;}.pl_008pc{padding-left:8% !important;}.pl_010pc{padding-left:10=
+% !important;}.pl_015pc{padding-left:15% !important;}.pl_020pc{padding-left=
+:20% !important;}.pl_030pc{padding-left:30% !important;}.pl_036pc{padding-l=
+eft:36% !important;}.pl_015px{padding-left:15px !important;}.ta_l{text-alig=
+n:left !important;}.ta_c{text-align:center !important;}.ta_r{text-align:rig=
+ht !important;}.va_t {vertical-align:top !important;}.va_m{vertical-align:m=
+iddle !important;}.va_b{vertical-align:bottom !important;}th>a.fsz_010px{fo=
+nt-size:10px !important;}.fsz_012px{font-size:12px !important;}td>a.fsz_012=
+px{font-size:12px !important;}.fsz_014px{font-size:14px !important;}.fsz_01=
+6px{font-size:16px !important;}.fsz_020px{font-size:20px !important;}.fsz_0=
+24px{font-size:24px !important;}.fsz_030px{font-size:30px !important;}.fsz_=
+032px{font-size:32px !important;}.fsz_hdr{font-size:32px !important;}.fsz_s=
+bhdr{font-size:24px !important;}.lh_000pt{line-height:0 !important;}.lh_005=
+px{line-height:5px !important;}th>a.lh_014px{line-height:14px !important;}.=
+lh_016px{line-height:16px !important;}td>a.lh_016px{line-height:16px !impor=
+tant;}.lh_018px{line-height:18px !important;}.lh_020px{line-height:20px !im=
+portant;}.lh_026px{line-height:26px !important;}.lh_028px{line-height:28px =
+!important;}.lh_030px{line-height:30px !important;}.lh_040px{line-height:40=
+px !important;}.lh_056px{line-height:56px !important;}.lh_hdr{line-height:3=
+6px !important;}.lh_sbhdr{line-height:28px !important;}.bgc_soc{background-=
+color:#1a1c23 !important;}.bgc_ftr{background-color:#1a1c23 !important;}.bg=
+c_wv{background-color:#000000 !important;}.bb_solid_001px{border-bottom:1px=
+ solid #003f7a !important;}}=0A=09=09</style>=0A=0A=09=09<!--[if gte mso 9]=
+>=0A=09=09<style>=0A=09=09=09sup { font-size: 100% !important; }=0A=09=09</=
+style>=0A=09=09<![endif]-->=0A=0A=09=09<!--[if gte mso 9]>=0A=09=09<xml>=0A=
+=09=09=09<o:OfficeDocumentSettings>=0A=09=09=09<o:AllowPNG/>=0A=09=09=09<o:=
+PixelsPerInch>96</o:PixelsPerInch>=0A=09=09=09</o:OfficeDocumentSettings>=
+=0A=09=09</xml>=0A=09=09<![endif]-->=0A=09</head>=0A=0A=09<body bgcolor=3D"=
+#15171e" style=3D"margin: 0; padding: 0; table-layout: fixed; -webkit-text-=
+size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #15171e;">=
+=0A=09=09<center bgcolor=3D"#15171e" style=3D"margin: 0; padding: 0; backgr=
+ound-color: #15171e;">=0A=09=09=09<!-- PREHEADER -->=0A=09=09=09<div class=
+=3D"preheader" style=3D"display: none !important; mso-hide: all; width: 0px=
+; height: 0px; max-width: 0px; max-height: 0px; font-size: 0px; line-height=
+: 0px;">Halloween Terror haunts Overwatch 2, Hallow=E2=80=99s End curses Wo=
+rld of Warcraft, and Hallow=E2=80=99s Wake possesses Diablo Immortal.</div>=
+=0A=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" height=3D"100=
+%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" valign=
+=3D"top" bgcolor=3D"#000000" style=3D"width: 600px; min-width: 600px; margi=
+n: 0 auto; border-spacing: 0; border-collapse: collapse; background-color: =
+#000000;">=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- IMAGE - FULL-WIDTH -->=0A=
+=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"padding: 0; t=
+ext-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" w=
+idth=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#0=
+00000" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=
+=09=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=
+=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 10=
+0%; border-spacing: 0; border-collapse: collapse; background-color: #000000=
+;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- IMAGE -->=0A=
+=09=09=09=09=09=09=09=09<td class=3D"dspl_block pt_000pt pr_000pt pb_030px =
+pl_000pt ta_c" style=3D"padding: 0 0 40px;"><a href=3D"https://links.battle=
+.net/f/a/Pwlvr190xUhjC-3NivcgqQ~~/AAQRxQA~/RgRo_VaBP0SkaHR0cHM6Ly91cy5zaG9=
+wLmJhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0Jn=
+V0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50P=
+WltYWdlLWxpbmstaGFsbG93ZWVuLWZ1bi1vbi1iYXR0bGVuZXRXA3NwY0IKZxKB0Rpn4MpAiVIc=
+aGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank"><img cl=
+ass=3D"w_100pc maxw_100pc h_auto" src=3D"https://cdn.blizz.ly/emails/battle=
+net/battlenet/2024/10/24-bnet-halloween-3/en-GB/image-battlenet-thumb-hallo=
+ween-fun-on-battle-net.gif" alt=3D"HALLOWEEN FUN ON BATTLE.NET" width=3D"10=
+0%" height=3D"100%" border=3D"0" style=3D"font-family: 'Noto Sans', 'Helvet=
+ica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 16px; dis=
+play: block; padding: 0; text-decoration: none; color: #d5d7dd;"></a></td>=
+=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=
+=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=
+=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- TEXT - HEAD=
+ER -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"padd=
+ing: 0; text-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw=
+_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgco=
+lor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=
+=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #00=
+0000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-wi=
+dth: 100%; border-spacing: 0; border-collapse: collapse; background-color: =
+#000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT =
+-->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_hdr lh_hdr pt_000pt pr_010pc=
+ pb_030px pl_010pc ta_c" style=3D"font-family: 'Object Sans', 'Helvetica Ne=
+ue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 48px; font-weig=
+ht: 700; mso-line-height-rule:exactly; line-height: 56px; padding: 0 40px 4=
+0px; text-align: center; text-decoration: none; letter-spacing: normal;; ov=
+erflow-wrap: break-word; word-wrap: break-word; word-break: break-word; -ms=
+-word-break: break-word;  color: #ffffff; border: 0; ">HALLOWEEN FUN ON BAT=
+TLE.NET</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=
+=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=
+=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!--=
+ TEXT - BODY -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" sty=
+le=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<table class=3D"w_=
+100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=
+=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"backgrou=
+nd-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width:=
+ 100%; min-width: 100%; border-spacing: 0; border-collapse: collapse; backg=
+round-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=
+=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_014px lh_028px =
+pt_000pt pr_008pc pb_030px pl_008pc ta_l" style=3D"font-family: 'Noto Sans'=
+, 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: =
+16px; font-weight: 400; font-style: normal; mso-line-height-rule:exactly; l=
+ine-height: 28px; padding: 0 40px 40px;; text-align: left; overflow-wrap: b=
+reak-word; word-wrap: break-word; word-break: break-word; -ms-word-break: b=
+reak-word;  color: #d5d7dd;"><center>Eye of <span class=3D"fsz_014px lh_028=
+px" style=3D"font-size:inherit; font-weight:700; text-decoration:none; colo=
+r:#ffffff;">Junkrat</span>, toe of <span class=3D"fsz_014px lh_028px" style=
+=3D"font-size:inherit; font-weight:700; text-decoration:none; color:#ffffff=
+;">Hog</span>, <br><br> Tongue of <span class=3D"fsz_014px lh_028px" style=
+=3D"font-size:inherit; font-weight:700; text-decoration:none; color:#ffffff=
+;">Ghoul</span> and splash of <span class=3D"fsz_014px lh_028px" style=3D"f=
+ont-size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">Gr=
+og</span>, <br><br> <span class=3D"fsz_014px lh_028px" style=3D"font-size:i=
+nherit; font-weight:700; text-decoration:none; color:#ffffff;">Moira=E2=80=
+=99s</span> orb and <span class=3D"fsz_014px lh_028px" style=3D"font-size:i=
+nherit; font-weight:700; text-decoration:none; color:#ffffff;">Vile-Swarm's=
+</span> sting, <br><br> <span class=3D"fsz_014px lh_028px" style=3D"font-si=
+ze:inherit; font-weight:700; text-decoration:none; color:#ffffff;">Lich Kin=
+g=E2=80=99s</span> leg and <span class=3D"fsz_014px lh_028px" style=3D"font=
+-size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">Lilit=
+h=E2=80=99s</span> wing, <br><br> For a brew of trick and treat, <br><br> L=
+oad up <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-=
+weight:700; text-decoration:none; color:#ffffff;">Battle.net<span style=3D"=
+font-size: 70% !important; line-height: 1.75 !important; vertical-align: to=
+p !important; mso-text-raise: 30% !important;">&reg;</span></span>, take yo=
+ur seat!</center></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09=
+</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09=
+</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=0A=0A=09=09=09<tr>=0A=
+=09=09=09=09<!-- IMAGE - FULL-WIDTH -->=0A=09=09=09=09<td align=3D"center" =
+bgcolor=3D"#000000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=
+=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" c=
+ellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"background-color=
+: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#0000=
+00" style=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<table wid=
+th=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#00=
+0000" style=3D"width: 100%; min-width: 100%; border-spacing: 0; border-coll=
+apse: collapse; background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=
+=09=09=09=09=09=09=09=09<!-- IMAGE -->=0A=09=09=09=09=09=09=09=09<td class=
+=3D"dspl_block pt_000pt pr_000pt pb_030px pl_000pt ta_c" style=3D"padding: =
+0 0 40px;"><a href=3D"https://links.battle.net/f/a/CDbQtxu4M6nHSvkvRtQeAA~~=
+/AAQRxQA~/RgRo_VaBP0S8aHR0cHM6Ly9vdmVyd2F0Y2guYmxpenphcmQuY29tL2VuLWdiL3NlY=
+XNvbj91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFp=
+bCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9aW1hZ2UtbGluay1oYWx=
+sb3dlZW4tdGVycm9yLWlzLWJhY2staW4tb3ZlcndhdGNoLTJXA3NwY0IKZxKB0Rpn4MpAiVIcaG=
+F2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank"><img clas=
+s=3D"w_100pc maxw_100pc h_auto" src=3D"https://cdn.blizz.ly/emails/battlene=
+t/battlenet/2024/10/24-bnet-halloween-3/en-GB/image-battlenet-thumb-hallowe=
+en-terror-is-back-in-overwatch-2.png" alt=3D"HALLOWEEN TERROR IS BACK IN OV=
+ERWATCH 2" width=3D"100%" height=3D"100%" border=3D"0" style=3D"font-family=
+: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif=
+; font-size: 16px; display: block; padding: 0; text-decoration: none; color=
+: #d5d7dd;"></a></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09<=
+/table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09<=
+/table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=
+=09<!-- TEXT - SUBHEADER -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"=
+#000000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<table=
+ class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #000000;=
+">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=
+=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100=
+%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" sty=
+le=3D"width: 100%; min-width: 100%; border-spacing: 0; border-collapse: col=
+lapse; background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=
+=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_sbh=
+dr lh_sbhdr pt_000pt pr_010pc pb_030px pl_010pc ta_c" style=3D"font-family:=
+ 'Object Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-seri=
+f; font-size: 32px; font-weight: 700; mso-line-height-rule:exactly; line-he=
+ight: 40px; padding: 0 40px 40px; text-align: center; text-decoration: none=
+; letter-spacing: normal;; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; -ms-word-break: break-word;  color: #ffffff; bord=
+er: 0; ">HALLOWEEN TERROR IS BACK IN OVERWATCH 2</td>=0A=09=09=09=09=09=09=
+=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=
+=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</t=
+r>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- TEXT - BODY -->=0A=09=09=09=09<td =
+align=3D"center" bgcolor=3D"#000000" style=3D"padding: 0; text-align: cente=
+r;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"=
+background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td =
+bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09=
+=09=09<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0=
+" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%; border-spacing=
+: 0; border-collapse: collapse; background-color: #000000;">=0A=09=09=09=09=
+=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=
+=09=09<td class=3D"fsz_014px lh_028px pt_000pt pr_008pc pb_030px pl_008pc t=
+a_l" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial,=
+ 'Droid Sans', sans-serif; font-size: 16px; font-weight: 400; font-style: n=
+ormal; mso-line-height-rule:exactly; line-height: 28px; padding: 0 40px 40p=
+x;; text-align: left; overflow-wrap: break-word; word-wrap: break-word; wor=
+d-break: break-word; -ms-word-break: break-word;  color: #d5d7dd;">Ride you=
+r witch=E2=80=99s broom into enchanted queues, magic-tinged PoTGs, and othe=
+rworldly rewards in <span class=3D"fsz_014px lh_028px" style=3D"font-size:i=
+nherit; font-weight:700; text-decoration:none; color:#ffffff;">Overwatch<sp=
+an style=3D"font-size: 70% !important; line-height: 1.75 !important; vertic=
+al-align: top !important; mso-text-raise: 30% !important;">&reg;</span></sp=
+an></span> <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; f=
+ont-weight:700; text-decoration:none; color:#ffffff;">2</span>! <br><br> Ha=
+unt your foes with the power of <span class=3D"fsz_014px lh_028px" style=3D=
+"font-size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">=
+Mythic Spellbinder Widowmaker</span>, then charge your way into the all-new=
+ <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-weight=
+:700; text-decoration:none; color:#ffffff;">Junkenstein=E2=80=99s Laborator=
+y</span> game mode before making your fated return to Adlersbrunn in <span =
+class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-weight:700; t=
+ext-decoration:none; color:#ffffff;">Junkenstein=E2=80=99s Revenge</span> a=
+nd <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-weig=
+ht:700; text-decoration:none; color:#ffffff;">Wrath of the Bride.</span> <b=
+r><br> Plus, power up for the limited-time <span class=3D"fsz_014px lh_028p=
+x" style=3D"font-size:inherit; font-weight:700; text-decoration:none; color=
+:#ffffff;">My Hero Academia collaboration</span> through 30 October! Heroes=
+, villains, and their ideas of justice collide as you unlock exclusive cosm=
+etics inspired by the anime=E2=80=99s most iconic characters.</td>=0A=09=09=
+=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</=
+td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=
+=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- BUTTON - CTA -->=0A=09=
+=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"padding: 0; text=
+-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" widt=
+h=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#0000=
+00" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=
+=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=
+=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%;=
+ border-spacing: 0; border-collapse: collapse; background-color: #000000;">=
+=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- BUTTON -->=0A=
+=09=09=09=09=09=09=09=09<td class=3D"pt_000pt pr_008pc pb_040px pl_008pc" a=
+lign=3D"center" style=3D"padding: 0 0 60px; color: #000000;">=0A=09=09=09=
+=09=09=09=09=09=09<!--[if tonline]><div style=3D"display: none;"><![endif]-=
+->=0A=09=09=09=09=09=09=09=09=09<!--[if mso]>=0A=09=09=09=09=09=09=09=09=09=
+<a href=3D"https://links.battle.net/f/a/Vo-vOU-K-Rw5X8YeDfjo0A~~/AAQRxQA~/R=
+gRo_VaBP0SlaHR0cHM6Ly9vdmVyd2F0Y2guYmxpenphcmQuY29tL2VuLWdiL3NlYXNvbj91dG1f=
+c291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2F=
+tcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9YnV0dG9uLWxpbmstZmFjZS15b3VyLW=
+ZlYXJzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAA=
+WE~" target=3D"_blank" style=3D"font-family: 'Object Sans', 'Helvetica Neue=
+', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 18px; font-weight=
+: 700; line-height: 22px; display: inline-block; max-width: 100%; padding: =
+16px 34px; vertical-align: middle; text-decoration: none; text-transform: u=
+ppercase; color: #000000; background: linear-gradient(to bottom, #d7891a, #=
+e56a31); background-color: #d7891a; "><i style=3D"letter-spacing: 25px;mso-=
+font-width:-100%;mso-text-raise:30pt;">&nbsp;</i><span style=3D"mso-text-ra=
+ise:15pt;">Face Your Fears</span><i style=3D"letter-spacing: 25px;mso-font-=
+width:-100%;">&nbsp;</i></a>=0A=09=09=09=09=09=09=09=09=09<![endif]-->=0A=
+=09=09=09=09=09=09=09=09=09<!--[if tonline]></div><![endif]-->=0A=09=09=09=
+=09=09=09=09=09=09<a href=3D"https://links.battle.net/f/a/Vo-vOU-K-Rw5X8YeD=
+fjo0A~~/AAQRxQA~/RgRo_VaBP0SlaHR0cHM6Ly9vdmVyd2F0Y2guYmxpenphcmQuY29tL2VuLW=
+diL3NlYXNvbj91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1b=
+T1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9YnV0dG9uLWxp=
+bmstZmFjZS15b3VyLWZlYXJzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkB=
+nbWFpbC5jb21YBAAAAWE~" target=3D"_blank" style=3D"mso-hide:all; font-family=
+: 'Object Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-ser=
+if; font-size: 18px; font-weight: 700; line-height: 22px; display: inline-b=
+lock; max-width: 100%; padding: 16px 34px; vertical-align: middle; text-dec=
+oration: none; text-transform: uppercase; color: #000000; border: 1px solid=
+ #d7891a; background: linear-gradient(to bottom, #d7891a, #e56a31); backgro=
+und-color: #d7891a;">Face Your Fears</a>=0A=09=09=09=09=09=09=09=09</td>=0A=
+=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=
+=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09=
+</td>=0A=09=09=09</tr>=0A=0A=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- IMAGE - =
+FULL-WIDTH -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=
+=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<table class=3D"w_10=
+0pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0" bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=
+=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"background-=
+color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 1=
+00%; min-width: 100%; border-spacing: 0; border-collapse: collapse; backgro=
+und-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=
+=09<!-- IMAGE -->=0A=09=09=09=09=09=09=09=09<td class=3D"dspl_block pt_000p=
+t pr_000pt pb_030px pl_000pt ta_c" style=3D"padding: 0 0 40px;"><a href=3D"=
+https://links.battle.net/f/a/jSI-QJAnVixpZ6fpPURWQQ~~/AAQRxQA~/RgRo_VaBP0TB=
+aHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ=
+0P3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJn=
+V0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1pbWFnZS1saW5rLWl0cy1hL=
+WNvc3R1bWUtcGFydHktaW4tYXplcm90aFcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5t=
+YXJ0b25AZ21haWwuY29tWAQAAAFh" target=3D"_blank"><img class=3D"w_100pc maxw_=
+100pc h_auto" src=3D"https://cdn.blizz.ly/emails/battlenet/battlenet/2024/1=
+0/24-bnet-halloween-3/en-GB/image-battlenet-thumb-its-a-costume-party-in-az=
+eroth.png" alt=3D"IT=E2=80=99S A COSTUME PARTY IN AZEROTH" width=3D"100%" h=
+eight=3D"100%" border=3D"0" style=3D"font-family: 'Noto Sans', 'Helvetica N=
+eue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 16px; display:=
+ block; padding: 0; text-decoration: none; color: #d5d7dd;"></a></td>=0A=09=
+=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=
+=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</t=
+d>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- TEXT - SUBHEADER =
+-->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"padding=
+: 0; text-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_00=
+0pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=
+=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=
+=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #00000=
+0;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cellpad=
+ding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width=
+: 100%; border-spacing: 0; border-collapse: collapse; background-color: #00=
+0000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=
+=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_sbhdr lh_sbhdr pt_000pt pr_010p=
+c pb_030px pl_010pc ta_c" style=3D"font-family: 'Object Sans', 'Helvetica N=
+eue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 32px; font-wei=
+ght: 700; mso-line-height-rule:exactly; line-height: 40px; padding: 0 40px =
+40px; text-align: center; text-decoration: none; letter-spacing: normal;; o=
+verflow-wrap: break-word; word-wrap: break-word; word-break: break-word; -m=
+s-word-break: break-word;  color: #ffffff; border: 0; ">IT=E2=80=99S A COST=
+UME PARTY IN AZEROTH</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=
+=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=
+=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=
+=09=09=09<!-- TEXT - BODY -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D=
+"#000000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<tabl=
+e class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #000000;=
+">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=
+=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100=
+%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" sty=
+le=3D"width: 100%; min-width: 100%; border-spacing: 0; border-collapse: col=
+lapse; background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=
+=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_014=
+px lh_028px pt_000pt pr_008pc pb_030px pl_008pc ta_l" style=3D"font-family:=
+ 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif;=
+ font-size: 16px; font-weight: 400; font-style: normal; mso-line-height-rul=
+e:exactly; line-height: 28px; padding: 0 40px 40px;; text-align: left; over=
+flow-wrap: break-word; word-wrap: break-word; word-break: break-word; -ms-w=
+ord-break: break-word;  color: #d5d7dd;">Ghosts and ghouls gather =E2=80=98=
+round as <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; fon=
+t-weight:700; text-decoration:none; color:#ffffff;">Hallow=E2=80=99s End</s=
+pan> slithers back into World of Warcraft<span class=3D"fsz_014px lh_028px"=
+ style=3D"font-size:inherit; font-weight:700; text-decoration:none; color:#=
+ffffff;"><span style=3D"font-size: 70% !important; line-height: 1.75 !impor=
+tant; vertical-align: top !important; mso-text-raise: 30% !important;">&reg=
+;</span></span></span>! <span class=3D"fsz_014px lh_028px" style=3D"font-si=
+ze:inherit; font-weight:700; text-decoration:none; color:#ffffff;">Through =
+31 October</span>, don your best costumes with <span class=3D"fsz_014px lh_=
+028px" style=3D"font-size:inherit; font-weight:700; text-decoration:none; c=
+olor:#ffffff;">50% off</span> <a href=3D"https://links.battle.net/f/a/Q_IGa=
+MowdO2DxuMZxEBSRw~~/AAQRxQA~/RgRo_VaBP0TKaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZX=
+QvZW4tZ2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ0P3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZ=
+W4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2It=
+MyZ1dG1fY29udGVudD10ZXh0LWxpbmstYWxsLXRyYW5zbW9ncyZsaWQ9Y2FyMnFrYzJxaW16I3R=
+yYW5zbW9nc1cDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWA=
+QAAAFh" target=3D"_blank" class=3D"fsz_014px lh_028px" style=3D"font-size:i=
+nherit; font-weight:400; text-decoration:underline; border:none; color:#e76=
+b2c;">all transmogs</a>&sup1; and conjure a legion of playful hijinks with =
+<span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-weight:=
+700; text-decoration:none; color:#ffffff;">50% off</span> <a href=3D"https:=
+//links.battle.net/f/a/dTIe_Rxkhb6vznU4buwohQ~~/AAQRxQA~/RgRo_VaBP0TAaHR0cH=
+M6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ0P3V0b=
+V9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9j=
+YW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD10ZXh0LWxpbmstYWxsLXRveXMmbGl=
+kPWtpaHdtdzl5YjYwaiN0b3lzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbk=
+BnbWFpbC5jb21YBAAAAWE~" target=3D"_blank" class=3D"fsz_014px lh_028px" styl=
+e=3D"font-size:inherit; font-weight:400; text-decoration:underline; border:=
+none; color:#e76b2c;">all toys</a>&sup1;. <br><br> <span class=3D"fsz_014px=
+ lh_028px" style=3D"font-size:inherit; font-weight:700; text-decoration:non=
+e; color:#ffffff;">Through 4 November</span>, visit the in-game shop to emb=
+ark on a frightfully fun adventure atop <a href=3D"https://links.battle.net=
+/f/a/nf8LzhfPUvMoHaorfPuB1w~~/AAQRxQA~/RgRo_VaBP0TEaHR0cHM6Ly93b3JsZG9md2Fy=
+Y3JhZnQuYmxpenphcmQuY29tL2VuLWdiL25ld3MvMjQxNDI1Njk_dXRtX3NvdXJjZT1ibmV0LWh=
+hbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldG=
+luZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1ldmVzLWdoYXN0bHktcmlkZXImbGlkPXZob=
+2MxcHJkcDc5d1cDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29t=
+WAQAAAFh" target=3D"_blank" class=3D"fsz_014px lh_028px" style=3D"font-size=
+:inherit; font-weight:400; text-decoration:underline; border:none; color:#e=
+76b2c;">Eve=E2=80=99s Ghastly Rider</a>&sup2;=E2=80=94the perfect spellbind=
+ing <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-wei=
+ght:700; text-decoration:none; color:#ffffff;">Skyriding mount</span> to ha=
+unt the skies of Azeroth!</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=
+=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=
+=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=
+=0A=09=09=09=09<!-- BUTTON - CTA -->=0A=09=09=09=09<td align=3D"center" bgc=
+olor=3D"#000000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=
+=09<table class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #=
+000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000"=
+ style=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<table width=
+=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#0000=
+00" style=3D"width: 100%; min-width: 100%; border-spacing: 0; border-collap=
+se: collapse; background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=
+=09=09=09=09=09=09=09=09<!-- BUTTON -->=0A=09=09=09=09=09=09=09=09<td class=
+=3D"pt_000pt pr_008pc pb_040px pl_008pc" align=3D"center" style=3D"padding:=
+ 0 0 60px; color: #000000;">=0A=09=09=09=09=09=09=09=09=09<!--[if tonline]>=
+<div style=3D"display: none;"><![endif]-->=0A=09=09=09=09=09=09=09=09=09<!-=
+-[if mso]>=0A=09=09=09=09=09=09=09=09=09<a href=3D"https://links.battle.net=
+/f/a/ihP8GNvPqYqoFLbUob22Yg~~/AAQRxQA~/RgRo_VaBP0SxaHR0cHM6Ly9ldS5zaG9wLmJh=
+dHRsZS5uZXQvZW4tZ2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ0P3V0bV9zb3VyY2U9Ym5ldC1=
+oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZX=
+RpbmctZ2ItMyZ1dG1fY29udGVudD1idXR0b24tbGluay1zaG9wLW5vdyN0b3lzVwNzcGNCCmcSg=
+dEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~" target=3D"_bla=
+nk" style=3D"font-family: 'Object Sans', 'Helvetica Neue', Helvetica, Arial=
+, 'Droid Sans', sans-serif; font-size: 18px; font-weight: 700; line-height:=
+ 22px; display: inline-block; max-width: 100%; padding: 16px 34px; vertical=
+-align: middle; text-decoration: none; text-transform: uppercase; color: #0=
+00000; background: linear-gradient(to bottom, #d7891a, #e56a31); background=
+-color: #d7891a; "><i style=3D"letter-spacing: 25px;mso-font-width:-100%;ms=
+o-text-raise:30pt;">&nbsp;</i><span style=3D"mso-text-raise:15pt;">Shop Now=
+</span><i style=3D"letter-spacing: 25px;mso-font-width:-100%;">&nbsp;</i></=
+a>=0A=09=09=09=09=09=09=09=09=09<![endif]-->=0A=09=09=09=09=09=09=09=09=09<=
+!--[if tonline]></div><![endif]-->=0A=09=09=09=09=09=09=09=09=09<a href=3D"=
+https://links.battle.net/f/a/ihP8GNvPqYqoFLbUob22Yg~~/AAQRxQA~/RgRo_VaBP0Sx=
+aHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L3dvcmxkLW9mLXdhcmNyYWZ=
+0P3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJn=
+V0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1idXR0b24tbGluay1zaG9wL=
+W5vdyN0b3lzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21Y=
+BAAAAWE~" target=3D"_blank" style=3D"mso-hide:all; font-family: 'Object San=
+s', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size=
+: 18px; font-weight: 700; line-height: 22px; display: inline-block; max-wid=
+th: 100%; padding: 16px 34px; vertical-align: middle; text-decoration: none=
+; text-transform: uppercase; color: #000000; border: 1px solid #d7891a; bac=
+kground: linear-gradient(to bottom, #d7891a, #e56a31); background-color: #d=
+7891a;">Shop Now</a>=0A=09=09=09=09=09=09=09=09</td>=0A=09=09=09=09=09=09=
+=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=
+=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</t=
+r>=0A=0A=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- IMAGE - FULL-WIDTH -->=0A=09=
+=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"padding: 0; text=
+-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" widt=
+h=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#0000=
+00" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=
+=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=
+=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%;=
+ border-spacing: 0; border-collapse: collapse; background-color: #000000;">=
+=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- IMAGE -->=0A=09=
+=09=09=09=09=09=09=09<td class=3D"dspl_block pt_000pt pr_000pt pb_030px pl_=
+000pt ta_c" style=3D"padding: 0 0 40px;"><a href=3D"https://links.battle.ne=
+t/f/a/ygutrBVRJpSZXXkI05etkw~~/AAQRxQA~/RgRo_VaBP0TFaHR0cHM6Ly9uZXdzLmJsaXp=
+6YXJkLmNvbS9lbi1nYi9kaWFibG8taW1tb3J0YWwvMjQxNDU1OTQ_dXRtX3NvdXJjZT1ibmV0LW=
+hhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtld=
+GluZy1nYi0zJnV0bV9jb250ZW50PWltYWdlLWxpbmstaGFsbG93cy13YWtlLWhhdW50cy1kaWFi=
+bG8taW1tb3J0YWxXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmN=
+vbVgEAAABYQ~~" target=3D"_blank"><img class=3D"w_100pc maxw_100pc h_auto" s=
+rc=3D"https://cdn.blizz.ly/emails/battlenet/battlenet/2024/10/24-bnet-hallo=
+ween-3/en-GB/image-battlenet-thumb-hallows-wake-haunts-diablo-immortal.png"=
+ alt=3D"HALLOW=E2=80=99S WAKE HAUNTS DIABLO IMMORTAL" width=3D"100%" height=
+=3D"100%" border=3D"0" style=3D"font-family: 'Noto Sans', 'Helvetica Neue',=
+ Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 16px; display: bloc=
+k; padding: 0; text-decoration: none; color: #d5d7dd;"></a></td>=0A=09=09=
+=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</=
+td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=
+=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- TEXT - SUBHEADER -->=
+=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"padding: 0=
+; text-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt=
+" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D=
+"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=
+=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;"=
+>=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cellpaddin=
+g=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 1=
+00%; border-spacing: 0; border-collapse: collapse; background-color: #00000=
+0;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=
+=09=09=09=09=09=09=09=09<td class=3D"fsz_sbhdr lh_sbhdr pt_000pt pr_010pc p=
+b_030px pl_010pc ta_c" style=3D"font-family: 'Object Sans', 'Helvetica Neue=
+', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 32px; font-weight=
+: 700; mso-line-height-rule:exactly; line-height: 40px; padding: 0 40px 40p=
+x; text-align: center; text-decoration: none; letter-spacing: normal;; over=
+flow-wrap: break-word; word-wrap: break-word; word-break: break-word; -ms-w=
+ord-break: break-word;  color: #ffffff; border: 0; ">HALLOW=E2=80=99S WAKE =
+HAUNTS DIABLO IMMORTAL</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=
+=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=
+=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=
+=09=09=09=09<!-- TEXT - BODY -->=0A=09=09=09=09<td align=3D"center" bgcolor=
+=3D"#000000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<t=
+able class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #00000=
+0;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" styl=
+e=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"10=
+0%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" st=
+yle=3D"width: 100%; min-width: 100%; border-spacing: 0; border-collapse: co=
+llapse; background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=
+=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_=
+014px lh_028px pt_000pt pr_008pc pb_030px pl_008pc ta_l" style=3D"font-fami=
+ly: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-ser=
+if; font-size: 16px; font-weight: 400; font-style: normal; mso-line-height-=
+rule:exactly; line-height: 28px; padding: 0 40px 40px;; text-align: left; o=
+verflow-wrap: break-word; word-wrap: break-word; word-break: break-word; -m=
+s-word-break: break-word;  color: #d5d7dd;">Venture into <span class=3D"fsz=
+_014px lh_028px" style=3D"font-size:inherit; font-weight:700; text-decorati=
+on:none; color:#ffffff;">Diablo<span style=3D"font-size: 70% !important; li=
+ne-height: 1.75 !important; vertical-align: top !important; mso-text-raise:=
+ 30% !important;">&reg;</span> Immortal&trade;</span> and vanquish what goe=
+s bump in the night. <br><br> Transform yourself with fearsome new cosmetic=
+s, like the lupine <span class=3D"fsz_014px lh_028px" style=3D"font-size:in=
+herit; font-weight:700; text-decoration:none; color:#ffffff;">Nightmoon Cur=
+se</span> cosmetic set, and partake in limited-time Hallow=E2=80=99s Wake f=
+estivities until 6 November: <span class=3D"fsz_014px lh_028px" style=3D"fo=
+nt-size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">How=
+ler=E2=80=99s Hunt</span> makes its sinister return, sowing doubt and suspi=
+cion amongst all, and <span class=3D"fsz_014px lh_028px" style=3D"font-size=
+:inherit; font-weight:700; text-decoration:none; color:#ffffff;">Verdant Pa=
+geant</span> phantom market darkens Sanctuary=E2=80=99s door with its spine=
+-chilling wares. <br><br> As you bloody your hands in celebration, you=E2=
+=80=99ll uncover a <span class=3D"fsz_014px lh_028px" style=3D"font-size:in=
+herit; font-weight:700; text-decoration:none; color:#ffffff;">hoard of rewa=
+rds</span>. Log in, massacre <span class=3D"fsz_014px lh_028px" style=3D"fo=
+nt-size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">Hal=
+low=E2=80=99s Wake goblins</span>, and complete tasks to earn <span class=
+=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-weight:700; text-d=
+ecoration:none; color:#ffffff;">Event Tokens</span> that you can spend on v=
+arious ghoulish goods, including a terrifying <span class=3D"fsz_014px lh_0=
+28px" style=3D"font-size:inherit; font-weight:700; text-decoration:none; co=
+lor:#ffffff;">Transformation Toy</span>.</td>=0A=09=09=09=09=09=09=09</tr>=
+=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=
+=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=
+=0A=09=09=09<tr>=0A=09=09=09=09<!-- BUTTON - CTA -->=0A=09=09=09=09<td alig=
+n=3D"center" bgcolor=3D"#000000" style=3D"padding: 0; text-align: center;">=
+=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cellspa=
+cing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"back=
+ground-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgco=
+lor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09=09=
+=09<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" b=
+gcolor=3D"#000000" style=3D"width: 100%; min-width: 100%; border-spacing: 0=
+; border-collapse: collapse; background-color: #000000;">=0A=09=09=09=09=09=
+=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- BUTTON -->=0A=09=09=09=09=09=09=
+=09=09<td class=3D"pt_000pt pr_008pc pb_040px pl_008pc" align=3D"center" st=
+yle=3D"padding: 0 0 60px; color: #000000;">=0A=09=09=09=09=09=09=09=09=09<!=
+--[if tonline]><div style=3D"display: none;"><![endif]-->=0A=09=09=09=09=09=
+=09=09=09=09<!--[if mso]>=0A=09=09=09=09=09=09=09=09=09<a href=3D"https://l=
+inks.battle.net/f/a/05qebHMLYU4bM8bhh378RA~~/AAQRxQA~/RgRo_VaBP0SyaHR0cHM6L=
+y9uZXdzLmJsaXp6YXJkLmNvbS9lbi1nYi9kaWFibG8taW1tb3J0YWwvMjQxNDU1OTQ_dXRtX3Nv=
+dXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXB=
+haWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWJ1dHRvbi1saW5rLXNwb29rLWFuZC1zY2=
+FyZVcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh"=
+ target=3D"_blank" style=3D"font-family: 'Object Sans', 'Helvetica Neue', H=
+elvetica, Arial, 'Droid Sans', sans-serif; font-size: 18px; font-weight: 70=
+0; line-height: 22px; display: inline-block; max-width: 100%; padding: 16px=
+ 34px; vertical-align: middle; text-decoration: none; text-transform: upper=
+case; color: #000000; background: linear-gradient(to bottom, #d7891a, #e56a=
+31); background-color: #d7891a; "><i style=3D"letter-spacing: 25px;mso-font=
+-width:-100%;mso-text-raise:30pt;">&nbsp;</i><span style=3D"mso-text-raise:=
+15pt;">Spook And Scare</span><i style=3D"letter-spacing: 25px;mso-font-widt=
+h:-100%;">&nbsp;</i></a>=0A=09=09=09=09=09=09=09=09=09<![endif]-->=0A=09=09=
+=09=09=09=09=09=09=09<!--[if tonline]></div><![endif]-->=0A=09=09=09=09=09=
+=09=09=09=09<a href=3D"https://links.battle.net/f/a/05qebHMLYU4bM8bhh378RA~=
+~/AAQRxQA~/RgRo_VaBP0SyaHR0cHM6Ly9uZXdzLmJsaXp6YXJkLmNvbS9lbi1nYi9kaWFibG8t=
+aW1tb3J0YWwvMjQxNDU1OTQ_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV=
+0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PW=
+J1dHRvbi1saW5rLXNwb29rLWFuZC1zY2FyZVcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxle=
+C5tYXJ0b25AZ21haWwuY29tWAQAAAFh" target=3D"_blank" style=3D"mso-hide:all; f=
+ont-family: 'Object Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans'=
+, sans-serif; font-size: 18px; font-weight: 700; line-height: 22px; display=
+: inline-block; max-width: 100%; padding: 16px 34px; vertical-align: middle=
+; text-decoration: none; text-transform: uppercase; color: #000000; border:=
+ 1px solid #d7891a; background: linear-gradient(to bottom, #d7891a, #e56a31=
+); background-color: #d7891a;">Spook And Scare</a>=0A=09=09=09=09=09=09=09=
+=09</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=
+=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=
+=09=09=09</td>=0A=09=09=09</tr>=0A=0A=0A=0A=09=09=09<tr>=0A=09=09=09=09<!--=
+ IMAGE - FULL-WIDTH -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#0000=
+00" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<table clas=
+s=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=
+=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"ba=
+ckground-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"=
+width: 100%; min-width: 100%; border-spacing: 0; border-collapse: collapse;=
+ background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=
+=09=09=09<!-- IMAGE -->=0A=09=09=09=09=09=09=09=09<td class=3D"dspl_block p=
+t_000pt pr_000pt pb_030px pl_000pt ta_c" style=3D"padding: 0 0 40px;"><a hr=
+ef=3D"https://links.battle.net/f/a/_7682eUYmqoTQR746p4v7g~~/AAQRxQA~/RgRo_V=
+aBP0TFaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L2hlYXJ0aHN0b25lP=
+3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0=
+bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1pbWFnZS1saW5rLXRoZS1kYXJ=
+rbW9vbmUtZmFpcmUtY29tZXMtdG8taGVhcnRoc3RvbmVXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YX=
+NpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank"><img class=3D=
+"w_100pc maxw_100pc h_auto" src=3D"https://cdn.blizz.ly/emails/battlenet/ba=
+ttlenet/2024/10/24-bnet-halloween-3/en-GB/image-battlenet-thumb-the-darkmoo=
+ne-faire-comes-to-hearthstone.png" alt=3D"THE DARKMOON FAIRE COMES TO HEART=
+HSTONE" width=3D"100%" height=3D"100%" border=3D"0" style=3D"font-family: '=
+Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; f=
+ont-size: 16px; display: block; padding: 0; text-decoration: none; color: #=
+d5d7dd;"></a></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</ta=
+ble>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</ta=
+ble>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09=
+<!-- TEXT - SUBHEADER -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#00=
+0000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<table cl=
+ass=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0=
+" border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=
+=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"ba=
+ckground-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"=
+width: 100%; min-width: 100%; border-spacing: 0; border-collapse: collapse;=
+ background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=
+=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_sbhdr lh_=
+sbhdr pt_000pt pr_010pc pb_030px pl_010pc ta_c" style=3D"font-family: 'Obje=
+ct Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; fon=
+t-size: 32px; font-weight: 700; mso-line-height-rule:exactly; line-height: =
+40px; padding: 0 40px 40px; text-align: center; text-decoration: none; lett=
+er-spacing: normal;; overflow-wrap: break-word; word-wrap: break-word; word=
+-break: break-word; -ms-word-break: break-word;  color: #ffffff; border: 0;=
+ ">THE DARKMOON FAIRE COMES TO HEARTHSTONE</td>=0A=09=09=09=09=09=09=09</tr=
+>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=
+=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=
+=0A=09=09=09<tr>=0A=09=09=09=09<!-- TEXT - BODY -->=0A=09=09=09=09<td align=
+=3D"center" bgcolor=3D"#000000" style=3D"padding: 0; text-align: center;">=
+=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cellspa=
+cing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"back=
+ground-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgco=
+lor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09=09=
+=09<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" b=
+gcolor=3D"#000000" style=3D"width: 100%; min-width: 100%; border-spacing: 0=
+; border-collapse: collapse; background-color: #000000;">=0A=09=09=09=09=09=
+=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=
+=09<td class=3D"fsz_014px lh_028px pt_000pt pr_008pc pb_030px pl_008pc ta_l=
+" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'D=
+roid Sans', sans-serif; font-size: 16px; font-weight: 400; font-style: norm=
+al; mso-line-height-rule:exactly; line-height: 28px; padding: 0 40px 40px;;=
+ text-align: left; overflow-wrap: break-word; word-wrap: break-word; word-b=
+reak: break-word; -ms-word-break: break-word;  color: #d5d7dd;">Welcome to =
+<span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-weight:=
+700; text-decoration:none; color:#ffffff;">Darkmoon Faire's Frightful Fanta=
+sy</span>, a limited-time Hallow=E2=80=99s End event=E2=80=94and a haunting=
+ precursor to the upcoming <span class=3D"fsz_014px lh_028px" style=3D"font=
+-size:inherit; font-weight:700; text-decoration:none; color:#ffffff;">Great=
+ Dark Beyond&trade;</span> expansion in Hearthstone<span class=3D"fsz_014px=
+ lh_028px" style=3D"font-size:inherit; font-weight:700; text-decoration:non=
+e; color:#ffffff;"><span style=3D"font-size: 70% !important; line-height: 1=
+.75 !important; vertical-align: top !important; mso-text-raise: 30% !impor=
+tant;">&reg;</span></span></span>. <br><br> Log in through <span class=3D"f=
+sz_014px lh_028px" style=3D"font-size:inherit; font-weight:700; text-decora=
+tion:none; color:#ffffff;">5 November</span> and earn a truckload of prizes=
+, including <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; =
+font-weight:700; text-decoration:none; color:#ffffff;">Perils in Paradise P=
+acks</span>, <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit;=
+ font-weight:700; text-decoration:none; color:#ffffff;">Perils in Paradise =
+Epics</span>, <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit=
+; font-weight:700; text-decoration:none; color:#ffffff;">Tavern Tickets</sp=
+an>, <span class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-we=
+ight:700; text-decoration:none; color:#ffffff;">Golden Avatar of Hearthston=
+e</span>, and the <span class=3D"fsz_014px lh_028px" style=3D"font-size:inh=
+erit; font-weight:700; text-decoration:none; color:#ffffff;">Daredevil Patc=
+hes Hero Skin</span>.</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=
+=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=
+=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=
+=09=09=09=09<!-- BUTTON - CTA -->=0A=09=09=09=09<td align=3D"center" bgcolo=
+r=3D"#000000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<=
+table class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #0000=
+00;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" sty=
+le=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"1=
+00%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" s=
+tyle=3D"width: 100%; min-width: 100%; border-spacing: 0; border-collapse: c=
+ollapse; background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=
+=09=09=09=09=09=09<!-- BUTTON -->=0A=09=09=09=09=09=09=09=09<td class=3D"pt=
+_000pt pr_008pc pb_040px pl_008pc" align=3D"center" style=3D"padding: 0 0 6=
+0px; color: #000000;">=0A=09=09=09=09=09=09=09=09=09<!--[if tonline]><div s=
+tyle=3D"display: none;"><![endif]-->=0A=09=09=09=09=09=09=09=09=09<!--[if m=
+so]>=0A=09=09=09=09=09=09=09=09=09<a href=3D"https://links.battle.net/f/a/i=
+lJT7PHMC9G3oFYeyYDrRQ~~/AAQRxQA~/RgRo_VaBP0StaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS=
+5uZXQvZW4tZ2IvZmFtaWx5L2hlYXJ0aHN0b25lP3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tM=
+y0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1=
+dG1fY29udGVudD1idXR0b24tbGluay1oYXVudC10aGUtaGFsbHNXA3NwY0IKZxKB0Rpn4MpAiVI=
+caGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank" style=
+=3D"font-family: 'Object Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid =
+Sans', sans-serif; font-size: 18px; font-weight: 700; line-height: 22px; di=
+splay: inline-block; max-width: 100%; padding: 16px 34px; vertical-align: m=
+iddle; text-decoration: none; text-transform: uppercase; color: #000000; ba=
+ckground: linear-gradient(to bottom, #d7891a, #e56a31); background-color: #=
+d7891a; "><i style=3D"letter-spacing: 25px;mso-font-width:-100%;mso-text-ra=
+ise:30pt;">&nbsp;</i><span style=3D"mso-text-raise:15pt;">Haunt The Halls</=
+span><i style=3D"letter-spacing: 25px;mso-font-width:-100%;">&nbsp;</i></a>=
+=0A=09=09=09=09=09=09=09=09=09<![endif]-->=0A=09=09=09=09=09=09=09=09=09<!-=
+-[if tonline]></div><![endif]-->=0A=09=09=09=09=09=09=09=09=09<a href=3D"ht=
+tps://links.battle.net/f/a/ilJT7PHMC9G3oFYeyYDrRQ~~/AAQRxQA~/RgRo_VaBP0StaH=
+R0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvZmFtaWx5L2hlYXJ0aHN0b25lP3V0bV9zb=
+3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1w=
+YWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1idXR0b24tbGluay1oYXVudC10aGUtaGF=
+sbHNXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ=
+~~" target=3D"_blank" style=3D"mso-hide:all; font-family: 'Object Sans', 'H=
+elvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 18px=
+; font-weight: 700; line-height: 22px; display: inline-block; max-width: 10=
+0%; padding: 16px 34px; vertical-align: middle; text-decoration: none; text=
+-transform: uppercase; color: #000000; border: 1px solid #d7891a; backgroun=
+d: linear-gradient(to bottom, #d7891a, #e56a31); background-color: #d7891a;=
+">Haunt The Halls</a>=0A=09=09=09=09=09=09=09=09</td>=0A=09=09=09=09=09=09=
+=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=
+=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</t=
+r>=0A=0A=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- IMAGE - FULL-WIDTH -->=0A=09=
+=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"padding: 0; text=
+-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" widt=
+h=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#0000=
+00" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=
+=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=
+=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-width: 100%;=
+ border-spacing: 0; border-collapse: collapse; background-color: #000000;">=
+=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- IMAGE -->=0A=09=
+=09=09=09=09=09=09=09<td class=3D"dspl_block pt_000pt pr_000pt pb_030px pl_=
+000pt ta_c" style=3D"padding: 0 0 40px;"><a href=3D"https://links.battle.ne=
+t/f/a/_pdvgkgkqVDa6QX4s_rpdA~~/AAQRxQA~/RgRo_VaBP0SyaHR0cHM6Ly9ldS5zaG9wLmJ=
+hdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV=
+9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWltY=
+WdlLWxpbmstanVtcHNjYXJlLWEtYmFycmFnZS1vZi1uZXctZ2FtZXMtaXMtaGVyZVcDc3BjQgpn=
+EoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh" target=3D"_bl=
+ank"><img class=3D"w_100pc maxw_100pc h_auto" src=3D"https://cdn.blizz.ly/e=
+mails/battlenet/battlenet/2024/10/24-bnet-halloween-3/en-GB/image-battlenet=
+-thumb-jumpscare-a-barrage-of-new-games-is-here.png" alt=3D"JUMPSCARE! A BA=
+RRAGE OF NEW GAMES IS HERE!" width=3D"100%" height=3D"100%" border=3D"0" st=
+yle=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid=
+ Sans', sans-serif; font-size: 16px; display: block; padding: 0; text-decor=
+ation: none; color: #d5d7dd;"></a></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=
+=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=
+=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=
+=09<tr>=0A=09=09=09=09<!-- TEXT - SUBHEADER -->=0A=09=09=09=09<td align=3D"=
+center" bgcolor=3D"#000000" style=3D"padding: 0; text-align: center;">=0A=
+=09=09=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cellspacin=
+g=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"backgro=
+und-color: #000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=
+=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<=
+table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcol=
+or=3D"#000000" style=3D"width: 100%; min-width: 100%; border-spacing: 0; bo=
+rder-collapse: collapse; background-color: #000000;">=0A=09=09=09=09=09=09=
+=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<=
+td class=3D"fsz_sbhdr lh_sbhdr pt_000pt pr_010pc pb_030px pl_010pc ta_c" st=
+yle=3D"font-family: 'Object Sans', 'Helvetica Neue', Helvetica, Arial, 'Dro=
+id Sans', sans-serif; font-size: 32px; font-weight: 700; mso-line-height-ru=
+le:exactly; line-height: 40px; padding: 0 40px 40px; text-align: center; te=
+xt-decoration: none; letter-spacing: normal;; overflow-wrap: break-word; wo=
+rd-wrap: break-word; word-break: break-word; -ms-word-break: break-word;  c=
+olor: #ffffff; border: 0; ">JUMPSCARE! A BARRAGE OF NEW GAMES IS HERE!</td>=
+=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=
+=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=
+=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- TEXT - BODY=
+ -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" style=3D"paddin=
+g: 0; text-align: center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_0=
+00pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolo=
+r=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=09=09=09<tr>=
+=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"background-color: #00=
+0000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width: 100%; min-wi=
+dth: 100%; border-spacing: 0; border-collapse: collapse; background-color: =
+#000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- TEXT =
+-->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_014px lh_028px pt_000pt pr_0=
+08pc pb_030px pl_008pc ta_l" style=3D"font-family: 'Noto Sans', 'Helvetica =
+Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 16px; font-we=
+ight: 400; font-style: normal; mso-line-height-rule:exactly; line-height: 2=
+8px; padding: 0 40px 40px;; text-align: left; overflow-wrap: break-word; wo=
+rd-wrap: break-word; word-break: break-word; -ms-word-break: break-word;  c=
+olor: #d5d7dd;">Creep and crawl your way over to <i class=3D"fsz_014px lh_0=
+28px">Battle.net</i>, where new games are at your gnarled fingertips. Defen=
+d Azeroth from the shadows below in <a href=3D"https://links.battle.net/f/a=
+/VUz6Gp_DqmlgkFyiOHiu-w~~/AAQRxQA~/RgRo_VaBP0TUaHR0cHM6Ly9ldS5zaG9wLmJhdHRs=
+ZS5uZXQvZW4tZ2IvcHJvZHVjdC93b3JsZC1vZi13YXJjcmFmdC10aGUtd2FyLXdpdGhpbj91dG1=
+fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2=
+FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLXdvcmxkLW9mLXdhc=
+mNyYWZ0JmxpZD0ycmlhNGViYm56aTdXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFy=
+dG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank" class=3D"fsz_014px lh_028px=
+" style=3D"font-size:inherit; font-weight:400; text-decoration:underline; b=
+order:none; color:#e76b2c;"><i class=3D"fsz_014px lh_028px">World of Warcra=
+ft:</i></a><a href=3D"https://links.battle.net/f/a/a5K0eExmHGMeWWq1Tl5x9w~~=
+/AAQRxQA~/RgRo_VaBP0TRaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvcHJvZHVjd=
+C93b3JsZC1vZi13YXJjcmFmdC10aGUtd2FyLXdpdGhpbj91dG1fc291cmNlPWJuZXQtaGFsbG93=
+ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWd=
+iLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLXRoZS13YXItd2l0aGluJmxpZD10dHd0cGtobXQ3N2=
+RXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~"=
+ target=3D"_blank" class=3D"fsz_014px lh_028px" style=3D"font-size:inherit;=
+ font-weight:400; text-decoration:underline; border:none; color:#e76b2c;"> =
+The War Within&trade;</a>, walk the path of the Spiritborn in <a href=3D"ht=
+tps://links.battle.net/f/a/oYGhu1RGFQC2C36FR1GnAQ~~/AAQRxQA~/RgRo_VaBP0TGaH=
+R0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvcHJvZHVjdC9kaWFibG8taXY_dXRtX3Nvd=
+XJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBh=
+aWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1kaWFibG8taXYtdmVzc2V=
+sLW9mLWhhdHJlZCZsaWQ9Z3MybjgzNG9tMG82VwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbG=
+V4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~" target=3D"_blank" class=3D"fsz_014px lh=
+_028px" style=3D"font-size:inherit; font-weight:400; text-decoration:underl=
+ine; border:none; color:#e76b2c;"><i class=3D"fsz_014px lh_028px">Diablo</i=
+> IV: Vessel of Hatred&trade;</a>, and go rogue in <a href=3D"https://links=
+.battle.net/f/a/S0f56D_CciPuWLXVnLq_cQ~~/AAQRxQA~/RgRo_VaBP0ToaHR0cHM6Ly9l=
+dS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2IvcHJvZHVjdC9jYWxsLW9mLWR1dHktYmxhY2stb3BzLTY=
+_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdX=
+RtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1jYWxsLSVFM=
+iU4MCU5Q29mLWR1dHktYmxhY2stb3BzLTYlMjB0YXJnZXQlM0QmbGlkPWM1cWNmNXltZHU3eVcD=
+c3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh"_blank=
+" class=3D"fsz_014px lh_028px" style=3D"font-size:inherit; font-weight:400;=
+ text-decoration:underline; border:none; color:#e76b2c;">Call of Duty<span =
+style=3D"font-size: 70% !important; line-height: 1.75 !important; vertical-=
+align: top !important; mso-text-raise: 30% !important;">&reg;</span>: Black=
+ Ops 6</a>.</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</tabl=
+e>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</tabl=
+e>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!=
+-- BUTTON - CTA -->=0A=09=09=09=09<td align=3D"center" bgcolor=3D"#000000" =
+style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<table class=3D=
+"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0" bgcolor=3D"#000000" style=3D"background-color: #000000;">=0A=09=09=
+=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000" style=3D"backgrou=
+nd-color: #000000;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"width:=
+ 100%; min-width: 100%; border-spacing: 0; border-collapse: collapse; backg=
+round-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=
+=09<!-- BUTTON -->=0A=09=09=09=09=09=09=09=09<td class=3D"pt_000pt pr_008pc=
+ pb_016px pl_008pc" align=3D"center" style=3D"padding: 0 0 20px; color: #00=
+0000;">=0A=09=09=09=09=09=09=09=09=09<!--[if tonline]><div style=3D"display=
+: none;"><![endif]-->=0A=09=09=09=09=09=09=09=09=09<!--[if mso]>=0A=09=09=
+=09=09=09=09=09=09=09<a href=3D"https://links.battle.net/f/a/vfZ-hWkkK-qe5_=
+uzoV-zdA~~/AAQRxQA~/RgRo_VaBP0STaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2I=
+_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdX=
+RtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWJ1dHRvbi1saW5rLXNob3Atb=
+m93VwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~=
+" target=3D"_blank" style=3D"font-family: 'Object Sans', 'Helvetica Neue', =
+Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 18px; font-weight: 7=
+00; line-height: 22px; display: inline-block; max-width: 100%; padding: 16p=
+x 34px; vertical-align: middle; text-decoration: none; text-transform: uppe=
+rcase; color: #000000; background: linear-gradient(to bottom, #d7891a, #e56=
+a31); background-color: #d7891a; "><i style=3D"letter-spacing: 25px;mso-fon=
+t-width:-100%;mso-text-raise:30pt;">&nbsp;</i><span style=3D"mso-text-raise=
+:15pt;">Shop Now</span><i style=3D"letter-spacing: 25px;mso-font-width:-100=
+%;">&nbsp;</i></a>=0A=09=09=09=09=09=09=09=09=09<![endif]-->=0A=09=09=09=09=
+=09=09=09=09=09<!--[if tonline]></div><![endif]-->=0A=09=09=09=09=09=09=09=
+=09=09<a href=3D"https://links.battle.net/f/a/vfZ-hWkkK-qe5_uzoV-zdA~~/AAQR=
+xQA~/RgRo_VaBP0STaHR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT=
+1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduP=
+W1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PWJ1dHRvbi1saW5rLXNob3Atbm93VwNzcGNCCmcS=
+gdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~" target=3D"_bl=
+ank" style=3D"mso-hide:all; font-family: 'Object Sans', 'Helvetica Neue', H=
+elvetica, Arial, 'Droid Sans', sans-serif; font-size: 18px; font-weight: 70=
+0; line-height: 22px; display: inline-block; max-width: 100%; padding: 16px=
+ 34px; vertical-align: middle; text-decoration: none; text-transform: upper=
+case; color: #000000; border: 1px solid #d7891a; background: linear-gradien=
+t(to bottom, #d7891a, #e56a31); background-color: #d7891a;">Shop Now</a>=0A=
+=09=09=09=09=09=09=09=09</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=
+=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=
+=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=
+=0A=09=09=09=09<!-- TEXT - BODY -->=0A=09=09=09=09<td align=3D"center" bgco=
+lor=3D"#000000" style=3D"padding: 0; text-align: center;">=0A=09=09=09=09=
+=09<table class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" bgcolor=3D"#000000" style=3D"background-color: #=
+000000;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#000000"=
+ style=3D"background-color: #000000;">=0A=09=09=09=09=09=09=09<table width=
+=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#0000=
+00" style=3D"width: 100%; min-width: 100%; border-spacing: 0; border-collap=
+se: collapse; background-color: #000000;">=0A=09=09=09=09=09=09=09<tr>=0A=
+=09=09=09=09=09=09=09=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<td class=
+=3D"fsz_012px lh_020px pt_000pt pr_008pc pb_040px pl_008pc ta_c" id=3D"lega=
+l-disclaimer"style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica=
+, Arial, 'Droid Sans', sans-serif; font-size: 12px; font-weight: 400; font-=
+style: italic; mso-line-height-rule:exactly; line-height: 20px; padding: 0 =
+40px 60px;; text-align: center; overflow-wrap: break-word; word-wrap: break=
+-word; word-break: break-word; -ms-word-break: break-word;  color: #a3a5a9;=
+">&sup1;Sale does not include World of Warcraft Classic game items and ends=
+ on 1 November 2024 at 10am PDT. <br><br> &sup2; Mount not part of sale and=
+ only available in World of Warcraft Classic games.</td>=0A=09=09=09=09=09=
+=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=
+=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09=
+</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- SOCIAL DIVIDER -->=0A=09=09=09=
+=09<td class=3D"pt_000pt pr_000pt pb_030px pl_000pt bgc_soc" align=3D"cente=
+r" bgcolor=3D"#1a1c23" style=3D"padding: 0; text-align: center;">=0A=09=09=
+=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0=
+" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23" style=3D"background-co=
+lor: #1a1c23;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td class=3D"dspl=
+_block pa_000pt ta_c" bgcolor=3D"#1a1c23" style=3D"padding: 0 0 30px; backg=
+round-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellsp=
+acing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23" style=3D"wid=
+th: 100%; min-width: 100%; border-spacing: 0; border-collapse: collapse; ba=
+ckground-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=
+=09=09<!-- IMAGE (DIVIDER) -->=0A=09=09=09=09=09=09=09=09<td><img class=3D"=
+w_100pc maxw_100pc h_auto" src=3D"https://cdn.blizz.ly/emails/global/battle=
+net/divider.png" alt=3D"" width=3D"100%" height=3D"100%" border=3D"0" style=
+=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sa=
+ns', sans-serif; font-size: 14px; display: block; padding: 0; text-decorati=
+on: none; color: #848689;"></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=
+=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=
+=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr=
+>=0A=09=09=09=09<!-- SOCIAL HEADER -->=0A=09=09=09=09<td class=3D"pt_000pt =
+pr_015px pb_000pt pl_015px bgc_soc" align=3D"center" bgcolor=3D"#1a1c23" st=
+yle=3D"padding: 0; text-align: center;">=0A=09=09=09=09=09<table class=3D"w=
+_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" bgcolor=3D"#1a1c23" style=3D"background-color: #1a1c23;">=0A=09=09=
+=09=09=09<tr>=0A=09=09=09=09=09=09<td bgcolor=3D"#1a1c23" style=3D"backgrou=
+nd-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23" style=3D"width:=
+ 100%; min-width: 100%; border-spacing: 0; border-collapse: collapse; backg=
+round-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=
+=09<!-- TEXT -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_024px lh_032px =
+pt_000pt pr_005pc pb_000pt pl_005pc ta_c" style=3D"font-family: 'Object San=
+s', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size=
+: 32px; font-weight: 700; line-height: 42px; padding: 0 40px 0; text-align:=
+ center; text-transform: normal; color: #ffffff;">Stay Connected</td>=0A=09=
+=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=
+=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</t=
+d>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- SOCIAL LINKS -->=
+=0A=09=09=09=09<td class=3D"pt_000pt pr_015px pb_010px pl_015px bgc_soc" al=
+ign=3D"center" bgcolor=3D"#1a1c23" style=3D"padding: 0; text-align: center;=
+">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cells=
+pacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23" style=3D"ba=
+ckground-color: #1a1c23;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td cl=
+ass=3D"mgn_000pt_auto" align=3D"center" bgcolor=3D"#1a1c23" style=3D"paddin=
+g: 0 0 40px; background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table cel=
+lspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23" style=3D"=
+border-spacing: 0; border-collapse: collapse; background-color: #1a1c23;">=
+=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=
+=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=
+=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=
+=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=
+=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=
+=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=
+=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=
+=09=09=09=09=09=09<!-- X -->=0A=09=09=09=09=09=09=09=09<td style=3D"padding=
+: 20px 15px 0 0;" align=3D"left"><a href=3D"https://links.battle.net/f/a/B2=
+WSFAUM5cUr5wbs9No2fg~~/AAQRxQA~/RgRo_VaBP0SaaHR0cHM6Ly90d2l0dGVyLmNvbS9iYXR=
+0bGVuZXQ_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW=
+1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXNvY2lhbC1saW5rL=
+XgmbGlkPTA2bXFyZ3lxYmY5Z1cDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25A=
+Z21haWwuY29tWAQAAAFh" target=3D"_blank"><img src=3D"https://cdn.blizz.ly/em=
+ails/global/social/icon-x.png" alt=3D"X" width=3D"24" height=3D"24" border=
+=3D"0" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Aria=
+l, 'Droid Sans', sans-serif; font-size: 14px; display: block; text-decorati=
+on: none; color: #848689;"></a></td>=0A=09=09=09=09=09=09=09=09<!-- FACEBOO=
+K -->=0A=09=09=09=09=09=09=09=09<td style=3D"padding: 20px 15px 0 0;" align=
+=3D"left"><a href=3D"https://links.battle.net/f/a/Wo33wb86IZ8HNOGFDP1dEQ~~/=
+AAQRxQA~/RgRo_VaBP0SiaHR0cHM6Ly9mYWNlYm9vay5jb20vYmF0dGxlbmV0P3V0bV9zb3VyY2=
+U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnb=
+j1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD1zb2NpYWwtbGluay1mYWNlYm9vayZsaWQ9NTR2=
+Ynk2N2Y0NXFxVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21=
+YBAAAAWE~" target=3D"_blank"><img src=3D"https://cdn.blizz.ly/emails/global=
+/social/icon-facebook.png" alt=3D"Facebook" width=3D"24" height=3D"24" bord=
+er=3D"0" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Ar=
+ial, 'Droid Sans', sans-serif; font-size: 14px; display: block; text-decora=
+tion: none; color: #848689;"></a></td>=0A=09=09=09=09=09=09=09=09<!-- INSTA=
+GRAM -->=0A=09=09=09=09=09=09=09=09<td style=3D"padding: 20px 0 0;" align=
+=3D"left"><a href=3D"https://links.battle.net/f/a/NTu4zu3JTs2MTxam1hWufA~~/=
+AAQRxQA~/RgRo_VaBP0SkaHR0cHM6Ly9pbnN0YWdyYW0uY29tL2JhdHRsZW5ldD91dG1fc291cm=
+NlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ=
+249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9c29jaWFsLWxpbmstaW5zdGFncmFtJmxpZD15=
+eWptM2RqdGpsdDZXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmN=
+vbVgEAAABYQ~~" target=3D"_blank"><img src=3D"https://cdn.blizz.ly/emails/gl=
+obal/social/icon-instagram.png" alt=3D"Instagram" width=3D"24" height=3D"24=
+" border=3D"0" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helveti=
+ca, Arial, 'Droid Sans', sans-serif; font-size: 14px; display: block; text-=
+decoration: none; color: #848689;"></a></td>=0A=09=09=09=09=09=09=09=09<!--=
+ SOCIAL LINKS END -->=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09</t=
+r>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=
+=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=
+=0A=09=09=09<tr>=0A=09=09=09=09<!-- FOOTER DIVIDER -->=0A=09=09=09=09<td cl=
+ass=3D"pa_000pt bgc_ftr" align=3D"center" style=3D"padding: 0; text-align: =
+center;">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23;">=0A=
+=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td class=3D"dspl_block pa_000pt ta=
+_c" bgcolor=3D"#1a1c23;">=0A=09=09=09=09=09=09=09<table width=3D"100%" cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23" style=3D"w=
+idth: 100%; min-width: 100%; border-spacing: 0; border-collapse: collapse; =
+background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=
+=09=09=09<!-- IMAGE (DIVIDER) -->=0A=09=09=09=09=09=09=09=09<td class=3D"pb=
+_040px" style=3D"padding: 0 0 60px;"><img class=3D"w_100pc maxw_100pc h_aut=
+o" src=3D"https://cdn.blizz.ly/emails/global/battlenet/footer-divider.png" =
+alt=3D"" width=3D"100%" height=3D"100%" border=3D"0" style=3D"font-family: =
+'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; =
+font-size: 14px; display: block; text-decoration: none; color: #d5d7dd;"></=
+td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=
+=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=
+=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- FOOTER L=
+OGO -->=0A=09=09=09=09<td class=3D"pt_025px pr_015px pb_025px pl_015px bgc_=
+ftr" align=3D"center" bgcolor=3D"#1a1c23" style=3D"padding: 0; text-align: =
+center; background-color: #1a1c23;">=0A=09=09=09=09=09<table class=3D"w_100=
+pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" bgcolor=3D"#1a1c23" style=3D"background-color: #1a1c23;">=0A=09=09=09=09=
+=09<tr>=0A=09=09=09=09=09=09<td class=3D"mgn_000pt_auto" align=3D"center" b=
+gcolor=3D"#1a1c23" style=3D"margin: 0 auto; background-color: #1a1c23;">=0A=
+=09=09=09=09=09=09=09<table cellspacing=3D"0" cellpadding=3D"0" align=3D"ce=
+nter" border=3D"0" bgcolor=3D"#1a1c23" style=3D"border-spacing: 0; border-c=
+ollapse: collapse; background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=
+=0A=09=09=09=09=09=09=09=09<!-- BATTLE.NET/BLIZZARD LOGO -->=0A=09=09=09=09=
+=09=09=09=09<td align=3D"center" style=3D"text-align: center;"><a href=3D"h=
+ttps://links.battle.net/f/a/uo8XCnWqsNnoCBP4Ob1tew~~/AAQRxQA~/RgRo_VaBP0SYa=
+HR0cHM6Ly9ldS5zaG9wLmJhdHRsZS5uZXQvZW4tZ2I_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vl=
+bi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0=
+zJnV0bV9jb250ZW50PWltYWdlLWxpbmstYmF0dGxlbmV0LWxvZ29XA3NwY0IKZxKB0Rpn4MpAiV=
+IcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVgEAAABYQ~~" target=3D"_blank"><img =
+src=3D"https://cdn.blizz.ly/emails/global/battlenet/logo-battlenet.png" alt=
+=3D"BATTLE.NET" width=3D"168" height=3D"100" border=3D"0" style=3D"font-fam=
+ily: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-se=
+rif; font-size: 14px; display: block; margin: 0 auto; padding: 0; text-deco=
+ration: none; color: #848689;"></a></td>=0A=09=09=09=09=09=09=09</tr>=0A=09=
+=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=
+=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=
+=09<tr>=0A=09=09=09=09<!-- FOOTER LINKS -->=0A=09=09=09=09<td class=3D"pa_0=
+00pt bgc_ftr" bgcolor=3D"#1a1c23" align=3D"center" style=3D"padding: 0; tex=
+t-align: center; background-color: #1a1c23;">=0A=09=09=09=09=09<table class=
+=3D"w_100pc minw_000pt" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" bgcolor=3D"#1a1c23" style=3D"background-color: #1a1c23;">=0A=09=
+=09=09=09=09<tr>=0A=09=09=09=09=09=09<td align=3D"center" bgcolor=3D"#1a1c2=
+3" style=3D"background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<table cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" bgcolor=3D"#1=
+a1c23" style=3D"text-align: center; border-spacing: 0; border-collapse: col=
+lapse; background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=
+=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=
+=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=
+=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=
+=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=
+=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09=0A=09=09=
+=09=09=09=09=09=09=0A=09=09=09=09=09=09=09=09<!-- CAREERS -->=0A=09=09=09=
+=09=09=09=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_005px p=
+l_000pt ta_c bb_solid_001px fsz_010px lh_014px" style=3D"font-size: 10px; l=
+ine-height: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a class=3D"fsz_010=
+px lh_014px" href=3D"https://links.battle.net/f/a/Zx2nInMJEd2DCOH56YokMA~~/=
+AAQRxQA~/RgRo_VaBP0SqaHR0cHM6Ly9jYXJlZXJzLmJsaXp6YXJkLmNvbS9nYi9lbj91dG1fc2=
+91cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2Ftc=
+GFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLWZvb3Rlci1jYXJlZXJz=
+JmxpZD11bWV6bnh0bXp6NjBXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGd=
+tYWlsLmNvbVgEAAABYQ~~" target=3D"_blank" style=3D"display: inline-block; fo=
+nt-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', s=
+ans-serif; font-size: 10px; line-height: 14px; text-decoration: none; text-=
+transform: uppercase; color: #d5d7dd; border: none;">Careers</a></th>=0A=09=
+=09=09=09=09=09=09=09<td class=3D"dspl_none" style=3D"padding: 42px 3px 0">=
+<span class=3D"fsz_010px lh_014px" style=3D"display: inline-block; color: #=
+003f7a;">|</span></td>=0A=09=09=09=09=09=09=09=09<!-- ABOUT -->=0A=09=09=09=
+=09=09=09=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_005px p=
+l_000pt ta_c bb_solid_001px fsz_010px lh_014px" style=3D"font-size: 10px; l=
+ine-height: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a class=3D"fsz_010=
+px lh_014px" href=3D"https://links.battle.net/f/a/GVL7cJEVZy1d_NFxLwg_Hg~~/=
+AAQRxQA~/RgRo_VaBP0SyaHR0cHM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2NvbXBhbnkvYW=
+JvdXQ_dXRtX3NvdXJjZT1ibmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1ha=
+WwmdXRtX2NhbXBhaWduPW1hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1mb290=
+ZXItYWJvdXQmbGlkPTRxeWFhaXI3YXh6blcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5=
+tYXJ0b25AZ21haWwuY29tWAQAAAFh" target=3D"_blank" style=3D"display: inline-b=
+lock; font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid =
+Sans', sans-serif; font-size: 10px; line-height: 14px; text-decoration: non=
+e; text-transform: uppercase; color: #d5d7dd; border: none;">About</a></th>=
+=0A=09=09=09=09=09=09=09=09<td class=3D"dspl_none" style=3D"padding: 42px 3=
+px 0"><span class=3D"fsz_010px lh_014px" style=3D"display: inline-block; co=
+lor: #003f7a;">|</span></td>=0A=09=09=09=09=09=09=09=09<!-- PRIVACY -->=0A=
+=09=09=09=09=09=09=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000pt p=
+b_005px pl_000pt ta_c bb_solid_001px fsz_010px lh_014px" style=3D"font-size=
+: 10px; line-height: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a class=
+=3D"fsz_010px lh_014px" href=3D"https://links.battle.net/f/a/lrGB3Xl2Y1lhnt=
+pu563DPg~~/AAQRxQA~/RgRo_VaBP0TRaHR0cHM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2x=
+lZ2FsLzhjNDFlN2U2LTBiNjEtNDJjNC1hNjc0LWM5MWQ4ZThkNjhkMz91dG1fc291cmNlPWJuZX=
+QtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya=
+2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLWZvb3Rlci1wcml2YWN5JmxpZD1qdmxn=
+amljYmo2bnFXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNvbVg=
+EAAABYQ~~" target=3D"_blank" style=3D"display: inline-block; font-family: '=
+Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; f=
+ont-size: 10px; line-height: 14px; text-decoration: none; text-transform: u=
+ppercase; color: #d5d7dd; border: none;">Privacy</a></th>=0A=09=09=09=09=09=
+=09=09=09<td class=3D"dspl_none" style=3D"padding: 42px 3px 0"><span class=
+=3D"fsz_010px lh_014px" style=3D"display: inline-block; color: #003f7a;">|<=
+/span></td>=0A=09=09=09=09=09=09=09=09<!-- TERMS -->=0A=09=09=09=09=09=09=
+=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_005px pl_000pt t=
+a_c bb_solid_001px fsz_010px lh_014px" style=3D"font-size: 10px; line-heigh=
+t: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a class=3D"fsz_010px lh_014=
+px" href=3D"https://links.battle.net/f/a/8Gcn3zpXVlBtEmaCZ-OKhA~~/AAQRxQA~/=
+RgRo_VaBP0SqaHR0cHM6Ly93d3cuYmxpenphcmQuY29tL2VuLWdiL2xlZ2FsP3V0bV9zb3VyY2U=
+9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj=
+1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD10ZXh0LWxpbmstZm9vdGVyLXRlcm1zJmxpZD12c=
+2ZxNnAyeHZxZzRXA3NwY0IKZxKB0Rpn4MpAiVIcaGF2YXNpLmFsZXgubWFydG9uQGdtYWlsLmNv=
+bVgEAAABYQ~~" target=3D"_blank" style=3D"display: inline-block; font-family=
+: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif=
+; font-size: 10px; line-height: 14px; text-decoration: none; text-transform=
+: uppercase; color: #d5d7dd; border: none;">Terms</a></th>=0A=09=09=09=09=
+=09=09=09=09<td class=3D"dspl_none" style=3D"padding: 42px 3px 0"><span cla=
+ss=3D"fsz_010px lh_014px" style=3D"display: inline-block; color: #003f7a;">=
+|</span></td>=0A=09=09=09=09=09=09=09=09<!-- SUPPORT -->=0A=09=09=09=09=09=
+=09=09=09<th class=3D"dspl_block w_100pc pt_005px pr_000pt pb_005px pl_000p=
+t ta_c bb_solid_001px fsz_010px lh_014px" style=3D"font-size: 10px; line-he=
+ight: 14px; padding: 40px 7px 0; color: #d5d7dd;"><a class=3D"fsz_010px lh_=
+014px" href=3D"https://links.battle.net/f/a/GzAyLo58KgKDxYGuZU0g-w~~/AAQRxQ=
+A~/RgRo_VaBP0SoaHR0cHM6Ly9ldS5iYXR0bGUubmV0L3N1cHBvcnQvZW4_dXRtX3NvdXJjZT1i=
+bmV0LWhhbGxvd2Vlbi0zLTIwMjQxMDI0JnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW1=
+hcmtldGluZy1nYi0zJnV0bV9jb250ZW50PXRleHQtbGluay1mb290ZXItc3VwcG9ydCZsaWQ9aH=
+BjenV3aG00NWhrVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb=
+21YBAAAAWE~" target=3D"_blank" style=3D"display: inline-block; font-family:=
+ 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif;=
+ font-size: 10px; line-height: 14px; text-decoration: none; text-transform:=
+ uppercase; color: #d5d7dd; border: none;">Support</a></th>=0A=09=09=09=09=
+=09=09=09=09<!-- FOOTER LINKS END -->=0A=09=09=09=09=09=09=09=09=0A=09=09=
+=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</=
+td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=
+=09=09=09</tr>=0A=0A=09=09=09<tr>=0A=09=09=09=09<!-- FOOTER LEGAL LINES -->=
+=0A=09=09=09=09<td class=3D"pa_000pt bgc_ftr" bgcolor=3D"#1a1c23" align=3D"=
+center" style=3D"padding: 0; text-align: center; background-color: #1a1c23;=
+">=0A=09=09=09=09=09<table class=3D"w_100pc minw_000pt" width=3D"600" cells=
+pacing=3D"0" cellpadding=3D"0" border=3D"0" bgcolor=3D"#1a1c23" style=3D"ba=
+ckground-color: #1a1c23;">=0A=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td cl=
+ass=3D"pt_020px pr_015px pb_010px pl_015px bgc_ftr" bgcolor=3D"#1a1c23" sty=
+le=3D"padding: 0 0 40px; background-color: #1a1c23;">=0A=09=09=09=09=09=09=
+=09<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" b=
+gcolor=3D"#1a1c23" style=3D"width: 100%; min-width: 100%; border-spacing: 0=
+; border-collapse: collapse; background-color: #1a1c23;">=0A=09=09=09=09=09=
+=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- UNSUBSCRIBE -->=0A=09=09=09=09=09=
+=09=09=09<td class=3D"fsz_012px lh_016px pt_010px pr_005pc pb_010px pl_005p=
+c ta_l" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Ari=
+al, 'Droid Sans', sans-serif; font-size: 10px; line-height: 14px; padding: =
+40px 40px 0; text-align: left; text-align: left; overflow-wrap: break-word;=
+ word-wrap: break-word; word-break: break-word; -ms-word-break: break-word;=
+  color: #848689;">If you are no longer interested in receiving emails rega=
+rding Battle.net news, offers, betas etc., you can choose to <a href=3D"htt=
+ps://links.battle.net/f/a/Afl8emdJfflQnr9ITq_nPQ~~/AAQRxQA~/RgRo_VaBP4TCAWh=
+0dHBzOi8vMDMuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5jb20vZW5jX3VzZXIvdW5zdWJzY3JpYm=
+U_ZD0lMjQxJTI0R3QwVERkcExmSGNkdFlrTlhsSnJiUSUzRCUzRCUyNHBZd1BxcyUyRm9hd1Z4M=
+HByWERLOEJUbFJPbkkySVVTaW5SYU1ZSGJYNUJ1ekJleHF4ZXFwMExsOVp1UUREJTBBNVQ0R2hx=
+YVI5V2d6NGFMSXhZbmV5Qkdsa21PUWxmSkJYQUZDaGVSMko1U3ZEOXhYcDVHNXElMkJGS3Y3QjE=
+lMEFkNHhTeTJ4TGVGcXV4cWJDVzBzTmxocjBvVmJpVzY2cE9oZGp1RWxzb0NjaG1JdlRrTUZLNE=
+VYNDFUSTclMEFoUVByMHEzQnMyU00yMjhPR2N2RSUyQlFWJTJCR2QwWThsZVNNMjJiZjhJOTZZV=
+1JJanRMUFIwaWtSZEJHVkJjJTBBR2V0N1ZQM1FhMzRCdk9kUTNHbVJjTEtZUkUlMkJkd09qSWhu=
+SkdGd1JYSjNjdlF2d1BpUG1VYU5ScndBQnAlMEFoemlrRmVhJTJGOFBab1BTTVlmNXdqJjE9MVc=
+Dc3BjQgpnEoHRGmfgykCJUhxoYXZhc2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh" targ=
+et=3D"_blank" class=3D"fsz_012px lh_016px" style=3D"font-family: 'Noto Sans=
+', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size:=
+ 10px; line-height: 14px; padding: 10px 0 0; text-decoration: none; color: =
+#d5d7dd;">opt-out</a>. If you wish to unsubscribe from all emails, click <a=
+ href=3D"https://links.battle.net/f/a/gE_E540us-QKxVXfU-lvuw~~/AAQRxQA~/RgR=
+o_VaBP4Q2Amh0dHBzOi8vMDMuZW1haWxpbmJvdW5kcHJvY2Vzc2luZy5jb20vZW5jX3VzZXIvdW=
+5zdWJzY3JpYmU_ZD0lMjQxJTI0R3QwVERkcExmSGNkdFlrTlhsSnJiUSUzRCUzRCUyNHBZd1Bxc=
+yUyRm9hd1Z4MHByWERLOEJUbFJPbkkySVVTaW5SYU1ZSGJYNUJ1ekJleHF4ZXFwMExsOVp1UURE=
+JTBBNVQ0R2hxYVI5V2d6NGFMSXhZbmV5Qkdsa21PUWxmSkJYQUZDaGVSMko1U3ZEOXhYcDVHNXE=
+lMkJGS3Y3QjElMEFkNHhTeTJ4TGVGcXV4cWJDVzBzTmxocjBvVmJpVzY2cE9oZGp1RWxzb0NjaG=
+1JdlRrTUZLNEVYNDFUSTclMEFoUVByMHEzQnMyU00yMjhPR2N2RSUyQlFWJTJCR2QwWThsZVNNM=
+jJiZjhJOTZZV1JJanRMUFIwaWtSZEJHVkJjJTBBR2V0N1ZQM1FhMzRCdk9kUTNHbVJjTEtZUkUl=
+MkJkd09qSWhuSkdGd1JYSjNjdlF2d1BpUG1VYU5ScndBQnAlMEFoemlrRmVhJTJGOFBab1BTTVl=
+mNXdqJjE9MT91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT=
+1lbWFpbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rL=
+XVuc3Vic2NyaWJlVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5j=
+b21YBAAAAWE~" target=3D"_blank" class=3D"fsz_012px lh_016px" style=3D"font-=
+family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans=
+-serif; font-size: 10px; line-height: 14px; padding: 10px 0 0; text-decorat=
+ion: none; color: #d5d7dd;">unsubscribe</a>. If you would like to adjust yo=
+ur overall preferences, <a href=3D"https://links.battle.net/f/a/tbFwrKtWHAF=
+fDSm5bV9oUw~~/AAQRxQA~/RgRo_VaBP0TPaHR0cHM6Ly9hY2NvdW50LmJhdHRsZS5uZXQvcHJp=
+dmFjeT91dG1fc291cmNlPWJuZXQtaGFsbG93ZWVuLTMtMjAyNDEwMjQmdXRtX21lZGl1bT1lbWF=
+pbCZ1dG1fY2FtcGFpZ249bWFya2V0aW5nLWdiLTMmdXRtX2NvbnRlbnQ9dGV4dC1saW5rLWNvbW=
+11bmljYXRpb24tcHJlZmVyZW5jZXMmbGlkPXVqa2RqcGN4N2VoeCNjb21tdW5pY2F0aW9uLXByZ=
+WZlcmVuY2VzVwNzcGNCCmcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21Y=
+BAAAAWE~" target=3D"_blank" class=3D"fsz_012px lh_016px" style=3D"font-fami=
+ly: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-ser=
+if; font-size: 10px; line-height: 14px; padding: 10px 0 0; text-decoration:=
+ none; color: #d5d7dd;">click here</a>.</td>=0A=09=09=09=09=09=09=09</tr>=
+=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09<!-- CUSTOM LEGAL LI=
+NES -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_012px lh_016px pt_010px =
+pr_005pc pb_010px pl_005pc ta_l" style=3D"font-family: 'Noto Sans', 'Helvet=
+ica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; font-size: 10px; lin=
+e-height: 14px; text-align: left; padding: 20px 40px 0; overflow-wrap: brea=
+k-word; word-wrap: break-word; word-break: break-word; -ms-word-break: brea=
+k-word;  color: #848689;"><!-- YEAR START -->&copy; 2024<!-- YEAR END --> <=
+!-- CLL START -->Blizzard Entertainment, Inc. and NetEase. Inc, World of Wa=
+rcraft, Diablo, Diablo Immortal, Overwatch, Hearthstone, Battle.net and Bli=
+zzard Entertainment are registered trademarks of Blizzard Entertainment, In=
+c. in the U.S., and/or other countries. All other trademarks referenced her=
+ein are the properties of their respective owners. <br><br> =C2=A9 2024 Act=
+ivision Publishing, Inc. ACTIVISION, CALL OF DUTY and CALL OF DUTY BLACK OP=
+S are trademarks of Activision Publishing, Inc. All other trademarks and tr=
+ade names are the property of their respective owners. <br><br> =C2=A9 K. H=
+orikoshi / Shueisha, My Hero Academia Project<!-- RANDOM ITEM KOREA BATTLE.=
+NET START --><!-- RANDOM ITEM KOREA BATTLE.NET END --><!-- APPLE & GOOGLE P=
+LAY START --><br><br> Apple and the Apple logo are trademarks of Apple Inc.=
+, registered in the U.S. and other countries. App Store is a service mark o=
+f Apple Inc. <br><br> Google Play and the Google Play logo are trademarks o=
+f Google Inc.<!-- APPLE & GOOGLE PLAY END --><!-- CLL END --></td>=0A=09=09=
+=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09=
+<!-- MAILING ADDRESS -->=0A=09=09=09=09=09=09=09=09<td class=3D"fsz_012px l=
+h_016px pt_010px pr_005pc pb_010px pl_005pc ta_l" style=3D"font-family: 'No=
+to Sans', 'Helvetica Neue', Helvetica, Arial, 'Droid Sans', sans-serif; fon=
+t-size: 10px; line-height: 14px; text-align: left; padding: 20px 40px 0; ov=
+erflow-wrap: break-word; word-wrap: break-word; word-break: break-word; -ms=
+-word-break: break-word;  color: #848689;">Activision Blizzard UK Ltd, The =
+Ampersand Building<br> 178 Wardour Street, London W1F 8FY<br> United Kingdo=
+m</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09</table>=0A=09=
+=09=09=09=09=09</td>=0A=09=09=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=
+=09=09=09</td>=0A=09=09=09</tr>=0A=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=
+=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=
+=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=
+=09=0A=09=09=09=0A=09=09=09=0A=09=09=09=0A=09=09=09<tr>=0A=09=09=09=09<!-- =
+RATINGS (PEGI) -->=0A=09=09=09=09<td class=3D"pt_010px pr_015px pb_010px pl=
+_015px bgc_ftr" bgcolor=3D"#1a1c23" align=3D"center" style=3D"padding: 0; t=
+ext-align: center; background-color: #1a1c23;">=0A=09=09=09=09=09<table cla=
+ss=3D"w_100pc minw_000pt" width=3D"600" bgcolor=3D"#1a1c23" cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0" style=3D"background-color: #1a1c23;">=0A=
+=09=09=09=09=09<tr>=0A=09=09=09=09=09=09<td class=3D"pt_010px pr_005pc pb_0=
+10px pl_005pc ta_c" align=3D"center" bgcolor=3D"#1a1c23" style=3D"margin: 0=
+ auto; padding: 0 0 40px; background-color: #1a1c23;">=0A=09=09=09=09=09=09=
+=09<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center"=
+ bgcolor=3D"#1a1c23" style=3D"border-spacing: 0; border-collapse: collapse;=
+ background-color: #1a1c23;">=0A=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=
+=09=09=09<td class=3D"ta_c" align=3D"center" style=3D"text-align: center;">=
+=0A=09=09=09=09=09=09=09=09=09<table cellspacing=3D"0" cellpadding=3D"0" bo=
+rder=3D"0" align=3D"center" style=3D"border-spacing: 0; border-collapse: co=
+llapse;">=0A=09=09=09=09=09=09=09=09=09<tr>=0A=09=09=09=09=09=09=09=09=09=
+=09<!-- PEGI RATING -->=0A=09=09=09=09=09=09=09=09=09=09<td><a href=3D"http=
+s://links.battle.net/f/a/-_w2-PY_rh60ebNUb9_HGg~~/AAQRxQA~/RgRo_VaBP0SlaHR0=
+cDovL3d3dy5wZWdpLmluZm8vP3V0bV9zb3VyY2U9Ym5ldC1oYWxsb3dlZW4tMy0yMDI0MTAyNCZ=
+1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWlnbj1tYXJrZXRpbmctZ2ItMyZ1dG1fY29udGVudD=
+1mb290ZXItaW1hZ2UtbGluay1wZWdpLXJhdGluZy0xOCZsaWQ9bWFzZTVzN2VvanNlVwNzcGNCC=
+mcSgdEaZ-DKQIlSHGhhdmFzaS5hbGV4Lm1hcnRvbkBnbWFpbC5jb21YBAAAAWE~" target=3D"=
+_blank" style=3D"font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Ari=
+al, 'Droid Sans', sans-serif; font-size: 10px; line-height: 14px; text-deco=
+ration: none; text-transform: uppercase; color: #ffffff; border: none;"><im=
+g src=3D"https://cdn.blizz.ly/emails/global/ratings/pegi/ratings/logo-pegi-=
+18.png" style=3D"display: block; text-decoration: none; padding-right: 2px;=
+" width=3D"55" height=3D"auto" border=3D"0" alt=3D"PEGI 18"></a></td>=0A=09=
+=09=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=09=09=09=09</table>=0A=09=
+=09=09=09=09=09=09=09</td>=0A=09=09=09=09=09=09=09</tr>=0A=09=09=09=09=09=
+=09=09=0A=09=09=09=09=09=09=09</table>=0A=09=09=09=09=09=09</td>=0A=09=09=
+=09=09=09</tr>=0A=09=09=09=09=09</table>=0A=09=09=09=09</td>=0A=09=09=09</t=
+r>=0A=09=09=09=0A=09=09=09</table>=0A=09=09</center>=0A=09=0D=0A<img border=
+=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://links.battle.net/q/=
+uDNa2vY2p21-91_GsYN9sA~~/AAQRxQA~/RgRo_VaBPlcDc3BjQgpnEoHRGmfgykCJUhxoYXZhc=
+2kuYWxleC5tYXJ0b25AZ21haWwuY29tWAQAAAFh">=0D=0A</body>=0A</html>=0A<!-- HTM=
+L | END OF EMAIL -->
+--_----uSraoXkbvcVNeAp1rVpMag===_57/04-08903-181DA176--
+

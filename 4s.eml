@@ -1,0 +1,381 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:c252:b0:a9e:b08f:56e7 with SMTP id bl18csp49290ejb;
+        Sat, 23 Nov 2024 00:09:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHfjTvNKK4pQwMkbjvtzjtzJh1cy5pYtL9kONh3FsRU83VEOPv5DaubnjeoISMw++k0yXBP
+X-Received: by 2002:a05:6402:2551:b0:5cf:8635:dad6 with SMTP id 4fb4d7f45d1cf-5d020629058mr4546982a12.18.1732349374249;
+        Sat, 23 Nov 2024 00:09:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732349374; cv=none;
+        d=google.com; s=arc-20240605;
+        b=a1nLdAZc26hRk+HyNDb6hsTogyQ+0TRKxiWkwoHE2VLrNzDj8mEmTPRvbcj+Brna8M
+         qiCk2Ebs3DO0hhq1SV8MBgqZipI+EBgJvR54rZgnPpbLJU64EbJbI0W+qSRtBj3N/jKd
+         0JA0IXasqFk8+o6DJYAIbCpi0LOv3VZ+E5zHpd3kxwleCVGty7d+MuO6ENqjo46Rlnbk
+         Q4X5d4b7MD8TzgAGfvgDI8QOgfrUdBHFhSVdsr0A3MmSbLqENUezIzuxFo6BHZep+/EX
+         w+5Q/NZsCPiWGakMnFqCj778gowejJE66HpP0WA6s3UOCyxzP4IYmm0w+iHj/Txn7w8j
+         ktuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:precedence:list-unsubscribe-post:list-unsubscribe
+         :feedback-id:subject:message-id:to:from:date:dkim-signature;
+        bh=thT8CgBO6pmls1El3hNtYrJYhjRoIF3GEv6tr6qUNdg=;
+        fh=vy4bXDVxOyjmPuwR9LKU5C4AQ9wMMEXQrfbnvcZnT7E=;
+        b=ROnDAOssIpeoOZCtuX8GnKjaQHdJrawocPcqrZos4u8tnsLsqkBhn0PvnDCu3/tLp+
+         9pC1QuyNo7HyDHYJCJqnpuNOGF8+HSNFa+xFYdLYNbRxmmdLrxBlupLjn9gabs18O6Ru
+         8YqzeS2KwNJgRsq0nrPDzaA2ZbYnu95VzHeUwi8nmxpdqFMRikn7Zc2H9Fz4tzArdDW6
+         +4YueWwPWBcKbrjwyv1yaxxFouHfKeXXDF8wYfF3k5B6QKGPw3BrLZcFkk01/GHoHfDW
+         cpSbXdvSImbcwaESAjrpOx/N0TWsItl6BG0i6GMUfXWYmldGJxxKFpYJ3gCCdvBSQSST
+         G7xw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kfc.hu header.s=salesmanago header.b=gMfoFfCY;
+       spf=pass (google.com: domain of sm.21586350064.77d539b43c97664702-kfc=kfc.hu@smgrid.pl designates 185.54.187.11 as permitted sender) smtp.mailfrom="sm.21586350064.77d539b43c97664702-kfc=kfc.hu@smgrid.pl";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=kfc.hu
+Return-Path: <sm.21586350064.77d539b43c97664702-kfc=kfc.hu@smgrid.pl>
+Received: from beli.emlgrid.com (beli.emlgrid.com. [185.54.187.11])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5d01d566d7dsi2140270a12.583.2024.11.23.00.09.34
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 23 Nov 2024 00:09:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of sm.21586350064.77d539b43c97664702-kfc=kfc.hu@smgrid.pl designates 185.54.187.11 as permitted sender) client-ip=185.54.187.11;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kfc.hu header.s=salesmanago header.b=gMfoFfCY;
+       spf=pass (google.com: domain of sm.21586350064.77d539b43c97664702-kfc=kfc.hu@smgrid.pl designates 185.54.187.11 as permitted sender) smtp.mailfrom="sm.21586350064.77d539b43c97664702-kfc=kfc.hu@smgrid.pl";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=kfc.hu
+Received: from s07 (_local_)
+	by emlgrid.com (mta01) with ESMTP id 4XwPkS1p7qz1HYl2
+	for <havasi.alex.marton@gmail.com>; Sat, 23 Nov 2024 08:09:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kfc.hu;
+	s=salesmanago; t=1732349344; x=1732394344;
+	bh=thT8CgBO6pmls1El3hNtYrJYhjRoIF3GEv6tr6qUNdg=;
+	h=Date:From:To:Subject:List-Unsubscribe:List-Unsubscribe-Post:Date:
+	 From:To:Subject:List-Id:List-Unsubscribe:List-Unsubscribe-Post:CC;
+	b=gMfoFfCYV97s4vq9p0t/uh5Z+Vv4p7LrR8UmUsSGJnCUFT73Bx72kqXyzFvQFWJYS
+	 NKicEEF/vTAkG74eI2b8tAUTVG6OY/HCzdwuyrrmIIXMYDByzaWy1BIYI+6sBwtCJV
+	 a5GyeNBFh5IV5iuGeQaedE3W9fAUeEHiZeYoXQ80P0tES61b6sEp1/43FllMTL0NjF
+	 WQW3hlrDhdoLTZEkjbrJ0ShjXRizpLOnG6maH3L9VKOgqzBRnNO3x+0ffXGoPTeu0U
+	 pRhij8gr/fuxRjuFeIZtMFMjBDQnD+HSFtUnoI12f7GF+VzK4bxPuMxKdhtYoA3pwl
+	 mDYagnLPG3z+w==
+Date: Sat, 23 Nov 2024 09:09:04 +0100 (CET)
+From: =?UTF-8?Q?KFC_Magyarorsz=C3=A1g?= <kfc@kfc.hu>
+To: Alex <havasi.alex.marton@gmail.com>
+Message-Id: <21586350064.49344242@smgrid.pl21586350064>
+Subject: =?UTF-8?Q?V=C3=A1lassz_kedvedre_Kentucky_Gold?=
+ =?UTF-8?Q?_k=C3=ADn=C3=A1latunkb=C3=B3l!_Csak_a_KFC-ben!?=
+X-Abuse: Please report abuse here: abuse@salesmanago.pl
+X-Campaign: eb0b1f6a-5155-4bc4-8905-d7d4f1343459
+Feedback-ID: eb0b1f6a-5155-4bc4-8905-d7d4f1343459:77d539b43c976647:77d539b43c976647:SALESmanago
+List-Unsubscribe: <mailto:unsubscribe+S4TT9n-4Jqcp3Dnq2_H-FQSOsLH2pRVbxJBdfU8TQ0WQ2@smgrid.pl?subject=S4TT9n-4Jqcp3Dnq2_H-FQSOsLH2pRVbxJBdfU8TQ0WQ2>,	
+  <https://app2.salesmanago.pl/optOut.htm?uid=84d3f67f-b826-4a72-b9dc-39eadbf1fe15&sec=2014b09b511dca2d0f90be73b93fc9c87050091a3b9bc1ef0f4d388393f77f70&conversation=eb0b1f6a-5155-4bc4-8905-d7d4f1343459&optOutLanguage=pl>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Precedence: bulk
+X-Entity-Ref-ID: none
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_10834413_302730125.1732349344242"
+
+------=_Part_10834413_302730125.1732349344242
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Plain text version not available
+------=_Part_10834413_302730125.1732349344242
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce" lang=3Dhu><head></head><head><title>V=C3=A1lassz kedvedre Kentucky Gold=
+ k=C3=ADn=C3=A1latunkb=C3=B3l! Csak a KFC-ben!</title><meta http-equiv=3DCo=
+ntent-Type content=3D"text/html; charset=3Dutf-8"/><meta content=3D"Benhaue=
+r.pl" name=3Dauthor /><meta content=3D"width=3Ddevice-width, initial-scale=
+=3D1.0" name=3Dviewport><meta name=3Drobots content=3Dnoindex/><meta conten=
+t=3D"ie=3Dedge" http-equiv=3DX-UA-Compatible><!--[if gte mso 9]><xml><o:Off=
+iceDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:O=
+fficeDocumentSettings></xml><![endif]--><!--[if mso]><style>.dnd-hide-mobil=
+e{display:block !important}</style><![endif]--><style>h1{font-size:30px;fon=
+t-weight:500}h2{font-size:26px;font-weight:500}h3{font-size:20px;font-weigh=
+t:500}h4{font-size:18px;font-weight:500}h5{font-size:16px;font-weight:500}h=
+6{font-size:12px;font-weight:500}p{font-size:inherit}p,h1,h2,h3,h4,h5,h6{te=
+xt-align:left;color:inherit;letter-spacing:normal;font-family:Arial,Helveti=
+ca,sans-serif;margin:0}span{line-height:inherit;font-family:Arial,Helvetica=
+,sans-serif}strong,u,em{line-height:inherit}a{text-decoration:none;color:#0=
+00}a span,a u,a strong,a i,a p,a img,a div{pointer-events:none}img+div{disp=
+lay:none}table{box-sizing:border-box}table,td{border-collapse:collapse}mark=
+{color:inherit}ul,ol{margin-top:0;margin-bottom:0}wbr{display:none}ul>li,ol=
+>li{list-style-position:inside;text-indent:-15px;margin-top:0;margin-bottom=
+:0;margin-left:0}ul>li p,ul>li h1,ul>li h2,ul>li h3,ul>li h4,ul>li h5,ul>li=
+ h6,ol>li p,ol>li h1,ol>li h2,ol>li h3,ol>li h4,ol>li h5,ol>li h6{display:i=
+nline}div[class*=3D" gwp"][class*=3D"dnd-height "]{height:auto}.mail-detail=
+-content a[href]{color:#000;text-decoration:none}@media screen and (min-wid=
+th:700px){#proton-root .dnd-height{height:100% !important}.dnd-height{heigh=
+t:100%;min-height:inherit}.dnd-width-100-percent{width:100%}.dnd-display-ta=
+ble-cell{display:table-cell}.dnd-display-table{display:table}.dnd-display-t=
+able-row{display:table-row}}</style><style>@media screen and (min-width:600=
+px){.dnd-hide-mobile{display:table-cell !important}.dnd-hide-desktop{displa=
+y:none !important}.dnd-hide-desktop{display:table-cell}}</style><style>.moz=
+-text-htm .dnd-hide-mobile,.moz-text-html .dnd-hide-mobile{display:table-ce=
+ll !important}.moz-text-htm .dnd-hide-desktop,.moz-text-html .dnd-hide-desk=
+top{display:none !important}</style><style>.moz-text-htm .dnd-width-100-per=
+cent,.moz-text-html .dnd-width-100-percent{width:100%}.moz-text-htm .dnd-di=
+splay-table-cell,.moz-text-html .dnd-display-table-cell{display:table-cell}=
+.moz-text-htm .dnd-display-table,.moz-text-html .dnd-display-table{display:=
+table}.moz-text-htm .dnd-display-table-row,.moz-text-html .dnd-display-tabl=
+e-row{display:table-row}</style></head><body style=3D"margin:0;padding:0;-m=
+s-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-webkit-text-siz=
+e-adjust:100%;word-spacing:normal;mso-line-height-rule:exactly;background-c=
+olor:#f1f2f3;"><div style=3D"background-image: url('https://app2.salesmanag=
+o.pl/api/77d539b43c976647/eb0b1f6a-5155-4bc4-8905-d7d4f1343459/84d3f67f-b82=
+6-4a72-b9dc-39eadbf1fe15/t.gif');"></div><!--[if gte mso 9]><v:rect fill=3D=
+f stroke=3Df style=3D"width:1pt;height:1pt;margin:0;padding:0;mso-hide:all;=
+"><v:fill src=3D"https://app2.salesmanago.pl/api/77d539b43c976647/eb0b1f6a-=
+5155-4bc4-8905-d7d4f1343459/84d3f67f-b826-4a72-b9dc-39eadbf1fe15/t.gif"/></=
+v:rect><![endif]--><center dir=3Dltr lang=3Dhu class=3Dwrapper style=3D"wid=
+th:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adju=
+st:100%;"><table role=3Dpresentation align=3Dcenter border=3D0 cellpadding=
+=3D0 cellspacing=3D0 style=3D"width:100%;" width=3D"100%"><tbody><tr><td><s=
+pan style=3D"visibility:hidden;opacity:0;color:#f1f2f3;height:0;width:0;dis=
+play:none !important;font-size:0px;"> Rendelj&nbsp;az&nbsp;Appon! &nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; &n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp; &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </span></td></tr></tbody></table><tabl=
+e role=3Dpresentation align=3Dcenter border=3D0 cellpadding=3D0 cellspacing=
+=3D0 width=3D"100%" style=3D"width:100%;background-color:#f1f2f3;"><tbody><=
+tr><td valign=3Dtop><!--[if (gte mso 9)|(IE)]><table role=3Dpresentation bo=
+rder=3D0 cellpadding=3D0 cellspacing=3D0 width=3D600 align=3Dcenter><tr><td=
+><![endif]--><table align=3Dcenter border=3D0 cellpadding=3D0 cellspacing=
+=3D0 width=3D"100%" role=3Dpresentation style=3D"width:100%;margin:0px auto=
+;border-collapse:collapse;max-width:600px;"><tr><td align=3Dcenter colspan=
+=3D3 style=3D"padding:0px;margin:0px;height:0px;" height=3D0></td></tr><tr>=
+<td style=3D"width:0px;" width=3D0></td><td align=3Dcenter><table border=3D=
+0 cellpadding=3D0 cellspacing=3D0 width=3D"100%" role=3Dpresentation style=
+=3D"width:100%;"><tr><td><!--[if (gte mso 9)|(IE)]><table border=3D0 role=
+=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D"100%" style=3D"bac=
+kground-color:#ffffff;"><tr><td><![endif]--><!--[if !mso]--><div style=3D"b=
+ackground-color:#ffffff;border-radius:0px;border-color:#000000;border-style=
+:none;border-width:0px;"><!--[endif]--><table role=3Dpresentation border=3D=
+0 cellpadding=3D0 cellspacing=3D0 width=3D"100%"><tr><td style=3D"padding:0=
+px;"><table border=3D0 cellpadding=3D0 cellspacing=3D0 width=3D"100%" role=
+=3Dpresentation><tr><td align=3Dcenter style=3D"padding:0px;"><table role=
+=3Dpresentation border=3D0 cellpadding=3D0 cellspacing=3D0 height=3D"100%" =
+width=3D"100%" style=3D"width:100%;"><tr><td align=3Dcenter><div style=3D"p=
+adding:0;margin:0;font-size:0;width:100%;box-sizing:border-box;" class=3Ddn=
+d-display-table><div class=3Ddnd-display-table-row><!--[if (gte mso 9)|(IE)=
+]><table border=3D0 role=3Dpresentation cellpadding=3D0 cellspacing=3D0 wid=
+th=3D"100%" align=3Dcenter><tr><![endif]--><!--[if (gte mso 9)|(IE)]><td va=
+lign=3Dtop width=3D"100%" style=3D"background-color:transparent;"><![endif]=
+--><!--[if !mso]--><div style=3D"box-sizing:border-box;vertical-align:top;b=
+ackground-color:transparent;border-color:#000000;border-style:none;border-w=
+idth:0px;" class=3D"dnd-width-100-percent dnd-display-table-cell dnd-width-=
+100-percent dnd-display-table-cell dnd-width-100-percent dnd-display-table-=
+cell"><!--[endif]--><table role=3Dpresentation border=3D0 cellpadding=3D0 c=
+ellspacing=3D0 width=3D"100%" height=3D"100%" class=3Dbhr-dnd-height style=
+=3D"width:100%;"><tr><td class=3Dbhr-dnd-height style=3D"font-size:14px;ver=
+tical-align:top;"><table role=3Dpresentation border=3D0 cellpadding=3D0 cel=
+lspacing=3D0 width=3D"100%" style=3D"width:100%;"><tr><td style=3D"padding:=
+0px;" align=3Dcenter><a target=3D_blank style=3D"display:block;width:100%;m=
+ax-width:600px;" id=3Dsmlid_11 href=3D"https://app2.salesmanago.pl/smrd.htm=
+?url=3Dhttps%3A%2F%2Fkfc.hu%3Futm_content%3Dbanner_top&amp;smclient=3D84d3f=
+67f-b826-4a72-b9dc-39eadbf1fe15&amp;utm_medium=3Demail&amp;utm_campaign=3Di=
+Twist_menu_26023024&amp;utm_source=3Dsalesmanago&amp;smconv=3Deb0b1f6a-5155=
+-4bc4-8905-d7d4f1343459&amp;smlid=3D2"><!--[if !mso]--><img style=3D"width:=
+100%;display:block;border:0px;max-width:600px;" src=3D"https://storage.goog=
+leapis.com/s-img/ys2owwe534xub20v.png" alt=3D"Kentucky Gold"><!--[endif]-->=
+<!--[if mso]><img src=3D"https://storage.googleapis.com/s-img/ys2owwe534xub=
+20v.png" style=3D"display:block;margin:0;" width=3D600 border=3D0 alt=3D"Ke=
+ntucky Gold"/><![endif]--></a></td></tr></table><table role=3Dpresentation =
+width=3D"100%" cellspacing=3D0 cellpadding=3D0 border=3D0 style=3D"width:10=
+0%;"><tr><td valign=3Dtop><table role=3Dpresentation width=3D"100%" cellspa=
+cing=3D0 cellpadding=3D0 border=3D0 style=3D"width:100%;box-sizing:border-b=
+ox;"><tr><td style=3D"background-color:#ffffff;height:20px;border-style:non=
+e;border-width:0px;border-color:#ffffff;" height=3D20></td></tr></table></t=
+d></tr></table><table role=3Dpresentation border=3D0 cellpadding=3D0 cellsp=
+acing=3D0 width=3D"100%" class=3Dwidget-button style=3D"width:100%;"><tr><t=
+d style=3D"padding:0px;" align=3Dcenter><!--[if !mso]--><div style=3D"displ=
+ay:inline-block;"><a target=3D_blank style=3D"display:inline-block;max-widt=
+h:100%;box-sizing:border-box;-moz-text-size-adjust:none;word-break:break-wo=
+rd;text-decoration:none;font-size:14px;color:#000000;background-color:#e400=
+2b;border-radius:14px;border-color:#000000;border-style:none;border-width:0=
+px;padding:17px 41px;" href=3D"https://app2.salesmanago.pl/smrd.htm?url=3Dh=
+ttps%3A%2F%2Fkfc.hu%3Futm_content%3DCTA&amp;smclient=3D84d3f67f-b826-4a72-b=
+9dc-39eadbf1fe15&amp;utm_medium=3Demail&amp;utm_campaign=3DiTwist_menu_2602=
+3024&amp;utm_source=3Dsalesmanago&amp;smconv=3Deb0b1f6a-5155-4bc4-8905-d7d4=
+f1343459&amp;smlid=3D3" id=3Dsmlid_10><p style=3D"font-size:inherit;text-al=
+ign:center;margin:0;word-break:break-word;font-size:14px;direction:auto;" d=
+ir=3Dauto><strong><span style=3D"color:#ffffff;font-family:Arial,Helvetica,=
+sans-serif;background-color:#e4002b">Rendelek!</span></strong></p></a></div=
+><!--[endif]--><!--[if mso]><o:anchorlock/><v:roundrect xmlns:v=3D"urn:sche=
+mas-microsoft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" hr=
+ef=3D"https://app2.salesmanago.pl/smrd.htm?url=3Dhttps%3A%2F%2Fkfc.hu%3Futm=
+_content%3DCTA&amp;smclient=3D84d3f67f-b826-4a72-b9dc-39eadbf1fe15&amp;utm_=
+medium=3Demail&amp;utm_campaign=3DiTwist_menu_26023024&amp;utm_source=3Dsal=
+esmanago&amp;smconv=3Deb0b1f6a-5155-4bc4-8905-d7d4f1343459&amp;smlid=3D12" =
+style=3D"v-text-anchor:middle;width:115pt;" stroke=3Df arcsize=3D"25%" fill=
+color=3D"#e4002b"><w:anchorlock/><v:textbox style=3D"mso-fit-shape-to-text:=
+true"><div><div style=3D"font-size:0;"><table role=3Dpresentation cellpaddi=
+ng=3D0 cellspacing=3D0 border=3D0 width=3D"100%" height=3D"100%"><tr><td st=
+yle=3D"padding:12.75px 0px;font-size:0;" align=3Dcenter valign=3Dcenter><ce=
+nter style=3D"word-break:break-word;font-size:14px;"><p style=3D"font-size:=
+inherit;text-align:center;margin:0;word-break:break-word;font-size:14px;dir=
+ection:auto;" dir=3Dauto><strong><span style=3D"color:#ffffff;font-family:A=
+rial,Helvetica,sans-serif;background-color:#e4002b">Rendelek!</span></stron=
+g></p></center></td></tr></table></div></div><p style=3D"margin:0;mso-hide:=
+all"><o:p xmlns:o=3D"urn:schemas-microsoft-com:office:office"></o:p></p></v=
+:textbox></v:roundrect><![endif]--></td></tr></table><table role=3Dpresenta=
+tion width=3D"100%" cellspacing=3D0 cellpadding=3D0 border=3D0 style=3D"wid=
+th:100%;"><tr><td valign=3Dtop><table role=3Dpresentation width=3D"100%" ce=
+llspacing=3D0 cellpadding=3D0 border=3D0 style=3D"width:100%;box-sizing:bor=
+der-box;"><tr><td style=3D"background-color:#ffffff;height:20px;border-styl=
+e:none;border-width:0px;border-color:#ffffff;" height=3D20></td></tr></tabl=
+e></td></tr></table><table role=3Dpresentation border=3D0 cellpadding=3D0 c=
+ellspacing=3D0 width=3D"100%" style=3D"width:100%;"><tr><td style=3D"font-s=
+ize:14px;color:#000000;font-family:&quot;Arial&quot;, sans-serif;padding:10=
+px;"><div style=3D"margin:0;padding:0;"><div><p style=3D"margin:0;word-brea=
+k:break-word;direction:auto;;font-size:inherit;text-align:center" dir=3Daut=
+o><strong><span style=3D"color:#333333;font-family:Arial,Helvetica,sans-ser=
+if;font-size:14px;letter-spacing:normal">=C3=9Cdv=C3=B6zlettel,&nbsp;</span=
+></strong></p><p style=3D"margin:0;word-break:break-word;direction:auto;;te=
+xt-align:center" dir=3Dauto><strong><span style=3D"color:#333333;font-famil=
+y:Arial,Helvetica,sans-serif;font-size:14px;letter-spacing:normal">KFC</spa=
+n></strong></p></div></div></td></tr></table><table role=3Dpresentation bor=
+der=3D0 cellpadding=3D0 cellspacing=3D0 width=3D"100%" style=3D"width:100%;=
+"><tr><td style=3D"padding:0px;" align=3Dcenter><a target=3D_blank style=3D=
+"display:block;width:100%;max-width:600px;" id=3Dsmlid_17 href=3D"https://a=
+pp2.salesmanago.pl/smrd.htm?url=3Dhttps%3A%2F%2Fkfc.hu%3Futm_content%3Dbann=
+er_bot&amp;smclient=3D84d3f67f-b826-4a72-b9dc-39eadbf1fe15&amp;utm_medium=
+=3Demail&amp;utm_campaign=3DiTwist_menu_26023024&amp;utm_source=3Dsalesmana=
+go&amp;smconv=3Deb0b1f6a-5155-4bc4-8905-d7d4f1343459&amp;smlid=3D4"><!--[if=
+ !mso]--><img style=3D"width:100%;display:block;border:0px;max-width:600px;=
+" src=3D"https://storage.googleapis.com/s-img/vobilutk9a3w63fw.png"><!--[en=
+dif]--><!--[if mso]><img src=3D"https://storage.googleapis.com/s-img/vobilu=
+tk9a3w63fw.png" style=3D"display:block;margin:0;" width=3D600 border=3D0 />=
+<![endif]--></a></td></tr></table><table role=3Dpresentation border=3D0 cel=
+lpadding=3D0 cellspacing=3D0 width=3D"100%" style=3D"width:100%;"><tr><td s=
+tyle=3D"font-size:14px;color:#000000;font-family:&quot;Arial&quot;, sans-se=
+rif;padding:10px;"><div style=3D"margin:0;padding:0;"><div><p style=3D"font=
+-size:inherit;text-align:center;margin:0;word-break:break-word;font-size:12=
+px;direction:auto;" dir=3Dauto><span style=3D"font-size:12px"><br></span><s=
+pan style=3D"color:#202020;font-family:helvetica, sans-serif;font-size:12px=
+">A lev=C3=A9lben r=C3=B6gz=C3=ADtett inform=C3=A1ci=C3=B3 t=C3=A1j=C3=A9ko=
+ztat=C3=B3 jelleg=C5=B1 =C3=A9s kiz=C3=A1r=C3=B3lag a c=C3=ADmzett szem=C3=
+=A9lynek sz=C3=B3l. </span><span style=3D"font-size:12px"><br>A KFC =C3=A9t=
+termekben f=C3=B6ldimogyor=C3=B3t tartalmaz=C3=B3 alapanyaggal dolgozunk, e=
+z az allerg=C3=A9n nyomokban b=C3=A1rmelyik term=C3=A9k=C3=BCnkben el=C5=91=
+fordulhat. Elviteles rendel=C3=A9skor elviteli d=C3=ADjat sz=C3=A1m=C3=ADtu=
+nk fel.<br></span><span style=3D"color:#202020;font-family:Helvetica,Arial,=
+sans-serif;font-size:12px">Az egyes =C3=A9ttermek nyitva tart=C3=A1si idej=
+=C3=A9r=C5=91l t=C3=A1j=C3=A9koz=C3=B3dj a </span><a target=3D_blank rel=3D=
+"noopener noreferrer nofollow" style=3D"text-decoration:none;color:#333333;=
+" href=3D"https://app2.salesmanago.pl/smrd.htm?url=3Dhttp%3A%2F%2Fkfc.hu&am=
+p;smclient=3D84d3f67f-b826-4a72-b9dc-39eadbf1fe15&amp;utm_medium=3Demail&am=
+p;utm_campaign=3DiTwist_menu_26023024&amp;utm_source=3Dsalesmanago&amp;smco=
+nv=3Deb0b1f6a-5155-4bc4-8905-d7d4f1343459&amp;smlid=3D5" data-id=3Dsmlid_24=
+><span style=3D"color:#202020;font-family:Helvetica,Arial,sans-serif;font-s=
+ize:12px">kfc.hu</span></a><span style=3D"color:#202020;font-family:Helveti=
+ca,Arial,sans-serif;font-size:12px"> oldalon.</span><span style=3D"font-siz=
+e:12px"><br></span></p><p style=3D"font-size:inherit;text-align:center;marg=
+in:0;word-break:break-word;font-size:12px;direction:auto;" dir=3Dauto><span=
+ style=3D"font-size:12px">T=C3=B6ltsd le a KFC Appot:</span></p><p style=3D=
+"font-size:inherit;text-align:center;margin:0;word-break:break-word;font-si=
+ze:12px;direction:auto;" dir=3Dauto><span style=3D"font-size:12px">Android:=
+ </span><a target=3D_blank rel=3D"noopener noreferrer nofollow" style=3D"te=
+xt-decoration:none;color:#333333;" href=3D"https://app2.salesmanago.pl/smrd=
+.htm?url=3Dhttps%3A%2F%2Ftinyurl.com%2Fkfc-android&amp;smclient=3D84d3f67f-=
+b826-4a72-b9dc-39eadbf1fe15&amp;utm_medium=3Demail&amp;utm_campaign=3DiTwis=
+t_menu_26023024&amp;utm_source=3Dsalesmanago&amp;smconv=3Deb0b1f6a-5155-4bc=
+4-8905-d7d4f1343459&amp;smlid=3D6" data-id=3Dsmlid_15><span style=3D"font-s=
+ize:12px"><u>https://tinyurl.com/kfc-android</u></span></a></p><p style=3D"=
+font-size:inherit;text-align:center;margin:0;word-break:break-word;font-siz=
+e:12px;direction:auto;" dir=3Dauto><span style=3D"font-size:12px">iOS: </sp=
+an><a target=3D_blank rel=3D"noopener noreferrer nofollow" style=3D"text-de=
+coration:none;color:#333333;" href=3D"https://app2.salesmanago.pl/smrd.htm?=
+url=3Dhttps%3A%2F%2Ftinyurl.com%2Fkfc-ios&amp;smclient=3D84d3f67f-b826-4a72=
+-b9dc-39eadbf1fe15&amp;utm_medium=3Demail&amp;utm_campaign=3DiTwist_menu_26=
+023024&amp;utm_source=3Dsalesmanago&amp;smconv=3Deb0b1f6a-5155-4bc4-8905-d7=
+d4f1343459&amp;smlid=3D7" data-id=3Dsmlid_16><span style=3D"font-size:12px"=
+><u>https://tinyurl.com/kfc-ios</u></span></a></p><p style=3D"font-size:inh=
+erit;text-align:center;margin:0;word-break:break-word;font-size:12px;direct=
+ion:auto;" dir=3Dauto><span style=3D"color:#202020;font-family:helvetica, s=
+ans-serif;font-size:12px">A t=C3=A1j=C3=A9koztat=C3=A1s nem teljes k=C3=B6r=
+=C5=B1, tov=C3=A1bbi r=C3=A9szletes inform=C3=A1ci=C3=B3t </span><a target=
+=3D_blank rel=3D"noopener noreferrer nofollow" style=3D"text-decoration:non=
+e;color:#333333;" href=3D"https://app2.salesmanago.pl/smrd.htm?url=3Dhttp%3=
+A%2F%2Fkfc.hu&amp;smclient=3D84d3f67f-b826-4a72-b9dc-39eadbf1fe15&amp;utm_m=
+edium=3Demail&amp;utm_campaign=3DiTwist_menu_26023024&amp;utm_source=3Dsale=
+smanago&amp;smconv=3Deb0b1f6a-5155-4bc4-8905-d7d4f1343459&amp;smlid=3D8" da=
+ta-id=3Dsmlid_14><span style=3D"color:#202020;font-size:12px"><u>weboldalun=
+kon</u></span></a><span style=3D"font-size:12px"> tal=C3=A1lhatsz.<br>KFC =
+=C2=A9 COPYRIGHT 2024</span></p><p style=3D"font-size:12px;text-align:cente=
+r;margin:0;word-break:break-word;font-size:12px;direction:auto;" dir=3Dauto=
+><span style=3D"font-size:12px">Ezt az emailt a&nbsp;</span><a target=3D_bl=
+ank rel=3D"noopener noreferrer nofollow" style=3D"text-decoration:none;colo=
+r:#333333;" href=3D"mailto:laszlo.szilvasi@amrest.eu" data-id=3Dsmlid_7><sp=
+an style=3D"font-size:12px"><span style=3D"font-family:Arial,Helvetica,sans=
+-serif;">havasi.alex.marton@gmail.com</span></span></a><span style=3D"font-=
+size:12px"> c=C3=ADmre k=C3=BCldt=C3=BCk.<br></span><a target=3D_blank rel=
+=3D"noopener noreferrer nofollow" style=3D"text-decoration:none;color:#3333=
+33;" href=3D"https://app2.salesmanago.pl/optOut.htm?uid=3D84d3f67f-b826-4a7=
+2-b9dc-39eadbf1fe15&amp;sec=3D2014b09b511dca2d0f90be73b93fc9c87050091a3b9bc=
+1ef0f4d388393f77f70&amp;conversation=3Deb0b1f6a-5155-4bc4-8905-d7d4f1343459=
+&amp;optOutLanguage=3Dpl&amp;utm_medium=3Demail&amp;utm_campaign=3DiTwist_m=
+enu_26023024&amp;utm_source=3Dsalesmanago&amp;smlid=3D10" data-id=3Dsmlid_2=
+2><span style=3D"font-family:Arial,Helvetica,sans-serif;font-size:12px"><u>=
+Kattints ide a leiratkoz=C3=A1shoz.</u></span></a><span style=3D"font-size:=
+12px"><br>AmRest Kft. =C2=B7 Dunavir=C3=A1g u. 2-6 3.torony 2.emelet =C2=B7=
+ 1138 Budapest =C2=B7 Magyarorsz=C3=A1g</span></p></div></div></td></tr></t=
+able></td></tr></table><!--[if !mso]--></div><!--[endif]--><!--[if (gte mso=
+ 9)|(IE)]></td></tr></table><![endif]--></div></div></td></tr></table></td>=
+</tr><tr><td align=3Dcenter style=3D"padding:0px;"><table role=3Dpresentati=
+on border=3D0 cellpadding=3D0 cellspacing=3D0 height=3D"100%" width=3D"100%=
+" style=3D"width:100%;"><tr><td align=3Dcenter><div style=3D"padding:0;marg=
+in:0;font-size:0;width:100%;box-sizing:border-box;" class=3Ddnd-display-tab=
+le><div class=3Ddnd-display-table-row><!--[if (gte mso 9)|(IE)]><table bord=
+er=3D0 role=3Dpresentation cellpadding=3D0 cellspacing=3D0 width=3D"100%" a=
+lign=3Dcenter><tr><![endif]--><!--[if (gte mso 9)|(IE)]><td valign=3Dtop wi=
+dth=3D"100%" style=3D"background-color:transparent;"><![endif]--><!--[if !m=
+so]--><div style=3D"box-sizing:border-box;vertical-align:top;background-col=
+or:transparent;border-color:#000000;border-style:none;border-width:0px;" cl=
+ass=3D"dnd-width-100-percent dnd-display-table-cell dnd-width-100-percent d=
+nd-display-table-cell"><!--[endif]--><table role=3Dpresentation border=3D0 =
+cellpadding=3D0 cellspacing=3D0 width=3D"100%" height=3D"100%" class=3Dbhr-=
+dnd-height style=3D"width:100%;"><tr><td class=3Dbhr-dnd-height style=3D"fo=
+nt-size:14px;vertical-align:top;"></td></tr></table><!--[if !mso]--></div><=
+!--[endif]--><!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]--></div>=
+</div></td></tr></table></td></tr></table></td></tr></table><!--[if !mso]--=
+></div><!--[endif]--><!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-=
+-></td></tr></table></td><td style=3D"width:0px;" width=3D0></td></tr><tr><=
+td align=3Dcenter colspan=3D3 style=3D"padding:0px;margin:0px;height:0px;" =
+height=3D0></td></tr></table><!--[if (gte mso 9)|(IE)]></td></tr></table><!=
+[endif]--></td></tr></tbody></table></center><a href=3D"https://app2.salesm=
+anago.pl/bot.htm" style=3D"display:block;position:absolute;width:1px;height=
+:1px;"></a></body></html>
+------=_Part_10834413_302730125.1732349344242--

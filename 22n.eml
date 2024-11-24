@@ -1,0 +1,315 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:fcc4:b0:a3e:9c4f:addb with SMTP id qx4csp973079ejb;
+        Mon, 19 Feb 2024 21:52:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHOQmLI7RktVaydS85SyziVkbnf4uBN5sUKo+6884VMRR9EwKolAnSlIXrbNNEf6uk376FE
+X-Received: by 2002:a05:600c:3506:b0:412:283e:5797 with SMTP id h6-20020a05600c350600b00412283e5797mr9872556wmq.29.1708408374371;
+        Mon, 19 Feb 2024 21:52:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708408374; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oE0Gmnv7+98TaYqsN3sg9se9ihSUqPWaTkgMKMkmiufqWMmRuMO/tBAErqkVNiSsop
+         7BqkTB7s2L6td0/lhbMurbmR/TZr5TAOeHuPwWZvof2eeAwr7PpfKc7WO8/ikjGaBzgW
+         DPJjVPs8wD0UNJDpIQfhYKIJE2PLVg3hDoV168iCVenhZTZwWVtxOGFpBsN1koAMm8H9
+         EsuBt1aL0TYvxDzw1mOLDfQ/ePoYaXOaOUdOYKLbxcSJ7tNtEdAEPJzl87xyMmPRJl/6
+         ZzH+cUlmiP5sY/7mDGHacMTYaMay3iSd2TK+Hjx7sQlgaF2DX/RBg8s83ZJK9KON8iqT
+         aXqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:mime-version:subject:message-id:to:from;
+        bh=VMzTHsEHAH2W7fOs2S7OAjjUVxXxq16eWjT5WtBzYQs=;
+        fh=O+4GRZ5PByShowznXegVzkfwGofP3WcFi4cisp1vwGc=;
+        b=bUaJzf7/8H77d9wnrtfNCCrP2trZ744vuE2C24aocD+gKOypxfmW+IJan565uhjdkc
+         bNW1dcJik/VctUOKTBECPXHkfW1x9p8Zjpi7mGlN5WQYhFEV7UrpjBNW/UCcgah5myWB
+         6d6jw2H0urXoY/VdIzPM9DSx8Bx83u1NMuc2/7ZF6WO5OT0MmNWz4BmDsOHzzqz467TJ
+         TtJIB2I4Jitt+BEw6s+fmpBqNfnGm0KrMeVQvETFB1R2n9PYIz3GN9VlfrVAVYenDlAR
+         VuDXb9lVakSaIt3tw0Id135gHtbqXvs5wdtHIWh4tTcKVJC9L9n/ZEdHNVYPRun5JPw9
+         WGCQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of kozponti.ertesites@posta.hu designates 194.88.45.96 as permitted sender) smtp.mailfrom=Kozponti.ertesites@posta.hu
+Return-Path: <Kozponti.ertesites@posta.hu>
+Received: from smtp1.posta.hu (smtp1.posta.hu. [194.88.45.96])
+        by mx.google.com with ESMTPS id o18-20020adfcf12000000b0033cf435ac28si4742387wrj.959.2024.02.19.21.52.54
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Feb 2024 21:52:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of kozponti.ertesites@posta.hu designates 194.88.45.96 as permitted sender) client-ip=194.88.45.96;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of kozponti.ertesites@posta.hu designates 194.88.45.96 as permitted sender) smtp.mailfrom=Kozponti.ertesites@posta.hu
+X-AuditID: 0abe4365-097ab7000000fd9a-49-65d43e35075c
+From: Magyar Posta <kozponti.ertesites@posta.hu>
+To: <havasi.alex.marton@gmail.com>
+Message-ID: <1314663272.760084.1708408373453@t1soa3osb02.soa.t1.posta.hu>
+Subject: =?UTF-8?Q?Csomagja_=C3=A9rkezett?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_Part_760083_45979781.1708408373395"
+X-Priority: 2
+Return-Path: kozponti.ertesites@posta.hu
+Date: Tue, 20 Feb 2024 06:52:53 +0100
+X-Originating-IP: [10.101.221.22]
+X-ClientProxiedBy: MPXCH1603.mprt.local (10.101.221.62) To
+ MPXCH1603.mprt.local (10.101.221.62)
+X-CFilter-Loop: Reflected
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmphk+LIzCtJLcpLzFFi42Lh2udcqGtqdyXV4NBRE4uFC/ewOjB67Jx1
+	lz2AMYrLJiU1J7MstUjfLoEro3HjBcaCj6EVj9/tZW1gfOPbxcjJISFgInHx93NWEJtNwEDi
+	7Iq7jCC2iICSxOI9vewgNq+Ap0TP5sdsILawgLbE6T+LmCHighInZz5hAbGZBUIkTt5exgox
+	k1fiwMklYLaQgIbEr0sLmEBsFgFViYPd5xkhahQlZqzvYYawEyV2v7vIBmFLShxccYNlAiPv
+	LCQrZiFZAWFrSCy4s48RwtaWWLbwNfMCRpZVjHzFuSUFhnoF+cUliXoZpZsYISGUuoNxwvWP
+	eocYmTgYDzF6czApifJ+j76UKsSXlJ9SmZFYnBFfVJqTWqwkwuvx7nKqEC9cOKk0J1tJineS
+	6ZVUIWG4aF5qeXFOagkwFg4xSnOwKInz/lyemSokkJ5YkpqdmlqQWgQx7xBjCAeHkgTvfWug
+	dsGi1PTUirTMnBKYNFCf+FqgdQLIMmAbZXlnuQElxJAlkC1l4uA8xOjBwQN08FUdoNm8xQWJ
+	ucWZ6VBzhXnX3AFq54GJgs2U5NU1AyoVggkizDvFmM6x8vCVvcwcu8HkPhApxJKXn5cqJc57
+	xxKoSwCkK6M0D+52KTFe3qcXU4X4kSRA1kjJ8D7zANotiiSOsOkVoysHI9B5zbZAM3mA6Rjh
+	ZiHecE2gIDdUEOxkCV4zkJMFoWIIc6QamIq9nJ/x/VjX02a86sVKhiVrVigcL7Y+Ex/CmR69
+	4X7QoilSR2SaG57f4U8+uKIpxu/8NyEeq3M6km+WJ6ovKc18lfaLb/FHheWMK5q08hbdWhVX
+	9X7ln7LuaqPOnnNcP5bXGjbnsJQrF4QKbu55dZy3n4stN2HmKfnt3OZNs3a3TZi485v6xbsX
+	lLPr1frt9A9OPdSoy7vvWPiWT7WuVuvCruiJn1lyV+igW5uL0xar/Zc++YbZX/3DEbQ8/EOc
+	a6Pye8tU1VOOQo1P/9zdEKR9o+Xw7QnOf0xnS7078qvaumK1UeuTnHmvbKLtils1aye1rDvx
+	3uijKU9o2IGfXbtSeJRrc9WjGlNDG2ruK7EUZyQaajEXFScCAFk4a+EXBAAA
+
+------=_Part_760083_45979781.1708408373395
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+</head>
+<body>
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"98%" style=
+=3D"background-color:#f1f1f1">
+<tbody>
+<tr>
+<td></td>
+<td width=3D"800">
+<table>
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D" max-width:800px"><br>
+<table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" style=3D" borde=
+r-top: solid #c6c6c6;border-bottom: solid #c6c6c6 ;background-color:#FFFFFF=
+">
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D" max-width:800px">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"margin-top=
+: 20px; margin-left:15px ; margin-right: 15px;">
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"max-width:800px"></td>
+</tr>
+<tr width=3D"100%">
+<td>
+<table style=3D"width: 100%;height: 100%;">
+<tbody>
+<tr>
+<td>
+<p style=3D"font-family:Arial, Helvetica, sans-serif; font-size:12pt; font-=
+weight:bold; color:#000000;">
+Tisztelt <span style=3D"color:#106D3B; font-weight:bold; ">Alex</span>! </p=
+>
+</td>
+<td width=3D"201"><img align=3D"right" src=3D"https://www.posta.hu/static/i=
+nternet/picture/MP_MPL_logo.png" alt=3D"Magyar Posta =C3=A9s MPL log=C3=B3"=
+ width=3D"105"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr width=3D"100%">
+<td style=3D"width: 100%;height: 100%;">
+<p style=3D"font-family:Arial, Helvetica, sans-serif; font-size:14pt; font-=
+weight:bold; color:#DC3C36; text-align:center; line-height:1.5; margin-top:=
+5px; margin-bottom:30px;">
+Csomagja =C3=A9rkezett </p>
+</td>
+</tr>
+<br>
+<tr width=3D"100%">
+<td style=3D"width: 100%;height: 100%;">
+<p style=3D"font-family:Arial, Helvetica, sans-serif; font-size:11pt; color=
+:#000000; line-height:1.5; margin-bottom:20px; margin-left:10px">
+=C3=89rtes=C3=ADtj=C3=BCk, hogy csomagja =C3=A1tvehet=C5=91 az al=C3=A1bbi =
+helysz=C3=ADnen <span lang=3D"HU" style=3D"font-family:Arial, sans-serif; c=
+olor:#106D3B">
+2024.02.20.</span>-t=C3=B3l <span lang=3D"HU" style=3D"font-family:Arial, s=
+ans-serif; color:#106D3B">
+2024.03.05.</span>-ig. </p>
+</td>
+</tr>
+<tr width=3D"100%">
+<td width=3D"100%" align=3D"top">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"margin-top=
+: 10px; margin-left:15px ; margin-right: 15px;margin-bottom:15px">
+<tbody>
+<tr width=3D"100%">
+<td width=3D"100%" align=3D"top">
+<p style=3D"font-family:Arial, Helvetica, sans-serif; font-size:11pt; color=
+:#000000; line-height:1.5; margin-bottom:10px; margin-right: 15px">
+<span>=C3=81tv=C3=A9tel helye: <span lang=3D"HU" style=3D"font-family:Arial=
+, sans-serif; color:#106D3B">
+Cegl=C3=A9d 1 posta </span></span><br>
+=C3=81tv=C3=A9tel c=C3=ADme: <span lang=3D"HU" style=3D"font-family:Arial, =
+sans-serif; color:#106D3B">
+2700 Cegl=C3=A9d Gubodi utca (Gubodi utca fel=C5=91li bej=C3=A1rat)</span><=
+br>
+<a href=3D"https://maps.google.com/maps?q=3D2700 Cegl=C3=A9d Gubodi utca 15=
+." target=3D"_blank">A t=C3=A9rk=C3=A9p megnyit=C3=A1s=C3=A1hoz kattintson =
+ide</a><br>
+<br>
+Felad=C3=B3: <span style=3D"color:#106D3B; font-weight:normal; ">Alza cz a.=
+s.</span> <br>
+K=C3=BCldem=C3=A9nyazonos=C3=ADt=C3=B3: <a href=3D"https://www.posta.hu/ugy=
+felszolgalat/nyomkovetes?ids=3DPB43K26294373" target=3D"_blank">
+PB43K26294373</a><br>
+<span>=C3=81rufizet=C3=A9si =C3=B6sszeg: <span style=3D"color:#106D3B; font=
+-weight:normal; ">&nbsp;47&nbsp;170</span> Ft</span><br>
+<br>
+<span>=C3=81tvehet=C5=91: </span><span lang=3D"HU" style=3D"font-family:Ari=
+al, sans-serif; color:#106D3B">H:08:00-19:00 K:08:00-19:00 Sze:08:00-19:00 =
+Cs:08:00-19:00 P:08:00-19:00 Szo:08:00-12:00
+</span><br>
+<br>
+<b>K=C3=A9rj=C3=BCk, az =C3=A1tv=C3=A9telhez hozza mag=C3=A1val a szem=C3=
+=A9lyazonoss=C3=A1g=C3=A1t igazol=C3=B3 okm=C3=A1ny=C3=A1t!</b><br>
+<br>
+Felh=C3=ADvjuk figyelm=C3=A9t, hogy amennyiben csomagj=C3=A1t a megadott id=
+=C5=91pontig nem veszi =C3=A1t, azt visszak=C3=BCldj=C3=BCk a felad=C3=B3na=
+k!<br>
+<br>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table width=3D"100%" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" =
+style=3D" border-top: solid #c6c6c6;border-bottom: solid #c6c6c6 ;backgroun=
+d-color:#FFFFFF; margin-top:15px">
+<tbody>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D" max-width:800px"><a href=3D"h=
+ttps://www.posta.hu/ugyfelszolgalat/nyomkovetes?ids=3DPB43K26294373" target=
+=3D"_blank" title=3D"Nyomk=C3=B6vet=C3=A9s"><img src=3D"https://www.posta.h=
+u/static/internet/picture/progress_bar_v4_05.png" alt=3D"=C3=89let=C3=BAt" =
+width=3D"auto" height=3D"auto" style=3D"margin-bottom:4px; margin-top: 15px=
+;"></a>
+<p style=3D"font-family:Arial, Helvetica, sans-serif; font-size:13px;color:=
+blue;margin-bottom:4px">
+K=C3=B6vesse nyomon csomagj=C3=A1t =E2=80=93 kattintson a k=C3=A9pre </p>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"10" cellspacing=3D"0" border=3D"0" align=3D"left" sty=
+le=3D"margin-bottom:70px">
+<tbody>
+<tr>
+<td>
+<p style=3D"font-family:Arial, Heletica, sans-serif; font-size:11pt; color:=
+#000000; line-height:1.5; margin-top:15px; margin-bottom:15px;">
+K=C3=A9rd=C3=A9s eset=C3=A9n k=C3=A9rj=C3=BCk, forduljon <a href=3D"https:/=
+/www.posta.hu/ugyfelszolgalat" target=3D"_blank">
+=C3=9Cgyf=C3=A9lszolg=C3=A1latunkhoz</a>! <br>
+<br>
+=C3=9Cdv=C3=B6zlettel, <br>
+<span style=3D"color:#000000; font-weight:bold; font-size:12pt;">Magyar Pos=
+ta Logisztika (MPL)</span></p>
+<p style=3D"font-family:Arial, Heletica, sans-serif; font-size:11pt; color:=
+#000000; line-height:2; margin-top:5px; margin-bottom:10px; Vertical-align:=
+ bottom">
+<a style=3D" text-decoration:none;" href=3D"https://www.instagram.com/magya=
+r_posta_zrt/"><img src=3D"https://www.posta.hu/static/internet/picture/pic_=
+footer_social_3.png" alt=3D"Instagram" width=3D"27" height=3D"27"></a><a st=
+yle=3D" text-decoration:none;" href=3D"https://www.youtube.com/user/magyarp=
+ostaofficial/featured"><img src=3D"https://www.posta.hu/static/internet/pic=
+ture/pic_footer_social_2.png" alt=3D"Youtube" width=3D"27" height=3D"27"></=
+a><a style=3D" text-decoration:none;" href=3D"https://www.facebook.com/Magy=
+arPosta/"><img src=3D"https://www.posta.hu/static/internet/picture/pic_foot=
+er_social_1.png" alt=3D"Facebook" width=3D"27" height=3D"27"></a><a style=
+=3D" text-decoration:none;" href=3D"https://www.linkedin.com/company/magyar=
+-posta"><img src=3D"https://posta.hu/static/internet/picture/pic_footer_soc=
+ial_5.jpg" alt=3D"Facebook" width=3D"27" height=3D"27"><br>
+</a><a style=3D" text-decoration:none;" href=3D"https://play.google.com/sto=
+re/apps/details?id=3Dhu.posta.uzletimobil&amp;hl=3Dhu" target=3D"_blank"><i=
+mg src=3D"https://www.posta.hu/static/internet/picture/ikon_google_play.png=
+" alt=3D"Mail" width=3D"90" height=3D"27"></a><a style=3D" text-decoration:=
+none;" href=3D"https://itunes.apple.com/hu/app/magyar-posta-uzleti-alkalmaz=
+as/id914923477?mt=3D8" target=3D"_blank"><img src=3D"https://www.posta.hu/s=
+tatic/internet/picture/ikon_app_store.png" alt=3D"Mail" width=3D"90" height=
+=3D"27"></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p style=3D"margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&qu=
+ot;Calibri&quot;,sans-serif;margin-top:0cm;margin-bottom:.0001pt;line-heigh=
+t:107%;margin:0cm;text-align:justify;background:white;">
+<em><span style=3D"font-size:12px;font-family:&quot;Book Antiqua&quot;,seri=
+f;color:#242424;border:none windowtext 1.0pt;padding:0cm;">Ez az elektronik=
+us lev=C3=A9l bizalmas =C3=A9s/vagy jogilag v=C3=A9dett inform=C3=A1ci=C3=
+=B3kat tartalmazhat, =C3=A9s kiz=C3=A1r=C3=B3lag a c=C3=ADmzettnek sz=C3=B3=
+l. Amennyiben ezt a levelet
+ s=C3=A9r=C3=BClten kapta meg vagy nem =C3=96n annak val=C3=B3s c=C3=ADmzet=
+tje, k=C3=A9rj=C3=BCk, halad=C3=A9ktalanul t=C3=A1j=C3=A9koztassa err=C5=91=
+l a felad=C3=B3t, =C3=A9s a levelet vissza=C3=A1ll=C3=ADthatatlanul t=C3=B6=
+r=C3=B6lje rendszer=C3=A9b=C5=91l. Az elektronikus lev=C3=A9l enged=C3=A9ly=
+ n=C3=A9lk=C3=BCli m=C3=A1sol=C3=A1sa, sokszoros=C3=ADt=C3=A1sa, terjeszt=
+=C3=A9se, m=C3=B3dos=C3=ADt=C3=A1sa =C3=A9s
+ nyilv=C3=A1noss=C3=A1gra hozatala szigor=C3=BAan tiltott. Az elektronikus =
+=C3=BAton t=C3=B6rt=C3=A9n=C5=91 levelez=C3=A9s els=C5=91sorban inform=C3=
+=A1ci=C3=B3s c=C3=A9lokat szolg=C3=A1l. A Magyar Posta Zrt. nem tesz =C3=A9=
+s nem fogad el hivatalos k=C3=B6telezetts=C3=A9gv=C3=A1llal=C3=A1sokat kiz=
+=C3=A1r=C3=B3lag elektronikus lev=C3=A9l =C3=BAtj=C3=A1n, hacsak err=C5=91l=
+ ellent=C3=A9tes
+ tartalm=C3=BA meg=C3=A1llapod=C3=A1s nem sz=C3=BCletett a felek k=C3=B6z=
+=C3=B6tt. Az elektronikus lev=C3=A9l tartalma nem felt=C3=A9tlen=C3=BCl t=
+=C3=BCkr=C3=B6zi a Magyar Posta Zrt. hivatalos =C3=A1ll=C3=A1spontj=C3=A1t =
+adott =C3=BCgyben.</span></em></p>
+<p style=3D"margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&qu=
+ot;Calibri&quot;,sans-serif;margin-top:0cm;margin-bottom:.0001pt;line-heigh=
+t:107%;margin:0cm;text-align:justify;background:white;">
+<em><span style=3D"font-style:inherit;font-weight:inherit;line-height:inher=
+it;color:inherit;"><span style=3D"font-size:12px;font-family:&quot;Book Ant=
+iqua&quot;,serif;color:#242424;border:none windowtext 1.0pt;padding:0cm;">T=
+his e-mail is intended only for the above named
+ addressee/s. The information in this e-mail and any attached files are con=
+fidential and may be legally privileged. If you are not the intended recipi=
+ent, please, notify the sender immediately and then delete the e-mail, and =
+any attachments. Any disclosure,
+ copy, distribution or any action taken or omitted to be taken in reliance =
+on it, is prohibited and may be unlawful.</span></span></em></p>
+<p style=3D"margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&qu=
+ot;Calibri&quot;,sans-serif;margin-top:0cm;margin-bottom:.0001pt;line-heigh=
+t:107%;margin:0cm;background:white;text-align:start;">
+<span style=3D"font-style:inherit;font-weight:inherit;line-height:inherit;c=
+olor:inherit;"><span style=3D"font-size:12px;font-family:&quot;Arial&quot;,=
+sans-serif;color:#242424;border:none windowtext 1.0pt;padding:0cm;">&nbsp;<=
+/span></span></p>
+<p style=3D"margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&qu=
+ot;Calibri&quot;,sans-serif;margin-top:0cm;margin-bottom:.0001pt;line-heigh=
+t:107%;margin:0cm;background:white;">
+<em><span style=3D"font-size:12px;font-family:&quot;Book Antiqua&quot;,seri=
+f;color:#006600;border:none windowtext 1.0pt;padding:0cm;">Nyomtat=C3=A1s e=
+l=C5=91tt gondoljon a k=C3=B6rnyezet=C3=A9re! Think of the environment befo=
+re printing!</span></em></p>
+</body>
+</html>
+
+------=_Part_760083_45979781.1708408373395--

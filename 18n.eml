@@ -1,0 +1,880 @@
+Delivered-To: havasi.alex.marton@gmail.com
+Received: by 2002:a17:906:3e05:b0:a52:243e:6b34 with SMTP id k5csp2171936eji;
+        Sun, 14 Apr 2024 08:55:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEhp4U+MQBQnCXrCtVNhz1LQjH4aWwr2UND1zvymtrF1rwkq/Fs8cOfZiPaaipXn1IZU3wO
+X-Received: by 2002:a05:6a21:9997:b0:1a7:870a:86eb with SMTP id ve23-20020a056a21999700b001a7870a86ebmr7807577pzb.15.1713110135521;
+        Sun, 14 Apr 2024 08:55:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713110135; cv=none;
+        d=google.com; s=arc-20160816;
+        b=j3yVQpeq9ID4avfuS9DzO4fF5TloQaL8Zc8nLcUOi6f3l3GG1mU1IWpWtYACgOC3W/
+         9aMLMNwuTUnMPlFvrszPhJAh+bEV+j7XUyHykbcleN5FBX4apVDcro1WY6UpvOPVYqGy
+         8TrGECBmwDipzBcBXWzK/JHiBYwkXc7ojrb9j2BlwA4r3WmwwjuP9O74z9s0Hd737p4j
+         ZmnEarIocQ4tJ5AjTPoMeknI/6uDUdNeuTgRk7K/r1TaG1/5hh3VKEYEKTH16OjR+Cnu
+         mj8fuS72QcHM03d1O5coRiVHIQ9lLTWb3l+zaFhQ+km7OAMRl5Wfaln74/PLsrmc+nEh
+         /T1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:reply-to:sender:subject:message-id:from
+         :feedback-id:to:date:mime-version:dkim-signature;
+        bh=i6TSKqzlbMOxouH7AJNYQoXu7kW0mZbCqGLOgVfDjbc=;
+        fh=W1bIqYBbtxnupJGadtlRw/NhqC6b9HqHgDkOoY5dYFM=;
+        b=Zu/QlmxJLJrHM2q2QG7bWjF7PPY2NUUIptyoaB0m7d1AIlhmBUiBlPzjz+c0o3pv+G
+         hp3tftvWqrAZbQZn0WWK6/XmNFvdXvtnmIIrOdCzOs7NTQONXgSHNkozcdGgm4vRxPXs
+         iL+4k4iEg26RKeA9LWfjovwI5zt5StDR5RrtYgK8ex0c1VYUQnmMgh1pXDAWsIFn0lgu
+         AMQ9SHEr0rcFXZrffA1foSvLW9APUsiFr1NNS5cxJeCNwey9oU/2aI228n9hTKR49QnJ
+         sb8pgdfk3nbscu7VC62bg54M4gKwelWMG2b6IkfV4NfEUfzdnzLgCJINJjeay6sD4AiE
+         QxSQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@wish.com header.s=mail header.b=H5Vd8rHa;
+       spf=pass (google.com: domain of bounces+31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com designates 144.2.146.40 as permitted sender) smtp.mailfrom=bounces+31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wish.com
+Return-Path: <bounces+31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com>
+Received: from mta-3-040.ml.wish.com (mta-3-040.ml.wish.com. [144.2.146.40])
+        by mx.google.com with ESMTPS id o13-20020a17090ad24d00b0029c0776adbcsi8426146pjw.169.2024.04.14.08.55.35
+        for <havasi.alex.marton@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 14 Apr 2024 08:55:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com designates 144.2.146.40 as permitted sender) client-ip=144.2.146.40;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@wish.com header.s=mail header.b=H5Vd8rHa;
+       spf=pass (google.com: domain of bounces+31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com designates 144.2.146.40 as permitted sender) smtp.mailfrom=bounces+31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=wish.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=wish.com;
+	 s=mail; h=Content-Transfer-Encoding:Content-Type:Subject:Message-ID:From:
+	Feedback-ID:To:Date:Mime-Version:List-Unsubscribe;
+	bh=i6TSKqzlbMOxouH7AJNYQoXu7kW0mZbCqGLOgVfDjbc=; b=H5Vd8rHaOcN7qrzTPKeE6/PI8V
+	OQqW3rfGxmtj8yyUpJhI7MWrseV1N4T7DR4FbctCovuIttNHYhuY7zL2VOSDFyh5KQ8l/ci04vFxW
+	StuXPERtpVoPbwbagEXWtUx71PjB7GwxVe1yvM6EHZBWZyvKe8YHIFlv58i79xqDZ4js=;
+Mime-Version: 1.0
+Date: Sun, 14 Apr 2024 08:55:34 -0700
+To: "Havasi Alex" <havasi.alex.marton@gmail.com>
+Feedback-ID: 65b7b164ad3775a3b6987c00:2024-04-08_SHIPMENT_CONFIRMATION_769683e487ce42389e3c9e4ef81871f8:3:wishmailx
+X-Mail-IP: 144.2.146.40
+From: Wish <notification@wish.com>
+Message-ID: <31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com>
+X-Entity-Ref-ID: <31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com>
+X-Email-ID: 31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11
+Subject: We've packaged your items together and they're on their way!
+Sender: notification@wish.com
+Reply-To: replyto+31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11@mail.wish.com
+X-WES-AID: 62c5ead76022aa367e2d5a37
+X-Campaign-ID: 2024-04-08_SHIPMENT_CONFIRMATION_769683e487ce42389e3c9e4ef81871f8
+X-Email-Type: 3
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title> We&#39;ve packaged your items together and they&#39;re on their way! </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width"/>
+<style>
+#outlook a { padding: 0; }
+.ExternalClass { width: 100%; }
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div { line-height: 100%; }
+@import url("http://main.cdn.wish.com/latest/fonts/ginto-regular.otf?v=b248a13");
+@font-face {
+font-family: ginto-regular;
+src: url("http://main.cdn.wish.com/latest/fonts/ginto-regular.otf?v=b248a13") format('otf');
+font-style: normal;
+font-weight: 400;
+}
+@font-face {
+font-family: 'Ginto';
+src: url("http://main.cdn.wish.com/latest/fonts/ginto-regular.otf?v=b248a13") format('otf');
+font-style: normal;
+font-weight: 400;
+}
+</style>
+<link href="http://main.cdn.wish.com/latest/fonts/ginto-regular.otf?v=b248a13" rel="stylesheet" type="text/css"/>
+
+
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+
+</head>
+<body style="width: 100% !important; min-width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;margin: 0;Margin: 0; padding: 0;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;"><img id="wish_email_service_beacon" src="https://www.wish.com/api/campaign-frontend/wes/email-beacon.png?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" height="1px" width="1px"/>
+<img id="email-beacon" src="http://www.wish.com/email-beacon.png?utm_campaign=2024-04-08_SHIPMENT_CONFIRMATION_769683e487ce42389e3c9e4ef81871f8&amp;verification_code=0cac9c6d3c97f23f620a56c91c74496e&amp;user_id=65b7b164ad3775a3b6987c00&amp;uuid=769683e487ce42389e3c9e4ef81871f8&amp;cmpgnid=2024-04-08_SHIPMENT_CONFIRMATION_769683e487ce42389e3c9e4ef81871f8&amp;ee=v1_3mZYESeZPNRw3XdQYAZXKnh1L3ZK6DQGtRUf2aDUu1N3V46DbhymaTv1V6njZYrTpcoRTwhZgackbZYYmNWUFynFJFXCP&amp;utm_source=SHIPMENT_CONFIRMATION&amp;template=emails%252Fremix%252Fnotifications%252Fitems_combined_shipped.html&amp;recvuid=65b7b164ad3775a3b6987c00" height="1px" width="1px"/>
+
+<span style="color:#FFF; display:none !important; font-size:1px;">
+
+Hi Havasi Your package is currently crossing international borders! The item(s) listed below will be delivered in one package. We&#39;ll let you know when it&#39;s handed to WishPost for delivery.
+
+</span>
+
+<table style="background-color: #f5f5f5; width: 100%; border-collapse: collapse; border-spacing: 0"><tbody><tr><td align="center">
+<table style="max-width:100%; width: 499px; background-color:transparent; border-collapse:collapse; border-spacing:0">
+<tbody><tr>
+<td align="center" valign="top" style="background-color: white; width: 100%; min-width: 580px; padding: 0px;">
+
+
+
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_6q6ouhofp17MUvfU6msLRvNa1Ehjwf2PCEKTZYstsib3orQSD9e5FtVtkTbgNQko7gFStpigpfJRCLQQy2xiQzMM87JRQPtr4uJdzREm2jR7vD7eiFoxs7x2VLz4TQKRzsxwqHZpj5g2L9Xc9Cxy8JB31e5JAusu7v8Ad7x9jWwsrskc8SmrLyMHgkrk1YsBHDgWVGUJLk9spPFqtbecijD1LD7dcZRtNNd46f5feV4eex1gW5xbq4RoJxWvqNZ6RBV5RWU6b75abUSUCSdESsbPowAB5XAcoYjBpzwWWrMu7drHxtJ9EZXgJCAucKUDZ3gChqgMVLk547ruum7LbkmanAkkNdrnVhQQDGWYiDZmnNRD6w37a2VNeXsnEKYXid1khsqde7gcry91bXT5aRyPW1PTv1nU1Az3iyvTUy5E6Prv5f9AiRFzF9dx2ykaMhTX3vANuNiWi5rXPEAJhmhAyShZSP31wxdobkKJY2vaiTomUgjVopWqSnocf2nfUaDo6UYX5JJFi2REz16rBL5dN91bts5VegCtqR37n9tCh4ecTpu1reJpZ1SvcxgPdn5rZA1sui1ALF2w1NxXBygjt1iJfcsDesBQfffWhjFTLhZMxu6WEQUQSSNQACKTmwpikXJPnhK12VMLHt8BcPfRPbsCHGG1doeznoQsByqckX23msJp4wPrD9Ce4N2BgFj6d6FvNW9YiQ8pvLBJ3NcGvDssMMC8RTbJx3RFWFLqEx8fGVXdi8fr5W2a3dbbGdSNmPUZH6aF9Ygrr8zNjvcDraeD4hqJHrBodXrqdyPTV2LWqAU9eNso9YTAiD26Cwuy6HacVoQQ3Js&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true">
+
+
+<div style="background-color: white;">
+
+<img src="http://main.cdn.wish.com/latest/img/email/remix/rounded_bg_filled_wish_logo.png?v=e8c5d13" style="margin: 25px 0 16px; width: 96px;"/>
+</div>
+
+
+</a>
+
+
+
+
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" style="padding-top: 5px;">
+
+
+<tbody><tr>
+<td align="center">
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_2ckN8obnr2xLTxh1CtaatkS8zmoZVNKKTsY3u2HguFAurQHjM2s4SLVLr8VvL9kv1caPNqwJZEmv2HKKQUTYwpAy5QCDQukrpGhtsPkWWJpvVj8Te2sq3A9NW5342LZMyHfRNsfGAgnVoWeCkkLgn7pEUnW3rTp3rkEaEDatan3ZGdprCDiZh1dywbqbcvJLv1697Xj59ENNgwQUdPYhM2Jq5A4xoVB1XohsPDeX1BnyY34rGxJLk6gjZSFH9EhiZSgjhq7F7Zch5N6qcudRbyTv7MNKPfkdgXmKeNJ9n7uAB9k3oPsycacxNsmswZFGpWmmTscT1ZhcHhpru7Qn8wxFbF2EU9pmwxWxb7DvWL2Rg1K7PpmHcDjPYi7R8rAXWKeQfqUk1qEE6cnbPZYza49EnjsNQrjDo3hiknLSnFS7fHeLsMBHMCEs5Eug6hXqzhiWJyk9CuJmXzAJQxJksZJ6P8PUi9kgNYYRua2AE8wyoapcKqrCdG5ispJC6Xd7DQy1BisvB39VHMLJDYS3bh9rBTrfjF6Yu4a1HoPVTxGm1votARwWStyeXJPHatiCKvJZBpPjrErgQTnqKGDZV2tRvW3fBsUkKc8SweArAPQUiWdmWHhMim5y4sQsqBErdDFxMnAx7H1Ru1PskhgrGXfeUfmF3mLATnnJ3tQ5gHjTCXsdoAWhKmnsjoVk5NpZugSPFs6yoLCQp2H9k5myGiZttdQRJFjN5wVozaDxtyWTdrvBXzr7YmA1jAWBR7zdK5sSnFtwVFDpyyx1pR7km5WUPXkjHXJ47z3u7ydeeUzeLjSApEtWo8mNsXRWttu2eQrLaKcXR24NzaHvyB&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true">
+<img style="width:600px; height: 143px;" src="http://main.cdn.wish.com/latest/img/email/remix/items_combined_shipped_rebrandv2.png?v=4f72013"/>
+</a>
+</td>
+</tr>
+</tbody></table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+
+<tbody><tr>
+<td height="40"></td>
+</tr>
+
+<tr>
+<td width="50"></td>
+<td align="center" style="font-family: Ginto">
+<table border="0" cellpadding="0" cellspacing="0" style="line-height: 24px; text-align: center;">
+
+<tbody><tr>
+<td style="font-size: 24px; width: 500px; font-weight: 700; line-height: 28px; letter-spacing: 0.01em; color: #1E1E1C; text-align: center; font-style: normal; font-family:&#39;Ginto&#39;, &#39;helvetica neue&#39;, helvetica, sans-serif;">Havasi, your package has left our facility in China and is headed to your local carrier.</td>
+</tr>
+
+<tr height="32">
+</tr>
+
+
+<tr>
+<td style="font-size: 16px; font-family: Ginto, Helvetica Neue, Helvetica, sans-serif;">
+Your package is currently crossing international borders! The item(s) listed below will be delivered in one package. We&#39;ll let you know when it&#39;s handed to WishPost for delivery.
+</td>
+</tr>
+<tr height="32">
+</tr>
+
+
+
+<tr>
+<td align="center" width="525">
+<table width="525" style="min-width: 525px;">
+<tbody><tr>
+<td align="center" style="height: 100px; border: 1px solid #AAAAA4; width: 525px; border-radius: 4px;">
+<table>
+<tbody><tr>
+<td colspan="3">
+<img width="365" style="min-width: 365px;" src="http://main.cdn.wish.com/latest/img/email/order_delivered_untracked_bar_rebrand.png?v=cfa0413"/>
+</td>
+</tr>
+</tbody></table>
+<table width="400" style="min-width: 400px;">
+<tbody><tr style="vertical-align: top;">
+<td style="width: 33px; max-width: 33px; text-align: center; font-family: Ginto, Helvetica Neue; font-size: 10px; line-height: 12px; background:#fff; color: #98ABB6; letter-spacing: 0.02em; font-weight: 400;">
+Ordered<br/>
+Apr 10, 2024
+</td>
+<td style="width: 30px; max-width: 30px; text-align: center; font-family: Ginto, Helvetica Neue; font-size: 10px; line-height: 12px; background:#fff; color: #AAAAA4; letter-spacing: 0.02em; font-weight: 600">
+Shipped
+</td>
+<td style="width: 38px; max-width: 38px; text-align: center; font-family: Ginto, Helvetica Neue; font-size: 10px; line-height: 12px; background:#fff; color: #000000; letter-spacing: 0.02em; font-weight: 600">
+In transit: Departed Wish Facility
+</td>
+<td style="width: 25px; max-width: 25px; text-align: center; font-family: Ginto, Helvetica Neue; font-size: 10px; line-height: 12px; background:#fff; color: #0E161C; letter-spacing: 0.02em; font-weight: 400">
+Delivered
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr height="32">
+</tr>
+
+
+
+<tr>
+<td style="line-height: 24px; text-align: center; padding-bottom: 10px">
+<span style="font-family: Ginto, Helvetica Neue; font-size: 16px; width: auto; font-weight: 400;">
+Updated delivery:
+</span>
+<span style="font-family: Ginto, Helvetica Neue; font-size: 16px; width: auto;">
+Apr 20-28
+</span>
+</td>
+</tr>
+
+<tr>
+<td style="line-height: 24px; text-align: center; padding-bottom: 10px">
+<span style="font-family: Ginto, Helvetica Neue; font-size: 16px; width: auto; font-weight: 400;">
+Order number:
+</span>
+<span style="font-family: Ginto, Helvetica Neue; font-size: 16px; width: auto;">
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_2FL1hwrfY88xvANJJSsVc2dbJ9aUgDcYmD6XShxppiCAqrNzcb6dcM8yJUZTDBoLLMiGeMspLnmD6mYUCXwiEshJR7qcMdBAdDKGukbJNuyAZX2jh5TfLcYcbY9qNxMfmxFB&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color:#16a44c;text-decoration: none;">6616a5a39e330d87250fc8e9</a>
+</span>
+</td>
+</tr>
+
+
+</tbody></table>
+</td>
+<td width="50"></td>
+</tr>
+</tbody></table>
+
+<table border="0" cellpadding="28" cellspacing="0">
+<tbody><tr>
+<td align="center">
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_MBkV5azpqp5g7RnEZjuFjiF9nXbXFKL9E2XRf8EoJ3jUXcawuLx7tPTycVK35bhzjhWNpE1KJ1SHe7WxV2fstZXnzUY1a7NGJ8wx6Gq2bsnM2WALce4RcZVKh4hridQAbQGHC2EFADgh89PohKXc4bHXpDRcdJg5hSedeEvyYhFjLpGkRir9BBJ7YBLpQs2g7tbaSE2iSdG2QqvnxSvrwjRjyoquKC7MLPV9vdnVE5mtqUXVtnfD1rRrmmpLCpDgDRrqUX9cfevnaMvytJr3ajVKjTiMbsNcvooaY2yP2cP3odjCXZQ945H5hveHVrZXFTALg64XMKK5vbWnFuGT2vxZM7yezGM8788QBSAzipVPoaKLXm9x9JisLZDvwGyPywBRBpntibCEtGWoSeQGTEfr85NUoh8dmmQ85ng9DZBZPuokbm7HLVQ7gxtJCditb3dNtxzRa333PRoKd9SjUZw3E9u9cir3YKkxB2REed5gAmWmMbXhN2xYFrYV5gNnHebL6bmCKiRBwNdFmBi832rFAktndbP71DWrTWnu9z7GqQZwHRf9q9CmkmSMRy9gtRNF6afvY9SmTWtxbdRGCZWonc9Li47WRvENMvYDHKZNjw1CAKBu1jev7Rb8miBnYyggfraZWKccycvUuFcXBk1sYnoHxhHcUmbL9DUeJgXzWtDdszNrvttTE7GRC9B4V1jvGEejxYxECR2Enxojtr8ZKMsoEYDuL8Ge17K2XcLRQN1yTy9W4oWkZ3a9oiByD4FFQvcLMNHxPGmqdxcdMGNkt2iYgEQCrnHA2WxwXHqQuAtowjyRhZgxix3Hu1wAj4wgzb2SR9iSGXjgiL4dL9KanRuSntAdwXWEx6GoHSnUvkKfnRL6iXzkATbhd3aULutHLBBx2Y4vPoWPjgsdTEr8J5PWJpgUNeyQRxr83c2XLdgzLDRzcLyscvNRqPnsQRjqBGdh8pLZJfm2DE&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="
+        border-radius: 1.5px;
+        display: inline-block;
+        letter-spacing: 0.56px;
+        font-weight: bold;
+        color: #ffffff;
+        font-size: 15.5px;
+        padding: 9.5px 5px;
+        text-decoration: none;
+        text-align: center;
+        line-height: normal;
+        width: auto;
+    background-color: #2FB7EC;; padding: 10px 16px; font-weight: 400; font-size:14px; color: #ffffff; letter-spacing:0.56px; font-family: Ginto, Helvetica; border-radius: 999px; background-color: #1E1E1C;">
+Track my package
+</a>
+</td>
+</tr>
+</tbody></table>
+
+
+
+<table width="auto">
+<tbody><tr>
+<td align="center" style="font-family: Ginto, Helvetica Neue; padding-top: 5px; width: 525px">
+<table style="border-style:solid; border-width:1px; border-color:#C1C1BF; height: 156px; width: 525px; border-radius: 4px;">
+<tbody><tr>
+
+
+<td valign="top" style="padding: 10px; font-family: Ginto, Helvetica Neue; width: 221px;">
+<div style="font-weight: bold; padding-bottom: 10px; font-size: 16px; line-height: 24px">
+Shipping address
+</div>
+<p style="font-size: 14px; line-height: 20px; margin: 0px;">Havasi Alex</p>
+<p style="font-size: 14px; line-height: 20px; margin: 0px;">Damjanich utca 8/b,
+
+2 emelet 5.
+
+</p>
+<p style="font-size: 14px; line-height: 20px; margin: 0px;">cegléd,
+
+
+2700
+
+</p>
+<p style="font-size: 14px; line-height: 20px; margin: 0px;">Hungary</p>
+</td>
+
+<td>
+<div style="border-right: 1px solid #DCE5E9; height: 85%;"></div>
+</td>
+<td valign="top" style="padding: 10px 10px 10px 40px; font-family: Ginto, Helvetica Neue; width: 170px;">
+<div style="font-weight: bold; padding-bottom: 10px; font-size: 16px; line-height: 24px;">
+Payment method
+</div>
+
+
+
+
+<p style="font-size: 14px; line-height: 20px; margin: 0px;">Credit Card</p>
+<p style="font-size: 14px; line-height: 20px; margin: 0px;">MasterCard: **** 866</p>
+<p style="font-size: 14px; line-height: 20px; margin: 0px;">Zip/Postal Code: 2737</p>
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+
+
+
+<!-- This means it's an order level email and all item will be shown from the transaction-->
+<div style="font-size: 20px; font-weight: bold; margin-top: 15px; text-align:left;">Items in package</div><table width="auto">
+
+
+<tbody><tr>
+<td style="width: 525px">
+<!--
+This file will generate a transaction items details section in the email, it needs one variable:
+1) transaction_item_fragment: eg: {"show_status": True, "show_top_dividers": True, "show_item_price": True}
+- This is a dictionary which defines how to configure the transaction item section
+- show_status if true will include the status value of each item
+- show_top_dividers if true will add divider lines on top of each item, by default divider are added at bottom of each item
+- show_item_price if true will show the price of each item
+-->
+
+
+
+
+
+
+
+
+
+<div style="height: 20px;"></div>
+
+<table style="width: 525px">
+
+
+
+
+<tbody><tr>
+
+<td valign="top" style="height: 97px; padding-right: 15px;">
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_69tQbjzZ7MFbPDUCvHfAP8KfZSDSA57sRwzuspW9ZrECs1hiHeUvPxpjQX99hm48Dnzx56ZmMTyPcmebmQShkxaZZVbjvXS31eW2JMoaNuMseke34KD7Rb79WreDBLxA8yNRWFpF6Lp31JR6fnYQ8cHFsipRgKKiuFDbHFtUMug6PvqvngNj7xJifLezCwebNHcNH3hPwZFV9VGaLfgDADaHk1MhELoV94Mxmw2QtfQNZYqcAExajPeDEwTWA7vMjQfHoX8atn2NFJpJa74hrHbSU65Hhn5NkTpPwPXrHs5syFrQPgtStfK2RWMJF61FMtpzKjJbGkPEeSR4u2kuNTctWyFVtJYkYYDXKNYgdHuxJVViiSLG61y29XZxd7QHMzH8ysNC5GxQ2LcweC6mH5Xe543uD3gwUz7maHKemnadKJjhgXdyHAcFWmtvstj1tJ6hr8EQLdpYMXAnrPw1c4w7gspewDBczxdHhsnkwL5fRFgfVUeY2tqpXcrmhEqJAstx7ha6XuF9HSwVEtgY3vhXhK8tfHABeqMhc7EJBqRbFxujunZE9JeSsWQzWR9FKndGAoanjhxRu8K2TdZpcArkg1otVdXyW8JpGYw8NLFZBkfBhUviQt4aqnZRtHWQNrF3QH6ZpReyRvK4meJ5j6yvfHc45JR2zU5VrzQmfMTTpZS5itkddGZ969Mft2tmM23KGUf4NP8aJVuKme8a3kXPKbUCn7ewgewSqVF2PxW86XabB1EpCQtHdGgv2GfmkdsHsnZiYo69fP46UZotfqrt8PvR2ETQPPnLadHcA385A4GWfxEgwCmJrdRwE2ShV4uT1nPcRBoCX54yC76fUgqVSsJZbKQm2uo1yKTTDahiNwrM1udap9tNsZWq1yQBHpdrF8N2Am2tmm2QWeddbjiDR4AeDMWJYAypVZQGg2LRrpG1BR6iGn9zefgAoFoMWLSXx6MPs3j&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true">
+<img style="border: 1px solid #DCE5E9; border-radius: 4px; width: 97px; height: 97px;" src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5f9d7b9cb2fdce30279c762b&amp;w=97&amp;h=97"/>
+</a>
+
+</td>
+<td style="width:340px; height: 97px;" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+<tbody><tr>
+<td style="font-weight: bold; line-height: 24px; font-size: 16px;font-family: Ginto, Helvetica Neue;">
+
+
+
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_ARNcmCL8aQpxK1kNc6rAqKBLFvhB6RHo7Hfh9CQYXLwfqdMpxcnL5GLjQYWk5n8dCK2Gru6SJm3S1Z4QuiCkGqsXhKrLrf4dS5AAeAbKgb6pyn6msjr7Vuf7VUQtbLfBK8VUu5sUtHDLuKTtELmzUxUYcMRczp3CMdZr3mVLy7vBTryMdzB2zSeQgNqykF1uwnDKbE4fMMGsrrj6Bw2k4kqXVtHiHtQwhhxmPRBgLDn9Ld3BgqccKFnQZv391G6wwwEkNy25tsUDpfbhdCDA5Ufas6ZNr1M3XHR8ja7QuZP2ZG6CpyVP3RCgsEb9jRF9huH1QN5haJXqwTTrrrBtRz3DmXqBfoee8natHetCUQ9vP2aQZSeioSNpJvi3nYS7wsQqdbU9SKfxLtSyJd15k26s4Pt3BS5ycxi5ou8GqiKYxTYREAXurBGuWN15WCdERSGGj37qM3NSuAmnMk6PrR2ttQsY9DcA7CStp2g9xywYhw8ZUDPd4GBgMxp93mE4FMp6UD3ZmKLdpsWrkcr7fGoGFX1LyWqq5H7QtjDN1HFhtdQpH3q3NdTnhQS4LWom3Lyk3wbmhRkSiKaSudhcjKFunEynM6XmkzSpoejDL4qrwopCDDRctm38GMazSX8gyoTCdCD7h1KsRhF8PJDzSos8MA8dVLCw1gdXvV6XTE2uAZN95fT2YjvDhoTwAkctTVH4DmNFDcsvLPQW7e1H3SD1MgQazj8mZzodWFQxL57xq22mX66XwyXzHwoDn6XRznzndpcaogibwQjPQxR9vdB4gdECzx9z8J4JhNdkVka9snkHyU5tCnXR94z4FSd74G3eanQDVYgdQMzeMN3BxhR1QJrt7V6MkDir3pFCPtRXSkLvz6AhWx9qEGuvSKX1b3PDBZWdszZsJoX3Hnfg9apPaJfLTDpyfkVPj8KFz9nA3ZQXj3SVVv1vEnevddvmnvUZy3tLNpQrWy&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="text-decoration: underline; color: inherit;">
+16/40 Pcs Combat Robot Buildin...
+</a>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td style="line-height: 24px; font-size: 16px; font-family: Ginto, Helvetica Neue; color: #0E161C;">
+<div style="height: 7px;"></div>
+
+<span>
+Blue,
+</span>
+
+
+<span>
+16PCS,
+</span>
+
+<span>
+Qty 1
+</span>
+<br/>
+<div style="height: 7px;"></div>
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+
+
+Standard shipping: 
+Ft1,492
+
+
+</span>
+<br/>
+
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+Estimated delivery: 
+
+
+Apr 20-28
+</span>
+<br/>
+
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+Sold by
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_WezEgn1BDnv8k2dTxjX7K4U1FgfuCKbxpMUSE8wKRrmL1howvTXkU4BYKbCwaHue92d9waDSL7mDHjAxYVYDdDB29PEEzuX55RiJgw1wjfCytjF4hPB7YH3fnf53myoALpUh7kqPPkMnLyFZibCdaPqidF9tZWasuUoZvP3CsktK3vj22yWWwhX2gXxYGU4qsSbsTtg8nqbtZyxgmB3EW421DD2oY8h4PDSdiJRAX5LBqiNqNnDi1DukXD6JKkefbbtSeQnF1C4e8Swj6y8wmy7acACcdranuEe38kPFUCh2Sb6ZFwVxJrJT7VFnBf1tAfp296pES8FLb81QP7GfmQoWhT9ty7wBfhttXb9HvfyxViSEpG425ih33n2AXDvFMLsJa6q4TiBmgJueHZCXVdse5j5JqAhzhNviPB3L2LP37SWuNqz7fwnRfDTSqstb1S9i388Hgi3UVVSf6zjE81NdeiBCa9cXMcQZGJhp6WWo96QX9RCkwYhwzX6JLCe4r3g88sQgZzDLRq6A3Km7ZYwyhMHgM3vDUhR7GfCENQHSbUtKFxHeUJNc9eA4yDtmYDnhejGUNgHsaNDCQYpi3w54v8pqGtM82RVMxy8YPrdzEqEjWLYfBQtj2QiVxMkRj1gMPKD4rWjh7cifiVgRr6FETYDWHzuZxsVphHqjrQYX44mdvadKS3fnFD4uhRyTDPyCB595kSMnoLuKcgmAGVDxGt4SUV51z8uTu4SDTKmYtusahJoQEQrKCYnxdQZUy8R9vD2juEhLR5tG7DPBYjBVCoLaU8NZiWDXsF62exMaTmbwzhnwvYYZgi9bpf5fZos1Qw6bm2y2eL3gqn9PcD3pva6ifeVfrMhya5xZ8h2yCgyr1uUGgFhdpvBRuu&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color: #16a44c;; text-decoration: none;">
+Tradefactory</a>
+
+</span>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+<td valign="top" style="font-size:16px; font-family: Ginto, Helvetica Neue; line-height: 24px; text-align: right; margin: 0px 8px; font-weight: 600;">
+Ft1,487
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center" style="border-bottom:1.5px solid #DCE5E9; height:1px; padding-top:20px;"></td>
+</tr>
+
+</tbody></table>
+
+</td>
+</tr>
+
+<tr>
+<td style="width: 525px">
+<!--
+This file will generate a transaction items details section in the email, it needs one variable:
+1) transaction_item_fragment: eg: {"show_status": True, "show_top_dividers": True, "show_item_price": True}
+- This is a dictionary which defines how to configure the transaction item section
+- show_status if true will include the status value of each item
+- show_top_dividers if true will add divider lines on top of each item, by default divider are added at bottom of each item
+- show_item_price if true will show the price of each item
+-->
+
+
+
+
+
+
+
+
+
+<div style="height: 20px;"></div>
+
+<table style="width: 525px">
+
+
+
+
+<tbody><tr>
+
+<td valign="top" style="height: 97px; padding-right: 15px;">
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_SghrnBVx3DmniWfy7xt7dhqVeWYJkUe9LwTX3B8B1FwAXvEcaKUREKVYMaUbx6Mx9aBbhHRMQ8CUQ4gcxJpaGFCCQQiKUEVBCkrqP8dYRgYhXjzaixymymTpM7YGAB3BSDeJ2qYi1NQTabsUWfJHSPtfhd6edxxredoFJu1xdHLjv7Pj93eANHustA1PDEFw2LAN88YHS6FA4EhM3w6Q8xvmyKUQT9BoQEcy8xmBtPe8PB3kuc3YUhoxYNAYwuNdHKgqSjd9uzLgagv2CMckjMRZ2YxeSvwZMaQ4czSEZrRNLqiv2zXYGvrzjPPY1n9T6mnaPxAPuqbmvhJDyF3ySj7EjpNaSFepv2KPA4xvBZhevADbQySgycPaRZPLE2cM3UFcpibRYJS9MVzPTypQSqAMWjwKjmMXuSdZALxUaSGZnCqQFD5e2i9yGpaSAxJMJdGeYbwtSGWbqt7Kafe7zbBB7s6VrKPRezd5HosERCtKDU6hEhYLFT7kmDnCFK5NDo4CAYuaUo4RTV6ckzdVFzP97H33uAZrJFdGFkt2xdB7b248o8uqDuzy2xE9dZFQaN267ozYM2xTas7RLQVu5W4JvWW8iNAzkHTMyYc3pYNc6bfujc5FainAoE44qszEkpyc4CzfppG7mcg6zVQygj9pbNMtX8SJvmF6oirzjuEdEgzCJPmvjT1nc3J2nL3cBBjwSZataRVCE6TrdB1RTG7EeyQxkiDUXhcCdLevcR9ZDM7wcYa5jsZZr8mR9xaJi6EazN8A2QiSwvJHf8nikMcFe4eRhjiNvmZnQxD42GgP1AWbsiB8DHhUWboN5htpGuvDdZne4PqL9iwnVZzGiUfFk7nzu5NpBgrBPLiSWnjp92vKrvPsehJ6Tqp4J8QyuViYf35JQ6qKU35KchyAQvtBryhrTLYi1A5SxzFmN7CB3Sg5Uap7AvYKnrB5Ng79yzXJVoByKmM&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true">
+<img style="border: 1px solid #DCE5E9; border-radius: 4px; width: 97px; height: 97px;" src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5d7d099b2deef676db12a574&amp;w=97&amp;h=97&amp;s=3"/>
+</a>
+
+</td>
+<td style="width:340px; height: 97px;" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+<tbody><tr>
+<td style="font-weight: bold; line-height: 24px; font-size: 16px;font-family: Ginto, Helvetica Neue;">
+
+
+
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_46jTAvBLB1gye9SbBh6QQK6HeiyUBm9qfP8MdCTAc1k9takrnPeUQPcFEW9Ba7cYakaXzeTSqRSEf5FZq5rxpdh366xdFNZnmw7u7TKDC1F9GbnZLruQvauAusBpz741oZgDuCQEyPhRkvieqfADjFp3aW4x77je544Uto6VHqTAyAnQY7yAZEoNKSvZf8BjJnj2vKY6gd2Nf43AWH8tFJJHiBT1hZJ7vXuByqQYzsWjoV1Ap6cwnG4PgbUTJ46zppNiqEsK9GxWokLE2dsdhYk5AFeAkhrtLAeXhWQYsP7V2ogBRbjpQ2FfxvQseCRiSNDWkBRtRcX3DcoC853Uh9zsWUftijfyzr65HdEe5HUy6m6ikEjWbeVtUcbvefPtKNtTmAP7VLc8RLqDSGLnfqGt1jeydZ5Vhm2Cot8MhGSPq9N5c3aAPKzQLUCLFabfF7J1JnZNfC6Dw6BVdcLmn9KahNfvMakzuykgpuwRtLFdC1mwPANzxzzJSMM6yDMMmcymAXa781idsXknh8VrQVQMf3n648vBBRLRPcpENMr1JJusCV19PeRm35ht255mUXGxcwHS6ogrpeaUAEkpHafK5Q7t4iLwczqfU1yRGkRwPtSqKfqNzLn3rtynY7bJ5oiqQgbsTKVcmB5vEAHXTUnhNTdG6cxjSNB5VgnqnznmxWxsQz4fa4mHjqxs4i9MMSVfky25P9sVxSyPqXDU8qFeXNBpE9dZwnhk1k4of2GbbcgRtqabkKpJdEYMjnwDqQzB26DEN73HYCtaz1kxRG4qkHWGBjxv9raJK8aGU21CyCoerFiDF1kFLU5EQPm6EJu59ZqbrMAVmppKnHnk4wESvo9CNo4tmAb54XTkiwqkk8cEqkR8GcTALKpdWG3u9QZqvwmHc1p7q1m4z4UFp2A4LqLaPvNrCVwVhioHQfjb3LetK7vgkbYx9dMaE4YHQPR58sU7LVAbMY&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="text-decoration: underline; color: inherit;">
+DIY Baseplate 32*32 Dots Base ...
+</a>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td style="line-height: 24px; font-size: 16px; font-family: Ginto, Helvetica Neue; color: #0E161C;">
+<div style="height: 7px;"></div>
+
+<span>
+Green,
+</span>
+
+
+<span>
+32&amp;32 Blocks,
+</span>
+
+<span>
+Qty 1
+</span>
+<br/>
+<div style="height: 7px;"></div>
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+
+
+Standard shipping: 
+Ft1,830
+
+
+</span>
+<br/>
+
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+Estimated delivery: 
+
+
+Apr 20-28
+</span>
+<br/>
+
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+Sold by
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_258CZUxHToszvNSi7Ka6idWuDDsN3YvbnJz1XghZeWMFPS5TwvhV3XzKfPu3NFW8QWjMS772QHEWwbFrbxrdtjytjb7BUHgK1Q2Xi5DZURJmiuLAFHU8avCipWfhYsQv5quk4HP1CoSdYxfopURR8F8dvpKX9419YHgxZ4cFiG5fU7UFssnJHc8qHR4Menf6saVQziTSDibB1zfJEke2uACTRDzjqGAYyqcHY1fyPuBS7LfvRhu44hZzYCpeJVngSNgWyAh9DRSEcVdcoHEZhbv3khRm5kdTN9uU6FrH2g3JEfFpnmQRTWkAgqJjeYLngVBmqGdgyUURrjgQHKQBMALPm4M5WvG3FuBZF5hYD9EzwBS56QcgKmnfH1PCf51hKT5dov7LocxvTjckXW9edSC3NXz9YkFaKiBwBbZ3sQHGV31CtSer54KrdfLiEgWDULUUEMW6dpjuVnLzhDBR7cFguqqhrQp11VBsv43eQS1iPmffNX5uSg4zXDk23gkZ1mvx197uu9pk9CncT6AhDBgAxfJKaJWD2GXhKqKE9Gb3jrjrLTR5RDL61LgDFWZoKQMcGB5WbHPoW275w7GZNCJ5Gqkb5yLa922oJK6n9p192z9MyFZApiqw7zQvQUfMxavuQpY1bq5d1xmAG1rUwXackvweQJz452PULAbAQz2pNeSWbyMzShaSuBYU59PPpxPg6UGjN66dwgTgJAEPpBg8WvWngssLuHZJY9tvYkhwnf73u4Vc6hEDFAvJN8b2osU293AfnrFgoJ4KqRbDX7H1TLvfjfvHKPMCcycR8CLRduhPWMWJB5TexJCYpZw4bfyjFMst6CefkiUYy73q2bnuKrf989WY5wFPDgeik2oUZnP2NEGVNJ1AB4nNBvz&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color: #16a44c;; text-decoration: none;">
+Tradefactory</a>
+
+</span>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+<td valign="top" style="font-size:16px; font-family: Ginto, Helvetica Neue; line-height: 24px; text-align: right; margin: 0px 8px; font-weight: 600;">
+Ft1,111
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center" style="border-bottom:1.5px solid #DCE5E9; height:1px; padding-top:20px;"></td>
+</tr>
+
+</tbody></table>
+
+</td>
+</tr>
+
+<tr>
+<td style="width: 525px">
+<!--
+This file will generate a transaction items details section in the email, it needs one variable:
+1) transaction_item_fragment: eg: {"show_status": True, "show_top_dividers": True, "show_item_price": True}
+- This is a dictionary which defines how to configure the transaction item section
+- show_status if true will include the status value of each item
+- show_top_dividers if true will add divider lines on top of each item, by default divider are added at bottom of each item
+- show_item_price if true will show the price of each item
+-->
+
+
+
+
+
+
+
+
+
+<div style="height: 20px;"></div>
+
+<table style="width: 525px">
+
+
+
+
+<tbody><tr>
+
+<td valign="top" style="height: 97px; padding-right: 15px;">
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_BU4vQ46c6ZwzviX34nL2Erg3orLrAmvAbLQqrrp1fYZVRg7seggjtUELA3NeG6jkmqYVExSdQZnH7W5ugQmVKsAUC55RpYFq14SU3dySycVTG2WYX3y6hogLkbH4XQvefqH9VozcerNibjYPu3d6PbPFffoKibEW6fLYLgjPfaBMGdGW3WVnfXBcEUsADurrE12KYq7TcdW26xNmRh4piDmBpgQ2Xm28P9LR59drSPSYCzJtASmfB4ViXLJbRfvtwNzBjJeT5YTL48dPeL95SUBKpsCECGZWHhqhqDNoQeAu14VU8Z1skwoJCvNd5yWqxQToynuJTXmLpsfS5jhQAgYeKnT4z8YEc6zdqHrbw2DCQHakZmVCE2bG4EZpUD16Q15JjKk8wpU5M8toLCbRMwVHxc47FU25XwycPf399AEXnF6Ahgh37Kb1vk3ZKpqXpHkyCHfyTRKySuCa3Lib8VbtpBqa6jfTMnVZwNMxcYvu6hexMTSk12MLfphL4xyFyQCVHmConZGAQ7qiR9YrUpvrgMMzeYjneedR9qcKW5cDQspLkoKXaWyZxZs4ntg1APTEa8ysVpoWYE522BTfe87JXm9MzyusGBPM8MCbXBiN3xWUtVPZ3YdwxZLJceTH9bH7j8e39duciY6KUK44LZbVep57x66tTeSTncJjeAXtKMdhP1DSEGTnpGjcUVH6E2sLEYwvhqunA6evMiUsFvGp9SrksgfPcnDfzniz5vHWZF7o1hrvsjZPu9ihkjztrhp3UmD1wdkmSrPcFd77JssVMNsgkM6Z9satqG29jz1dW4X3hnNRgQ9sJFwFYkY2HQmboDgDUF7ksMTjDQArw8E9oBB5i88YLuK78JsfzKmeijbb2s5PPzi3RtNBJLixK4TH3G1VhE8repVvkWpktEJ478FYoJ2gdf4jaPdriwRd9BUAnexsiFtAK1nbvctw8H4E16vHyUX&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true">
+<img style="border: 1px solid #DCE5E9; border-radius: 4px; width: 97px; height: 97px;" src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=6124a77a998df8f67e0d874f&amp;w=97&amp;h=97"/>
+</a>
+
+</td>
+<td style="width:340px; height: 97px;" valign="top">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+<tbody><tr>
+<td style="font-weight: bold; line-height: 24px; font-size: 16px;font-family: Ginto, Helvetica Neue;">
+
+
+
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_DnE9JET5DLUEnGEghc9SNjd2f3mYExyFNz6REmbwRDEtN4DM17MZ87pjzy32FT4icKh3nX82dSCmZaMtqXSB7QgZF2uk7tXkY5EKohVHBSVjXmKUaFDcLvD5q8qV9VKvKgrVR2hXk1beU5T8nAXFynNQ5WvQPT9rLs8Lxgz1MoWCq2MDSM7ciyZ2grH6xuQPW26BWHKC8j5Wxt5F3kn3355Zojf8oienEPLW9PFwGwTZRkFotkgJffvq2aKfjcNGMrsK9hPU1TJBcJg2BYudcdQy2U2vRx1CUd9TdaqNJNeYM41cg9PKYsTjzxNw9zuawrLZcG1rEjyEpjvH5ZRMxGEAfEVMBsptMyrbxJ2qTWi9A9Jk5kPCTdGDEirJeLedzxSyhioXDbBpCCYh7hQtYYUgUPLudHUx5WqFuEQLZwRKDuhxy1bU1J2jNw4CQ1V2EKRDcrhr6Av4qBxGBghLaH4xXa8Uiqn8P4gveu1q77Gue4Qohgem8SnLf2WxntssE6JtJSf2FnWa4J8h79qZtojGUtqVi8LWXqyLPPz9dHr1yu2k8f4B9od1QAWn9fi899LPpLFL12aKXma51du79voRo8UgpTY8ETyxajaBvzyR69nck6cvw4HL5QD3YyTSofRnPTN4C5bZKnWczx9YFL7UsBJxF4ZYsMS5TwZFhdkV8ngowy3MBaZk9SbMPx9zPxNfdkGdZLZ3WKmVHhUhZwsStoCdQJCE43PyPMUr6qo2MCabwaFWNfS5PysMZTSpH2shtZxvkcBq86bkFo9di8diK7LkKTJssqeaS3BJXZATmRBaSzrBvt2VSSRdhKjnbkNE1azEGMp3PSR8zLpypCTk5rvo14DHudcdXXSUZUQZb6tsEhAzQiszdLw83WtVTmCQ8gTs8f9RnMLuzfwL7PuNBa683YUReLcjgrKoShiHe7GapPW58rCKiVvhRUGk5YcDACJAnR7HPr&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="text-decoration: underline; color: inherit;">
+DIY Building Blocks Food Fish ...
+</a>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td style="line-height: 24px; font-size: 16px; font-family: Ginto, Helvetica Neue; color: #0E161C;">
+<div style="height: 7px;"></div>
+
+
+<span>
+50G,
+</span>
+
+<span>
+Qty 1
+</span>
+<br/>
+<div style="height: 7px;"></div>
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+
+
+Standard shipping: 
+Ft1,653
+
+
+</span>
+<br/>
+
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+Estimated delivery: 
+
+
+Apr 20-May 1
+</span>
+<br/>
+
+<span style="font-size: 14px; line-height: 20px; color: #3F5663;">
+
+Sold by
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_3x5hU9FgXCAAno3TFJqt2E64P3QHHTnu6ia4zhbj94ZSUUdNLwMHWmHUAt57xFCG6UHFrSddvjjnvwGTghNqiP4vxtswE3Pn9Lkq4vAPsAJCAAzhtbLHNz9mMSKAUsdMNCBaUW62b9DcRgCYzkSjkzYbaUGgQYa9StYCeM4iE8EyyDnia8qyLPBum9zs77yRKZNMg7TcGonyHj1owMA49Q4Drde1tZvZpeUevhekLvGbL5ombo6zhWRJjCbBA6G7T4E3EqHRnA9fuiJ1kHbYGUSpBK9azAAJGgu3nNw8Zx87M3EEaTfuRGhBp68ZXu7zqiwzBpvenKXBvtfNirKBpCWrwr6MWZVqDgtfUHi5orH9BjBJaxNZJbvzpgm2SxuXJzWQnmPtgJLoZSLb8fpybAnJoMaXpNfZrnt2LEeTLXZmPHBCwEtQrPYTgCjEgwhJN5yFDppwkyARQYLwQPKJoAEo68YEf9bg3wnvqwZvMP2hDVgGcohy8AWoahzwr3XaygWExDGURyuQhnnDZi8Zfk97hT3dppfz2WZywhCKnEcGbqQsMwftSwj9xYvU8eURtVN3duWtr52kJQiFMcGijYqHF9vnbDjJDSJbjpdiCwZEYwo72ozJoWoyCM2zea8dQ4D4iWWRJS2U8BNzonxFXnZGWX7cPVg27vZu7iraw9fzXreGNti18miQn7o5otkcYmUUt1m81GXdYwrDLWrhrTSMLuMUfxUKP3PzeHaiSjLiGCy4UStbRwnq6YPa1stgEs533sJuavYM7Zahg4Pt4oWNxVhWFxXyppqBuTXhf5vw8hCAAxhom372hSVPeDzJt1sc6TxA6w98L4Z9wW5PvhRKZnrGoTTrb8LMf8sep76iEjSdNyHZQ6hD3uLR4D&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color: #16a44c;; text-decoration: none;">
+wangcuicui8817</a>
+
+</span>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+<td valign="top" style="font-size:16px; font-family: Ginto, Helvetica Neue; line-height: 24px; text-align: right; margin: 0px 8px; font-weight: 600;">
+Ft1,651
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center" style="border-bottom:1.5px solid #DCE5E9; height:1px; padding-top:20px;"></td>
+</tr>
+
+</tbody></table>
+
+</td>
+</tr>
+
+</tbody></table>
+
+
+<div style="height: 10px;"></div>
+
+
+
+
+<div style="height: 10px;"></div>
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tbody><tr>
+<td width="46"></td>
+<td width="508" style="font-size: 16px;display: flex; align-items: center;line-height: 24px;text-align: center;font-family: Ginto, Helvetica Neue; width: auto">
+<table border="0" cellpadding="0" cellspacing="0" width="520" style="line-height: 24px; text-align: center;">
+<tbody><tr>
+<td style="font-size: 16px; font-family: Ginto, Helvetica Neue;">
+We&#39;re committed to your satisfaction. If you&#39;re unhappy with your item, you can request a return within 30 days of delivery.
+</td>
+</tr>
+</tbody></table>
+</td>
+<td width="46"></td>
+</tr>
+</tbody></table>
+
+
+<!--
+This file will generate a contact support section in the email, it needs one variable:
+1) contact_support_fragment: eg: {"support_button1": abandon_cart["sub_button_1"](), "support_button2": abandon_cart["sub_button_2"](), "support_url1": "/help", "support_url2": "/get-help", "support_text": abandon_cart["body_3"]()}
+- This is a dictionary which defines how to configure the complementary section
+- support_button1 and support_button2 are the texts for the two buttons in the fragments
+- support_url1 and support_url2 are the urls to the two support page
+-->
+
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="font-family: Ginto, Helvetica Neue; margin-top:30px; width:600px; min-height: 80px; background-color: #DCDCDA;">
+
+<tbody><tr>
+<td align="center" style="font-size: 20px; color: #1E1E1C; font-weight: 600;">
+Questions? Get in touch with us.
+</td>
+</tr>
+</tbody></table>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="background-color: #DCDCDA; width:600px;">
+<tbody><tr>
+<td align="center">
+<table>
+<tbody><tr>
+
+
+<td align="right">
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_P7f1szk62MhSPa7YxwLL7BHSYSaJkScWbUqJekf2gkXzVRKMMb2V6foyFSxLYbhWL8q2iGmV3q5yLbpxNg6EVUmQyQwcTk27hcYe7TwbFDHAGzyjRRjBgd7TMxs8Wfr4T28HJqosrpLWTYRw7LTbp3nnWUyHxE2RaeUNBVoquqcYyRMgArxPaTBzy2TekJPfB8LaDCB7KmMvu5t8G6owtFwWhcQL2NpfxFWWFt63uRGiWg7tLKAwRxRp2vfkqwV7kap9yaFoUtYjfrZLAMyS6jqVK1vQaQ8jVyJRmkUsbxtNB4zaLMzDwMDWo1zPGnP4PaenghUqaADNaVgoK8Rc93brfT3JKdXypKEnRbwA6T9sBwpEsw1pSeRmvPDQeCgVPihtv2Qpsb4A2sUngK3qTC1TVuVSEWqRa3YAB4je53RKJ4mNaGNA4282ngGjzi4ytZs3X417siYTTkokWkYd68f4o4zrW3UgCswJx9LcBExymQFk3RtJtSZKMSYbzFJkLXzzR5wUW6k4kBZxw3dhx6PLGHokGoQK4gHd5DfUz3jxAUh8giZuc14M87t6GkgAsWz9MtaEQBNZq2ZKCgaj2fefUQ6ANJhu6kwGHsRSuu5SgxxDCoaeQxaevVntZQ92pUY4shmbchCTZ3rEopvVZeqCQtht7dJ6LYqKJU8GaExRWMNGMx7eeXaoH3LMYNoxnyh4fcnJBx1nBWDfdDzd45KWRxdoQ1uSbKriJK5zpifpB7iZFr21nbr5yvAaJ8kRwKpQXtnCjpYF8CZL9a5M4Xx7TYKwyBTtQz9K9ttz1K2MGkHSSU9Bjo2sHsnSYxEvtQQCoXGXw21kYiMGsTdX5pKc5NTic9PsWJMbrc&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="
+        border-radius: 1.5px;
+        display: inline-block;
+        letter-spacing: 0.56px;
+        font-weight: bold;
+        color: #ffffff;
+        font-size: 15.5px;
+        padding: 9.5px 5px;
+        text-decoration: none;
+        text-align: center;
+        line-height: normal;
+        width: auto;
+    background-color: #2FB7EC;; padding: 15px 24px; font-weight: 400; font-size:15px; color: #F7F7F5; letter-spacing:0.56px; font-family: Ginto, Helvetica; border-radius: 999px; background-color: #1E1E1C;">
+Help Center
+</a>
+</td>
+<td width="30"></td>
+
+
+<td align="left">
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_2GLvcepa8FiVwdAYddyUmZw2Qofqe6rTYYe6Z9LbuEAZhCLs4DHf5dN6DjRs3dXzUsG3d41VUnQ12UxYSTsWXZUvDcqkHM3sCF45hxhxx3BtHi3fEUxUXYv1ENs7NtF1zWHVG5ZHKUv23fDR3GkandCCobHCwtfpTf3rHxVbuAVBC4iBA413VChYtFZVcPqcZPHSPqm4me9oeGLvpaytMauQDaKw7oK3dSZWFbVtqeUY7c3dmKbKBK79chgFe9hY5QQfF8uMyF3H2jHaHj8LJMG7ZceVqAewwJEWqhKsXN1zgFapAqC8sW2zE8xEvPK2tcwwQu6FZqeLTjSVZ4iWizhPZGNbgtsaRbY22UvoQBxJzFUtmjmKfWmVNB45jsrBCTuDNAVQb5qHAQmfyvuFyCUsAEMM5WTA47Ayy4PLyG74zhn68qeMDC1oZGDWZWyzoWcK6PzHhB4B8h32KQDW3RJm2oHAVAjVgKmR8aNpoXAge7DNkUTFZiR5uwJEHpmyyQrbJ7QrQZKBzmxx3f8vPHBbqv6viyNjcnhtEumEGfU5KCRpDd779VMCwErGXv22QPiD1ZadqpSURjz6pxAab6tFqtzU4AbVQrS2BtDc8pkxfMAU36skT41vHtQwVwbZU9WUfChcHs2p2DyYkwZYovtQQ8dxyHWpjmPVSYQe1c4XGCHkwfLdA7mNKnVGBW2CXZLUcF8mq1wMPCgkHY9CNYP3eAYBvcP2JtG4TEwjL5qNpNKWZtNWpBfG1bWn1xnQQkHJm2vV8xgpN3132mDBBkCzfrJUbYaDH9BXpUY6zjL49TJu9rRtrGNJ5hr83pGqdpaFu4WEcK4iTuVJcnhoT6UzXkNGTZyA&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="
+        border-radius: 1.5px;
+        display: inline-block;
+        letter-spacing: 0.56px;
+        font-weight: bold;
+        color: #ffffff;
+        font-size: 15.5px;
+        padding: 9.5px 5px;
+        text-decoration: none;
+        text-align: center;
+        line-height: normal;
+        width: auto;
+    background-color: #2FB7EC;; padding: 15px 24px; font-weight: 400; font-size:15px; color: #F7F7F5; letter-spacing:0.56px; font-family: Ginto, Helvetica; border-radius: 999px; background-color: #1E1E1C;">
+Contact Support
+</a>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr style="height: 30px;"></tr>
+</tbody></table>
+
+
+<div style="height: 20px;"></div>
+
+
+<table style="width: 600px; font-family: Ginto, Helvetica Neue, Helvetica, Arial; padding-top: 32px; border-top: 1px solid #1E1E1C; border-bottom: 1px solid #1E1E1C; padding-bottom: 32px;">
+<tbody><tr>
+<td style="width: 43px;"></td>
+<td style="font-weight: 700; font-size: 20px; line-height: 24px;color:#0E161C;">Let&#39;s hang out</td>
+<td style="width: 43px;"></td>
+<td>
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_ArTB6qHzKgqLxwZPkyKzY5WkRQAgbQX6XC6ZcvMyRFCRGNKVzgcsiwEpipZ6fC4cpTHo8WNm9gWJK5tS2QtqiV5NBceJ8p1M&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/facebook.png?v=d9bd013" style="margin: 0 7px 0 0; border-style: none;"/></a>
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_c8LnTNLiAzRmjwfFfBkiWr8UFj31GCvtRgvrw2C4FXF4Nj9x5wshAXndcc3n3era4DAcrzXvDaNrbN7KaAcHTytx5BxcNPaZf&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/instagram.png?v=3755713" style="margin: 0 7px 0 0; border-style: none;"/></a>
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_6qci7bF9kAF2U575jZVDTW5hxsPnbkRizBWujDGkfvnnUrWKB4G7AnskxwxycxAcSh7Sja48BbZ9worC88QLWgqtNB4xMBVzZiZBcsrGpzbwWqs5aH7u&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/linkedin.png?v=d363113" style="margin: 0 7px 0 0; border-style: none;"/></a>
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_28Du68Bk7VqqxLpk6NKU1ToneYeDdksQJ6ue7KRCMELomyyfoaePK469d2biq3escaD8b1NVGbUYSwdMJ7kuFnUxmijeHRtbzeb2iF&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/pinterest.png?v=69f3d13" style="margin: 0 7px 0 0; border-style: none;"/></a>
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_5XHuyUfR28zEW2BiJB3DsNQRV14bcZ9SZjPDprD5BmaoJJA6hBJZV9YtYX9vXys5hpXWufQD5qC5rv7Rgp8VPcXZitpzF&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/tiktok.png?v=092fd13" style="margin: 0 7px 0 0; border-style: none;"/></a>
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_hVkx6wCMdsuCCUdHUcBriExNkUXzXtBG1Vttj2Lmt3tSH9qhyxfSaphDAxZ5QjLxrCBEB76qEdwDo8iNz8dPjviENnG2gpqCRf&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/twitter.png?v=6bdfe13" style="margin: 0 7px 0 0; border-style: none;"/></a>
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_9eAA4ddYVFoNH5TvHB6i6hmesdB4E4XCUkvuJuf5i3PYMWvyqc85KUFo5YpBG7q5B4LSKB1CaSBZj4YmiU6QDjDNUJCr6mNFj3ao65deWRkbsa7WPJywARB2VTeBkK4iedK&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/youtube.png?v=2f61113" style="margin: 0 7px 0 0; border-style: none;"/></a>
+</td>
+<td style="width: 43px;"></td>
+</tr>
+</tbody></table>
+
+<table style="width: 600px; font-family: &#39;Ginto&#39;, &#39;helvetica neue&#39;, helvetica, sans-serif; font-style: normal; background-color: #F7F7F5; border-collapse: collapse; border-spacing: 0; padding-left: 0%;padding-right: 0%;">
+<tbody><tr>
+<td height="32"></td>
+</tr>
+<tr>
+<td align="center" style="width: 600px; ">
+
+
+
+
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;recvuid=65b7b164ad3775a3b6987c00&amp;redirect=v1_6d4YzUyyTijgVdfgwdaPJ8DTZe5CWkcFMdgcbPS4yBH5Ych4JjaBxwtckeiXoiocGCQAduoX5iYsLETaBGGJbPJJFNsss3zfADRRvSB75sEi94qSMZN352GYYxrtBm2HHSc24zpUCMohVjoSdbEGsoZNbBMXNS8xTSo9xfJsi6BMrxCZtCddYu8rb19yJ1AfaHTGUqdTYa9nMuryWBnq6NMzcd7xEaHFTXZDFQGY12QMp9qKeMUfkmosoF1WxvkbX4hZ11Ae8cNLvxNUwzS1N3Jazn9f3bCdqf8LFfgr3oCBxDmR682U16Jo7gnh2CH92RmnchMYc5wjRYdiY6u47ThQcqJw8zWCurt8UM6JtJUgCJzvvvj39gJAVZkowcU3eQKJn8eoWkXYncvNT3a48Y9igYAcSgwvpaBubzE3WfUSS4x2ScdzCLCnTgh6wCXfc874XBpe2E4zzx9zd621VF2pbuAWRBmgomH3ZPEafmEsCNQXKdcNNT4KNv2ui8mdefy1x7dWXYDDY6sfzQ8Shs5WLYBXAsFtrs5Km3Gzk4kRg2biz1yuBSZwkNU3RJBhmub3DkqjZz2wdiavygZMbt5ro8zzEt2tSDVAFo1y3uKPdHdLec2ddcgyYZSkr59qidkK71pkep2wkBdjop8yJv2NxnBT2dgV8Q5Ra5fU9c229KeaePxauFU2yEdnDyKDLAdj7sLbtwvLfdpBkVmbFBg513hieKWEWwHtn4YmrCPrPcL5seuWgvgiNstdVNG1gqBpAyCD1e1dAkMLYB88FVu7NTxQPLjo9dpMUoQBCnNMaXrBJ9GUGN5Dyw27SF4pUns3zwM2exMLL6PufofmF3WWeKAw9gcQu&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="text-decoration:none;">
+<table style="width:600px;">
+<tbody><tr align="center">
+<td align="right" style="padding: 10px 15px 10px 10px; width: 210px;"><span class="web-font-fix" style="font-family: Ginto, helvetica; font-style:normal; font-weight: 700; font-size:20px; line-height: 24px; text-align: center; letter-spacing: 0.01em; text-decoration: none; color: #0E161C; vertical-align:middle;">Download app</span>
+</td>
+<td>
+
+<div style="font-size: 18px; padding-top: 4px; padding-right: 4px; color: black">
+►
+</div>
+
+</td>
+<td>
+<img style="vertical-align:middle" src="http://main.cdn.wish.com/latest/img/mobile_download_page/banner_google_equal.png?v=62cb513" width="100" height="30"/>
+</td>
+<td align="left" style="width: 210px;" width="210">
+<img style="vertical-align:middle;" src="http://main.cdn.wish.com/latest/img/mobile_download_page/banner_apple_equal.png?v=61ed113" width="100" height="30"/>
+</td>
+</tr>
+</tbody></table>
+</a>
+
+
+
+
+
+
+<p style="font-size: 14px; font-weight: 400; color: #1E1E1C; text-align: center; margin-top: 6px; margin-bottom: 6px; letter-spacing: 0.005em; width: 550px; line-height: 20px;">
+
+Want more shopping inspo? Check out our <a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_C7nkgtQa9sb8GFRL1Lh62UdocUi4LpFRzPkfoafuXKsicTKNxFjbHSkFrbneMtHLQ7bHZAicNwH3aACx1hScd&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color: #1E1E1C; text-decoration: underline;">blog</a>!
+</p>
+<p style="font-size: 14px; font-weight: 400; color: #1E1E1C; text-align: center; margin-top: 6px; margin-bottom: 6px; letter-spacing: 0.005em; width: 550px; line-height: 20px;">
+Wish is a marketplace that lets you discover items from thousands of merchants around the world. Check out these merchants&#39; deals! (Product Listings, including images, reference prices, and related discounts or savings are provided by merchants)
+</p>
+
+
+<p style="font-size: 14px; line-height: 16px; color: #1E1E1C;text-align: center; letter-spacing: 0.005em;">
+
+You are receiving this email because you subscribed at 
+<a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_KXQ5U9XH7wuVMhzAK1ScpKhPHWX6MtwvdcndaMpXgwSz6iAvUriaHSfZP3w1CJyoHpnWAXfJDom&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color: #000000; text-decoration: underline;">wish.com</a>.
+<br/>
+
+
+To opt-out of receiving future emails, you may do so <a href="http://www.wish.com/unsubscribe-email?utm_campaign=2024-04-08_SHIPMENT_CONFIRMATION_769683e487ce42389e3c9e4ef81871f8&amp;verification_code=0cac9c6d3c97f23f620a56c91c74496e&amp;user_id=65b7b164ad3775a3b6987c00&amp;uuid=769683e487ce42389e3c9e4ef81871f8&amp;cmpgnid=2024-04-08_SHIPMENT_CONFIRMATION_769683e487ce42389e3c9e4ef81871f8&amp;ee=v1_3mZYESeZPNRw3XdQYAZXKnh1L3ZK6DQGtRUf2aDUu1N3V46DbhymaTv1V6njZYrTpcoRTwhZgackbZYYmNWUFynFJFXCP&amp;email_section=unsubscribe&amp;utm_source=SHIPMENT_CONFIRMATION&amp;no_deep_link=True&amp;utm_medium=email&amp;template=emails%252Fremix%252Fnotifications%252Fitems_combined_shipped.html&amp;action=unsubscribe&amp;recvuid=65b7b164ad3775a3b6987c00&amp;d=v1_5rd5btEN32qsxMbsrkpam5Peqggc2WDWWJ7C8vXRNEA5j1fiDuX93SBshAts7c3MxLezsMgSAjUXrZjBgq1piwFB" style="color: #000000; text-decoration: underline;">here</a>.
+
+</p>
+<p style="font-size: 14px; width: 600px; color: #1E1E1C; font-size: 14px;text-align: center; line-height: 16px; letter-spacing: 0.005em;">
+
+ContextLogic, B.V. - Schiphol, NL
+
+</p>
+
+
+
+
+
+
+<p style="font-size: 11px; color: #1E1E1C; font-size: 14px;text-align: center; line-height: 16px; padding-bottom: 0px; margin: 0px 24px ;letter-spacing: 0.005em;">
+This email was sent from a notification-only address that cannot accept incoming emails.
+<br/>
+
+Please do not reply to this message. If you have any questions or concerns, please <a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_LgNz6EWG3QgHWc7HWYALa3mPAmx5ie1VByyo5wfFxAy6yiA8ruz91YjzoriUGromBRL44PUcr6LkMHoAPF9qJbJx994ei&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color: #1E1E1C; text-decoration: underline;">contact us</a> or visit our <a href="https://www.wish.com/api/campaign-frontend/wes/email-link?account_id=62c5ead76022aa367e2d5a37&amp;from_address=Wish+%3Cnotification%40wish.com%3E&amp;message_id=31vg2hglhaxzz3lr9xc.51.3.6848ad9fa282d188e8a7782c11&amp;redirect=v1_2YodeGH2wENFUYAnkzBq2FtkngLDtjkkUZtzkfELwo9kY64acedNmdHKDJ1XrGCtbB3mbfLGgrDu4UukyFDi1y9Ry&amp;to_addresses=%22Havasi+Alex%22+%3Chavasi.alex.marton%40gmail.com%3E&amp;track_click=true&amp;track_open=true" style="color: #1E1E1C; text-decoration: underline;">Help Center</a>.
+
+</p>
+
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td style="height:12px;background-color: #F7F7F5;"></td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+</body></html>
